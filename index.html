@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Teacher Esen | English Word Test Portal</title>
+    <style>
+        /* Global Reset & Mobil Optimizasyon */
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Profesyonel ve Koyu Arka Plan */
+            background: radial-gradient(circle at top, #1d3557 0%, #0a1128 100%);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #f1faee;
+        }
+
+        /* Header / Marka Alanı */
+        .brand-container {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .teacher-esen-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffbe0b; /* Altın Sarısı Vurgu */
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .portal-subtitle {
+            font-size: 1.1rem;
+            color: #a8dadc;
+            margin-top: 15px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 300;
+            border-top: 1px solid rgba(168, 218, 220, 0.3);
+            padding-top: 15px;
+            display: inline-block;
+        }
+
+        /* Grid Yapısı */
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Profesyonel Kart Tasarımı */
+        .class-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .class-link h2 {
+            font-size: 3rem;
+            margin: 0;
+            color: #f1faee;
+            font-weight: 300;
+        }
+
+        .class-link span {
+            font-size: 0.9rem;
+            color: #ffbe0b;
+            font-weight: 600;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        /* Hover Etkileri */
+        .class-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffbe0b;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .class-link:active {
+            transform: scale(0.95);
+        }
+
+        /* Alt Bilgi */
+        .footer {
+            margin-top: auto;
+            padding: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(241, 250, 238, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1d3557;
+            background: #a8dadc;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.1rem; /* Numara daha belirgin olması için büyütüldü */
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .contact-btn:hover {
+            background: #ffbe0b;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .portal-grid { grid-template-columns: repeat(2, 1fr); }
+            .teacher-esen-title { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .portal-grid { grid-template-columns: 1fr; }
+            .class-link { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="brand-container">
+        <h1 class="teacher-esen-title">Teacher Esen</h1>
+        <div class="portal-subtitle">English Word Test Portal</div>
+    </header>
+
+    <main class="portal-grid">
+        <a href="./3-sinif/index.html" class="class-link">
+            <h2>3</h2>
+            <span>GRADE</span>
+        </a>
+        <a href="./4-sinif/index.html" class="class-link">
+            <h2>4</h2>
+            <span>GRADE</span>
+        </a>
+        <a href="./5-sinif/index.html" class="class-link">
+            <h2>5</h2>
+            <span>GRADE</span>
+        </a>
+        <a href="./6-sinif/index.html" class="class-link">
+            <h2>6</h2>
+            <span>GRADE</span>
+        </a>
+        <a href="./7-sinif/index.html" class="class-link">
+            <h2>7</h2>
+            <span>GRADE</span>
+        </a>
+        <a href="./8-sinif/index.html" class="class-link">
+            <h2>8</h2>
+            <span>GRADE</span>
+        </a>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 Professional English Archive by Teacher Esen</p>
+        <a href="tel:05304773073" class="contact-btn">0530 477 30 73</a>
+    </footer>
+
+</body>
+</html>
