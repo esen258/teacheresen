@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4. Sınıf 4. Ünite İngilizce Kelime Testi</title>
+    <title>4. Sınıf 6. Ünite İngilizce Kelime Testi</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
@@ -167,7 +167,7 @@
     </div>
 
     <div id="quiz-container">
-        <h1>4. Sınıf 4. Ünite Kelimeler<br><small style="font-size: 1.1rem; color: #457b9d;">Free Time (Boş Zaman)</small></h1>
+        <h1>4. Sınıf 6. Ünite Kelime Testi<br><small style="font-size: 1.1rem; color: #457b9d;">Fun with Science (Bilimle Eğlen)</small></h1>
         <div id="questions-area"></div>
         <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
         <div id="results"></div>
@@ -175,40 +175,57 @@
 
     <script>
         const wordList = [
-            { en: "climbing", tr: "tırmanma" },
-            { en: "dancing", tr: "dans etme" },
-            { en: "doing puzzle", tr: "yapboz yapmak" },
-            { en: "drawing a picture", tr: "resim çizme" },
-            { en: "drive", tr: "araba sürmek" },
-            { en: "fishing", tr: "balık avı" },
-            { en: "flying a kite", tr: "uçurtma uçurma" },
-            { en: "free time", tr: "boş zaman" },
-            { en: "jogging", tr: "tempolu ve yavaş koşu" },
-            { en: "learning english", tr: "ingilizce öğrenme" },
-            { en: "listening to music", tr: "müzik dinleme" },
-            { en: "playing chess", tr: "satranç oynamama" },
-            { en: "playing computer games", tr: "bilgisayar oyunları oynamama" },
-            { en: "playing football", tr: "futbol oynamama" },
-            { en: "playing hopscotch", tr: "sek sek oynamama" },
-            { en: "playing table tennis", tr: "ping pong oynamama" },
-            { en: "playing tag", tr: "ebelemece oyunu" },
-            { en: "playing volleyball", tr: "voleybol oynamama" },
-            { en: "playing with marbles", tr: "misket oynamama" },
-            { en: "playing with toys", tr: "oyuncaklarla oynamama" },
-            { en: "reading a book", tr: "kitap okumak" },
-            { en: "riding a bike", tr: "bisiklete binme" },
-            { en: "running", tr: "koşma" },
-            { en: "shopping", tr: "alış veriş yapma" },
-            { en: "skipping a rope", tr: "ip atlama" },
-            { en: "singing", tr: "şarkı söylemek" },
-            { en: "skating", tr: "patenle/ kaykayla kaymak" },
-            { en: "skip rope", tr: "ip atlamak" },
-            { en: "speaking english", tr: "ingilizce konuşma" },
-            { en: "swimming", tr: "yüzme" },
-            { en: "swinging", tr: "sallanma" },
-            { en: "taking photos", tr: "resim çekme" },
-            { en: "watch tv", tr: "tv izlemek" },
-            { en: "watching cartoons", tr: "çizgi film izleme" }
+            { en: "Cut the paper", tr: "kâğıt kesmek" },
+            { en: "Do an experiment", tr: "deney yapmak" },
+            { en: "Equipment", tr: "ekipman" },
+            { en: "In", tr: "içinde" },
+            { en: "Liquid", tr: "sıvı" },
+            { en: "Magnifier", tr: "büyütec" },
+            { en: "Microscope", tr: "mikroskop" },
+            { en: "Pick up the flowers", tr: "çiçek toplamak" },
+            { en: "Plant tree", tr: "ağaç dikmek" },
+            { en: "Plant", tr: "bitki" },
+            { en: "Blow up", tr: "şişirmek" },
+            { en: "Boil water", tr: "su kaynatmak" },
+            { en: "Bookcase", tr: "kitaplık" },
+            { en: "Bottle", tr: "şişe" },
+            { en: "A bottle of water", tr: "bir şişe su" },
+            { en: "Absorb", tr: "emmek" },
+            { en: "Rub", tr: "sürtmek, ovmak" },
+            { en: "Scientist", tr: "bilim insanı" },
+            { en: "Scission (Scissors)", tr: "makas" },
+            { en: "Mix", tr: "karıştırmak" },
+            { en: "Near", tr: "yakın / yanında" },
+            { en: "Baking soda", tr: "karbonat" },
+            { en: "Bean", tr: "fasulye" },
+            { en: "Behind", tr: "arkasında" },
+            { en: "Fold the paper", tr: "kâğıt katlamak" },
+            { en: "Food coloring", tr: "gıda boyası" },
+            { en: "Gas", tr: "gaz" },
+            { en: "Glass", tr: "bardak" },
+            { en: "Goggles", tr: "gözlük" },
+            { en: "In front of", tr: "önünde" },
+            { en: "Shoe box", tr: "ayakkabı kutusu" },
+            { en: "Soil", tr: "toprak" },
+            { en: "Solid", tr: "katı (madde)" },
+            { en: "On", tr: "üzerinde" },
+            { en: "Peel", tr: "soymak" },
+            { en: "Spread", tr: "yaymak" },
+            { en: "Stick", tr: "yapıştırmak" },
+            { en: "Stir", tr: "karıştırmak" },
+            { en: "Plastic glass", tr: "plastik bardak" },
+            { en: "Pour", tr: "dökmek, koymak" },
+            { en: "Put into order", tr: "sıraya koymak" },
+            { en: "Retell", tr: "tekrar anlatmak" },
+            { en: "Cardboard", tr: "karton" },
+            { en: "Cover", tr: "örtmek, kapatmak" },
+            { en: "Fill", tr: "doldurmak" },
+            { en: "Fizzy drink", tr: "gazlı içecek" },
+            { en: "Shake", tr: "sallamak, çalkalamak" },
+            { en: "Tape", tr: "şerit bant" },
+            { en: "Tube", tr: "tüp" },
+            { en: "Water the flowers", tr: "çiçekleri sulamak" },
+            { en: "Under", tr: "altında" }
         ];
 
         let score = 0;
