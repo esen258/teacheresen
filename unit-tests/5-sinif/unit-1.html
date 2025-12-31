@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 1. Ünite School Life (Okul Hayatı) Soruları - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #ffe66d;
+            --bg-color: #f7f9fc;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #ff8e8e);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        header p { 
+            font-size: 1.2em; font-weight: bold; background: var(--accent-color);
+            color: #d35400; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; transform: rotate(-1deg); margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.2em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #c0392b;
+        }
+
+        #submit-btn:hover { background: #ff5252; }
+        #submit-btn:active { transform: translateY(3px); box-shadow: 0 3px 0px #c0392b; }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 1. Ünite School Life (Okul Hayatı) Soruları</h1>
+    <p>Teacher Esen ile İngilizce Zamanı 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🏫 Bölüm 1: People, Places and Rules at School</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🎨 Bölüm 2: School Clubs</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🌍 Bölüm 3: Countries – Nationalities</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🇹🇷 Bölüm 4: National Days and Celebrations</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">5. Sınıf Yıldızları için Teacher Esen tarafından hazırlandı ✨ 2025</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: People, Places and Rules (0-12)
+    {q:"Who teaches students at school?", a:["Doctor", "Teacher", "Farmer", "Driver"], c:1},
+    {q:"Where do students read books at school?", a:["Playground", "Canteen", "Library", "Garden"], c:2},
+    {q:"The head of the school is the _____.", a:["nurse", "student", "principal", "cleaner"], c:2},
+    {q:"We have lunch in the _____.", a:["classroom", "library", "canteen", "lab"], c:2},
+    {q:"Which one is a school rule?", a:["Run in the corridor", "Be quiet in the library", "Eat in class", "Shout in the hall"], c:1},
+    {q:"Where do science experiments happen?", a:["Art room", "Science lab", "Music room", "Library"], c:1},
+    {q:"Who helps sick students at school?", a:["Teacher", "Principal", "Nurse", "Janitor"], c:2},
+    {q:"Students listen to lessons in the _____.", a:["classroom", "garden", "gym", "canteen"], c:0},
+    {q:"Which rule is correct?", a:["Don’t listen to the teacher", "Be late to school", "Raise your hand", "Run in class"], c:2},
+    {q:"Where do students play sports?", a:["Library", "Gym", "Classroom", "Lab"], c:1},
+    {q:"Who cleans the school?", a:["Student", "Teacher", "Janitor", "Principal"], c:2},
+    {q:"We must _____ our homework on time.", a:["forget", "lose", "do", "break"], c:2},
+    {q:"Which place is for music lessons?", a:["Music room", "Library", "Lab", "Office"], c:0},
+
+    // BÖLÜM 2: School Clubs (13-24)
+    {q:"Which club is for playing football?", a:["Music Club", "Sports Club", "Drama Club", "Science Club"], c:1},
+    {q:"Students sing songs in the _____.", a:["Art Club", "Music Club", "Chess Club", "Science Club"], c:1},
+    {q:"Which club is for drawing and painting?", a:["Sports", "Drama", "Art", "Chess"], c:2},
+    {q:"We do experiments in the _____ Club.", a:["Music", "Sports", "Science", "Drama"], c:2},
+    {q:"Acting on stage is part of the _____.", a:["Drama Club", "Art Club", "Chess Club", "Sports Club"], c:0},
+    {q:"Which club improves thinking skills?", a:["Chess Club", "Music Club", "Sports Club", "Dance Club"], c:0},
+    {q:"Students run and jump in the _____.", a:["Art Club", "Sports Club", "Music Club", "Chess Club"], c:1},
+    {q:"Which club is about technology and robots?", a:["Science Club", "Drama Club", "Art Club", "Music Club"], c:0},
+    {q:"I like taking photos. I join the _____.", a:["Music Club", "Photography Club", "Sports Club", "Chess Club"], c:1},
+    {q:"Which club helps students be creative?", a:["Art Club", "Sports Club", "Chess Club", "Science Club"], c:0},
+    {q:"Singing in a group is part of the _____.", a:["Drama Club", "Music Club", "Chess Club", "Science Club"], c:1},
+    {q:"Students play board games in the _____.", a:["Sports Club", "Drama Club", "Chess Club", "Music Club"], c:2},
+
+    // BÖLÜM 3: Countries – Nationalities (25-37)
+    {q:"Turkey – _____", a:["Turkish", "Germany", "France", "Italian"], c:0},
+    {q:"Japan – _____", a:["Japanese", "Chinese", "Korean", "English"], c:0},
+    {q:"Germany – _____", a:["German", "Italian", "French", "Spanish"], c:0},
+    {q:"I am from France. I am _____.", a:["French", "Britain", "Italy", "Japan"], c:0},
+    {q:"The USA – _____", a:["American", "England", "British", "Canadian"], c:0},
+    {q:"Italy – _____", a:["Italian", "Spain", "Greece", "Germany"], c:0},
+    {q:"Spain – _____", a:["Spanish", "Portugal", "Mexico", "Brazil"], c:0},
+    {q:"China – _____", a:["Japanese", "Chinese", "Thai", "Korean"], c:1},
+    {q:"England – _____", a:["American", "English", "Canadian", "Australian"], c:1},
+    {q:"I am from Canada. I am _____.", a:["Canadian", "America", "France", "Italy"], c:0},
+    {q:"Greece – _____", a:["Greek", "German", "Dutch", "Polish"], c:0},
+    {q:"Brazil – _____", a:["Brazilian", "Spanish", "Mexican", "Argentinian"], c:0},
+    {q:"Australia – _____", a:["Australian", "Austrian", "American", "African"], c:0},
+
+    // BÖLÜM 4: National Days (38-49)
+    {q:"23 April is _____.", a:["Republic Day", "Children’s Day", "Victory Day", "Youth Day"], c:1},
+    {q:"We celebrate Republic Day on _____.", a:["April 23", "May 19", "October 29", "August 30"], c:2},
+    {q:"19 May is _____.", a:["Children’s Day", "Victory Day", "Youth and Sports Day", "Republic Day"], c:2},
+    {q:"We celebrate Victory Day on _____.", a:["April 23", "May 19", "August 30", "October 29"], c:2},
+    {q:"National days are about _____.", a:["games", "history", "homework", "food"], c:1},
+    {q:"We sing the national anthem on _____.", a:["birthdays", "national days", "weekends", "holidays"], c:1},
+    {q:"Flags are important on _____.", a:["school days", "exam days", "national days", "weekends"], c:2},
+    {q:"Which one is a celebration?", a:["Exam", "Lesson", "Festival", "Homework"], c:2},
+    {q:"Students wear special clothes on _____.", a:["school days", "national days", "test days", "weekends"], c:1},
+    {q:"Parades are common on _____.", a:["ordinary days", "exam days", "national days", "school days"], c:2},
+    {q:"We show respect to our country on _____.", a:["birthdays", "national days", "weekends", "holidays"], c:1},
+    {q:"National celebrations make people feel _____.", a:["angry", "bored", "proud", "tired"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 13) containerId = 'p1-container';
+        else if (index < 25) containerId = 'p2-container';
+        else if (index < 38) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+    window.currentQuestions = quizData;
+}
+
+function checkAnswers() {
+    let score = 0;
+    window.currentQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Puanın: ${score} / 50`;
+    document.getElementById('feedback-text').innerText = score > 40 ? "Teacher Esen seninle gurur duyuyor! 🎉" : "Harika bir deneme! Çalışmaya devam et! 📚";
+    banner.style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
