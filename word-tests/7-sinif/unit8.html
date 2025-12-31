@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 7. Ünite İngilizce Kelime Testi</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+        
+        .signature-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
+            font-size: 3.5rem; 
+            color: #ffbe0b; 
+            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
+            letter-spacing: 3px; 
+            animation: bounce 2s infinite; 
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #f1faee, #a8dadc); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+            display: inline-block;
+        }
+
+        .phone-number {
+            display: block;
+            font-size: 1.5rem;
+            color: #1d3557;
+            background-color: #ffffff;
+            padding: 8px 25px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 3px solid #ffbe0b;
+            text-decoration: none;
+        }
+
+        .phone-icon {
+            color: #007bff; 
+            margin-right: 8px;
+            font-style: normal;
+        }
+
+        #quiz-container {
+            width: 95%;
+            max-width: 650px;
+            background-color: #ffffff;
+            padding: 20px 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
+            border-radius: 25px; 
+            border: 6px solid #ffbe0b; 
+            animation: fadeIn 1s ease-out; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem; 
+            border-bottom: 4px dotted #a8dadc; 
+            padding-bottom: 15px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-bottom: 2px dashed #f1f1f1; 
+            animation: slideInUp 0.5s ease-out forwards; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .question-text {
+            font-size: 1.3rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #f1faee; 
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 2px solid #a8dadc; 
+            border-radius: 18px; 
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease; 
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: #f0f9fa; 
+            transform: scale(1.02);
+        }
+
+        .option-button.correct {
+            background-color: #d4edda; 
+            border-color: #28a745;    
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da; 
+            border-color: #dc3545;    
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 18px;
+            background-color: #e63946; 
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        #results {
+            margin-top: 30px;
+            padding: 25px;
+            border: 4px solid #ffbe0b; 
+            border-radius: 20px;
+            text-align: center;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="signature-container">
+        <div class="top-signature">Esen Teacher</div>
+        <a href="tel:05304773073" class="phone-number"><i class="phone-icon">📞</i>0530 477 30 73</a>
+    </div>
+
+    <div id="quiz-container">
+        <h1>7. Sınıf 7. Ünite Kelime Testi<br><small style="font-size: 1.1rem; color: #457b9d;">Dreams (Hayaller)</small></h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const wordList = [
+            { en: "accommodation", tr: "konaklama" },
+            { en: "achieve success", tr: "başarıya ulaşmak" },
+            { en: "adopt a pet", tr: "evcil hayvan sahiplenmek" },
+            { en: "be happy", tr: "mutlu olmak" },
+            { en: "successful", tr: "başarılı" },
+            { en: "retired", tr: "emekli" },
+            { en: "become famous", tr: "ünlü olmak" },
+            { en: "become popular", tr: "popüler olmak" },
+            { en: "believe", tr: "inanmak" },
+            { en: "better place", tr: "daha iyi yer" },
+            { en: "brilliant career", tr: "parlak kariyer" },
+            { en: "buy a house", tr: "ev satın almak" },
+            { en: "career", tr: "iş hayatı" },
+            { en: "chips in our brains", tr: "beyinlerimizdeki çipler" },
+            { en: "climate", tr: "iklim" },
+            { en: "communication", tr: "iletişim" },
+            { en: "disasters", tr: "afetler" },
+            { en: "dream", tr: "hayal" },
+            { en: "earn a lot of money", tr: "çok para kazanmak" },
+            { en: "education", tr: "eğitim" },
+            { en: "environment", tr: "çevre" },
+            { en: "family life", tr: "aile hayatı" },
+            { en: "feed on pills", tr: "haplarla beslenmek" },
+            { en: "find a job", tr: "iş bulmak" },
+            { en: "find cures for cancer", tr: "kansere çare bulmak" },
+            { en: "find water on the other planets", tr: "başka gezegenlerde su bulmak" },
+            { en: "flying cars", tr: "uçan arabalar" },
+            { en: "food pills", tr: "yiyecek hapları" },
+            { en: "get married", tr: "evlenmek" },
+            { en: "go to a university", tr: "üniversiteye gitmek" },
+            { en: "graduate from university", tr: "üniversiteden mezun olmak" },
+            { en: "guess", tr: "tahmin etmek" },
+            { en: "predict", tr: "tahmin etmek" },
+            { en: "have a diploma", tr: "diploma almak" },
+            { en: "have a long life", tr: "uzun bir hayatı olmak" },
+            { en: "have children", tr: "çocuk sahibi olmak" },
+            { en: "health", tr: "sağlık" },
+            { en: "holiday in space", tr: "uzayda tatil" },
+            { en: "I agree", tr: "katılıyorum" },
+            { en: "I don’t agree", tr: "katılmıyorum" },
+            { en: "I don’t think so", tr: "öyle olduğunu düşünmüyorum" },
+            { en: "I hope so", tr: "inşallah, umarım öyle olur" },
+            { en: "I hope", tr: "umarım" },
+            { en: "if", tr: "eğer" },
+            { en: "in the future", tr: "gelecekte" },
+            { en: "justice", tr: "adalet" },
+            { en: "life", tr: "hayat" },
+            { en: "live in a city", tr: "şehirde yaşamak" },
+            { en: "live in huge spaceships", tr: "uzay aracında yaşamak" },
+            { en: "major changes", tr: "büyük değişiklikler" },
+            { en: "make a guess", tr: "tahminde bulunmak" },
+            { en: "make new friends", tr: "yeni arkadaşlar edinmek" },
+            { en: "marriage", tr: "evlilik" },
+            { en: "move to a big city", tr: "büyük bir şehre taşınmak" },
+            { en: "opinion", tr: "fikir" },
+            { en: "patriotism", tr: "vatanseverlik" },
+            { en: "peace", tr: "barış" },
+            { en: "perhaps", tr: "muhtemelen" },
+            { en: "prevent some disasters", tr: "felaketleri önlemek" },
+            { en: "private life", tr: "özel hayat" },
+            { en: "put on weight", tr: "kilo almak" },
+            { en: "receive a letter", tr: "mektup almak" },
+            { en: "receive a prize", tr: "ödül almak" },
+            { en: "receive a scholarship", tr: "burs kazanmak" },
+            { en: "receive good news", tr: "iyi haber almak" },
+            { en: "relationships", tr: "ilişkiler" },
+            { en: "robot maids", tr: "robot hizmetçiler" },
+            { en: "robot teachers", tr: "robot öğretmenler" },
+            { en: "run my own business", tr: "kendi işini yürütmek" },
+            { en: "science", tr: "bilim" },
+            { en: "self driving cars", tr: "kendi kendine giden arabalar" },
+            { en: "study", tr: "çalışmak, okumak" },
+            { en: "success", tr: "başarı" },
+            { en: "transportation", tr: "ulaşım" },
+            { en: "travel around the world", tr: "dünyayı gezmek" },
+            { en: "travel in space", tr: "uzayda yolculuk etmek" },
+            { en: "travel in time", tr: "zamanda yolculuk etmek" },
+            { en: "travel to the moon", tr: "aya seyahat etmek" },
+            { en: "travelling", tr: "seyahat" },
+            { en: "underwater cities", tr: "su altı şehirleri" },
+            { en: "war", tr: "savaş" },
+            { en: "well known", tr: "ünlü, iyi bilinen" },
+            { en: "win a lot of medals", tr: "bir çok madalya kazanmak" },
+            { en: "work hard", tr: "çok çalışmak" },
+            { en: "working life", tr: "çalışma hayatı" },
+            { en: "world", tr: "dünya" },
+            { en: "write a book", tr: "kitap yazmak" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {};
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let html = '';
+            shuffledWords.forEach((word, index) => {
+                const qId = `q${index}`;
+                let distractors = uniqueTr.filter(t => t !== word.tr);
+                shuffleArray(distractors);
+                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                
+                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
+                            <p class="question-text">${index + 1}. ${word.en}</p>`;
+                options.forEach(opt => {
+                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                });
+                html += `</div>`;
+            });
+            quizArea.innerHTML = html;
+        }
+
+        function check(qId, selected) {
+            if (answeredQuestions[qId]) return;
+            const qEl = document.getElementById(qId);
+            const btns = qEl.querySelectorAll('.option-button');
+            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
+            const correct = wordList.find(w => w.en === qTxt).tr;
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.ans === correct) b.classList.add('correct');
+                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            });
+            if (selected === correct) score++;
+            answeredQuestions[qId] = true;
+        }
+
+        function showResults() {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>TEBRİKLER!</h2><p>Puanınız: ${score} / ${wordList.length}</p><p>Başarı Oranı: %${Math.round((score/wordList.length)*100)}</p>`;
+            results.style.display = 'block';
+            results.scrollIntoView({behavior: "smooth"});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateQuiz);
+    </script>
+</body>
+</html>

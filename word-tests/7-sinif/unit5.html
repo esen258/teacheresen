@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 5. Ünite İngilizce Kelime Testi</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+        
+        .signature {
+            text-align: center;
+            margin: 15px 0;
+            padding: 5px 0;
+            font-size: 1.2rem; 
+            color: #f1faee; 
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
+            font-size: 3.5rem; 
+            color: #ffbe0b; 
+            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
+            margin-bottom: 30px; 
+            letter-spacing: 3px; 
+            animation: bounce 2s infinite; 
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #f1faee, #a8dadc); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+        }
+
+        #quiz-container {
+            width: 95%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+            border-radius: 20px; 
+            border: 5px solid #ffbe0b; 
+            animation: fadeIn 1s ease-out; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem; 
+            border-bottom: 3px dashed #a8dadc; 
+            padding-bottom: 10px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ced4da; 
+            animation: slideInUp 0.5s ease-out forwards; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .question-text {
+            font-size: 1.3rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #f1faee; 
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #a8dadc; 
+            border-radius: 15px; 
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+            font-size: 1.1rem;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: #e0f2f7; 
+            transform: translateY(-3px); 
+        }
+
+        .option-button.correct {
+            background-color: #d4edda; 
+            border-color: #28a745;    
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da; 
+            border-color: #dc3545;    
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #457b9d; 
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        #results {
+            margin-top: 25px;
+            padding: 20px;
+            border: 3px solid #e63946; 
+            border-radius: 15px;
+            text-align: center;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="signature top-signature">Esen Teacher</div>
+
+    <div id="quiz-container">
+        <h1>7. Sınıf 5. Ünite Kelime Testi<br><small style="font-size: 1.1rem; color: #457b9d;">Television</small></h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <div class="signature">Esen Teacher</div>
+
+    <script>
+        const wordList = [
+            // Program Types
+            { en: "action movie", tr: "aksiyon filmi" },
+            { en: "adventure", tr: "macera" },
+            { en: "cartoon", tr: "çizgi film" },
+            { en: "comedy", tr: "komedi" },
+            { en: "commercials", tr: "reklamlar" },
+            { en: "cookery programme", tr: "yemek programı" },
+            { en: "discussion", tr: "tartışma" },
+            { en: "documentary", tr: "belgesel" },
+            { en: "drama", tr: "dram" },
+            { en: "horror movie", tr: "korku filmi" },
+            { en: "love story", tr: "aşk hikayesi" },
+            { en: "morning show", tr: "sabah programı" },
+            { en: "news", tr: "haberler" },
+            { en: "quiz show", tr: "bilgi yarışması" },
+            { en: "reality show", tr: "yaşam şov programı" },
+            { en: "science fiction", tr: "bilim kurgu" },
+            { en: "series", tr: "dizi" },
+            { en: "sitcom", tr: "durum komedisi" },
+            { en: "soap opera", tr: "pembe dizi" },
+            { en: "talk show", tr: "sohbet programı" },
+            { en: "weather forecast", tr: "hava tahmini" },
+            { en: "wedding programme", tr: "evlilik programı" },
+            // Adjectives
+            { en: "amazing", tr: "şaşırtıcı" },
+            { en: "amusing", tr: "eğlenceli, zevkli" },
+            { en: "boring", tr: "sıkıcı" },
+            { en: "educational", tr: "eğitsel" },
+            { en: "enjoyable", tr: "eğlenceli" },
+            { en: "exciting", tr: "heyecan verici" },
+            { en: "frightening", tr: "korkutucu" },
+            { en: "harmful", tr: "zararlı" },
+            { en: "informative", tr: "öğretici" },
+            { en: "nonsense", tr: "saçma" },
+            { en: "ridiculous", tr: "saçma, rezalet" },
+            { en: "scary", tr: "korkutucu" },
+            { en: "useless", tr: "işe yaramaz" },
+            // Expressions & Verbs
+            { en: "be crazy about", tr: "bayılmak" },
+            { en: "be interested in", tr: "ilgili olmak" },
+            { en: "become an addict", tr: "bağımlısı olmak" },
+            { en: "can't stand", tr: "dayanamamak" },
+            { en: "director", tr: "yönetmen" },
+            { en: "expand knowledge", tr: "bilgisini artırmak" },
+            { en: "general audiences", tr: "genel izleyici" },
+            { en: "learn new things", tr: "yeni şeyler öğrenmek" },
+            { en: "miss new episodes", tr: "yeni bölümleri kaçırmak" },
+            { en: "negative examples", tr: "olumsuz örnekler" },
+            { en: "prefer", tr: "tercih etmek" },
+            { en: "recommend", tr: "tavsiye etmek" },
+            { en: "remote control", tr: "uzaktan kumanda" },
+            { en: "skip meals", tr: "öğünleri atlamak" },
+            { en: "stay up late", tr: "geç vakte kadar uyanık kalmak" },
+            { en: "violence", tr: "şiddet" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {};
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let html = '';
+            shuffledWords.forEach((word, index) => {
+                const qId = `q${index}`;
+                let distractors = uniqueTr.filter(t => t !== word.tr);
+                shuffleArray(distractors);
+                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                
+                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
+                            <p class="question-text">${index + 1}. ${word.en}</p>`;
+                options.forEach(opt => {
+                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                });
+                html += `</div>`;
+            });
+            quizArea.innerHTML = html;
+        }
+
+        function check(qId, selected) {
+            if (answeredQuestions[qId]) return;
+            const qEl = document.getElementById(qId);
+            const btns = qEl.querySelectorAll('.option-button');
+            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
+            const correct = wordList.find(w => w.en === qTxt).tr;
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.ans === correct) b.classList.add('correct');
+                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            });
+            if (selected === correct) score++;
+            answeredQuestions[qId] = true;
+        }
+
+        function showResults() {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>TEST BİTTİ</h2><p>Puanınız: ${score} / ${wordList.length}</p>`;
+            results.style.display = 'block';
+            results.scrollIntoView({behavior: "smooth"});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateQuiz);
+    </script>
+</body>
+</html>
