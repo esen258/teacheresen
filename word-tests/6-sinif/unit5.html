@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 5. Ünite İngilizce Kelime Testi</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+        
+        .signature {
+            text-align: center;
+            margin: 15px 0;
+            padding: 5px 0;
+            font-size: 1.2rem; 
+            color: #f1faee; 
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
+            font-size: 3.5rem; 
+            color: #ffbe0b; 
+            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
+            margin-bottom: 30px; 
+            letter-spacing: 3px; 
+            animation: bounce 2s infinite; 
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #f1faee, #a8dadc); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+        }
+
+        #quiz-container {
+            width: 95%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+            border-radius: 20px; 
+            border: 5px solid #ffbe0b; 
+            animation: fadeIn 1s ease-out; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem; 
+            border-bottom: 3px dashed #a8dadc; 
+            padding-bottom: 10px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ced4da; 
+            animation: slideInUp 0.5s ease-out forwards; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .question-text {
+            font-size: 1.3rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #f1faee; 
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 2px solid #a8dadc; 
+            border-radius: 15px; 
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+            font-size: 1.1rem;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: #e0f2f7; 
+            transform: translateY(-3px); 
+        }
+
+        .option-button.correct {
+            background-color: #d4edda; 
+            border-color: #28a745;    
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da; 
+            border-color: #dc3545;    
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #457b9d; 
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        #results {
+            margin-top: 25px;
+            padding: 20px;
+            border: 3px solid #e63946; 
+            border-radius: 15px;
+            text-align: center;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="signature top-signature">Esen Teacher</div>
+
+    <div id="quiz-container">
+        <h1>6. Sınıf 5. Ünite Kelime Testi<br><small style="font-size: 1.1rem; color: #457b9d;">At the Fair</small></h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <div class="signature">Esen Teacher</div>
+
+    <script>
+        const wordList = [
+            // -1- Fair Activities
+            { en: "fair / funfair", tr: "lunapark" },
+            { en: "roller coaster", tr: "hız treni" },
+            { en: "ghost train", tr: "korku treni" },
+            { en: "ferris wheel", tr: "dönme dolap" },
+            { en: "the house of funny mirrors", tr: "komik aynalar evi" },
+            { en: "chairoplane", tr: "zincirli dönen salıncak" },
+            { en: "bumper cars", tr: "çarpışan arabalar" },
+            { en: "carousel", tr: "atlı karınca" },
+            // -2- Feelings & Adjectives
+            { en: "amazed", tr: "şaşırmış" },
+            { en: "amazing", tr: "şaşırtıcı" },
+            { en: "anxious", tr: "endişeli" },
+            { en: "bored", tr: "sıkılmış" },
+            { en: "boring", tr: "sıkıcı" },
+            { en: "crazy", tr: "çılgın" },
+            { en: "dangerous", tr: "tehlikeli" },
+            { en: "dull", tr: "sıkıcı" },
+            { en: "enjoyable", tr: "eğlenceli" },
+            { en: "excited", tr: "heyecanlı" },
+            { en: "exciting", tr: "heyecan verici" },
+            { en: "fantastic", tr: "harika" },
+            { en: "frightened", tr: "korkmuş" },
+            { en: "frightening", tr: "korkutucu" },
+            { en: "great", tr: "harika" },
+            { en: "happy", tr: "mutlu" },
+            { en: "horrible", tr: "berbat, korkunç" },
+            { en: "nice", tr: "güzel" },
+            { en: "scared", tr: "korkmuş" },
+            { en: "sleepy", tr: "uykulu" },
+            { en: "surprised", tr: "şaşırmış" },
+            { en: "terrifying", tr: "çok korkutucu" },
+            { en: "thrilled", tr: "heyecanlı" },
+            { en: "thrilling", tr: "heyecan verici" },
+            { en: "upset", tr: "üzgün" },
+            // -3- Others
+            { en: "all", tr: "hepsi" },
+            { en: "also", tr: "ayrıca" },
+            { en: "anything", tr: "hiçbir şey" },
+            { en: "both", tr: "ikisi" },
+            { en: "everything", tr: "her şey" },
+            { en: "really", tr: "gerçekten" },
+            { en: "ride", tr: "binme, tur, biniş" },
+            { en: "sign", tr: "işaret, levha" },
+            { en: "something", tr: "birşeyler" },
+            { en: "soon", tr: "yakında" },
+            { en: "thing", tr: "şey" },
+            { en: "ticket", tr: "bilet" },
+            { en: "token", tr: "jeton" },
+            { en: "very much", tr: "çok" },
+            // -4- Verbs
+            { en: "agree", tr: "katılmak" },
+            { en: "allow", tr: "izin vermek" },
+            { en: "buy", tr: "satın almak" },
+            { en: "disagree", tr: "katılmamak" },
+            { en: "fasten seat belt", tr: "emniyet kemeri bağlamak" },
+            { en: "get on", tr: "binmek" },
+            { en: "hate", tr: "nefret etmek" },
+            { en: "have a rest", tr: "dinlenmek" },
+            { en: "love / like", tr: "sevmek" },
+            { en: "say", tr: "söylemek" },
+            { en: "sell", tr: "satmak" },
+            { en: "think", tr: "düşünmek" },
+            { en: "try", tr: "denemek" },
+            { en: "understand", tr: "anlamak" },
+            { en: "visit", tr: "gezmek, ziyaret etmek" },
+            { en: "want", tr: "istemek" },
+            // -5- Phrases & Questions
+            { en: "I think", tr: "bence" },
+            { en: "I agree", tr: "katılıyorum" },
+            { en: "I don't agree", tr: "katılmıyorum" },
+            { en: "I agree with you", tr: "sana katılıyorum" },
+            { en: "I don't understand", tr: "anlamadım" },
+            { en: "what do you think about...?", tr: "... hakkında ne düşünüyorsun?" },
+            { en: "which", tr: "hangi, hangisi" },
+            { en: "why", tr: "neden" },
+            { en: "who", tr: "kim" },
+            { en: "when", tr: "ne zaman" },
+            { en: "where", tr: "nereye, nerede" },
+            { en: "which one", tr: "hangisi, hangi biri" },
+            { en: "what type of", tr: "ne tür" },
+            { en: "would you like...?", tr: "... ister misin?" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {};
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let html = '';
+            shuffledWords.forEach((word, index) => {
+                const qId = `q${index}`;
+                let distractors = uniqueTr.filter(t => t !== word.tr);
+                shuffleArray(distractors);
+                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                
+                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
+                            <p class="question-text">${index + 1}. ${word.en}</p>`;
+                options.forEach(opt => {
+                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                });
+                html += `</div>`;
+            });
+            quizArea.innerHTML = html;
+        }
+
+        function check(qId, selected) {
+            if (answeredQuestions[qId]) return;
+            const qEl = document.getElementById(qId);
+            const btns = qEl.querySelectorAll('.option-button');
+            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
+            const correct = wordList.find(w => w.en === qTxt).tr;
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.ans === correct) b.classList.add('correct');
+                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            });
+            if (selected === correct) score++;
+            answeredQuestions[qId] = true;
+        }
+
+        function showResults() {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>TEST BİTTİ</h2><p>Puanınız: ${score} / ${wordList.length}</p>`;
+            results.style.display = 'block';
+            results.scrollIntoView({behavior: "smooth"});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateQuiz);
+    </script>
+</body>
+</html>
