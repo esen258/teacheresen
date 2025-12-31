@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>5. GRADE | UNIT TESTS</title>
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(circle at top, #1d3557 0%, #0a1128 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #f1faee;
+        }
+
+        .header { text-align: center; margin-bottom: 30px; animation: fadeIn 0.8s ease; }
+        .header h1 { color: #ffbe0b; margin: 0; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { color: #a8dadc; letter-spacing: 3px; font-weight: 600; margin-top: 5px; }
+
+        .unit-list {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .unit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .unit-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #ffbe0b;
+            transform: translateX(10px);
+            box-shadow: -5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .unit-info { display: flex; flex-direction: column; }
+        .unit-title { font-size: 1.1rem; font-weight: 500; }
+        .unit-subtitle { font-size: 0.85rem; color: #a8dadc; font-style: italic; }
+        .unit-tag { font-size: 0.7rem; color: #ffbe0b; text-transform: uppercase; letter-spacing: 1px; }
+
+        .unit-number {
+            background: #ffbe0b;
+            color: #1d3557;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 2px 2px 0px #e63946;
+            flex-shrink: 0;
+            margin-left: 15px;
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            color: #f1faee;
+            text-decoration: none;
+            font-size: 0.9rem;
+            background: rgba(168, 218, 220, 0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 1px solid #a8dadc;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { background: #ffbe0b; color: #1d3557; border-color: #ffbe0b; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <p>UNIT TESTS</p>
+        <h1>5. GRADE</h1>
+    </div>
+
+    <div class="unit-list">
+        <a href="./unite-1/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 1</span>
+                <span class="unit-title">School Life</span>
+                <span class="unit-subtitle">(Okul Hayatı)</span>
+            </div>
+            <div class="unit-number">1</div>
+        </a>
+
+        <a href="./unite-2/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 2</span>
+                <span class="unit-title">Classroom Life</span>
+                <span class="unit-subtitle">(Sınıf Hayatı)</span>
+            </div>
+            <div class="unit-number">2</div>
+        </a>
+
+        <a href="./unite-3/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 3</span>
+                <span class="unit-title">Personal Life</span>
+                <span class="unit-subtitle">(Kişisel Yaşam)</span>
+            </div>
+            <div class="unit-number">3</div>
+        </a>
+
+        <a href="./unite-4/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 4</span>
+                <span class="unit-title">Family Life</span>
+                <span class="unit-subtitle">(Aile Hayatı)</span>
+            </div>
+            <div class="unit-number">4</div>
+        </a>
+
+        <a href="./unite-5/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 5</span>
+                <span class="unit-title">Life in the Neighbourhood and City</span>
+                <span class="unit-subtitle">(Mahalle ve Şehir Yaşamı)</span>
+            </div>
+            <div class="unit-number">5</div>
+        </a>
+
+        <a href="./unite-6/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 6</span>
+                <span class="unit-title">Life in the World</span>
+                <span class="unit-subtitle">(Dünyadaki Yaşam)</span>
+            </div>
+            <div class="unit-number">6</div>
+        </a>
+
+        <a href="./unite-7/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 7</span>
+                <span class="unit-title">Life in Nature</span>
+                <span class="unit-subtitle">(Doğada Yaşam)</span>
+            </div>
+            <div class="unit-number">7</div>
+        </a>
+
+        <a href="./unite-8/index.html" class="unit-card">
+            <div class="unit-info">
+                <span class="unit-tag">Unit 8</span>
+                <span class="unit-title">Life in the Universe and Future</span>
+                <span class="unit-subtitle">(Evrendeki Yaşam ve Gelecek)</span>
+            </div>
+            <div class="unit-number">8</div>
+        </a>
+    </div>
+
+    <a href="../../index.html" class="back-btn">⬅ ANA MENÜYE DÖN</a>
+
+</body>
+</html>

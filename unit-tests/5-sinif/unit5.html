@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 5. Ünite Life in the Neighbourhood and City - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2e86de;
+            --secondary-color: #54a0ff;
+            --accent-color: #feca57;
+            --bg-color: #f1f2f6;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #227093;
+        }
+
+        #submit-btn:hover { background: var(--secondary-color); }
+        #submit-btn:active { transform: translateY(3px); box-shadow: 0 3px 0px #227093; }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 5. Ünite Life in the Neighbourhood and City</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile İngilizce Zamanı 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🏙️ 1. Places in the Neighbourhood & City</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🏠 2. Parts of a House</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🛋️ 3. Furniture, Verbs, Adjectives & Adverbs</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📝 4. There is / There are – Possessive ’s</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Mahallemizi Tanıyoruz! 🏙️</div>
+
+<script>
+const quizData = [
+    // 1-20 Places
+    {q:"We buy bread at the _____.", a:["bank", "bakery", "hospital", "museum"], c:1},
+    {q:"We watch movies at the _____.", a:["library", "cinema", "park", "market"], c:1},
+    {q:"We read books in the _____.", a:["café", "zoo", "library", "stadium"], c:2},
+    {q:"We see animals at the _____.", a:["aquarium", "museum", "bakery", "bank"], c:0},
+    {q:"We send letters at the _____.", a:["post office", "cinema", "park", "café"], c:0},
+    {q:"We buy medicine at the _____.", a:["market", "pharmacy", "bakery", "library"], c:1},
+    {q:"Children play in the _____.", a:["bank", "playground", "hospital", "post office"], c:1},
+    {q:"We eat meals at a _____.", a:["restaurant", "museum", "library", "zoo"], c:0},
+    {q:"We buy fruit and vegetables at the _____.", a:["cinema", "market", "theatre", "bank"], c:1},
+    {q:"We watch plays at the _____.", a:["stadium", "theatre", "café", "hospital"], c:1},
+    {q:"We relax and walk in the _____.", a:["park", "bank", "post office", "cinema"], c:0},
+    {q:"We get money from the _____.", a:["bakery", "library", "bank", "café"], c:2},
+    {q:"We see paintings at an _____.", a:["art gallery", "zoo", "market", "park"], c:0},
+    {q:"We do sports in the _____.", a:["gym", "library", "museum", "café"], c:0},
+    {q:"We buy clothes at a _____.", a:["clothes shop", "hospital", "park", "zoo"], c:0},
+    {q:"We swim in the _____.", a:["swimming pool", "market", "library", "bank"], c:0},
+    {q:"We watch football matches at the _____.", a:["stadium", "cinema", "café", "museum"], c:0},
+    {q:"We see old things at a _____.", a:["park", "museum", "market", "bakery"], c:1},
+    {q:"We meet friends at a _____.", a:["café", "hospital", "post office", "bank"], c:0},
+    {q:"We learn about sea animals at the _____.", a:["zoo", "aquarium", "park", "theatre"], c:1},
+
+    // 21-35 Parts of House
+    {q:"We cook in the _____.", a:["bedroom", "kitchen", "bathroom", "living room"], c:1},
+    {q:"We sleep in the _____.", a:["kitchen", "bathroom", "bedroom", "garden"], c:2},
+    {q:"We watch TV in the _____.", a:["living room", "bathroom", "garage", "kitchen"], c:0},
+    {q:"We wash our hands in the _____.", a:["bedroom", "bathroom", "balcony", "living room"], c:1},
+    {q:"We park the car in the _____. ", a:["garden", "garage", "kitchen", "hall"], c:1},
+    {q:"Flowers grow in the _____.", a:["bedroom", "kitchen", "garden", "bathroom"], c:2},
+    {q:"We eat breakfast in the _____.", a:["kitchen", "garage", "bathroom", "bedroom"], c:0},
+    {q:"Shoes are near the _____.", a:["door", "window", "bed", "sofa"], c:0},
+    {q:"We sit and relax in the _____.", a:["living room", "bathroom", "garage", "kitchen"], c:0},
+    {q:"Which one is part of a house?", a:["Park", "Room", "Cinema", "Market"], c:1},
+    {q:"We hang clothes in the _____.", a:["wardrobe", "sink", "oven", "sofa"], c:0},
+    {q:"We look outside from the _____.", a:["door", "wall", "window", "floor"], c:2},
+    {q:"We go up the _____.", a:["stairs", "sofa", "sink", "table"], c:0},
+    {q:"We have meals at the _____.", a:["table", "bed", "mirror", "carpet"], c:0},
+    {q:"Which one is NOT a part of a house?", a:["Kitchen", "Bathroom", "Library", "Bedroom"], c:2},
+
+    // 36-50 Furniture & Adj
+    {q:"We sit on a _____.", a:["bed", "chair", "fridge", "lamp"], c:1},
+    {q:"We sleep on a _____.", a:["sofa", "chair", "bed", "table"], c:2},
+    {q:"We keep food in the _____.", a:["wardrobe", "fridge", "mirror", "carpet"], c:1},
+    {q:"The sofa is very _____.", a:["comfortable", "quickly", "run", "eat"], c:0},
+    {q:"My house is _____.", a:["big", "slowly", "cleanly", "run"], c:0},
+    {q:"She walks _____.", a:["slow", "slowly", "slowness", "slower"], c:1},
+    {q:"The park is ____ than the garden.", a:["big", "bigger", "biggest", "more big"], c:1},
+    {q:"My house is ____ than yours.", a:["small", "smaller", "smallest", "more small"], c:1},
+    {q:"This street is ____ than that street.", a:["noisy", "noisier", "noisiest", "more noisy"], c:1},
+    {q:"The sofa is ____ the chair.", a:["comfortable", "more comfortable than", "comfortable than", "most comfortable"], c:1},
+    {q:"She runs very _____.", a:["quick", "quickly", "quicker", "quickest"], c:1},
+    {q:"The city is ____ than the village.", a:["busy", "busier", "busiest", "more busy"], c:1},
+    {q:"My room is very _____.", a:["tidy", "tidily", "tidiness", "tidier"], c:0},
+    {q:"He speaks _____.", a:["loud", "loudly", "louder", "loudest"], c:1},
+    {q:"The library is ____ than the café.", a:["quiet", "quieter", "quietest", "more quiet"], c:1},
+
+    // 51-70 There is/are & Possessive
+    {q:"There _____ a park near my house.", a:["are", "is", "am", "be"], c:1},
+    {q:"There _____ two schools in my neighbourhood.", a:["is", "are", "was", "be"], c:1},
+    {q:"There _____ a sofa in the living room.", a:["are", "is", "were", "be"], c:1},
+    {q:"There _____ many shops in the city.", a:["is", "are", "am", "be"], c:1},
+    {q:"There _____ a library near here.", a:["are", "is", "were", "be"], c:1},
+    {q:"There _____ three bedrooms in our house.", a:["is", "are", "was", "be"], c:1},
+    {q:"There _____ a fridge in the kitchen.", a:["are", "is", "were", "be"], c:1},
+    {q:"There _____ some chairs in the room.", a:["is", "are", "am", "be"], c:1},
+    {q:"This is my brother_____ room.", a:["s", "’", "’s", "is"], c:2},
+    {q:"That is my mother_____ bag.", a:["s", "’s", "is", "are"], c:1},
+    {q:"My father_____ car is blue.", a:["s", "’s", "are", "am"], c:1},
+    {q:"This is Ali_____ house.", a:["s", "’s", "is", "are"], c:1},
+    {q:"The cat_____ bed is under the table.", a:["s", "’s", "is", "are"], c:1},
+    {q:"There _____ a playground behind the school.", a:["are", "is", "were", "be"], c:1},
+    {q:"There _____ many trees in the park.", a:["is", "are", "am", "be"], c:1},
+    {q:"My sister_____ room is tidy.", a:["s", "’s", "is", "are"], c:1},
+    {q:"There _____ a post office near my home.", a:["are", "is", "were", "be"], c:1},
+    {q:"There _____ two bathrooms in our house.", a:["is", "are", "was", "be"], c:1},
+    {q:"This is the teacher_____ desk.", a:["s", "’s", "is", "are"], c:1},
+    {q:"There _____ a cinema in my city.", a:["are", "is", "am", "be"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 35) containerId = 'p2-container';
+        else if (index < 50) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika! Şehir yaşamı ve ev bölümlerini çok iyi biliyorsun! 🏙️" : "Güzel deneme! Şehirdeki yerleri ve karşılaştırma yapılarını biraz daha tekrar etmelisin. 📚";
+    banner.style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 7. Ünite Life in Nature - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #27ae60; /* Doğa yeşili */
+            --secondary-color: #2ecc71;
+            --accent-color: #f1c40f;
+            --bg-color: #eef9f1;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.2em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.15em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #f1f3f5; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1e8449;
+        }
+
+        #submit-btn:hover { background: var(--secondary-color); }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 7. Ünite - Life in Nature (Doğada Yaşam)</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile Doğayı Keşfediyoruz 🐾</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🐾 1. Types of Animals & Wild Animals</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🌍 2. Habitats (Yaşam Alanları)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🦴 3. Body Parts, Verbs & Adjectives</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🚫 4. Grammar: Can - Must / Mustn't</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Doğayı Sevelim, Hayvanları Koruyalım! 🌿</div>
+
+<script>
+const quizData = [
+    // 1-20 Types of Animals
+    {q:"Which one is a wild animal?", a:["Cat", "Dog", "Lion", "Cow"], c:2},
+    {q:"Which animal lives on a farm?", a:["Tiger", "Cow", "Snake", "Bear"], c:1},
+    {q:"Which one is a pet?", a:["Elephant", "Cat", "Wolf", "Fox"], c:1},
+    {q:"Which animal eats meat?", a:["Cow", "Sheep", "Lion", "Horse"], c:2},
+    {q:"Which one is a bird?", a:["Snake", "Frog", "Eagle", "Lizard"], c:2},
+    {q:"Which animal can fly?", a:["Dog", "Bird", "Fish", "Snake"], c:1},
+    {q:"Which one is an insect?", a:["Snake", "Butterfly", "Frog", "Bird"], c:1},
+    {q:"Which animal is very big?", a:["Ant", "Elephant", "Cat", "Mouse"], c:1},
+    {q:"Which one lives in water?", a:["Camel", "Fish", "Tiger", "Horse"], c:1},
+    {q:"Which animal is dangerous?", a:["Rabbit", "Lion", "Sheep", "Duck"], c:1},
+    {q:"Which one has stripes?", a:["Elephant", "Zebra", "Cow", "Dog"], c:1},
+    {q:"Which animal has a long neck?", a:["Giraffe", "Cat", "Bear", "Frog"], c:0},
+    {q:"Which one is a wild cat?", a:["Tiger", "Cow", "Sheep", "Goat"], c:0},
+    {q:"Which animal is slow?", a:["Cheetah", "Turtle", "Horse", "Dog"], c:1},
+    {q:"Which one is small?", a:["Elephant", "Ant", "Bear", "Giraffe"], c:1},
+    {q:"Which animal has sharp teeth?", a:["Rabbit", "Lion", "Cow", "Sheep"], c:1},
+    {q:"Which one lives in groups?", a:["Wolf", "Snake", "Tiger", "Bear"], c:0},
+    {q:"Which animal is very fast?", a:["Turtle", "Snail", "Cheetah", "Cow"], c:2},
+    {q:"Which one is a reptile?", a:["Frog", "Snake", "Bird", "Cow"], c:1},
+    {q:"Which animal lives in cold places?", a:["Camel", "Polar bear", "Lion", "Snake"], c:1},
+
+    // 21-35 Habitats
+    {q:"Lions live in the _____.", a:["ocean", "desert", "forest", "Arctic"], c:2},
+    {q:"Fish live in the _____.", a:["forest", "water", "desert", "sky"], c:1},
+    {q:"Camels live in the _____.", a:["jungle", "desert", "ocean", "forest"], c:1},
+    {q:"Bears live in the _____.", a:["forest", "sea", "desert", "sky"], c:0},
+    {q:"Penguins live in the _____.", a:["desert", "forest", "Arctic", "jungle"], c:2},
+    {q:"Birds live in the _____.", a:["water", "nests", "desert", "caves"], c:1},
+    {q:"Frogs live ____ water and land.", a:["only", "in", "between", "under"], c:2},
+    {q:"Snakes live in the _____.", a:["trees", "ground", "water", "sky"], c:1},
+    {q:"Whales live in the _____.", a:["river", "ocean", "desert", "forest"], c:1},
+    {q:"Monkeys live in the _____.", a:["desert", "jungle", "Arctic", "sea"], c:1},
+    {q:"Which habitat is cold?", a:["Desert", "Jungle", "Arctic", "Forest"], c:2},
+    {q:"Which habitat is hot and dry?", a:["Forest", "Ocean", "Desert", "Arctic"], c:2},
+    {q:"Fish can’t live in the _____.", a:["ocean", "river", "desert", "lake"], c:2},
+    {q:"Which animal lives in the jungle?", a:["Camel", "Monkey", "Polar bear", "Penguin"], c:1},
+    {q:"Where do wild animals live?", a:["At home", "In nature", "At school", "In cities"], c:1},
+
+    // 36-50 Body Parts & Adj
+    {q:"Birds have _____.", a:["fins", "wings", "horns", "hooves"], c:1},
+    {q:"Fish have _____.", a:["legs", "wings", "fins", "arms"], c:2},
+    {q:"Lions have sharp _____.", a:["teeth", "tails", "ears", "eyes"], c:0},
+    {q:"Elephants have long _____.", a:["tails", "trunks", "wings", "claws"], c:1},
+    {q:"Bears can _____.", a:["fly", "swim", "jump very high", "talk"], c:1},
+    {q:"Birds can _____.", a:["swim", "crawl", "fly", "dig"], c:2},
+    {q:"Snakes can’t _____.", a:["crawl", "bite", "walk", "eat"], c:2},
+    {q:"Which one is an adjective?", a:["Run", "Eat", "Big", "Jump"], c:2},
+    {q:"The lion is very _____.", a:["danger", "dangerous", "dangerously", "dangered"], c:1},
+    {q:"The rabbit is ____ than the turtle.", a:["slow", "slower", "fast", "faster"], c:3},
+    {q:"The cheetah is the ____ animal.", a:["fast", "faster", "fastest", "more fast"], c:2},
+    {q:"Elephants are ____ than dogs.", a:["big", "bigger", "biggest", "more big"], c:1},
+    {q:"The ant is the ____ animal.", a:["small", "smaller", "smallest", "more small"], c:2},
+    {q:"Lions are ____ than cats.", a:["strong", "stronger", "strongest", "more strong"], c:1},
+    {q:"The whale is the ____ animal.", a:["big", "bigger", "biggest", "more big"], c:2},
+
+    // 51-70 Rules & Can
+    {q:"Birds ____ fly.", a:["can", "must", "can’t", "mustn’t"], c:0},
+    {q:"Fish ____ walk.", a:["can", "can’t", "must", "mustn’t"], c:1},
+    {q:"Monkeys ____ climb trees.", a:["can", "can’t", "must", "mustn’t"], c:0},
+    {q:"Elephants ____ jump high.", a:["can", "can’t", "must", "mustn’t"], c:1},
+    {q:"Snakes ____ crawl.", a:["can", "can’t", "must", "mustn’t"], c:0},
+    {q:"We ____ protect animals.", a:["can", "must", "mustn’t", "can’t"], c:1},
+    {q:"We ____ hurt animals.", a:["must", "can", "mustn’t", "can’t"], c:2},
+    {q:"We ____ feed wild animals.", a:["must", "mustn’t", "can", "can’t"], c:1},
+    {q:"We ____ keep nature clean.", a:["can", "must", "mustn’t", "can’t"], c:1},
+    {q:"We ____ cut trees.", a:["must", "mustn’t", "can", "should"], c:1},
+    {q:"Children ____ be careful in nature.", a:["can", "must", "mustn’t", "can’t"], c:1},
+    {q:"We ____ throw rubbish in forests.", a:["must", "can", "mustn’t", "should"], c:2},
+    {q:"We ____ help injured animals.", a:["must", "mustn’t", "can’t", "shouldn’t"], c:0},
+    {q:"We ____ respect nature.", a:["can", "must", "mustn’t", "can’t"], c:1},
+    {q:"We ____ make noise near wild animals.", a:["must", "mustn’t", "can", "should"], c:1},
+    {q:"Birds ____ swim.", a:["can", "can’t", "must", "mustn’t"], c:1},
+    {q:"Fish ____ breathe out of water.", a:["can", "can’t", "must", "mustn’t"], c:1},
+    {q:"We ____ watch animals from far away.", a:["must", "mustn’t", "can’t", "shouldn’t"], c:0},
+    {q:"We ____ take animals from nature.", a:["must", "mustn’t", "can", "should"], c:1},
+    {q:"We ____ love and protect nature.", a:["can", "must", "mustn’t", "can’t"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 35) containerId = 'p2-container';
+        else if (index < 50) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Puanın: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 55 ? "Mükemmel! Tam bir doğa dostusun! 🦁🌳" : "İyi iş! Doğadaki yaşamı ve kuralları biraz daha tekrar edebilirsin. 🐾";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

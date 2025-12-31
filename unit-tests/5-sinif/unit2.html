@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 2. Ünite Classroom Life (Sınıf Hayatı) - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f39c12;
+            --accent-color: #ffe66d;
+            --bg-color: #f0f4f8;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #5dade2);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        header p { 
+            font-size: 1.2em; font-weight: bold; background: var(--accent-color);
+            color: #d35400; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; transform: rotate(-1deg); margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.2em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #2e66a5;
+        }
+
+        #submit-btn:hover { background: #357abd; }
+        #submit-btn:active { transform: translateY(3px); box-shadow: 0 3px 0px #2e66a5; }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 2. Ünite Classroom Life (Sınıf Hayatı)</h1>
+    <p>Teacher Esen ile İngilizce Zamanı 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">📘 Classroom Rules and Language</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">📘 School Subjects</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">📘 Timetables</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📘 Classroom Objects</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">📘 Days of the Week</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">📘 Telling the Time</div>
+    <div id="p6-container"></div>
+
+    <div class="section-title">📘 Simple Present Tense</div>
+    <div id="p7-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen tarafından 2. Ünite Tekrarı için hazırlandı ✨ 2025</div>
+
+<script>
+const quizData = [
+    // 1-7: Classroom Rules
+    {q:"May I come in?", a:["Yes, you are.", "Yes, you may.", "No, I don't.", "Thank you."], c:1},
+    {q:"Clean the _____, please.", a:["book", "board", "pencil", "ruler"], c:1},
+    {q:"_____ your books.", a:["Listen", "Sit", "Open", "Write"], c:2},
+    {q:"_____ to your teacher.", a:["Speak", "Read", "Listen", "Draw"], c:2},
+    {q:"Be _____, please.", a:["loud", "noisy", "quiet", "fast"], c:2},
+    {q:"_____ your hand to speak.", a:["Open", "Close", "Raise", "Give"], c:2},
+    {q:"Don't _____ in the class.", a:["study", "listen", "shout", "read"], c:2},
+
+    // 8-15: School Subjects
+    {q:"We solve problems in _____.", a:["Art", "Maths", "Music", "P.E."], c:1},
+    {q:"We paint pictures in _____.", a:["Science", "Art", "History", "Maths"], c:1},
+    {q:"We do experiments in _____.", a:["Maths", "Science", "Music", "Social Studies"], c:1},
+    {q:"We sing songs in _____.", a:["Maths", "Music", "I.T.", "Science"], c:1},
+    {q:"We learn about the past in _____.", a:["History", "P.E.", "Art", "Maths"], c:0},
+    {q:"We learn English in _____.", a:["Turkish", "English", "Science", "Maths"], c:1},
+    {q:"We play sports in _____.", a:["Music", "Art", "P.E.", "Maths"], c:2},
+    {q:"We use computers in _____.", a:["Art", "I.T.", "Music", "Maths"], c:1},
+
+    // 16-22: Timetables
+    {q:"When is the English lesson?", a:["At school.", "In the class.", "On Monday.", "Teacher Esen."], c:2},
+    {q:"_____ do you have Maths? - On Tuesday.", a:["When", "Where", "Who", "What"], c:0},
+    {q:"We have Art _____ Wednesday.", a:["at", "in", "on", "under"], c:2},
+    {q:"I have two _____ of Science today.", a:["books", "teachers", "hours", "rooms"], c:2},
+    {q:"Do you have P.E. today?", a:["Yes, I am.", "No, I'm not.", "Yes, I do.", "On Friday."], c:2},
+    {q:"How many lessons do you have a day?", a:["English.", "At 9:00.", "Seven lessons.", "At school."], c:2},
+    {q:"Which lesson do you have on Friday?", a:["Maths.", "Music.", "Science.", "All of them."], c:3},
+
+    // 23-30: Classroom Objects
+    {q:"You use a _____ to sharpen your pencil.", a:["ruler", "sharpener", "eraser", "book"], c:1},
+    {q:"I draw lines with my _____.", a:["pencil case", "bag", "ruler", "desk"], c:2},
+    {q:"I carry my books in my _____.", a:["pencil", "notebook", "school bag", "chair"], c:2},
+    {q:"I erase my mistakes with an _____.", a:["pen", "pencil", "eraser", "ruler"], c:2},
+    {q:"I sit on my _____.", a:["table", "board", "chair", "window"], c:2},
+    {q:"The teacher writes on the _____.", a:["floor", "door", "board", "bag"], c:2},
+    {q:"I put my pens in my _____.", a:["book", "notebook", "pencil case", "ruler"], c:2},
+    {q:"What is this? - It is a _____.", a:["dictionary", "map", "clock", "window"], c:0},
+
+    // 31-35: Days
+    {q:"What day is today?", a:["Monday.", "It is Tuesday.", "On Sunday.", "At 8:00."], c:1},
+    {q:"Which day comes after Monday?", a:["Sunday", "Tuesday", "Friday", "Wednesday"], c:1},
+    {q:"Which day is a weekend day?", a:["Monday", "Wednesday", "Thursday", "Sunday"], c:3},
+    {q:"There are _____ days in a week.", a:["five", "six", "seven", "eight"], c:2},
+    {q:"The day before Friday is _____.", a:["Tuesday", "Wednesday", "Thursday", "Saturday"], c:2},
+
+    // 36-42: Telling the Time
+    {q:"What time is it? (09:00)", a:["It's nine o'clock.", "It's ten o'clock.", "It's half past nine.", "It's nine-thirty."], c:0},
+    {q:"It's half past ten. (Saat kaç?)", a:["10:00", "10:30", "11:30", "09:30"], c:1},
+    {q:"What time is it? (08:15)", a:["It's eight o'clock.", "It's half past eight.", "It's quarter past eight.", "It's quarter to eight."], c:2},
+    {q:"It's quarter to five. (Saat kaç?)", a:["05:15", "05:45", "04:45", "04:15"], c:2},
+    {q:"I go to school _____ 08:30.", a:["on", "at", "in", "to"], c:1},
+    {q:"The lesson starts at _____ (07:30).", a:["seven o'clock", "quarter past seven", "half past seven", "eight o'clock"], c:2},
+    {q:"12:00 is _____.", a:["morning", "evening", "night", "midday"], c:3},
+
+    // 43-50: Simple Present Tense
+    {q:"I _____ English every day.", a:["studies", "study", "studying", "studied"], c:1},
+    {q:"He _____ his homework at 5:00.", a:["do", "doing", "does", "don't"], c:2},
+    {q:"She _____ like Maths.", a:["doesn't", "don't", "isn't", "not"], c:0},
+    {q:"Do you like Music?", a:["Yes, I am.", "Yes, I do.", "No, I don't.", "B and C"], c:1},
+    {q:"My friend _____ to school by bus.", a:["go", "going", "goes", "gone"], c:2},
+    {q:"We _____ have a lesson on Sunday.", a:["doesn't", "don't", "aren't", "not"], c:1},
+    {q:"Does he play football?", a:["Yes, he do.", "No, he don't.", "Yes, he does.", "No, he is."], c:2},
+    {q:"They _____ books in the library.", a:["reads", "read", "reading", "red"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 7) containerId = 'p1-container';
+        else if (index < 15) containerId = 'p2-container';
+        else if (index < 22) containerId = 'p3-container';
+        else if (index < 30) containerId = 'p4-container';
+        else if (index < 35) containerId = 'p5-container';
+        else if (index < 42) containerId = 'p6-container';
+        else containerId = 'p7-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+    window.currentQuestions = quizData;
+}
+
+function checkAnswers() {
+    let score = 0;
+    window.currentQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Puanın: ${score} / 50`;
+    document.getElementById('feedback-text').innerText = score > 40 ? "Harika! Sınıf hayatına tam hakimsin! 🌟" : "Güzel deneme! Biraz daha tekrarla mükemmel olacaksın! 📚";
+    banner.style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

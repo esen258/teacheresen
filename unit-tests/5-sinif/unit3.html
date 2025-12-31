@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 3. Ünite Personal Life (Kişisel Yaşam) - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #ffe66d;
+            --bg-color: #f0f3f7;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .phone-number { 
+            font-size: 1.3em; font-weight: bold; color: var(--accent-color); 
+            margin-top: 10px; display: block; 
+        }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #4834d4;
+        }
+
+        #submit-btn:hover { background: #5f27cd; }
+        #submit-btn:active { transform: translateY(3px); box-shadow: 0 3px 0px #4834d4; }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 3. Ünite Personal Life (Kişisel Yaşam)</h1>
+    <span class="phone-number">📞 0530 477 30 73</span>
+    <p>Teacher Esen ile İngilizce Zamanı 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🦴 Bölüm 1: Body Parts & Physical Features</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">👕 Bölüm 2: Clothes</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">⏰ Bölüm 3: Daily Routines & Activities</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📝 Bölüm 4: Simple Present Tense</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Başarılar dilerim! ✨</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Body Parts & Physical Features (0-19)
+    {q:"We see with our _____.", a:["ears", "eyes", "hands", "feet"], c:1},
+    {q:"Which one is on your face?", a:["Arm", "Leg", "Nose", "Foot"], c:2},
+    {q:"We hear with our _____.", a:["eyes", "ears", "mouth", "hands"], c:1},
+    {q:"Which one is a body part?", a:["Hat", "Shoe", "Knee", "Shirt"], c:2},
+    {q:"We walk with our _____.", a:["hands", "arms", "legs", "fingers"], c:2},
+    {q:"Hair is about _____.", a:["clothes", "routine", "physical features", "activities"], c:2},
+    {q:"She has long _____.", a:["eyes", "nose", "hair", "ears"], c:2},
+    {q:"Which one is a physical feature?", a:["Tall", "Pencil", "Chair", "Book"], c:0},
+    {q:"He is short and _____.", a:["blue", "tall", "thin", "happy"], c:2},
+    {q:"Which word describes hair?", a:["Long", "Big", "Fast", "Old"], c:0},
+    {q:"My brother has ____ hair.", a:["brown", "jump", "walk", "read"], c:0},
+    {q:"We smell with our _____.", a:["ears", "nose", "mouth", "eyes"], c:1},
+    {q:"She has big _____.", a:["shoes", "eyes", "shirts", "bags"], c:1},
+    {q:"Which one is NOT a body part?", a:["Arm", "Leg", "Head", "Jacket"], c:3},
+    {q:"He has ____ eyes.", a:["blue", "run", "eat", "jump"], c:0},
+    {q:"Which one describes height?", a:["Tall", "Shirt", "Shoe", "Hat"], c:0},
+    {q:"We hold things with our _____.", a:["feet", "hands", "legs", "eyes"], c:1},
+    {q:"Which one is on your head?", a:["Hair", "Shoe", "Sock", "Skirt"], c:0},
+    {q:"She is ____ and slim.", a:["table", "tall", "bag", "pen"], c:1},
+    {q:"Our fingers are on our _____.", a:["feet", "legs", "hands", "arms"], c:2},
+
+    // BÖLÜM 2: Clothes (20-39)
+    {q:"We wear shoes on our _____.", a:["hands", "feet", "head", "arms"], c:1},
+    {q:"Which one is for cold weather?", a:["T-shirt", "Shorts", "Coat", "Skirt"], c:2},
+    {q:"We wear a hat on our _____.", a:["arm", "leg", "head", "foot"], c:2},
+    {q:"Which one is NOT a clothing item?", a:["Jacket", "Socks", "Pencil", "Trousers"], c:2},
+    {q:"We wear socks inside our _____.", a:["shoes", "hats", "gloves", "shirts"], c:0},
+    {q:"A skirt is usually for _____.", a:["boys", "girls", "teachers", "students"], c:1},
+    {q:"Which one do we wear on hands?", a:["Shoes", "Gloves", "Socks", "T-shirt"], c:1},
+    {q:"We wear ____ in summer.", a:["coat", "scarf", "shorts", "boots"], c:2},
+    {q:"A jacket is a kind of _____.", a:["food", "clothes", "routine", "body part"], c:1},
+    {q:"Which one is a pair?", a:["Hat", "Jacket", "Shoes", "Shirt"], c:2},
+    {q:"We wear a scarf around our _____.", a:["leg", "neck", "arm", "hand"], c:1},
+    {q:"Which one is for rain?", a:["Sunglasses", "Raincoat", "T-shirt", "Skirt"], c:1},
+    {q:"We wear trousers on our _____.", a:["arms", "head", "legs", "hands"], c:2},
+    {q:"Which one keeps your feet warm?", a:["Socks", "Hat", "Shirt", "Belt"], c:0},
+    {q:"I wear my school ____ every weekday.", a:["uniform", "pajamas", "coat", "shoes"], c:0},
+    {q:"Which one is an accessory?", a:["Belt", "Shirt", "Skirt", "Trousers"], c:0},
+    {q:"We don’t wear ____ at school.", a:["uniform", "pajamas", "shoes", "socks"], c:1},
+    {q:"Which one is for the head?", a:["Shoes", "Hat", "Socks", "Gloves"], c:1},
+    {q:"A T-shirt is for the _____.", a:["legs", "feet", "upper body", "hands"], c:2},
+    {q:"We wear boots in ____ weather.", a:["hot", "rainy", "cold", "sunny"], c:2},
+
+    // BÖLÜM 3: Daily Routines (40-54)
+    {q:"I wake up at 7 a.m. This is a _____.", a:["clothes", "routine", "body part", "feature"], c:1},
+    {q:"I brush my ____ in the morning.", a:["hair", "shoes", "teeth", "bag"], c:2},
+    {q:"We eat breakfast in the _____.", a:["morning", "night", "evening", "afternoon"], c:0},
+    {q:"I go to school ____ bus.", a:["on", "in", "by", "at"], c:2},
+    {q:"After school, I do my _____.", a:["shoes", "homework", "hair", "clothes"], c:1},
+    {q:"Which one is a daily activity?", a:["Sleeping", "Eating", "Studying", "All of them"], c:3},
+    {q:"I have dinner in the _____.", a:["morning", "afternoon", "evening", "noon"], c:2},
+    {q:"I watch TV after I ____ my homework.", a:["do", "does", "doing", "did"], c:0},
+    {q:"She goes to bed at 10 p.m. This is a _____.", a:["subject", "routine", "body part", "clothes"], c:1},
+    {q:"We have lunch at _____.", a:["night", "morning", "noon", "evening"], c:2},
+    {q:"I play with my friends after _____.", a:["breakfast", "school", "bed", "dinner"], c:1},
+    {q:"Which one is NOT a routine?", a:["Wake up", "Brush teeth", "Play football", "Do homework"], c:2},
+    {q:"I _____ my hands before meals.", a:["wash", "washs", "washing", "washed"], c:0},
+    {q:"In the evening, I read a _____.", a:["breakfast", "book", "uniform", "shoes"], c:1},
+    {q:"We sleep at _____.", a:["morning", "afternoon", "night", "noon"], c:2},
+
+    // BÖLÜM 4: Simple Present Tense (55-69)
+    {q:"I _____ up early.", a:["get", "gets", "getting", "got"], c:0},
+    {q:"She _____ her teeth every day.", a:["brush", "brushes", "brushing", "brushed"], c:1},
+    {q:"We _____ to school on weekdays.", a:["go", "goes", "going", "went"], c:0},
+    {q:"He _____ TV in the evening.", a:["watch", "watches", "watching", "watched"], c:1},
+    {q:"They _____ football after school.", a:["plays", "play", "playing", "played"], c:1},
+    {q:"Which sentence is correct?", a:["She go to school.", "She goes to school.", "She going to school.", "She went school."], c:1},
+    {q:"My mother _____ dinner at 7.", a:["cook", "cooks", "cooking", "cooked"], c:1},
+    {q:"We use Simple Present for _____.", a:["past events", "daily routines", "future plans", "stories"], c:1},
+    {q:"He _____ his homework in the evening.", a:["do", "does", "doing", "did"], c:1},
+    {q:"I _____ milk every morning.", a:["drink", "drinks", "drinking", "drank"], c:0},
+    {q:"She _____ to music after school.", a:["listen", "listens", "listening", "listened"], c:1},
+    {q:"They _____ early on weekdays.", a:["wake up", "wakes up", "waking up", "woke up"], c:0},
+    {q:"Which one is Simple Present?", a:["I am eating.", "I eat breakfast.", "I ate breakfast.", "I will eat breakfast."], c:1},
+    {q:"My brother _____ his room every week.", a:["clean", "cleans", "cleaning", "cleaned"], c:1},
+    {q:"We _____ English on Monday.", a:["study", "studies", "studying", "studied"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 40) containerId = 'p2-container';
+        else if (index < 55) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+    window.currentQuestions = quizData;
+}
+
+function checkAnswers() {
+    let score = 0;
+    window.currentQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 55 ? "Mükemmel! Kişisel yaşam konusunu çok iyi kavramışsın! 🚀" : "İyi bir başlangıç! Eksik olduğun konulara tekrar göz atabilirsin. 📚";
+    banner.style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

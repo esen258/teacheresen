@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 6. Ünite Life in the World - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Yemek temasına uygun turuncu */
+            --secondary-color: #f39c12;
+            --accent-color: #27ae60;
+            --bg-color: #fdf5e6;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: white; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #a04000;
+        }
+
+        #submit-btn:hover { background: var(--secondary-color); }
+        #submit-btn:active { transform: translateY(3px); box-shadow: 0 3px 0px #a04000; }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>5. Sınıf 6. Ünite Life in the World (Dünyadaki Yaşam)</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile İngilizce Zamanı 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🥗 1. Basic Food Types & Ingredients</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🍳 2. Cooking Actions & Describing Food</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🍽️ 3. Ordering in a Restaurant</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🎉 4. Food Events & Grammar</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Afiyet Olsun ve Başarılar! 🍎</div>
+
+<script>
+const quizData = [
+    // 1-15 Basic Food
+    {q:"Which one is a fruit?", a:["Bread", "Apple", "Cheese", "Rice"], c:1},
+    {q:"Which one is a vegetable?", a:["Milk", "Carrot", "Cake", "Egg"], c:1},
+    {q:"Which one is dairy food?", a:["Chicken", "Apple", "Cheese", "Rice"], c:2},
+    {q:"Bread is made from _____.", a:["milk", "flour", "sugar", "meat"], c:1},
+    {q:"Which one is meat?", a:["Fish", "Banana", "Tomato", "Lettuce"], c:0},
+    {q:"We get milk from a _____.", a:["hen", "cow", "fish", "sheep"], c:1},
+    {q:"Which one is a drink?", a:["Soup", "Water", "Rice", "Egg"], c:1},
+    {q:"Sugar tastes _____.", a:["salty", "sour", "sweet", "bitter"], c:2},
+    {q:"Lemon tastes _____.", a:["sweet", "salty", "sour", "spicy"], c:2},
+    {q:"Which one is spicy?", a:["Ice cream", "Chocolate", "Pepper", "Milk"], c:2},
+    {q:"Rice is a _____.", a:["fruit", "grain", "drink", "vegetable"], c:1},
+    {q:"Which one is seafood?", a:["Beef", "Chicken", "Fish", "Bread"], c:2},
+    {q:"Butter is made from _____.", a:["milk", "fruit", "meat", "sugar"], c:0},
+    {q:"Which one is a dessert?", a:["Salad", "Soup", "Cake", "Rice"], c:2},
+    {q:"Eggs are from _____.", a:["cows", "hens", "fish", "trees"], c:1},
+
+    // 16-30 Cooking Actions
+    {q:"We ____ eggs in a pan.", a:["boil", "fry", "bake", "cut"], c:1},
+    {q:"We ____ soup in a pot.", a:["bake", "fry", "boil", "grill"], c:2},
+    {q:"We ____ bread in the oven.", a:["boil", "bake", "fry", "cut"], c:1},
+    {q:"We ____ vegetables with a knife.", a:["cook", "cut", "drink", "smell"], c:1},
+    {q:"The soup smells _____.", a:["delicious", "slowly", "many", "cold"], c:0},
+    {q:"The cake tastes _____.", a:["sweet", "salty", "sour", "spicy"], c:0},
+    {q:"This food smells _____.", a:["good", "well", "better", "best"], c:0},
+    {q:"Hot pepper tastes _____.", a:["sweet", "spicy", "sour", "salty"], c:1},
+    {q:"We ____ meat on a barbecue.", a:["boil", "grill", "bake", "cut"], c:1},
+    {q:"The pizza is very _____.", a:["taste", "tasty", "tasting", "tasted"], c:1},
+    {q:"The soup is too _____.", a:["salt", "salty", "salting", "salted"], c:1},
+    {q:"This meal smells really _____.", a:["good", "well", "better", "best"], c:0},
+    {q:"We ____ water to make tea.", a:["bake", "boil", "fry", "cut"], c:1},
+    {q:"Ice cream tastes _____.", a:["hot", "cold", "spicy", "salty"], c:1},
+    {q:"Which one is a cooking action?", a:["Plate", "Fork", "Fry", "Sweet"], c:2},
+
+    // 31-45 Ordering
+    {q:"“Can I have a pizza, please?” is a _____.", a:["greeting", "request", "goodbye", "answer"], c:1},
+    {q:"The waiter says: “____?”", a:["What time is it", "Can I help you", "Where are you", "How old are you"], c:1},
+    {q:"“I’d like a salad.” means _____.", a:["I hate salad", "I want salad", "I cook salad", "I see salad"], c:1},
+    {q:"“Here you are.” means _____. ", a:["Thank you", "Goodbye", "This is for you", "Sorry"], c:2},
+    {q:"“Enjoy your meal.” means _____.", a:["Afiyet olsun", "Hoşça kal", "Geçmiş olsun", "Tebrikler"], c:0},
+    {q:"We order food from the _____.", a:["chef", "waiter", "driver", "teacher"], c:1},
+    {q:"“Can I get the menu, please?” is a _____.", a:["permission", "request", "order", "rule"], c:1},
+    {q:"Which one is polite?", a:["Give me water", "Water now", "Can I have water, please?", "I want water"], c:2},
+    {q:"We pay the _____.", a:["menu", "bill", "fork", "plate"], c:1},
+    {q:"“Anything else?” means _____.", a:["Is it tasty", "Do you want more", "Is it cheap", "Is it hot"], c:1},
+    {q:"A menu shows _____.", a:["teachers", "food and prices", "students", "rules"], c:1},
+    {q:"We eat at a _____.", a:["restaurant", "market", "library", "school"], c:0},
+    {q:"“Can I have the bill, please?” is a _____.", a:["greeting", "request", "complaint", "answer"], c:1},
+    {q:"The waiter brings the _____.", a:["lesson", "food", "book", "homework"], c:1},
+    {q:"We drink soup with a _____.", a:["fork", "knife", "spoon", "plate"], c:2},
+
+    // 46-70 Events & Grammar
+    {q:"A food festival is a _____.", a:["sport event", "music event", "food event", "school event"], c:2},
+    {q:"People taste food at a _____.", a:["cinema", "food fair", "library", "bank"], c:1},
+    {q:"Street food is sold on the _____.", a:["street", "hospital", "classroom", "library"], c:0},
+    {q:"We see different foods at a _____.", a:["food festival", "exam", "lesson", "meeting"], c:0},
+    {q:"Chefs cook food at a _____.", a:["food event", "school", "park", "bank"], c:0},
+    {q:"I ____ a sandwich.", a:["has got", "have got", "got", "am got"], c:1},
+    {q:"She ____ a cake.", a:["have got", "has got", "got", "is got"], c:1},
+    {q:"We ____ some apples.", a:["has got", "have got", "got", "are got"], c:1},
+    {q:"He ____ a hamburger.", a:["have got", "has got", "got", "am got"], c:1},
+    {q:"Which one is uncountable?", a:["Apple", "Banana", "Milk", "Egg"], c:2},
+    {q:"Which one is countable?", a:["Rice", "Sugar", "Water", "Carrot"], c:3},
+    {q:"We use “some” with _____.", a:["only numbers", "uncountable nouns", "names", "days"], c:1},
+    {q:"We use “many” with _____.", a:["milk", "water", "apples", "bread"], c:2},
+    {q:"“Can I have some water?” is a _____.", a:["order", "permission", "rule", "answer"], c:1},
+    {q:"“Can I help you?” is a _____.", a:["request", "permission", "greeting", "goodbye"], c:0},
+    {q:"“Can I sit here?” means _____.", a:["I sit here", "I am sitting", "I ask permission", "I stand"], c:2},
+    {q:"“Can you pass the salt?” is a _____.", a:["rule", "request", "lesson", "answer"], c:1},
+    {q:"Can we ____ some juice?", a:["has", "have", "having", "had"], c:1},
+    {q:"Which sentence is correct?", a:["Can I helps you?", "Can I help you?", "Can I helped you?", "Can I helping you?"], c:1},
+    {q:"“Can I order now?” is a _____.", a:["request", "rule", "mistake", "answer"], c:0},
+    {q:"Can she ____ a salad?", a:["has", "have", "having", "had"], c:1},
+    {q:"“Can I taste the soup?” means _____.", a:["I taste it", "I ask permission", "I cook it", "I smell it"], c:1},
+    {q:"Which one is polite?", a:["Give me bread", "Bread!", "Can I have bread, please?", "I want bread"], c:2},
+    {q:"Can you ____ the menu?", a:["bring", "brings", "bringing", "brought"], c:0},
+    {q:"“Can I have some dessert?” is about _____.", a:["sport", "food", "school", "city"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 15) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 45) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika! Yemekler ve dünya yaşamı konusunu süper öğrenmişsin! 🍗" : "Güzel deneme! Kelimeleri ve request (istek) yapılarını biraz daha tekrar edebilirsin. 🍎";
+    banner.style.display = 'block';
+    window.scrollTo(0, 0);
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
