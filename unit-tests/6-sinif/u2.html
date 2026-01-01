@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 2. Ünite - Yummy Breakfast - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Fırından taze çıkmış ekmek ve bal tonu */
+            --secondary-color: #f39c12;
+            --accent-color: #27ae60;
+            --bg-color: #fff9f0;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #b05e11;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 2. Ünite - Yummy Breakfast</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile Kahvaltı Saati! ☕🥞</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">❤️ A. Expressing Likes and Dislikes</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">⏰ B. Simple Present Tense</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🍞 C. Countable / Uncountable – A / An</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">☕ D. Accepting & Refusing Offers</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE PUANINI GÖR ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Enjoy your breakfast! 🍯🍳</div>
+
+<script>
+// Quiz verileri ve fonksiyonları buraya dahil edildi (Sorular aynı tutuldu)
+const quizData = [
+    // 1-15 Likes Dislikes
+    {q:"I ______ cheese. It’s delicious.", a:["don’t like", "like", "hate", "dislike"], c:1},
+    {q:"She doesn’t like ______ milk.", a:["drink", "drinks", "drinking", "drank"], c:2},
+    {q:"“Do you like eggs?” – “Yes, ______.”", a:["I like", "I do", "I am", "I don’t"], c:1},
+    {q:"He ______ olives for breakfast.", a:["like", "likes", "liking", "liked"], c:1},
+    {q:"I don’t like honey. It is too ______.", a:["salty", "sour", "sweet", "hot"], c:2},
+    {q:"Which sentence shows dislike?", a:["I enjoy milk.", "I love cheese.", "I don’t like eggs.", "I like butter."], c:2},
+    {q:"My sister ______ jam.", a:["like", "likes", "liking", "liked"], c:1},
+    {q:"We ______ tea in the morning.", a:["likes", "like", "liking", "liked"], c:1},
+    {q:"“What do you like for breakfast?”", a:["I like cheese and eggs.", "Yes, I do.", "No, I don’t.", "I am fine."], c:0},
+    {q:"He hates ______ milk.", a:["drink", "drinks", "drinking", "drank"], c:2},
+    {q:"I like cheese ______ I don’t like olives.", a:["and", "but", "because", "so"], c:1},
+    {q:"Which one is correct?", a:["She like honey.", "She likes honey.", "She liking honey.", "She liked honey."], c:1},
+    {q:"“Does she like milk?”", a:["Yes, she like.", "Yes, she does.", "Yes, she is.", "Yes, she do."], c:1},
+    {q:"I ______ bread for breakfast.", a:["eats", "eat", "eating", "eaten"], c:1},
+    {q:"Which answer is negative?", a:["I like eggs.", "She likes cheese.", "I don’t like milk.", "We like tea."], c:2},
+
+    // 16-30 Present Tense
+    {q:"She ______ breakfast at 7 a.m.", a:["have", "has", "having", "had"], c:1},
+    {q:"They ______ milk every morning.", a:["drinks", "drink", "drinking", "drank"], c:1},
+    {q:"He doesn’t ______ honey.", a:["likes", "liking", "like", "liked"], c:2},
+    {q:"We ______ cereal on weekdays.", a:["eats", "eat", "eating", "eaten"], c:1},
+    {q:"“______ you like cheese?”", a:["Are", "Do", "Does", "Is"], c:1},
+    {q:"She ______ like butter.", a:["don’t", "doesn’t", "isn’t", "aren’t"], c:1},
+    {q:"Which sentence is correct?", a:["He eat eggs.", "He eats eggs.", "He eating eggs.", "He eaten eggs."], c:1},
+    {q:"I ______ breakfast at home.", a:["have", "has", "having", "had"], c:0},
+    {q:"“Does he like tea?”", a:["Yes, he do.", "Yes, he likes.", "Yes, he does.", "Yes, he is."], c:2},
+    {q:"She doesn’t ______ coffee.", a:["drinks", "drinking", "drink", "drank"], c:2},
+    {q:"We ______ milk every day.", a:["drink", "drinks", "drinking", "drank"], c:0},
+    {q:"Which one is negative?", a:["I like jam.", "She eats bread.", "They drink tea.", "I don’t like butter."], c:3},
+    {q:"“______ she eat eggs?”", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"He ______ breakfast late.", a:["have", "has", "having", "had"], c:1},
+    {q:"Which one is a question?", a:["I eat breakfast.", "She eats bread.", "Do you like milk?", "We drink tea."], c:2},
+
+    // 31-45 Countables
+    {q:"Which one is uncountable?", a:["Egg", "Apple", "Bread", "Banana"], c:2},
+    {q:"We need ______ milk.", a:["a", "an", "some", "many"], c:2},
+    {q:"There is ______ apple on the table.", a:["a", "an", "some", "any"], c:1},
+    {q:"I eat ______ egg for breakfast.", a:["a", "an", "some", "any"], c:1},
+    {q:"Which one is countable?", a:["Milk", "Honey", "Cheese", "Egg"], c:3},
+    {q:"She wants ______ orange juice.", a:["a", "an", "some", "many"], c:2},
+    {q:"We don’t have ______ bread.", a:["some", "any", "a", "an"], c:1},
+    {q:"There are ______ eggs in the fridge.", a:["a", "an", "some", "much"], c:2},
+    {q:"I don’t drink ______ milk.", a:["some", "a", "an", "any"], c:3},
+    {q:"Which one is correct?", a:["a milk", "an bread", "some cheese", "a butter"], c:2},
+    {q:"She eats ______ banana every day.", a:["a", "an", "some", "any"], c:0},
+    {q:"Is there ______ juice?", a:["some", "a", "an", "any"], c:3},
+    {q:"We have ______ tomatoes.", a:["a", "an", "some", "much"], c:2},
+    {q:"Honey is ______. ", a:["countable", "uncountable", "plural", "number"], c:1},
+    {q:"I need ______ egg.", a:["a", "an", "some", "any"], c:1},
+
+    // 46-70 Offers
+    {q:"“Would you like some tea?” – “Yes, ______.”", a:["please", "I would", "thank you", "I like"], c:2},
+    {q:"“Would you like some milk?” – “No, ______.”", a:["I don’t", "thank you", "please", "I am not"], c:1},
+    {q:"Which one is accepting an offer?", a:["No, thanks.", "I don’t like it.", "Yes, please.", "Not now."], c:2},
+    {q:"Which one is refusing politely?", a:["I hate it.", "No, thank you.", "I don’t want.", "Give me."], c:1},
+    {q:"“Do you want some cheese?”", a:["Yes, please.", "Yes, I do.", "Yes, I like.", "Yes, I eat."], c:0},
+    {q:"“Would you like an egg?”", a:["No, I don’t like.", "No, thanks.", "No, I am not.", "No, I wouldn’t like."], c:1},
+    {q:"“Here you are.”", a:["Thank you.", "No, thanks.", "I don’t like.", "Sorry."], c:0},
+    {q:"“Can I have some bread?”", a:["Here you are.", "No, please.", "I don’t like.", "Thank you."], c:0},
+    {q:"Which one is an offer?", a:["I like milk.", "Do you like tea?", "Would you like some juice?", "I drink juice."], c:2},
+    {q:"“Would you like some honey?” – “Yes, ______.”", a:["I do", "please", "thanks you", "I like"], c:1},
+    {q:"“Do you want tea or coffee?”", a:["Yes, I do.", "Tea, please.", "No, thanks.", "I like tea."], c:1},
+    {q:"Which is correct?", a:["No, please.", "Yes, thanks.", "No, please.", "Yes, don’t."], c:1},
+    {q:"“Would you like some jam?” – “No, ______.”", a:["please", "I would", "thanks", "thank you"], c:3},
+    {q:"Which one is polite?", a:["Give me tea.", "I want tea.", "Tea now.", "Tea, please."], c:3},
+    {q:"“Can I help you?”", a:["Yes, please.", "No, I don’t.", "Yes, I like.", "No, I am not."], c:0},
+    {q:"“Would you like some water?”", a:["Yes, I am.", "Yes, please.", "Yes, I like.", "Yes, I eat."], c:1},
+    {q:"Which one is NOT an offer?", a:["Would you like milk?", "Do you want tea?", "I like milk.", "Can I get you juice?"], c:2},
+    {q:"“No, thanks.” means ______.", a:["accepting", "refusing", "asking", "offering"], c:1},
+    {q:"“Yes, please.” means ______.", a:["refusing", "offering", "accepting", "asking"], c:2},
+    {q:"“Would you like some bread?”", a:["Yes, thanks.", "Yes, I am.", "Yes, I eat.", "Yes, I do eat."], c:0},
+    {q:"Which sentence is correct?", a:["No, please.", "Yes, thanks.", "Yes, don’t.", "No, welcome."], c:1},
+    {q:"“Here you are.” is used when you ______.", a:["refuse", "accept", "give something", "ask a question"], c:2},
+    {q:"“Thank you.” is a ______ expression.", a:["rude", "polite", "negative", "question"], c:1},
+    {q:"“Would you like some cake?” – “No, thank you.” This is ______.", a:["accepting", "offering", "refusing", "asking"], c:2},
+    {q:"“Would you like some tea?” – “______, please.”", a:["No", "Yes", "Don’t", "Would"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 15) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 45) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Afiyet olsun! Kahvaltı konusunu mükemmel biliyorsun! 🍳🍓" : "Fena değil! Bazı yiyecek adlarını ve 'some/any' kullanımını tekrar etmen iyi olabilir. 🧀";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

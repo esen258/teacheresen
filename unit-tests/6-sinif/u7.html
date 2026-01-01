@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 7. Ünite Holidays - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1abc9c; /* Deniz mavisi/yeşili */
+            --secondary-color: #f39c12; /* Güneş turuncusu */
+            --accent-color: #3498db; /* Gökyüzü mavisi */
+            --bg-color: #f0f7f4;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #d35400;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 7. Ünite - Holidays</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Where did you go for your last holiday? 🏖️🏔️📸</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Places & Holiday Activities</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Simple Past Tense – was / were</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Simple Past Tense – Verbs</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">SONUCU GÖR ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Enjoy your holiday! 🌴✨</div>
+
+<script>
+const quizData = [
+    // 1-25 Places & Activities
+    {q:"Which place is good for swimming?", a:["Mountain", "Beach", "Museum", "Library"], c:1},
+    {q:"People usually stay in a ______ on holiday.", a:["hospital", "hotel", "school", "office"], c:1},
+    {q:"You can ski on a ______.", a:["beach", "desert", "mountain", "island"], c:2},
+    {q:"Which activity do people do at the beach?", a:["Ski", "Swim", "Climb", "Read"], c:1},
+    {q:"We visited a ______ to see old things.", a:["park", "museum", "beach", "hotel"], c:1},
+    {q:"You can camp in a ______.", a:["forest", "mall", "school", "cinema"], c:0},
+    {q:"Which place is usually hot and sunny?", a:["Mountain", "Desert", "Forest", "Village"], c:1},
+    {q:"I went sightseeing in the ______.", a:["city", "farm", "hospital", "school"], c:0},
+    {q:"You can stay in a tent when you go ______.", a:["shopping", "camping", "swimming", "skiing"], c:1},
+    {q:"Which activity is for winter holidays?", a:["Swimming", "Sunbathing", "Skiing", "Surfing"], c:2},
+    {q:"We took photos on holiday. “took photos” means ______.", a:["slept", "played", "took pictures", "cooked"], c:2},
+    {q:"You can go hiking in the ______.", a:["city", "forest", "cinema", "hotel"], c:1},
+    {q:"Which one is NOT a holiday activity?", a:["Swimming", "Sightseeing", "Studying", "Sunbathing"], c:2},
+    {q:"I stayed at a hotel near the ______.", a:["classroom", "beach", "office", "hospital"], c:1},
+    {q:"People relax and sunbathe at the ______.", a:["mountain", "beach", "forest", "village"], c:1},
+    {q:"Which place is cold in winter?", a:["Island", "Beach", "Mountain", "Desert"], c:2},
+    {q:"We went on a ______ trip in nature.", a:["shopping", "hiking", "sleeping", "reading"], c:1},
+    {q:"You can see many animals in a ______.", a:["zoo", "hotel", "mall", "beach"], c:0},
+    {q:"Which activity needs snow?", a:["Swimming", "Skiing", "Hiking", "Cycling"], c:1},
+    {q:"We stayed in a small ______ house.", a:["city", "village", "school", "office"], c:1},
+    {q:"You can swim and dive in the ______.", a:["forest", "sea", "mountain", "desert"], c:1},
+    {q:"I went holiday with my ______.", a:["homework", "family", "teacher", "books"], c:1},
+    {q:"Which one is a holiday place?", a:["Classroom", "Hospital", "Beach", "Office"], c:2},
+    {q:"We travelled by ______ to another country.", a:["bike", "bus", "plane", "car"], c:2},
+    {q:"Which activity do tourists do in cities?", a:["Ski", "Sightseeing", "Sunbathe", "Camp"], c:1},
+
+    // 26-45 Was / Were
+    {q:"I ____ at the beach last summer.", a:["am", "was", "were", "is"], c:1},
+    {q:"We ____ very happy on holiday.", a:["is", "was", "were", "are"], c:2},
+    {q:"She ____ not tired yesterday.", a:["is", "was", "were", "are"], c:1},
+    {q:"They ____ at the hotel last night.", a:["was", "were", "are", "is"], c:1},
+    {q:"He ____ excited about the trip.", a:["is", "was", "were", "are"], c:1},
+    {q:"I ____ not at home yesterday.", a:["am", "was", "were", "is"], c:1},
+    {q:"The weather ____ sunny last week.", a:["is", "was", "were", "are"], c:1},
+    {q:"We ____ not ready for the trip.", a:["was", "were", "are", "is"], c:1},
+    {q:"She ____ at school yesterday.", a:["isn’t", "wasn’t", "weren’t", "aren’t"], c:1},
+    {q:"They ____ not tired after the holiday.", a:["was", "were", "weren’t", "isn’t"], c:2},
+    {q:"Which one is correct?", a:["I were happy.", "I was happy.", "I am happy yesterday.", "I were happy yesterday."], c:1},
+    {q:"Which one is correct?", a:["We was at the hotel.", "We were at the hotel.", "We are at the hotel yesterday.", "We were at the hotel tomorrow."], c:1},
+    {q:"He ____ not at the beach.", a:["isn’t", "wasn’t", "weren’t", "aren’t"], c:1},
+    {q:"“They were tired.” This sentence is in ______ tense.", a:["present", "past", "future", "continuous"], c:1},
+    {q:"Which one is negative?", a:["She was happy.", "She wasn’t happy.", "She were happy.", "She is happy."], c:1},
+    {q:"I ____ in İstanbul last year.", a:["am", "was", "were", "is"], c:1},
+    {q:"The hotels ____ full in summer.", a:["is", "was", "were", "are"], c:2},
+    {q:"We ____ not at the airport early.", a:["was", "were", "are", "is"], c:1},
+    {q:"Which one is correct?", a:["They was late.", "They were late.", "They are late yesterday.", "They were late now."], c:1},
+    {q:"She ____ very excited about the holiday.", a:["is", "was", "were", "are"], c:1},
+
+    // 46-70 Past Simple Verbs
+    {q:"We ______ in the sea. (swim)", a:["swim", "swims", "swam", "swimming"], c:2},
+    {q:"I ______ photos on holiday. (take)", a:["take", "takes", "took", "taking"], c:2},
+    {q:"We ______ at a hotel. (stay)", a:["stay", "stayed", "staying", "stays"], c:1},
+    {q:"She ______ a lot on holiday. (relax)", a:["relax", "relaxed", "relaxing", "relaxes"], c:1},
+    {q:"They ______ to the beach. (walk)", a:["walk", "walked", "walking", "walks"], c:1},
+    {q:"I ______ shopping yesterday. (go)", a:["go", "goes", "went", "going"], c:2},
+    {q:"We ______ football on holiday. (play)", a:["play", "played", "playing", "plays"], c:1},
+    {q:"He ______ not like the hotel. (like)", a:["don’t like", "didn’t like", "wasn’t like", "isn’t like"], c:1},
+    {q:"She ______ not visit the museum. (visit)", a:["doesn’t visit", "didn’t visit", "wasn’t visit", "isn’t visit"], c:1},
+    {q:"We ______ dinner at the hotel. (have)", a:["have", "has", "had", "having"], c:2},
+    {q:"They ______ TV in the evening. (watch)", a:["watch", "watched", "watching", "watches"], c:1},
+    {q:"I ______ early yesterday. (arrive)", a:["arrive", "arrives", "arrived", "arriving"], c:2},
+    {q:"He ______ postcards to his friends. (send)", a:["send", "sends", "sent", "sending"], c:2},
+    {q:"We ______ not enjoy the trip. (enjoy)", a:["don’t enjoy", "didn’t enjoy", "wasn’t enjoy", "aren’t enjoy"], c:1},
+    {q:"She ______ a lot of photos. (take)", a:["take", "takes", "took", "taking"], c:2},
+    {q:"They ______ at a small hotel. (stay)", a:["stay", "stayed", "staying", "stays"], c:1},
+    {q:"I ______ breakfast early. (have)", a:["have", "has", "had", "having"], c:2},
+    {q:"We ______ in the mountains. (camp)", a:["camp", "camped", "camping", "camps"], c:1},
+    {q:"He ______ not swim in the sea. (swim)", a:["don’t swim", "didn’t swim", "wasn’t swim", "isn’t swim"], c:1},
+    {q:"She ______ souvenirs. (buy)", a:["buy", "buys", "bought", "buying"], c:2},
+    {q:"We ______ a great time. (have)", a:["have", "has", "had", "having"], c:2},
+    {q:"They ______ late at night. (arrive)", a:["arrive", "arrives", "arrived", "arriving"], c:2},
+    {q:"I ______ postcards. (write)", a:["write", "writes", "wrote", "writing"], c:2},
+    {q:"She ______ not like camping. (like)", a:["doesn’t like", "didn’t like", "wasn’t like", "isn’t like"], c:1},
+    {q:"We ______ the city together. (visit)", a:["visit", "visited", "visiting", "visits"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Tam bir gezgin gibi tüm soruları bildin! 🌍✈️" : "Güzel bir tatil planı! Düzensiz fiillerin (Irregular verbs) geçmiş zaman hallerini biraz daha tekrar edebilirsin. 🏝️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

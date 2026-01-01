@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 3. Ünite Downtown - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2980b9; /* Şehir teması için mavi tonları */
+            --secondary-color: #3498db;
+            --accent-color: #f39c12;
+            --bg-color: #f0f3f5;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1c5980;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 3. Ünite - Downtown</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile Şehir Hayatını Öğreniyoruz! 🏙️🚗</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Downtown Vocabulary</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Comparative Adjectives</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Present Continuous Tense</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Enjoy the City Life! 🏢</div>
+
+<script>
+const quizData = [
+    // 1-20 Vocabulary
+    {q:"Which place can you borrow books from?", a:["Museum", "Library", "Hospital", "Bakery"], c:1},
+    {q:"You can see movies at the ______. ", a:["cinema", "library", "school", "park"], c:0},
+    {q:"People go shopping at the ______.", a:["hospital", "police station", "shopping mall", "library"], c:2},
+    {q:"Where do doctors work?", a:["Bank", "Hospital", "Museum", "Cinema"], c:1},
+    {q:"You can send letters at the ______.", a:["post office", "bakery", "café", "park"], c:0},
+    {q:"Which one is a place to relax?", a:["Park", "Bank", "Police station", "Hospital"], c:0},
+    {q:"Which adjective describes a place with many people?", a:["Quiet", "Clean", "Crowded", "Safe"], c:2},
+    {q:"Downtown is usually ______.", a:["quiet", "busy", "empty", "slow"], c:1},
+    {q:"A place with no noise is ______.", a:["noisy", "crowded", "quiet", "busy"], c:2},
+    {q:"Which one is NOT a place in downtown?", a:["Library", "Hospital", "Forest", "Cinema"], c:2},
+    {q:"The streets are ______ in the morning.", a:["crowd", "crowded", "crowds", "crowding"], c:1},
+    {q:"A ______ place is not dangerous.", a:["noisy", "safe", "crowded", "dirty"], c:1},
+    {q:"Which adjective describes “very clean”?", a:["dirty", "clean", "crowded", "safe"], c:1},
+    {q:"The market is ______ on Saturdays.", a:["empty", "crowded", "quiet", "boring"], c:1},
+    {q:"A place with a lot of noise is ______.", a:["quiet", "safe", "noisy", "clean"], c:2},
+    {q:"Which place sells bread?", a:["Bakery", "Library", "Cinema", "Museum"], c:0},
+    {q:"You can eat and drink at a ______.", a:["café", "bank", "post office", "police station"], c:0},
+    {q:"A ______ street has many cars.", a:["quiet", "busy", "safe", "clean"], c:1},
+    {q:"Which adjective means “not dirty”?", a:["noisy", "crowded", "clean", "dangerous"], c:2},
+    {q:"Downtown has many ______.", a:["places", "forests", "villages", "farms"], c:0},
+
+    // 21-40 Comparatives
+    {q:"My city is ______ than yours.", a:["big", "bigger", "biggest", "bigly"], c:1},
+    {q:"The library is ______ than the café.", a:["quiet", "quieter", "quietest", "quietly"], c:1},
+    {q:"Downtown is ______ than my neighbourhood.", a:["busy", "busier", "busiest", "busily"], c:1},
+    {q:"This street is ______ than that one.", a:["clean", "cleaner", "cleanest", "cleanly"], c:1},
+    {q:"The park is ______ than the street.", a:["safe", "safer", "safest", "safely"], c:1},
+    {q:"The mall is ______ than the market.", a:["crowded", "more crowded", "most crowded", "crowd"], c:1},
+    {q:"My house is ______ than yours.", a:["near", "nearer", "nearest", "nearly"], c:1},
+    {q:"Today is ______ than yesterday.", a:["hot", "hotter", "hottest", "hotly"], c:1},
+    {q:"The cinema is ______ than the museum.", a:["interesting", "more interesting", "most interesting", "interest"], c:1},
+    {q:"The hospital is ______ than the clinic.", a:["big", "bigger", "biggest", "bigly"], c:1},
+    {q:"My school is ______ than your school.", a:["far", "farther", "farthest", "farly"], c:1},
+    {q:"The streets are ______ today.", a:["noisy", "noisier", "noisiest", "noisily"], c:1},
+    {q:"This café is ______ than that one.", a:["cheap", "cheaper", "cheapest", "cheaply"], c:1},
+    {q:"Winter is ______ than summer here.", a:["cold", "colder", "coldest", "coldly"], c:1},
+    {q:"My town is ______ than before.", a:["beautiful", "more beautiful", "most beautiful", "beautify"], c:1},
+    {q:"The bus is ______ than the taxi.", a:["slow", "slower", "slowest", "slowly"], c:1},
+    {q:"This building is ______ than that one.", a:["tall", "taller", "tallest", "tallness"], c:1},
+    {q:"The market is ______ than the shop.", a:["crowded", "more crowded", "most crowded", "crowd"], c:1},
+    {q:"My street is ______ than your street.", a:["quiet", "quieter", "quietest", "quietly"], c:1},
+    {q:"Downtown is ______ at night.", a:["noisy", "noisier", "noisiest", "noisily"], c:0},
+
+    // 41-70 Present Continuous
+    {q:"People ______ in the park now.", a:["walk", "are walking", "walked", "walks"], c:1},
+    {q:"She ______ shopping at the moment.", a:["goes", "is going", "are going", "going"], c:1},
+    {q:"They ______ football now.", a:["play", "are playing", "plays", "played"], c:1},
+    {q:"I ______ TV right now.", a:["watch", "am watching", "watched", "watching"], c:1},
+    {q:"He ______ to school now.", a:["goes", "is going", "going", "go"], c:1},
+    {q:"We ______ lunch at the moment.", a:["have", "are having", "had", "has"], c:1},
+    {q:"She ______ homework now.", a:["does", "is doing", "did", "doing"], c:1},
+    {q:"They ______ the street now.", a:["clean", "are cleaning", "cleaned", "cleaning"], c:1},
+    {q:"I ______ not watching TV now.", a:["am", "is", "are", "be"], c:0},
+    {q:"He ______ not working today.", a:["is", "are", "am", "be"], c:0},
+    {q:"We ______ not eating now.", a:["is", "are", "am", "be"], c:1},
+    {q:"She ______ not shopping now.", a:["is", "are", "am", "be"], c:0},
+    {q:"They ______ not playing football.", a:["is", "are", "am", "be"], c:1},
+    {q:"“______ you studying now?”", a:["Is", "Are", "Do", "Does"], c:1},
+    {q:"“______ she working today?”", a:["Is", "Are", "Do", "Does"], c:0},
+    {q:"“______ they waiting for the bus?”", a:["Is", "Are", "Do", "Does"], c:1},
+    {q:"“What ______ you doing?”", a:["is", "are", "do", "does"], c:1},
+    {q:"“Where ______ he going?”", a:["is", "are", "do", "does"], c:0},
+    {q:"“Why ______ they running?”", a:["is", "are", "do", "does"], c:1},
+    {q:"I ______ not listening to music now.", a:["am", "is", "are", "be"], c:0},
+    {q:"She ______ a book at the moment.", a:["reads", "is reading", "read", "reading"], c:1},
+    {q:"They ______ dinner now.", a:["cook", "are cooking", "cooked", "cooks"], c:1},
+    {q:"He ______ TV right now.", a:["watches", "is watching", "watched", "watching"], c:1},
+    {q:"We ______ a test now.", a:["write", "are writing", "wrote", "writing"], c:1},
+    {q:"The children ______ in the street now.", a:["play", "are playing", "plays", "played"], c:1},
+    {q:"She ______ not sleeping now.", a:["is", "are", "am", "be"], c:0},
+    {q:"They ______ not talking now.", a:["is", "are", "am", "be"], c:1},
+    {q:"“______ I speaking too fast?”", a:["Is", "Are", "Am", "Do"], c:2},
+    {q:"“______ we going home now?”", a:["Is", "Are", "Do", "Does"], c:1},
+    {q:"“______ he working downtown?”", a:["Is", "Are", "Do", "Does"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 40) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Şehir hayatını ve karşılaştırmaları çok iyi biliyorsun! 🏙️" : "İyi deneme! Şimdiki zaman eklerine (-ing) ve Comparative kurallarına biraz daha çalışmalısın. 🚗";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

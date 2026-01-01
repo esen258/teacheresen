@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 8. Ünite Bookworms - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2980b9; /* Kitap ve kütüphane huzuru için mavi */
+            --secondary-color: #8e44ad; /* Hayal gücü için mor */
+            --accent-color: #f39c12; /* Kitap sayfaları için sarı/turuncu */
+            --bg-color: #ecf0f1;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1a5276;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 8. Ünite - Bookworms</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Books are our best friends! 📚📖🤓</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Çöz</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Words & Phrases about Books and Reading</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Prepositions of Place</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Simple Past Tense – Verbs</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Keep reading, stay smart! 🌟</div>
+
+<script>
+const quizData = [
+    // 1-25 Vocabulary
+    {q:"You read books in a ______.", a:["kitchen", "library", "bathroom", "garage"], c:1},
+    {q:"A person who writes books is a(n) ______.", a:["reader", "author", "librarian", "student"], c:1},
+    {q:"Which one is a type of book?", a:["Novel", "Pencil", "Desk", "Chair"], c:0},
+    {q:"You borrow books from a ______.", a:["bookshop", "library", "classroom", "market"], c:1},
+    {q:"A book with pictures and short text is a ______.", a:["dictionary", "comic book", "novel", "magazine"], c:1},
+    {q:"You buy books from a ______.", a:["library", "school", "bookshop", "park"], c:2},
+    {q:"Which one helps you find the meaning of words?", a:["Story", "Novel", "Dictionary", "Comic"], c:2},
+    {q:"The person who works in a library is a ______.", a:["author", "teacher", "librarian", "reader"], c:2},
+    {q:"I like reading ______ before sleeping.", a:["homework", "stories", "exams", "tests"], c:1},
+    {q:"Which one is NOT related to books?", a:["Page", "Cover", "Chapter", "Spoon"], c:3},
+    {q:"A book has many ______.", a:["rooms", "pages", "doors", "windows"], c:1},
+    {q:"You can read newspapers and magazines at a ______.", a:["library", "hospital", "bank", "cinema"], c:0},
+    {q:"A storybook for children is usually ______.", a:["long", "difficult", "short", "boring"], c:2},
+    {q:"I enjoy reading ______ books.", a:["boring", "interesting", "noisy", "dirty"], c:1},
+    {q:"You read e-books on a ______.", a:["notebook", "tablet", "board", "map"], c:1},
+    {q:"Which one is a book type?", a:["Science fiction", "Television", "Internet", "Radio"], c:0},
+    {q:"A book has a front ______.", a:["wall", "cover", "floor", "road"], c:1},
+    {q:"You turn the ______ when you read.", a:["desk", "chair", "page", "door"], c:2},
+    {q:"A magazine comes every ______.", a:["minute", "year", "period", "chapter"], c:2},
+    {q:"A writer writes a ______.", a:["song", "book", "test", "lesson"], c:1},
+    {q:"You need silence in a ______.", a:["library", "park", "street", "market"], c:0},
+    {q:"A book with facts is a ______ book.", a:["fiction", "fantasy", "non-fiction", "comic"], c:2},
+    {q:"I read a book ______ the evening.", a:["on", "at", "in", "under"], c:2},
+    {q:"Which one is a reading activity?", a:["Running", "Reading", "Jumping", "Swimming"], c:1},
+    {q:"The last part of a book is the ______.", a:["title", "cover", "ending", "page"], c:2},
+
+    // 26-40 Prepositions
+    {q:"The book is ______ the table.", a:["under", "on", "behind", "between"], c:1},
+    {q:"The library is ______ the school and the park.", a:["on", "under", "between", "behind"], c:2},
+    {q:"My bag is ______ the chair.", a:["on", "under", "in", "next"], c:1},
+    {q:"The bookshelf is ______ the wall.", a:["under", "next to", "between", "in"], c:1},
+    {q:"The book is ______ my bag.", a:["on", "under", "in", "behind"], c:2},
+    {q:"The cat is ______ the table.", a:["on", "under", "between", "next"], c:1},
+    {q:"The desk is ______ the window.", a:["next to", "under", "in", "on"], c:0},
+    {q:"The library is ______ the post office.", a:["on", "next to", "under", "in"], c:1},
+    {q:"The chair is ______ the desk.", a:["between", "under", "in", "on"], c:1},
+    {q:"The book is ______ the computer and the notebook.", a:["under", "behind", "between", "on"], c:2},
+    {q:"The pencil is ______ the box.", a:["in", "on", "under", "behind"], c:0},
+    {q:"The teacher is ______ the students.", a:["between", "in", "next", "under"], c:0},
+    {q:"The picture is ______ the wall.", a:["on", "under", "between", "in"], c:0},
+    {q:"The school is ______ the hospital.", a:["behind", "under", "in", "on"], c:0},
+    {q:"My shoes are ______ the bed.", a:["on", "under", "in", "behind"], c:1},
+
+    // 41-70 Past Simple
+    {q:"I ______ a book yesterday. (read)", a:["read", "reads", "reading", "will read"], c:0},
+    {q:"She ______ to the library last week. (go)", a:["goes", "went", "going", "go"], c:1},
+    {q:"We ______ a novel. (finish)", a:["finish", "finishes", "finished", "finishing"], c:2},
+    {q:"He ______ not read the book. (read)", a:["doesn’t read", "didn’t read", "wasn’t read", "isn’t read"], c:1},
+    {q:"They ______ comics. (buy)", a:["buy", "buys", "bought", "buying"], c:2},
+    {q:"I ______ not like the story. (like)", a:["don’t like", "didn’t like", "wasn’t like", "isn’t like"], c:1},
+    {q:"She ______ the book on the table. (put)", a:["puts", "putting", "put", "putted"], c:2},
+    {q:"We ______ the library early. (leave)", a:["leaves", "leaving", "left", "leave"], c:2},
+    {q:"He ______ a magazine. (read)", a:["read", "reads", "reading", "will read"], c:0},
+    {q:"They ______ not visit the bookshop. (visit)", a:["don’t visit", "didn’t visit", "wasn’t visit", "aren’t visit"], c:1},
+    {q:"I ______ a story last night. (write)", a:["write", "writes", "wrote", "writing"], c:2},
+    {q:"She ______ the book. (open)", a:["open", "opens", "opened", "opening"], c:2},
+    {q:"We ______ the library yesterday. (study)", a:["study", "studied", "studying", "studies"], c:1},
+    {q:"He ______ not understand the text. (understand)", a:["doesn’t understand", "didn’t understand", "wasn’t understand", "isn’t understand"], c:1},
+    {q:"They ______ a lot of books. (read)", a:["read", "reads", "reading", "will read"], c:0},
+    {q:"I ______ the book back to the library. (take)", a:["take", "takes", "took", "taking"], c:2},
+    {q:"She ______ not finish the book. (finish)", a:["doesn’t finish", "didn’t finish", "wasn’t finish", "isn’t finish"], c:1},
+    {q:"We ______ our homework. (do)", a:["do", "does", "did", "doing"], c:2},
+    {q:"He ______ a book review. (write)", a:["write", "writes", "wrote", "writing"], c:2},
+    {q:"They ______ not like reading. (like)", a:["don’t like", "didn’t like", "wasn’t like", "aren’t like"], c:1},
+    {q:"I ______ the book on the shelf. (put)", a:["puts", "putting", "put", "putted"], c:2},
+    {q:"She ______ late. (arrive)", a:["arrive", "arrives", "arrived", "arriving"], c:2},
+    {q:"We ______ a new book. (find)", a:["find", "finds", "found", "finding"], c:2},
+    {q:"He ______ not go to the library. (go)", a:["doesn’t go", "didn’t go", "wasn’t go", "isn’t go"], c:1},
+    {q:"They ______ quietly. (read)", a:["read", "reads", "reading", "will read"], c:0},
+    {q:"I ______ the story interesting. (find)", a:["find", "finds", "found", "finding"], c:2},
+    {q:"She ______ a book yesterday. (borrow)", a:["borrow", "borrows", "borrowed", "borrowing"], c:2},
+    {q:"We ______ not read comics. (read)", a:["don’t read", "didn’t read", "wasn’t read", "aren’t read"], c:1},
+    {q:"He ______ the book carefully. (choose)", a:["choose", "chooses", "chose", "choosing"], c:2},
+    {q:"They ______ the library early. (close)", a:["close", "closes", "closed", "closing"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 40) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Tam bir kitap kurdusun! 📚📖" : "Güzel deneme! Geçmiş zaman (Simple Past Tense) fiil çekimlerini biraz daha tekrar edebilirsin. 🤓";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

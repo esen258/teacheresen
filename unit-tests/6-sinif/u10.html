@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 10. Ünite Democracy - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #c0392b; /* Demokrasi ve bayrak vurgusu için kırmızı */
+            --secondary-color: #2980b9; /* Adalet ve güven için mavi */
+            --accent-color: #f1c40f; /* Parlak fikirler için sarı */
+            --bg-color: #fdfefe;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #922b21;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 10. Ünite - Democracy</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Everyone has a voice! 🗳️⚖️🤝</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Çöz</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟩 A. Words & Phrases about Democracy</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟨 B. Simple Past Tense (Past Actions)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟦 C. Giving Advice – should / shouldn’t</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">OYLARI SAY (SONUCU GÖR) ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Respect Rights, Protect Democracy! 🗳️✨</div>
+
+<script>
+const quizData = [
+    // 1-30 Vocabulary
+    {q:"People choose their leaders by ______.", a:["voting", "fighting", "shouting", "ordering"], c:0},
+    {q:"Democracy means people have the ______.", a:["power", "money", "homework", "punishment"], c:0},
+    {q:"A person who votes is a ______.", a:["voter", "leader", "judge", "mayor"], c:0},
+    {q:"Elections are important in a ______ country.", a:["democratic", "noisy", "crowded", "dangerous"], c:0},
+    {q:"The place where people vote is a ______.", a:["hospital", "voting booth", "library", "market"], c:1},
+    {q:"Children choose a class president by ______.", a:["voting", "forcing", "shouting", "fighting"], c:0},
+    {q:"Everyone has equal ______ in democracy.", a:["rights", "books", "money", "rules"], c:0},
+    {q:"Which one is related to democracy?", a:["Election", "Pollution", "Homework", "Weather"], c:0},
+    {q:"People express their ideas freely in ______.", a:["democracy", "silence", "danger", "prison"], c:0},
+    {q:"A leader should be ______.", a:["fair", "angry", "rude", "selfish"], c:0},
+    {q:"Rules help keep society ______.", a:["fair", "noisy", "dirty", "weak"], c:0},
+    {q:"Voting is a ______.", a:["right", "toy", "problem", "job"], c:0},
+    {q:"People show their opinions by ______.", a:["voting", "hiding", "sleeping", "running"], c:0},
+    {q:"Which one is a democratic value?", a:["Freedom", "Fear", "Violence", "Lies"], c:0},
+    {q:"Students elect a ______ in class.", a:["president", "driver", "singer", "cook"], c:0},
+    {q:"A fair election must be ______.", a:["secret", "noisy", "dirty", "dangerous"], c:0},
+    {q:"Democracy supports ______ of speech.", a:["freedom", "silence", "fear", "anger"], c:0},
+    {q:"Which one is NOT related to democracy?", a:["Rights", "Voting", "Election", "Pollution"], c:3},
+    {q:"People should respect others’ ______.", a:["opinions", "shoes", "bags", "books"], c:0},
+    {q:"Laws are made to protect people’s ______.", a:["rights", "games", "food", "exams"], c:0},
+    {q:"Leaders are chosen by the ______. ", a:["people", "animals", "machines", "robots"], c:0},
+    {q:"Democracy encourages ______ participation.", a:["public", "silent", "weak", "secret"], c:0},
+    {q:"A democratic country respects ______.", a:["human rights", "violence", "pollution", "fear"], c:0},
+    {q:"Students can share ideas in a ______ discussion.", a:["free", "angry", "noisy", "dangerous"], c:0},
+    {q:"Voting helps make ______ decisions.", a:["fair", "wrong", "careless", "weak"], c:0},
+    {q:"A fair leader listens to ______.", a:["people", "money", "noise", "anger"], c:0},
+    {q:"Democracy needs ______ rules.", a:["fair", "secret", "dangerous", "dirty"], c:0},
+    {q:"People choose representatives in ______.", a:["elections", "games", "exams", "lessons"], c:0},
+    {q:"Equal rights mean everyone is ______.", a:["equal", "different", "weak", "angry"], c:0},
+    {q:"Democracy helps keep peace in ______.", a:["society", "kitchen", "classroom", "playground"], c:0},
+
+    // 31-55 Simple Past
+    {q:"We ______ our class president last week. (elect)", a:["elect", "elected", "electing", "elects"], c:1},
+    {q:"She ______ in the school election. (vote)", a:["votes", "voted", "voting", "vote"], c:1},
+    {q:"They ______ their opinions freely. (express)", a:["express", "expressed", "expressing", "expresses"], c:1},
+    {q:"He ______ not join the election.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"We ______ a fair decision yesterday. (make)", a:["make", "makes", "made", "making"], c:2},
+    {q:"She ______ not vote last year.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"Students ______ the rules. (follow)", a:["follow", "followed", "following", "follows"], c:1},
+    {q:"They ______ the leader carefully. (choose)", a:["choose", "chose", "choosing", "chooses"], c:1},
+    {q:"He ______ his opinion. (share)", a:["share", "shares", "shared", "sharing"], c:2},
+    {q:"We ______ not agree with the idea.", a:["do not", "did not", "are not", "were not"], c:1},
+    {q:"She ______ the election rules. (learn)", a:["learns", "learned", "learning", "learn"], c:1},
+    {q:"Students ______ in the voting process. (participate)", a:["participate", "participated", "participating", "participates"], c:1},
+    {q:"He ______ not respect others’ ideas.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"We ______ a meeting yesterday. (have)", a:["have", "has", "had", "having"], c:2},
+    {q:"They ______ not break the rules.", a:["do not", "did not", "are not", "were not"], c:1},
+    {q:"She ______ her rights. (know)", a:["know", "knew", "knowing", "knows"], c:1},
+    {q:"Students ______ the result. (accept)", a:["accept", "accepted", "accepting", "accepts"], c:1},
+    {q:"He ______ not vote in the election.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"We ______ democracy at school. (learn)", a:["learn", "learned", "learning", "learns"], c:1},
+    {q:"They ______ not choose the leader.", a:["do not", "did not", "are not", "were not"], c:1},
+    {q:"______ you vote last year?", a:["Do", "Did", "Are", "Were"], c:1},
+    {q:"______ she join the election?", a:["Do", "Did", "Is", "Was"], c:1},
+    {q:"______ they respect the rules?", a:["Do", "Did", "Are", "Were"], c:1},
+    {q:"______ he share his ideas?", a:["Do", "Did", "Is", "Was"], c:1},
+    {q:"______ you choose the president?", a:["Do", "Did", "Are", "Were"], c:1},
+
+    // 56-70 Should / Shouldn't
+    {q:"People ______ vote in elections.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"Leaders ______ be fair.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"People ______ respect others’ opinions.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"Students ______ break the rules.", a:["should", "shouldn’t", "should to", "shouldn’t to"], c:1},
+    {q:"We ______ listen to different ideas.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"Leaders ______ be selfish.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:1},
+    {q:"People ______ express their ideas freely.", a:["should", "shouldn’t", "should to", "shouldn’t to"], c:0},
+    {q:"Students ______ vote honestly.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"People ______ use violence.", a:["should", "shouldn’t", "should to", "shouldn’t to"], c:1},
+    {q:"We ______ follow democratic rules.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"Leaders ______ listen to people.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"People ______ cheat in elections.", a:["should", "shouldn’t", "should to", "shouldn’t to"], c:1},
+    {q:"Students ______ share their ideas.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"We ______ protect human rights.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0},
+    {q:"Leaders ______ respect the law.", a:["should", "shouldn’t", "don’t", "doesn’t"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 30) containerId = 'p1-container';
+        else if (index < 55) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Tebrikler! Gerçek bir demokratik lidersin! 🗳️👑" : "İyi gidiyorsun! Geçmiş zaman (Simple Past) fiil çekimlerini biraz daha tekrar edebilirsin. ⚖️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

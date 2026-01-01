@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 4. Ünite Weather and Emotions - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db; /* Gökyüzü mavisi */
+            --secondary-color: #f1c40f; /* Güneş sarısı */
+            --accent-color: #9b59b6; /* Duygular için mor tonu */
+            --bg-color: #ecf0f1;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #2980b9);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1c5980;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 4. Ünite - Weather and Emotions</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>How is the weather today? ☀️⛈️🌈</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Weather Vocabulary & Describing Weather</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Emotions</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Seasons & Months</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">SONUÇLARI GÖR ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Have a sunny day! 🌻</div>
+
+<script>
+const quizData = [
+    // 1-25 Weather Vocabulary
+    {q:"It is raining heavily. The weather is ______.", a:["sunny", "rainy", "cloudy", "snowy"], c:1},
+    {q:"There are a lot of clouds in the sky.", a:["sunny", "cloudy", "windy", "snowy"], c:1},
+    {q:"The sun is shining. It is ______.", a:["rainy", "snowy", "sunny", "stormy"], c:2},
+    {q:"When it is very cold and white things fall from the sky, it is ______.", a:["rainy", "snowy", "cloudy", "sunny"], c:1},
+    {q:"The weather is cold and the wind is strong.", a:["foggy", "windy", "sunny", "hot"], c:1},
+    {q:"You can’t see clearly because of thick air.", a:["foggy", "sunny", "windy", "snowy"], c:0},
+    {q:"Thunder and lightning happen in ______ weather.", a:["sunny", "stormy", "foggy", "cloudy"], c:1},
+    {q:"Which one is NOT a weather condition?", a:["Rainy", "Windy", "Happy", "Snowy"], c:2},
+    {q:"It is very hot and bright today.", a:["sunny", "cloudy", "foggy", "snowy"], c:0},
+    {q:"People use umbrellas when it is ______.", a:["sunny", "rainy", "windy", "cloudy"], c:1},
+    {q:"Which word describes cold weather?", a:["Hot", "Warm", "Cool", "Sunny"], c:2},
+    {q:"In winter, the weather is usually ______.", a:["hot", "cold", "warm", "sunny"], c:1},
+    {q:"In summer, the weather is generally ______.", a:["cold", "hot", "snowy", "foggy"], c:1},
+    {q:"The opposite of “hot” is ______.", a:["warm", "sunny", "cold", "dry"], c:2},
+    {q:"The opposite of “cold” is ______.", a:["snowy", "hot", "rainy", "foggy"], c:1},
+    {q:"It is not cold and not hot. It is ______.", a:["warm", "stormy", "snowy", "foggy"], c:0},
+    {q:"Which weather is good for flying a kite?", a:["Windy", "Rainy", "Foggy", "Snowy"], c:0},
+    {q:"Which one needs sunglasses?", a:["Snowy", "Sunny", "Rainy", "Foggy"], c:1},
+    {q:"The ground is wet because it is ______.", a:["sunny", "rainy", "windy", "cloudy"], c:1},
+    {q:"Lightning and thunder are signs of ______ weather.", a:["sunny", "stormy", "foggy", "snowy"], c:1},
+    {q:"The weather is cold and rainy. It is ______.", a:["dry", "wet", "hot", "warm"], c:1},
+    {q:"You can’t see the road clearly. It is ______. ", a:["foggy", "sunny", "hot", "dry"], c:0},
+    {q:"Which one describes winter?", a:["Hot and sunny", "Cold and snowy", "Warm and rainy", "Hot and dry"], c:1},
+    {q:"Which one describes summer?", a:["Cold and snowy", "Foggy and cold", "Hot and sunny", "Rainy and cold"], c:2},
+    {q:"Which one is correct?", a:["Snowy weather is hot", "Rainy weather is dry", "Sunny weather is bright", "Foggy weather is loud"], c:2},
+
+    // 26-45 Emotions
+    {q:"I feel happy today. I am ______.", a:["sad", "angry", "happy", "scared"], c:2},
+    {q:"She is crying. She feels ______.", a:["excited", "sad", "happy", "bored"], c:1},
+    {q:"He can’t wait for his birthday. He is ______.", a:["bored", "excited", "tired", "angry"], c:1},
+    {q:"I am afraid of spiders. I feel ______.", a:["happy", "scared", "bored", "excited"], c:1},
+    {q:"He doesn’t want to do anything. He is ______.", a:["bored", "excited", "angry", "happy"], c:0},
+    {q:"She is shouting. She looks ______.", a:["sad", "angry", "happy", "calm"], c:1},
+    {q:"I worked all day. I am very ______.", a:["tired", "excited", "happy", "angry"], c:0},
+    {q:"Which emotion is positive?", a:["Angry", "Sad", "Happy", "Scared"], c:2},
+    {q:"The opposite of “happy” is ______.", a:["excited", "sad", "bored", "tired"], c:1},
+    {q:"The opposite of “angry” is ______.", a:["calm", "scared", "bored", "tired"], c:0},
+    {q:"Which emotion do you feel before an exam?", a:["Hungry", "Nervous", "Sunny", "Cold"], c:1},
+    {q:"I feel ______ when it rains all day.", a:["excited", "bored", "happy", "proud"], c:1},
+    {q:"She is smiling. She feels ______.", a:["sad", "angry", "happy", "scared"], c:2},
+    {q:"He lost his wallet. He feels ______.", a:["happy", "sad", "excited", "calm"], c:1},
+    {q:"Which one is an emotion?", a:["Rainy", "Cold", "Excited", "Windy"], c:2},
+    {q:"I feel ______ on my birthday.", a:["bored", "excited", "sad", "tired"], c:1},
+    {q:"She feels ______ when she hears bad news.", a:["happy", "sad", "excited", "calm"], c:1},
+    {q:"He is very ______ because he didn’t sleep well.", a:["tired", "happy", "excited", "angry"], c:0},
+    {q:"Which emotion means “not angry”?", a:["calm", "scared", "bored", "tired"], c:0},
+    {q:"Which one is NOT an emotion?", a:["Angry", "Happy", "Rainy", "Sad"], c:2},
+
+    // 46-70 Seasons
+    {q:"Which season comes after spring?", a:["Winter", "Summer", "Autumn", "Fall"], c:1},
+    {q:"Which season is cold and snowy?", a:["Summer", "Spring", "Winter", "Autumn"], c:2},
+    {q:"Flowers grow in ______.", a:["winter", "autumn", "spring", "summer"], c:2},
+    {q:"Leaves fall in ______.", a:["spring", "summer", "autumn", "winter"], c:2},
+    {q:"Which season is hot?", a:["Winter", "Spring", "Summer", "Autumn"], c:2},
+    {q:"January is in ______.", a:["spring", "summer", "autumn", "winter"], c:3},
+    {q:"July is in ______.", a:["winter", "spring", "summer", "autumn"], c:2},
+    {q:"September is in ______.", a:["winter", "autumn", "spring", "summer"], c:1},
+    {q:"March is in ______.", a:["spring", "summer", "autumn", "winter"], c:0},
+    {q:"December comes after ______.", a:["October", "November", "January", "February"], c:1},
+    {q:"Which month is the first month of the year?", a:["December", "February", "January", "March"], c:2},
+    {q:"Which month is the last month of the year?", a:["November", "October", "December", "January"], c:2},
+    {q:"Summer months are ______.", a:["June – July – August", "March – April – May", "September – October – November", "December – January – February"], c:0},
+    {q:"Spring months are ______.", a:["June – July – August", "March – April – May", "September – October – November", "December – January – February"], c:1},
+    {q:"Winter months are ______.", a:["June – July – August", "March – April – May", "September – October – November", "December – January – February"], c:3},
+    {q:"Which month comes after April?", a:["March", "May", "June", "July"], c:1},
+    {q:"Which month comes before October?", a:["August", "September", "November", "December"], c:1},
+    {q:"Which season is warm and rainy?", a:["Winter", "Spring", "Summer", "Autumn"], c:1},
+    {q:"Which season is cool and windy?", a:["Spring", "Summer", "Autumn", "Winter"], c:2},
+    {q:"In which season do students have summer holiday?", a:["Spring", "Autumn", "Winter", "Summer"], c:3},
+    {q:"Which month has snow in many countries?", a:["July", "January", "June", "August"], c:1},
+    {q:"Which month is between May and July?", a:["April", "June", "August", "March"], c:1},
+    {q:"Which one is NOT a season?", a:["Spring", "Winter", "Rainy", "Summer"], c:2},
+    {q:"How many seasons are there?", a:["Two", "Three", "Four", "Five"], c:2},
+    {q:"Which sentence is correct?", a:["July is in winter", "January is in summer", "April is in spring", "December is in autumn"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Mevsimleri ve duyguları çok iyi biliyorsun! 🌈😊" : "Harika bir deneme! Hava durumlarını ve aylar eşleşmelerini biraz daha tekrar edebilirsin. ☁️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

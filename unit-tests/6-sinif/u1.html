@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 1. Ünite - Life - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1c5980;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #95a5a6; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 1. Ünite - Life (Yaşam)</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Teacher Esen ile Hayatı Keşfediyoruz 🌟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🔹 1. Daily Activities & Simple Present</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">⏰ 2. Telling the Time</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">📅 3. Reading Dates</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">CEVAPLARI KONTROL ET ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | İyi Çalışmalar Dilerim! 🎓</div>
+
+<script>
+const quizData = [
+    // 1-25 Daily Activities
+    {q:"I ____ up at 7 a.m.", a:["get", "gets", "getting", "got"], c:0},
+    {q:"She ____ breakfast every morning.", a:["have", "has", "having", "had"], c:1},
+    {q:"We ____ to school by bus.", a:["go", "goes", "going", "went"], c:0},
+    {q:"My father ____ TV in the evening.", a:["watch", "watches", "watching", "watched"], c:1},
+    {q:"They ____ their homework after school.", a:["do", "does", "doing", "did"], c:0},
+    {q:"He ____ his teeth twice a day.", a:["brush", "brushes", "brushing", "brushed"], c:1},
+    {q:"I ____ a shower every morning.", a:["take", "takes", "taking", "took"], c:0},
+    {q:"She ____ to music in her free time.", a:["listen", "listens", "listening", "listened"], c:1},
+    {q:"We ____ dinner at 7 p.m.", a:["eat", "eats", "eating", "ate"], c:0},
+    {q:"My brother ____ football after school.", a:["play", "plays", "playing", "played"], c:1},
+    {q:"I ____ my bed every morning.", a:["make", "makes", "making", "made"], c:0},
+    {q:"She ____ books before sleeping.", a:["read", "reads", "reading", "readed"], c:1},
+    {q:"We ____ English on Mondays.", a:["study", "studies", "studying", "studied"], c:0},
+    {q:"He ____ to bed at 10 p.m.", a:["go", "goes", "going", "went"], c:1},
+    {q:"They ____ lunch at school.", a:["have", "has", "having", "had"], c:0},
+    {q:"My mother ____ early on weekdays.", a:["wake up", "wakes up", "waking up", "woke up"], c:1},
+    {q:"I ____ my friends after school.", a:["meet", "meets", "meeting", "met"], c:0},
+    {q:"She ____ her room on Saturdays.", a:["clean", "cleans", "cleaning", "cleaned"], c:1},
+    {q:"We ____ cartoons in the afternoon.", a:["watch", "watches", "watching", "watched"], c:0},
+    {q:"My sister ____ to school on foot.", a:["go", "goes", "going", "went"], c:1},
+    {q:"I ____ milk every morning.", a:["drink", "drinks", "drinking", "drank"], c:0},
+    {q:"He ____ his bag before school.", a:["prepare", "prepares", "preparing", "prepared"], c:1},
+    {q:"They ____ TV in the evening.", a:["watch", "watches", "watching", "watched"], c:0},
+    {q:"She ____ the bus at 8 a.m.", a:["catch", "catches", "catching", "caught"], c:1},
+    {q:"We ____ to music at night.", a:["listen", "listens", "listening", "listened"], c:0},
+
+    // 26-45 Telling the Time
+    {q:"07:00 → It is _____.", a:["seven o’clock", "half past seven", "quarter to seven", "quarter past seven"], c:0},
+    {q:"08:30 → It is _____.", a:["eight o’clock", "half past eight", "quarter past eight", "quarter to eight"], c:1},
+    {q:"09:15 → It is _____.", a:["quarter to nine", "half past nine", "quarter past nine", "nine o’clock"], c:2},
+    {q:"10:45 → It is _____.", a:["quarter past ten", "half past ten", "quarter to eleven", "ten o’clock"], c:2},
+    {q:"12:00 → It is _____.", a:["noon", "midnight", "half past twelve", "quarter past twelve"], c:0},
+    {q:"01:30 → It is _____.", a:["one o’clock", "half past one", "quarter past one", "quarter to one"], c:1},
+    {q:"03:15 → It is _____.", a:["quarter to three", "half past three", "quarter past three", "three o’clock"], c:2},
+    {q:"05:45 → It is _____.", a:["quarter past five", "half past five", "quarter to six", "five o’clock"], c:2},
+    {q:"06:00 → It is _____.", a:["half past six", "six o’clock", "quarter past six", "quarter to six"], c:1},
+    {q:"04:30 → It is _____.", a:["four o’clock", "half past four", "quarter past four", "quarter to four"], c:1},
+    {q:"11:15 → It is _____.", a:["quarter to eleven", "half past eleven", "quarter past eleven", "eleven o’clock"], c:2},
+    {q:"02:45 → It is _____.", a:["quarter past two", "half past two", "quarter to three", "two o’clock"], c:2},
+    {q:"09:00 → It is _____.", a:["half past nine", "nine o’clock", "quarter past nine", "quarter to nine"], c:1},
+    {q:"07:45 → It is _____.", a:["quarter past seven", "half past seven", "quarter to eight", "seven o’clock"], c:2},
+    {q:"10:30 → It is _____.", a:["ten o’clock", "quarter to ten", "half past ten", "quarter past ten"], c:2},
+    {q:"01:00 → It is _____.", a:["half past one", "quarter to one", "one o’clock", "quarter past one"], c:2},
+    {q:"12:30 → It is _____.", a:["noon", "half past twelve", "midnight", "quarter to one"], c:1},
+    {q:"08:45 → It is _____.", a:["quarter past eight", "half past eight", "quarter to nine", "eight o’clock"], c:2},
+    {q:"06:15 → It is _____.", a:["quarter past six", "half past six", "quarter to six", "six o’clock"], c:0},
+    {q:"03:00 → It is _____.", a:["half past three", "quarter past three", "three o’clock", "quarter to three"], c:2},
+
+    // 46-60 Reading Dates
+    {q:"10/01/2024", a:["the tenth of january twenty twenty four", "the ten of january twenty four", "the tenth january twenty twenty four", "the ten of january twenty twenty four"], c:0},
+    {q:"23/04/1920", a:["the twenty three of april nineteen twenty", "the twenty third of april nineteen twenty", "the twenty third april nineteen twenty", "the twenty three april nineteen twenty"], c:1},
+    {q:"29/10/1923", a:["the twenty ninth of october nineteen twenty three", "the twenty nine of october nineteen twenty three", "the twenty ninth october nineteen twenty three", "the twenty nine october nineteen twenty three"], c:0},
+    {q:"01/01/2025", a:["the first of january twenty twenty five", "the one of january twenty twenty five", "the first january twenty twenty five", "the one january twenty five"], c:0},
+    {q:"15/06/2018", a:["the fifteen of june twenty eighteen", "the fifteenth june twenty eighteen", "the fifteenth of june twenty eighteen", "the fifteen june twenty eighteen"], c:2},
+    {q:"19/05/1919", a:["the nineteenth of may nineteen nineteen", "the nineteen of may nineteen nineteen", "the nineteenth may nineteen nineteen", "the nineteen may nineteen nineteen"], c:0},
+    {q:"30/08/1922", a:["the thirtieth of august nineteen twenty two", "the thirty of august nineteen twenty two", "the thirtieth august nineteen twenty two", "the thirty august nineteen twenty two"], c:0},
+    {q:"07/03/2020", a:["the seven of march twenty twenty", "the seventh march twenty twenty", "the seventh of march twenty twenty", "the seven march twenty twenty"], c:2},
+    {q:"25/12/2023", a:["the twenty five of december twenty twenty three", "the twenty fifth december twenty twenty three", "the twenty fifth of december twenty twenty three", "the twenty five december twenty three"], c:2},
+    {q:"11/11/2022", a:["the eleven of november twenty twenty two", "the eleventh november twenty twenty two", "the eleventh of november twenty twenty two", "the eleven november twenty two"], c:2},
+    {q:"02/02/2021", a:["the second of february twenty twenty one", "the two of february twenty twenty one", "the second february twenty twenty one", "the two february twenty one"], c:0},
+    {q:"18/07/2019", a:["the eighteen of july twenty nineteen", "the eighteenth july twenty nineteen", "the eighteenth of july twenty nineteen", "the eighteen july twenty nineteen"], c:2},
+    {q:"04/10/2020", a:["the four of october twenty twenty", "the fourth october twenty twenty", "the fourth of october twenty twenty", "the four october twenty"], c:2},
+    {q:"21/09/2017", a:["the twenty one of september twenty seventeen", "the twenty first september twenty seventeen", "the twenty first of september twenty seventeen", "the twenty one september twenty seventeen"], c:2},
+    {q:"31/12/2024", a:["the thirty one of december twenty twenty four", "the thirty first december twenty twenty four", "the thirty first of december twenty twenty four", "the thirty one december twenty four"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 60`;
+    document.getElementById('feedback-text').innerText = score > 50 ? "Harika! Yaşam rutinlerini ve zamanı çok iyi biliyorsun! ☀️⏰" : "İyi deneme! Saatleri ve tarih okunuşlarını bir kez daha gözden geçirebilirsin. 📅";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

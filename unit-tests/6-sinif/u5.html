@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 5. Ünite At The Fair - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #9b59b6; /* Lunapark büyüsü için mor tonu */
+            --secondary-color: #e74c3c; /* Heyecan için kırmızı */
+            --accent-color: #f1c40f; /* Işıklar için sarı */
+            --bg-color: #f4f1f7;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #8e44ad);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #6c3483;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 5. Ünite - At The Fair</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Welcome to the Funfair! 🎡🎢🍭</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Funfair Rides & Feelings</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Stating Personal Opinions</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Comparatives</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ TAMAMLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Have fun at the fair! 🎠✨</div>
+
+<script>
+const quizData = [
+    // 1-30 Rides & Feelings
+    {q:"Which one is a funfair ride?", a:["Library", "Ferris wheel", "Classroom", "Hospital"], c:1},
+    {q:"The Ferris wheel is very _____.", a:["fast", "high", "boring", "angry"], c:1},
+    {q:"I feel scared on the roller coaster. Scared means _____.", a:["happy", "afraid", "excited", "bored"], c:1},
+    {q:"The bumper cars are _____. They are fun.", a:["boring", "exciting", "scary", "sad"], c:1},
+    {q:"Which ride goes very fast?", a:["Ferris wheel", "Carousel", "Roller coaster", "Swing"], c:2},
+    {q:"Children ride the ____ and listen to music.", a:["roller coaster", "ghost train", "carousel", "Ferris wheel"], c:2},
+    {q:"I don’t like scary rides. I feel _____.", a:["excited", "bored", "scared", "happy"], c:2},
+    {q:"The ghost train makes people feel _____.", a:["hungry", "scared", "calm", "tired"], c:1},
+    {q:"Which feeling is positive?", a:["Scared", "Bored", "Excited", "Angry"], c:2},
+    {q:"The ride is slow and relaxing. It is _____.", a:["exciting", "boring", "calm", "scary"], c:2},
+    {q:"The roller coaster is very _____. I scream a lot.", a:["boring", "scary", "calm", "slow"], c:1},
+    {q:"Which one is NOT a feeling?", a:["Excited", "Scared", "Roller coaster", "Bored"], c:2},
+    {q:"I feel ____ when I ride fast rides.", a:["exciting", "excited", "excite", "excitement"], c:1},
+    {q:"The funfair is very _____. I like it.", a:["boring", "fun", "sad", "angry"], c:1},
+    {q:"Children feel ____ on fun rides.", a:["angry", "excited", "bored", "tired"], c:1},
+    {q:"The Ferris wheel is good for people who like ____ rides.", a:["scary", "fast", "calm", "noisy"], c:2},
+    {q:"I don’t enjoy the ghost train. I think it is _____.", a:["fun", "exciting", "boring", "scary"], c:3},
+    {q:"Which ride turns around and around?", a:["Carousel", "Roller coaster", "Ghost train", "Bumper cars"], c:0},
+    {q:"I laugh a lot on bumper cars. They are _____.", a:["boring", "fun", "scary", "sad"], c:1},
+    {q:"The ride is too fast. I feel _____.", a:["scared", "calm", "bored", "sleepy"], c:0},
+    {q:"Which one is a feeling?", a:["Ride", "Fair", "Excited", "Ticket"], c:2},
+    {q:"The roller coaster is not for me. I feel _____. ", a:["excited", "afraid", "calm", "happy"], c:1},
+    {q:"The funfair is noisy and crowded. It is _____.", a:["quiet", "boring", "lively", "calm"], c:2},
+    {q:"Which ride is usually slow?", a:["Roller coaster", "Ferris wheel", "Bumper cars", "Ghost train"], c:1},
+    {q:"I like fun rides. They make me feel _____.", a:["bored", "excited", "sad", "angry"], c:1},
+    {q:"The ghost train is dark and _____.", a:["funny", "scary", "calm", "boring"], c:1},
+    {q:"I feel happy and energetic. I feel _____.", a:["bored", "excited", "tired", "scared"], c:1},
+    {q:"Which one is NOT a funfair ride?", a:["Carousel", "Ferris wheel", "Roller coaster", "Elevator"], c:3},
+    {q:"The bumper cars are safe and _____.", a:["fun", "dangerous", "boring", "scary"], c:0},
+    {q:"I don’t like slow rides. They are _____.", a:["exciting", "boring", "scary", "fun"], c:1},
+
+    // 31-45 Personal Opinions
+    {q:"“I think the roller coaster is exciting.” This sentence shows a _____.", a:["rule", "opinion", "command", "question"], c:1},
+    {q:"Which sentence shows an opinion?", a:["The Ferris wheel is tall.", "The fair opens at 6 p.m.", "I think bumper cars are fun.", "There are many rides."], c:2},
+    {q:"Which phrase is used to give an opinion?", a:["There is", "I think", "It has", "There are"], c:1},
+    {q:"“In my opinion, the ghost train is scary.” This sentence is about _____.", a:["fact", "opinion", "rule", "time"], c:1},
+    {q:"Which one means “kişisel görüş”?", a:["Fact", "Opinion", "Rule", "Place"], c:1},
+    {q:"“I like the Ferris wheel.” This sentence shows _____.", a:["opinion", "order", "warning", "rule"], c:0},
+    {q:"Which one is a fact?", a:["I think the fair is fun.", "The fair is boring.", "There are many rides at the fair.", "I don’t like scary rides."], c:2},
+    {q:"“I don’t like scary rides.” This is a _____.", a:["fact", "opinion", "rule", "command"], c:1},
+    {q:"Which phrase is NOT used for opinions?", a:["I think", "In my opinion", "I like", "There are"], c:3},
+    {q:"“I prefer calm rides.” This sentence shows _____.", a:["feeling", "opinion", "place", "time"], c:1},
+    {q:"Which sentence is an opinion?", a:["The fair is open today.", "The carousel is slow.", "I think the fair is exciting.", "The ticket is five liras."], c:2},
+    {q:"“I enjoy bumper cars.” This sentence tells _____.", a:["a rule", "an opinion", "a fact", "a command"], c:1},
+    {q:"Which one is an opinion word?", a:["Think", "Ride", "Ticket", "Fast"], c:0},
+    {q:"“I don’t enjoy the ghost train.” This is a _____.", a:["fact", "opinion", "rule", "warning"], c:1},
+    {q:"Which sentence gives personal opinion?", a:["The Ferris wheel is 40 meters high.", "The fair opens at night.", "I think the Ferris wheel is relaxing.", "There are many people."], c:2},
+
+    // 46-70 Comparatives
+    {q:"The roller coaster is ____ than the Ferris wheel.", a:["slow", "slower", "fast", "faster"], c:3},
+    {q:"The Ferris wheel is ____ than bumper cars.", a:["higher", "high", "highest", "more high"], c:0},
+    {q:"Bumper cars are ____ than the ghost train. (fun)", a:["fun", "funnier", "more fun", "most fun"], c:2},
+    {q:"The ghost train is ____ than the carousel. (scary)", a:["scary", "scarier", "more scary", "scariest"], c:1},
+    {q:"Roller coasters are ____ rides at the fair. (exciting)", a:["exciting", "more exciting", "most exciting", "excited"], c:2},
+    {q:"The carousel is ____ than the roller coaster. (slow)", a:["slow", "slower", "slowest", "more slow"], c:1},
+    {q:"Bumper cars are ____ than Ferris wheel. (noisy)", a:["noisy", "noisier", "more noisy", "noisiest"], c:1},
+    {q:"The Ferris wheel is ____ ride at the fair. (calm)", a:["calm", "calmer", "calmest", "more calm"], c:2},
+    {q:"Roller coasters are ____ than carousels. (fast)", a:["fast", "faster", "fastest", "more fast"], c:1},
+    {q:"Ghost train is ____ than bumper cars. (dark)", a:["dark", "darker", "darkest", "more dark"], c:1},
+    {q:"Bumper cars are ____ than ghost train. (safe)", a:["safe", "safer", "safest", "more safe"], c:1},
+    {q:"The fair is ____ at night than in the morning. (crowded)", a:["crowded", "more crowded", "crowdedest", "crowdier"], c:1},
+    {q:"Roller coaster is ____ ride for me. (scary)", a:["scary", "scarier", "scariest", "more scary"], c:2},
+    {q:"The carousel is ____ than bumper cars. (quiet)", a:["quiet", "quieter", "quietest", "more quiet"], c:1},
+    {q:"Ferris wheel is ____ than roller coaster. (relaxing)", a:["relaxing", "more relaxing", "relaxinger", "most relaxing"], c:1},
+    {q:"Bumper cars are ____ than Ferris wheel. (funny)", a:["funny", "funnier", "funniest", "more funny"], c:1},
+    {q:"The ghost train is ____ ride at the fair. (dark)", a:["dark", "darker", "darkest", "more dark"], c:2},
+    {q:"Roller coasters are ____ than Ferris wheel. (dangerous)", a:["dangerous", "dangerouser", "more dangerous", "most dangerous"], c:2},
+    {q:"Carousel is ____ ride for small children. (good)", a:["good", "better", "best", "more good"], c:2},
+    {q:"Bumper cars are ____ than ghost train. (popular)", a:["popular", "popularer", "more popular", "most popular"], c:2},
+    {q:"Ferris wheel is ____ ride at the fair. (high)", a:["high", "higher", "highest", "more high"], c:2},
+    {q:"Roller coaster is ____ than carousel. (exciting)", a:["exciting", "more exciting", "excitinger", "most exciting"], c:1},
+    {q:"Ghost train is ____ than Ferris wheel. (scary)", a:["scary", "scarier", "scariest", "more scary"], c:1},
+    {q:"Bumper cars are ____ rides for children. (safe)", a:["safe", "safer", "safest", "more safe"], c:2},
+    {q:"The funfair is ____ place than the park. (fun)", a:["fun", "funnier", "more fun", "funniest"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 30) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Muhteşem! Lunaparkın kralı/kraliçesi sensin! 🎢" : "Harika deneme! Comparative (karşılaştırma) kurallarına biraz daha göz atabilirsin. 🎡";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

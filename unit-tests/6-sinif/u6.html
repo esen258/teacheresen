@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 6. Ünite Occupations - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d35400; /* Meslekler ve çalışma hayatı için tuğla/toprak tonu */
+            --secondary-color: #e67e22;
+            --accent-color: #2c3e50; /* Ciddiyet ve profesyonellik için lacivert/gri */
+            --bg-color: #fdfaf6;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f3f5; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #a04000;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>6. Sınıf 6. Ünite - Occupations</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>What do you want to be in the future? 🧑‍⚕️🧑‍🏫🧑‍🔧</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Occupations Vocabulary</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟧 B. Asking Occupations</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. can / can’t</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🟪 D. Telling the Date</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🟫 E. Simple Past Tense – to be</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Choose your dream job! 🌟</div>
+
+<script>
+const quizData = [
+    // 1-20 Vocabulary
+    {q:"A person who teaches students is a ____.", a:["doctor", "teacher", "farmer", "driver"], c:1},
+    {q:"A doctor works in a ____.", a:["school", "hospital", "farm", "shop"], c:1},
+    {q:"A person who grows vegetables is a ____.", a:["cook", "farmer", "dentist", "pilot"], c:1},
+    {q:"A pilot works on a ____.", a:["bus", "ship", "plane", "train"], c:2},
+    {q:"A person who fixes cars is a ____.", a:["mechanic", "teacher", "waiter", "nurse"], c:0},
+    {q:"A nurse works with a ____.", a:["teacher", "doctor", "pilot", "driver"], c:1},
+    {q:"A person who cooks food is a ____.", a:["cook", "baker", "waiter", "farmer"], c:0},
+    {q:"A dentist looks after your ____.", a:["eyes", "teeth", "ears", "hair"], c:1},
+    {q:"A firefighter puts out ____.", a:["water", "fires", "cars", "food"], c:1},
+    {q:"A police officer keeps people ____.", a:["hungry", "safe", "busy", "tired"], c:1},
+    {q:"A waiter works in a ____.", a:["school", "restaurant", "hospital", "airport"], c:1},
+    {q:"A baker makes ____.", a:["clothes", "bread", "cars", "books"], c:1},
+    {q:"A driver drives a ____.", a:["plane", "car", "ship", "bike"], c:1},
+    {q:"A hairdresser cuts ____.", a:["clothes", "hair", "bread", "trees"], c:1},
+    {q:"A vet works with ____.", a:["animals", "children", "cars", "houses"], c:0},
+    {q:"A tailor makes ____.", a:["food", "clothes", "shoes", "bread"], c:1},
+    {q:"A shop assistant works in a ____.", a:["shop", "hospital", "school", "farm"], c:0},
+    {q:"A farmer works on a ____.", a:["ship", "farm", "street", "airport"], c:1},
+    {q:"A singer sings ____.", a:["songs", "food", "cars", "books"], c:0},
+    {q:"Which one is NOT an occupation?", a:["teacher", "doctor", "student", "farmer"], c:2},
+
+    // 21-30 Asking Occupations
+    {q:"“What is your job?” means ____.", a:["kaç yaşındasın", "mesleğin ne", "nerelisin", "adın ne"], c:1},
+    {q:"“What do you do?” is used to ask about ____.", a:["age", "job", "hobby", "place"], c:1},
+    {q:"“I am a nurse.” This sentence answers ____.", a:["Where do you work?", "How old are you?", "What do you do?", "Can you swim?"], c:2},
+    {q:"Which question is correct?", a:["What your job is?", "What do you job?", "What is your job?", "What job you are?"], c:2},
+    {q:"“He is a teacher.” This sentence tells his ____.", a:["age", "job", "hobby", "country"], c:1},
+    {q:"“My father is a driver.” This sentence is about ____.", a:["job", "place", "time", "feeling"], c:0},
+    {q:"Which answer fits the question “What do you do?”", a:["I am fine.", "I am a doctor.", "I am twelve.", "I am here."], c:1},
+    {q:"“She works in a hospital.” She is probably a ____.", a:["teacher", "nurse", "farmer", "baker"], c:1},
+    {q:"“Where do you work?” asks about ____.", a:["job", "place", "time", "age"], c:1},
+    {q:"Which one is a job question?", a:["How are you?", "What is your job?", "How old are you?", "Where are you from?"], c:1},
+
+    // 31-45 Can / Can't
+    {q:"A bird ____ fly.", a:["can", "can’t", "is", "was"], c:0},
+    {q:"A baby ____ drive a car.", a:["can", "can’t", "is", "are"], c:1},
+    {q:"A teacher ____ teach students.", a:["can", "can’t", "was", "were"], c:0},
+    {q:"I ____ swim very well.", a:["can", "can’t", "am", "were"], c:0},
+    {q:"A doctor ____ help sick people.", a:["can", "can’t", "was", "were"], c:0},
+    {q:"Fish ____ live on land.", a:["can", "can’t", "is", "are"], c:1},
+    {q:"We ____ speak English in class.", a:["can", "can’t", "was", "were"], c:0},
+    {q:"He is ill. He ____ go to school.", a:["can", "can’t", "is", "was"], c:1},
+    {q:"A pilot ____ fly a plane.", a:["can", "can’t", "was", "were"], c:0},
+    {q:"I am very tired. I ____ run fast.", a:["can", "can’t", "am", "was"], c:1},
+    {q:"Which sentence is correct?", a:["I can’t to swim.", "I can swim.", "I can swimming.", "I can swims."], c:1},
+    {q:"Which one shows ability?", a:["I am a student.", "I can draw pictures.", "I was at home.", "I were happy."], c:1},
+    {q:"She ____ cook very well.", a:["can", "can’t", "was", "were"], c:0},
+    {q:"Birds ____ swim but they can fly.", a:["can", "can’t", "are", "were"], c:1},
+    {q:"Which one is negative?", a:["I can sing.", "I can’t sing.", "I can sings.", "I singing."], c:1},
+
+    // 46-55 Dates
+    {q:"01/01/2026", a:["the one january twenty six", "the first of january twenty twentysix", "first january twenty twentysix", "the first january twentysix"], c:1},
+    {q:"23/04/2023", a:["the twenty three of april twenty twentythree", "the twenty third april twenty twentythree", "the twenty third of april twenty twentythree", "twenty third of april"], c:2},
+    {q:"29/10/1923", a:["the twenty ninth of october nineteen twentythree", "the twenty nine of october nineteen twentythree", "the twenty ninth october nineteen twentythree", "the twenty nine october nineteen twentythree"], c:0},
+    {q:"15/06/2024", a:["the fifteen of june twenty twentyfour", "the fifteenth june twenty twentyfour", "the fifteenth of june twenty twentyfour", "fifteen june"], c:2},
+    {q:"10/11/2022", a:["the ten of november twenty twentytwo", "the tenth of november twenty twentytwo", "tenth november", "the tenth november"], c:1},
+    {q:"07/03/2025", a:["the seven of march twenty twentyfive", "the seventh of march twenty twentyfive", "seventh march", "the seven march"], c:1},
+    {q:"25/12/2024", a:["the twenty five of december twenty twentyfour", "the twenty fifth december twenty twentyfour", "the twenty fifth of december twenty twentyfour", "twenty fifth december"], c:2},
+    {q:"02/02/2021", a:["the two of february twenty twentyone", "the second february twenty twentyone", "the second of february twenty twentyone", "second february"], c:2},
+    {q:"18/07/2019", a:["the eighteen of july twenty nineteen", "the eighteenth of july twenty nineteen", "eighteenth july", "the eighteen july"], c:1},
+    {q:"31/12/2023", a:["the thirty one of december twenty twentythree", "the thirty first december twenty twentythree", "the thirty first of december twenty twentythree", "thirty first december"], c:2},
+
+    // 56-70 Was / Were
+    {q:"I ____ at school yesterday.", a:["am", "was", "were", "is"], c:1},
+    {q:"She ____ happy last night.", a:["is", "was", "were", "are"], c:1},
+    {q:"We ____ at home yesterday.", a:["was", "were", "are", "is"], c:1},
+    {q:"They ____ tired after work.", a:["was", "were", "is", "am"], c:1},
+    {q:"He ____ a student last year.", a:["is", "was", "were", "are"], c:1},
+    {q:"I ____ not late yesterday.", a:["am", "was", "were", "is"], c:1},
+    {q:"She ____ not at the fair yesterday.", a:["is", "was", "were", "are"], c:1},
+    {q:"We ____ not ready last night.", a:["was", "were", "are", "is"], c:1},
+    {q:"They ____ at work yesterday.", a:["is", "was", "were", "am"], c:2},
+    {q:"He ____ not a doctor before.", a:["is", "was", "were", "are"], c:1},
+    {q:"Which one is correct?", a:["I were happy.", "I was happy.", "I am happy yesterday.", "I were happy yesterday."], c:1},
+    {q:"Which one is correct?", a:["They was late.", "They were late.", "They are late yesterday.", "They were late now."], c:1},
+    {q:"“She was tired.” This sentence is in ____ tense.", a:["present", "past", "future", "continuous"], c:1},
+    {q:"Which one is negative?", a:["He was at home.", "He were at home.", "He was not at home.", "He is at home."], c:2},
+    {q:"Which sentence is correct?", a:["We was here yesterday.", "We were here yesterday.", "We are here yesterday.", "We were here tomorrow."], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 45) containerId = 'p3-container';
+        else if (index < 55) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Tebrikler! Geleceğin profesyoneli sensin! 🧑‍🎓" : "Güzel çalışma! Özellikle tarihlerin yazılışı ve 'was/were' kullanımını tekrar etmelisin. 📚";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
