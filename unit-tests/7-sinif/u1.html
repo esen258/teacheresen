@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 1. Ünite Appearance and Personality - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Karakter ve dış görünüş için sıcak bir turuncu */
+            --secondary-color: #2980b9; /* Karşılaştırmalar için güven verici mavi */
+            --accent-color: #27ae60; /* Başarı için yeşil */
+            --bg-color: #fdf2e9;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; color: #2c3e50; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1e8449;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+        .category-tag { font-size: 0.8em; color: #95a5a6; margin-bottom: 5px; display: block; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 1. Ünite - Appearance and Personality</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Describe yourself and compare everything! 👤✨📊</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Soruları Karıştır ve Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div id="dynamic-questions"></div>
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Appearance & Personality Unit 👤✨</div>
+
+<script>
+const quizData = [
+    // 1-25 Appearance
+    {q:"A person with short hair is ______.", a:["tall", "short-haired", "slim", "old"], c:1, cat:"Appearance"},
+    {q:"My brother is very ______. He is 1.90 cm.", a:["short", "fat", "tall", "young"], c:2, cat:"Appearance"},
+    {q:"Someone who is not fat is ______.", a:["heavy", "slim", "old", "ugly"], c:1, cat:"Appearance"},
+    {q:"She has ______ hair. It is black.", a:["blonde", "curly", "dark", "fair"], c:2, cat:"Appearance"},
+    {q:"My grandfather is ______. He is 75 years old.", a:["young", "tall", "old", "slim"], c:2, cat:"Appearance"},
+    {q:"A person with blue eyes is ______-eyed.", a:["green", "brown", "blue", "black"], c:2, cat:"Appearance"},
+    {q:"He is ______. He is only 10 years old.", a:["old", "young", "tall", "fat"], c:1, cat:"Appearance"},
+    {q:"Which one describes appearance?", a:["Friendly", "Lazy", "Tall", "Kind"], c:2, cat:"Appearance"},
+    {q:"She is ______. She weighs a lot.", a:["slim", "thin", "fat", "short"], c:2, cat:"Appearance"},
+    {q:"Someone with long hair is ______.", a:["short-haired", "long-haired", "curly", "straight"], c:1, cat:"Appearance"},
+    {q:"My sister has ______ hair. It has waves.", a:["straight", "curly", "short", "blonde"], c:1, cat:"Appearance"},
+    {q:"A person who is not tall is ______.", a:["slim", "short", "fat", "young"], c:1, cat:"Appearance"},
+    {q:"He has ______ hair. It is yellow.", a:["dark", "brown", "blonde", "black"], c:2, cat:"Appearance"},
+    {q:"Which one is a physical feature?", a:["Honest", "Tall", "Polite", "Lazy"], c:1, cat:"Appearance"},
+    {q:"My cousin is ______. She is very thin.", a:["fat", "slim", "old", "ugly"], c:1, cat:"Appearance"},
+    {q:"She has ______ eyes and brown hair.", a:["friendly", "blue", "kind", "lazy"], c:1, cat:"Appearance"},
+    {q:"He is ______. He doesn’t look nice.", a:["handsome", "ugly", "tall", "young"], c:1, cat:"Appearance"},
+    {q:"A good-looking man is ______.", a:["ugly", "handsome", "fat", "short"], c:1, cat:"Appearance"},
+    {q:"My aunt is ______. She is beautiful.", a:["ugly", "pretty", "old", "fat"], c:1, cat:"Appearance"},
+    {q:"Which one is NOT appearance?", a:["Tall", "Short", "Kind", "Slim"], c:2, cat:"Appearance"},
+    {q:"Someone with straight hair has ______ hair.", a:["curly", "wavy", "flat", "straight"], c:3, cat:"Appearance"},
+    {q:"He is ______. He is not thin.", a:["slim", "fat", "young", "tall"], c:1, cat:"Appearance"},
+    {q:"She is ______. She looks very nice.", a:["ugly", "beautiful", "old", "lazy"], c:1, cat:"Appearance"},
+    {q:"A person with glasses is ______.", a:["short", "fat", "slim", "glasses-wearing"], c:3, cat:"Appearance"},
+    {q:"Which adjective describes hair?", a:["Tall", "Blonde", "Kind", "Friendly"], c:1, cat:"Appearance"},
+
+    // 26-45 Personality
+    {q:"A person who likes helping people is ______.", a:["rude", "lazy", "helpful", "shy"], c:2, cat:"Personality"},
+    {q:"Someone who tells the truth is ______.", a:["honest", "angry", "selfish", "lazy"], c:0, cat:"Personality"},
+    {q:"My friend is very ______. She smiles a lot.", a:["friendly", "rude", "shy", "lazy"], c:0, cat:"Personality"},
+    {q:"A person who doesn’t like working is ______.", a:["hardworking", "kind", "lazy", "honest"], c:2, cat:"Personality"},
+    {q:"Someone who is afraid to talk is ______.", a:["confident", "shy", "talkative", "rude"], c:1, cat:"Personality"},
+    {q:"My teacher is ______. She always helps us.", a:["kind", "rude", "angry", "lazy"], c:0, cat:"Personality"},
+    {q:"A person who thinks only about himself is ______.", a:["generous", "selfish", "polite", "friendly"], c:1, cat:"Personality"},
+    {q:"Someone who gets angry easily is ______.", a:["calm", "angry", "polite", "kind"], c:1, cat:"Personality"},
+    {q:"A person who works a lot is ______.", a:["lazy", "hardworking", "shy", "rude"], c:1, cat:"Personality"},
+    {q:"Someone who speaks politely is ______.", a:["rude", "polite", "angry", "lazy"], c:1, cat:"Personality"},
+    {q:"A person who likes meeting people is ______.", a:["shy", "outgoing", "lazy", "quiet"], c:1, cat:"Personality"},
+    {q:"Someone who shares things is ______.", a:["selfish", "generous", "angry", "rude"], c:1, cat:"Personality"},
+    {q:"My brother is very ______. He never lies.", a:["honest", "lazy", "rude", "angry"], c:0, cat:"Personality"},
+    {q:"A person who is calm is not ______.", a:["angry", "polite", "kind", "friendly"], c:0, cat:"Personality"},
+    {q:"Which one is a personality adjective?", a:["Tall", "Blonde", "Friendly", "Short"], c:2, cat:"Personality"},
+    {q:"Someone who is not polite is ______.", a:["kind", "polite", "rude", "friendly"], c:2, cat:"Personality"},
+    {q:"A person who talks a lot is ______.", a:["quiet", "talkative", "shy", "lazy"], c:1, cat:"Personality"},
+    {q:"Someone who feels happy for others is ______.", a:["jealous", "generous", "angry", "rude"], c:1, cat:"Personality"},
+    {q:"My sister is ______. She never gets angry.", a:["calm", "rude", "angry", "lazy"], c:0, cat:"Personality"},
+    {q:"Which one is NOT personality?", a:["Honest", "Kind", "Tall", "Friendly"], c:2, cat:"Personality"},
+
+    // 46-70 Comparatives
+    {q:"Ali is ______ than Mehmet. (tall)", a:["tall", "taller", "tallest", "more tall"], c:1, cat:"Comparatives"},
+    {q:"My sister is ______ than me. (young)", a:["young", "younger", "youngest", "more young"], c:1, cat:"Comparatives"},
+    {q:"This book is ______ than that one. (interesting)", a:["interestinger", "more interesting", "most interesting", "interesting"], c:1, cat:"Comparatives"},
+    {q:"A cheetah is ______ than a dog. (fast)", a:["fast", "faster", "fastest", "more fast"], c:1, cat:"Comparatives"},
+    {q:"English is ______ than Maths for me. (easy)", a:["easier", "easy", "easiest", "more easy"], c:0, cat:"Comparatives"},
+    {q:"My brother is ______ than me. (strong)", a:["strong", "stronger", "strongest", "more strong"], c:1, cat:"Comparatives"},
+    {q:"A lion is ______ than a cat. (dangerous)", a:["dangerouser", "more dangerous", "most dangerous", "dangerous"], c:1, cat:"Comparatives"},
+    {q:"She is ______ than her sister. (kind)", a:["kinder", "kind", "kindest", "more kind"], c:0, cat:"Comparatives"},
+    {q:"Winter is ______ than summer. (cold)", a:["cold", "colder", "coldest", "more cold"], c:1, cat:"Comparatives"},
+    {q:"This exercise is ______ than the last one. (difficult)", a:["difficulter", "difficult", "more difficult", "most difficult"], c:2, cat:"Comparatives"},
+    {q:"My house is ______ than yours. (big)", a:["big", "bigger", "biggest", "more big"], c:1, cat:"Comparatives"},
+    {q:"My friend is ______ than me. (polite)", a:["politer", "more polite", "politest", "polite"], c:1, cat:"Comparatives"},
+    {q:"A bike is ______ than a car. (cheap)", a:["cheaper", "cheap", "cheapest", "more cheap"], c:0, cat:"Comparatives"},
+    {q:"Maths is ______ than English for him. (boring)", a:["boring", "more boring", "boringer", "most boring"], c:1, cat:"Comparatives"},
+    {q:"Today is ______ than yesterday. (hot)", a:["hot", "hotter", "hottest", "more hot"], c:1, cat:"Comparatives"},
+    {q:"My sister is ______ than my brother. (talkative)", a:["talkativer", "more talkative", "most talkative", "talkative"], c:1, cat:"Comparatives"},
+    {q:"This film is ______ than that one. (funny)", a:["funny", "funnier", "funniest", "more funny"], c:1, cat:"Comparatives"},
+    {q:"A turtle is ______ than a rabbit. (slow)", a:["slow", "slower", "slowest", "more slow"], c:1, cat:"Comparatives"},
+    {q:"My bag is ______ than yours. (heavy)", a:["heavy", "heavier", "heaviest", "more heavy"], c:1, cat:"Comparatives"},
+    {q:"My father is ______ than my uncle. (patient)", a:["patient", "more patient", "patienter", "most patient"], c:1, cat:"Comparatives"},
+    {q:"This street is ______ than that street. (narrow)", a:["narrow", "narrower", "narrowest", "more narrow"], c:1, cat:"Comparatives"},
+    {q:"She is ______ than her friend. (beautiful)", a:["beautiful", "more beautiful", "beautifuller", "most beautiful"], c:1, cat:"Comparatives"},
+    {q:"My dog is ______ than your dog. (friendly)", a:["friendlier", "more friendly", "friendliest", "friendly"], c:0, cat:"Comparatives"},
+    {q:"A plane is ______ than a car. (fast)", a:["fast", "faster", "fastest", "more fast"], c:1, cat:"Comparatives"},
+    {q:"English exams are ______ than Maths exams. (easy)", a:["easy", "easier", "easiest", "more easy"], c:1, cat:"Comparatives"}
+];
+
+let shuffledQuestions = [];
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function buildQuiz() {
+    shuffledQuestions = shuffle([...quizData]);
+    const container = document.getElementById('dynamic-questions');
+    container.innerHTML = "";
+
+    shuffledQuestions.forEach((item, index) => {
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <span class="category-tag"># ${item.cat}</span>
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    shuffledQuestions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        // Reset styles
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Görünüş ve kişilik özelliklerini çok iyi biliyorsun! 🌟" : "Gayet iyi! Comparatives (karşılaştırma) kurallarını biraz daha tekrar edebilirsin. 👤✨";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
