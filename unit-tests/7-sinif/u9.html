@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 9. Ünite Environment - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #27ae60; /* Doğa Yeşili */
+            --secondary-color: #2c3e50; /* Koyu Gri */
+            --accent-color: #f1c40f; /* Enerji Sarısı */
+            --bg-color: #f0fdf4;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #219150);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px solid var(--accent-color);
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            border-left: 10px solid var(--primary-color);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1e8449;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 9. Ünite - Environment</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Save the Earth, Save the Future! 🌍♻️🌿</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Testi Sıfırla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🌍 1–12: Environment Words & Phrases</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🌬️ 13–25: Describing Environmental Events</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🌿 26–38: Giving Advice – Should / Shouldn't</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">⚠️ 39–52: Obligation & Prohibition – Must / Have to</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">♻️ 53–70: Describing Simple Processes</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Every action counts for a greener world! 🌳💚</div>
+
+<script>
+const quizData = [
+    // 1-12 Words
+    {q:"Air, water and soil _____ are serious problems.", a:["pollution", "protection", "recycling", "energy"], c:0},
+    {q:"Cutting down too many trees causes _____.", a:["recycling", "deforestation", "protection", "cleaning"], c:1},
+    {q:"Animals lose their homes because of _____.", a:["global warming", "pollution", "deforestation", "recycling"], c:2},
+    {q:"We should protect the natural _____.", a:["waste", "environment", "factory", "energy"], c:1},
+    {q:"Throwing rubbish into rivers causes water _____.", a:["recycling", "pollution", "protection", "saving"], c:1},
+    {q:"Using less energy helps save natural _____.", a:["waste", "resources", "factories", "trash"], c:1},
+    {q:"We can reuse bottles to reduce _____.", a:["environment", "pollution", "animals", "forests"], c:1},
+    {q:"Which one is renewable energy?", a:["Coal", "Oil", "Wind", "Gas"], c:2},
+    {q:"Global warming makes the Earth _____.", a:["cleaner", "colder", "hotter", "safer"], c:2},
+    {q:"Recycling helps protect the _____.", a:["money", "environment", "traffic", "city"], c:1},
+    {q:"Trash, garbage and litter have similar _____.", a:["colors", "meanings", "places", "sizes"], c:1},
+    {q:"Which one harms the environment most?", a:["Recycling paper", "Planting trees", "Saving water", "Polluting rivers"], c:3},
+
+    // 13-25 Events
+    {q:"The ice at the poles is melting because of _____.", a:["recycling", "global warming", "planting trees", "saving energy"], c:1},
+    {q:"There was a forest fire, so many animals lost their _____.", a:["food", "homes", "water", "energy"], c:1},
+    {q:"Factories release smoke, so the air becomes _____.", a:["clean", "fresh", "polluted", "safe"], c:2},
+    {q:"Heavy rain can cause _____.", a:["drought", "flood", "recycling", "pollution"], c:1},
+    {q:"When there is no rain for a long time, we have _____.", a:["flood", "drought", "storm", "wind"], c:1},
+    {q:"Oil spills pollute the _____.", a:["forests", "seas", "deserts", "mountains"], c:1},
+    {q:"Too much waste causes environmental _____.", a:["solutions", "events", "problems", "protection"], c:2},
+    {q:"Climate change affects the _____.", a:["weather", "homework", "traffic", "buildings"], c:0},
+    {q:"Forest fires usually spread very _____.", a:["slowly", "fast", "quietly", "safely"], c:1},
+    {q:"Pollution harms both people and _____.", a:["cities", "animals", "buildings", "roads"], c:1},
+    {q:"Earthquakes are natural _____.", a:["resources", "events", "wastes", "energies"], c:1},
+    {q:"Smoke from cars causes air _____.", a:["protection", "recycling", "pollution", "solution"], c:2},
+    {q:"Melting glaciers raise sea _____.", a:["levels", "animals", "forests", "soil"], c:0},
+
+    // 26-38 Should
+    {q:"We _____ recycle paper and plastic.", a:["shouldn’t", "should", "mustn’t", "have to"], c:1},
+    {q:"You _____ turn off the lights to save energy.", a:["should", "mustn’t", "don’t", "can’t"], c:0},
+    {q:"People _____ use public transport more.", a:["mustn’t", "should", "can’t", "don’t"], c:1},
+    {q:"We _____ throw rubbish into nature.", a:["should", "shouldn’t", "must", "have to"], c:1},
+    {q:"To protect animals, we _____ keep forests clean.", a:["shouldn’t", "mustn’t", "should", "can’t"], c:2},
+    {q:"You _____ save water while brushing your teeth.", a:["should", "mustn’t", "can’t", "don’t"], c:0},
+    {q:"We _____ plant more trees.", a:["shouldn’t", "should", "mustn’t", "can’t"], c:1},
+    {q:"People _____ care about the environment.", a:["shouldn’t", "should", "can’t", "mustn’t"], c:1},
+    {q:"You _____ use reusable bags.", a:["should", "can’t", "mustn’t", "don’t"], c:0},
+    {q:"We _____ protect endangered animals.", a:["shouldn’t", "mustn’t", "should", "can’t"], c:2},
+    {q:"To reduce pollution, factories _____ use filters.", a:["should", "shouldn’t", "can’t", "mustn’t"], c:0},
+    {q:"We _____ clean our surroundings.", a:["shouldn’t", "should", "can’t", "don’t"], c:1},
+    {q:"Students _____ learn about environmental problems.", a:["mustn’t", "shouldn’t", "should", "can’t"], c:2},
+
+    // 39-52 Must/Have to
+    {q:"We _____ protect nature. (strong advice)", a:["should", "must", "can", "may"], c:1},
+    {q:"You _____ waste water. (prohibition)", a:["must", "have to", "mustn’t", "should"], c:2},
+    {q:"People _____ follow environmental rules.", a:["should", "must", "can", "may"], c:1},
+    {q:"We _____ throw trash on the ground.", a:["must", "have to", "mustn’t", "should"], c:2},
+    {q:"Students _____ recycle at school. (obligation)", a:["should", "mustn’t", "have to", "may"], c:2},
+    {q:"You _____ wear gloves while cleaning chemicals.", a:["must", "mustn’t", "shouldn’t", "can’t"], c:0},
+    {q:"People _____ cut down trees illegally.", a:["must", "should", "mustn’t", "have to"], c:2},
+    {q:"We _____ obey environmental laws.", a:["can", "may", "have to", "shouldn’t"], c:2},
+    {q:"You _____ protect wildlife.", a:["must", "can’t", "mustn’t", "don’t"], c:0},
+    {q:"Factories _____ pollute rivers.", a:["must", "should", "mustn’t", "have to"], c:2},
+    {q:"We _____ save energy at home.", a:["must", "can’t", "mustn’t", "don’t"], c:0},
+    {q:"People _____ separate waste for recycling.", a:["may", "should", "have to", "can"], c:2},
+    {q:"You _____ burn trash in nature.", a:["must", "should", "mustn’t", "have to"], c:2},
+    {q:"Everyone _____ follow recycling rules.", a:["may", "can", "have to", "shouldn’t"], c:2},
+
+    // 53-70 Process
+    {q:"First, we collect the waste. Then we _____ it.", a:["throw", "recycle", "burn", "pollute"], c:1},
+    {q:"Glass bottles are _____ and reused.", a:["cleaned", "wasted", "burned", "polluted"], c:0},
+    {q:"Paper is recycled to save _____.", a:["water", "trees", "animals", "air"], c:1},
+    {q:"Plastic is separated and sent to recycling _____.", a:["parks", "factories", "forests", "rivers"], c:1},
+    {q:"First, waste is collected. Then it is _____. ", a:["mixed", "sorted", "polluted", "destroyed"], c:1},
+    {q:"Recycling reduces environmental _____.", a:["problems", "solutions", "events", "rules"], c:0},
+    {q:"Old paper is turned into _____ paper.", a:["dirty", "new", "useless", "broken"], c:1},
+    {q:"Recycling saves energy and natural _____.", a:["factories", "resources", "events", "trash"], c:1},
+    {q:"Bottles are washed before they are _____.", a:["used", "recycled", "thrown", "polluted"], c:1},
+    {q:"Waste goes to recycling bins _____ color.", a:["with", "by", "for", "on"], c:1},
+    {q:"First, people separate waste at _____.", a:["school", "home", "factory", "market"], c:1},
+    {q:"Recycling helps keep the environment _____.", a:["dirty", "clean", "noisy", "crowded"], c:1},
+    {q:"After recycling, less trash goes to _____.", a:["parks", "landfills", "homes", "bins"], c:1},
+    {q:"Recycling process starts with collecting _____.", a:["energy", "waste", "animals", "water"], c:1},
+    {q:"Plastic bottles are reused to make new _____.", a:["food", "products", "pollution", "trash"], c:1},
+    {q:"Recycling paper reduces air _____.", a:["protection", "pollution", "energy", "recycling"], c:1},
+    {q:"Recycling is important for a _____ future.", a:["dirty", "safe", "dangerous", "noisy"], c:1},
+    {q:"Simple recycling steps help protect the _____.", a:["money", "environment", "traffic", "city"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 12) containerId = 'p1-container';
+        else if (index < 25) containerId = 'p2-container';
+        else if (index < 38) containerId = 'p3-container';
+        else if (index < 52) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika! Tam bir çevre kahramanısın! 🌍💚" : "İyi iş! Kelimelere ve 'should/must' yapılarına tekrar bakarak dünyayı kurtarmaya devam edebilirsin! 🌿";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 8. Ünite Public Buildings - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2980b9; /* Bina Mavisi */
+            --secondary-color: #34495e; /* Şehir Grisi */
+            --accent-color: #f39c12; /* Belediye Turuncusu */
+            --bg-color: #ebf5fb;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.1);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px solid var(--accent-color);
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            border-left: 10px solid var(--accent-color);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #d35400;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 8. Ünite - Public Buildings</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Explore your city! 🏥🏦🏪</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | Buildings make a city, people make a home! 🏙️🏠</div>
+
+<script>
+const quizData = [
+    // 1-10 Vocabulary
+    {q:"You go to the _____ to buy bread and muffins.", a:["hospital", "bakery", "police station", "cinema"], c:1},
+    {q:"If you are ill, you should go to the _____.", a:["library", "museum", "hospital", "bank"], c:2},
+    {q:"You can see historical objects in the _____.", a:["bakery", "museum", "fire station", "park"], c:1},
+    {q:"You can borrow books from the _____.", a:["bookshop", "library", "cinema", "hospital"], c:1},
+    {q:"You go to the _____ to report a crime.", a:["police station", "theatre", "shopping mall", "cafe"], c:0},
+    {q:"You can buy medicine from the _____.", a:["chemist's", "bakery", "bank", "library"], c:0},
+    {q:"You go to the _____ to watch a new film.", a:["museum", "theatre", "cinema", "hospital"], c:2},
+    {q:"You can save money in the _____.", a:["bank", "museum", "bakery", "pharmacy"], c:0},
+    {q:"You go to the _____ to buy new clothes.", a:["post office", "shopping mall", "fire station", "hospital"], c:1},
+    {q:"Firefighters work at the _____.", a:["police station", "fire station", "bakery", "library"], c:1},
+
+    // 11-25 Verbs & Phrases
+    {q:"I go to the library to _____ books.", a:["buy", "borrow", "sell", "draw"], c:1},
+    {q:"She goes to the cafe to _____ with friends.", a:["meet", "sleep", "wash", "draw"], c:0},
+    {q:"They go to the museum to _____ ancient statues.", a:["see", "eat", "buy", "cook"], c:0},
+    {q:"I go to the bakery to _____ some bread.", a:["take", "buy", "see", "meet"], c:1},
+    {q:"We go to the park to _____ a walk.", a:["take", "do", "make", "give"], c:0},
+    {q:"He goes to the gym to _____ exercise.", a:["do", "take", "make", "give"], c:0},
+    {q:"You go to the post office to _____ letters.", a:["send", "buy", "see", "meet"], c:0},
+    {q:"She goes to the chemist's to _____ painkillers.", a:["get", "see", "meet", "send"], c:0},
+    {q:"They go to the cinema to _____ a comedy.", a:["watch", "look", "see", "listen"], c:0},
+    {q:"I go to the game store to _____ a new game.", a:["see", "buy", "meet", "send"], c:1},
+    {q:"We go to the florist's to _____ flowers.", a:["buy", "see", "meet", "send"], c:0},
+    {q:"You go to the art gallery to _____ paintings.", a:["see", "buy", "meet", "send"], c:0},
+    {q:"He goes to the music store to _____ a CD.", a:["buy", "see", "meet", "send"], c:0},
+    {q:"She goes to the supermarket to _____ food.", a:["buy", "see", "meet", "send"], c:0},
+    {q:"They go to the airport to _____ a plane.", a:["catch", "see", "meet", "send"], c:0},
+
+    // 26-45 Purpose (To + Verb)
+    {q:"I went to the bank _____ some money.", a:["to get", "for get", "getting", "gets"], c:0},
+    {q:"She is going to the hospital _____ the doctor.", a:["to see", "see", "seeing", "for seeing"], c:0},
+    {q:"They went to the theatre _____ a play.", a:["to watch", "watch", "watching", "to watching"], c:0},
+    {q:"I go to the bakery _____ fresh cookies.", a:["to buy", "buy", "buying", "to buying"], c:0},
+    {q:"We went to the library _____ for our project.", a:["to study", "study", "studying", "for studying"], c:0},
+    {q:"He is going to the post office _____ a package.", a:["to send", "send", "sending", "to sending"], c:0},
+    {q:"She went to the florist's _____ some roses.", a:["to buy", "buy", "buying", "for buying"], c:0},
+    {q:"I go to the gym _____ healthy.", a:["to stay", "stay", "staying", "for staying"], c:0},
+    {q:"They went to the park _____ some fresh air.", a:["to get", "get", "getting", "for get"], c:0},
+    {q:"We go to the shopping mall _____ new shoes.", a:["to find", "find", "finding", "to finding"], c:0},
+    {q:"I went to the chemist's _____ my medicine.", a:["to get", "get", "getting", "for getting"], c:0},
+    {q:"She is going to the museum _____ the exhibition.", a:["to visit", "visit", "visiting", "for visit"], c:0},
+    {q:"They go to the cafe _____ coffee.", a:["to drink", "drink", "drinking", "for drinking"], c:0},
+    {q:"We went to the zoo _____ the animals.", a:["to see", "see", "seeing", "to seeing"], c:0},
+    {q:"I go to the bookshop _____ a new novel.", a:["to buy", "buy", "buying", "to buying"], c:0},
+    {q:"He went to the police station _____ a lost bag.", a:["to report", "report", "reporting", "for reporting"], c:0},
+    {q:"She goes to the beauty saloon _____ a haircut.", a:["to get", "get", "getting", "for get"], c:0},
+    {q:"They went to the stadium _____ the match.", a:["to watch", "watch", "watching", "for watch"], c:0},
+    {q:"I go to the music store _____ an instrument.", a:["to buy", "buy", "buying", "to buying"], c:0},
+    {q:"We went to the city hall _____ the mayor.", a:["to see", "see", "seeing", "to seeing"], c:0},
+
+    // 46-70 Grammar & Mixed
+    {q:"Why did you go to the supermarket? _____ buy fruit.", a:["To", "Because", "For", "So"], c:0},
+    {q:"She _____ to the cinema last night.", a:["go", "went", "going", "goes"], c:1},
+    {q:"Where _____ you go yesterday?", a:["do", "did", "are", "were"], c:1},
+    {q:"I _____ at the museum two hours ago.", a:["am", "is", "was", "were"], c:2},
+    {q:"They _____ to the park every weekend.", a:["go", "went", "going", "goes"], c:0},
+    {q:"He _____ not like going to the mall.", a:["do", "does", "is", "are"], c:1},
+    {q:"_____ she at the library now?", a:["Is", "Are", "Was", "Were"], c:0},
+    {q:"We _____ to the theatre to see a drama.", a:["goes", "go", "going", "is going"], c:1},
+    {q:"_____ they visit the art gallery yesterday?", a:["Do", "Did", "Are", "Were"], c:1},
+    {q:"I _____ buy anything from the store.", a:["don't", "didn't", "doesn't", "am not"], c:1},
+    {q:"There _____ a big park in our city.", a:["is", "are", "was", "were"], c:0},
+    {q:"How many hospitals _____ there in this town?", a:["is", "are", "was", "were"], c:1},
+    {q:"She _____ her friends at the cafe yesterday.", a:["meet", "meets", "met", "meeting"], c:2},
+    {q:"We _____ some old coins at the museum.", a:["see", "saw", "seen", "seeing"], c:1},
+    {q:"He _____ some money from the bank.", a:["draw", "drew", "drawn", "drawing"], c:1},
+    {q:"_____ you see the fire station?", a:["Do", "Did", "Are", "Were"], c:0},
+    {q:"I _____ a letter at the post office.", a:["post", "posted", "posting", "posts"], c:1},
+    {q:"The chemist's _____ next to the bakery.", a:["is", "are", "was", "were"], c:0},
+    {q:"We _____ to the city centre by bus.", a:["go", "went", "going", "goes"], c:0},
+    {q:"She _____ to be a doctor.", a:["want", "wants", "wanted", "wanting"], c:1},
+    {q:"They _____ delicious bread at that bakery.", a:["sell", "sells", "sold", "selling"], c:0},
+    {q:"I _____ to the library tomorrow.", a:["will go", "go", "went", "going"], c:0},
+    {q:"_____ you like visiting museums?", a:["Do", "Did", "Are", "Were"], c:0},
+    {q:"He _____ very happy at the amusement park.", a:["is", "was", "were", "are"], c:1},
+    {q:"We _____ our city very much.", a:["love", "loves", "loved", "loving"], c:0}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    const sections = [
+        {title: "🏙️ 1–10: Vocabulary (Public Buildings)", start: 0, end: 10},
+        {title: "🏪 11–25: Verbs & Phrases", start: 10, end: 25},
+        {title: "📍 26–45: Purpose (To + Verb)", start: 25, end: 45},
+        {title: "📝 46–70: Grammar & Mixed Review", start: 45, end: 70}
+    ];
+
+    sections.forEach(sec => {
+        let sectionDiv = document.createElement('div');
+        sectionDiv.className = 'section-title';
+        sectionDiv.innerText = sec.title;
+        container.appendChild(sectionDiv);
+
+        for(let i = sec.start; i < sec.end; i++) {
+            const item = quizData[i];
+            let card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `
+                <div class="question-text">${i + 1}. ${item.q}</div>
+                <div class="options">
+                    ${item.a.map((opt, optIndex) => `
+                        <label class="option-label" id="label-${i}-${optIndex}">
+                            <input type="radio" name="q${i}" value="${optIndex}"> ${opt}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+            container.appendChild(card);
+        }
+    });
+
+    let btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'PUANIMI HESAPLA ✅';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika! Şehri avucunun içi gibi biliyorsun! 🏙️⭐" : "İyi bir başlangıç! Kamu binalarının isimlerine ve 'to + verb' (amaç bildiren yapılar) konusuna tekrar göz atabilirsin. 🏥";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

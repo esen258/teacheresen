@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 7. Ünite Dreams - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7; /* Hayal Moru */
+            --secondary-color: #2d3436; /* Gece Mavisi/Siyah */
+            --accent-color: #fdcb6e; /* Yıldız Sarısı */
+            --bg-color: #f0f3ff;
+            --correct: #00b894;
+            --wrong: #d63031;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.1);
+            color: var(--accent-color); display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed var(--accent-color);
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-right: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #4834d4;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 7. Ünite - Dreams</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Follow your dreams! ✨🚀🔮</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">✨ 1–10: Words & Phrases (Dreams – Future Plans)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🚀 11–30: Future Tense – Will</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔮 31–50: Making Predictions</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🌟 51–70: Possibility – May</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Believe in yourself and your dreams! 🌈⭐</div>
+
+<script>
+const quizData = [
+    // 1-10 Vocabulary
+    {q:"My dream is to _____ a doctor in the future.", a:["do", "be", "have", "make"], c:1},
+    {q:"She wants to study hard to achieve her _____.", a:["dream", "lesson", "homework", "plan"], c:0},
+    {q:"I hope I will _____ a good job one day.", a:["buy", "find", "bring", "give"], c:1},
+    {q:"Which one is related to future plans?", a:["Yesterday", "Last night", "Next year", "Now"], c:2},
+    {q:"He dreams of becoming a famous _____.", a:["student", "doctor", "singer", "teacher"], c:2},
+    {q:"My future _____ is to travel around the world.", a:["past", "dream", "problem", "answer"], c:1},
+    {q:"She wants to learn English because it is important for her _____.", a:["past", "future", "homework", "exam"], c:1},
+    {q:"I want to make my parents _____ of me.", a:["afraid", "proud", "bored", "tired"], c:1},
+    {q:"Which one shows hope?", a:["I was tired.", "I am studying.", "I hope I will succeed.", "I studied hard."], c:2},
+    {q:"He plans to _____ a new language next year.", a:["learn", "learns", "learned", "learning"], c:0},
+
+    // 11-30 Will
+    {q:"I _____ be a teacher in the future.", a:["am", "was", "will", "did"], c:2},
+    {q:"She _____ study medicine at university.", a:["will", "is", "does", "has"], c:0},
+    {q:"We _____ move to another city next year.", a:["moved", "are moving", "will", "move"], c:2},
+    {q:"He _____ help people when he grows up.", a:["helps", "helped", "will help", "helping"], c:2},
+    {q:"I think robots _____ do many jobs in the future.", a:["do", "did", "will", "are"], c:2},
+    {q:"She _____ be very successful one day.", a:["is", "was", "will", "were"], c:2},
+    {q:"They _____ travel abroad after school.", a:["travel", "will travel", "traveled", "are traveling"], c:1},
+    {q:"I _____ buy a big house in the future.", a:["am", "was", "will", "did"], c:2},
+    {q:"My brother _____ become an engineer.", a:["become", "becomes", "will become", "became"], c:2},
+    {q:"We _____ achieve our dreams if we work hard.", a:["achieved", "achieve", "will achieve", "achieving"], c:2},
+    {q:"I think the world _____ change a lot.", a:["changed", "changes", "will change", "is changing"], c:2},
+    {q:"She _____ start her own business.", a:["will", "is", "has", "was"], c:0},
+    {q:"People _____ live on other planets in the future.", a:["live", "lived", "will live", "are living"], c:2},
+    {q:"He _____ pass the exam if he studies hard.", a:["passes", "passed", "will pass", "passing"], c:2},
+    {q:"I believe I _____ reach my goals.", a:["reach", "reached", "will reach", "reaching"], c:2},
+    {q:"She _____ help poor people in the future.", a:["helps", "helped", "will help", "helping"], c:2},
+    {q:"They _____ build new cities in the future.", a:["build", "built", "will build", "building"], c:2},
+    {q:"My dream _____ come true one day.", a:["comes", "came", "will come", "coming"], c:2},
+    {q:"I think I _____ be famous one day.", a:["am", "was", "will", "have"], c:2},
+    {q:"We _____ make our dreams real.", a:["made", "make", "will make", "making"], c:2},
+
+    // 31-50 Predictions
+    {q:"I think technology _____ our lives easier.", a:["makes", "made", "will make", "making"], c:2},
+    {q:"People _____ use flying cars in the future.", a:["use", "used", "will use", "using"], c:2},
+    {q:"I believe students _____ study online more.", a:["study", "studied", "will study", "studying"], c:2},
+    {q:"The weather _____ be hotter in the future.", a:["is", "was", "will", "were"], c:2},
+    {q:"I think robots _____ help doctors.", a:["help", "helped", "will help", "helping"], c:2},
+    {q:"Life _____ be easier with new technology.", a:["is", "was", "will", "were"], c:2},
+    {q:"I believe people _____ live longer lives.", a:["live", "lived", "will live", "living"], c:2},
+    {q:"Cars _____ be more environmentally friendly.", a:["are", "were", "will", "have"], c:2},
+    {q:"I think cities _____ become more crowded.", a:["become", "became", "will become", "becoming"], c:2},
+    {q:"The internet _____ be faster in the future.", a:["is", "was", "will", "were"], c:2},
+    {q:"I think humans _____ discover new planets.", a:["discover", "discovered", "will discover", "discovering"], c:2},
+    {q:"Schools _____ change a lot in the future.", a:["change", "changed", "will change", "changing"], c:2},
+    {q:"I believe people _____ work from home more.", a:["work", "worked", "will work", "working"], c:2},
+    {q:"The world _____ become more digital.", a:["become", "became", "will become", "becoming"], c:2},
+    {q:"I think medicine _____ develop very fast.", a:["develops", "developed", "will develop", "developing"], c:2},
+    {q:"Energy _____ be cleaner in the future.", a:["is", "was", "will", "were"], c:2},
+    {q:"I believe robots _____ do dangerous jobs.", a:["do", "did", "will do", "doing"], c:2},
+    {q:"People _____ communicate faster in the future.", a:["communicate", "communicated", "will communicate", "communicating"], c:2},
+    {q:"Space travel _____ be more common.", a:["is", "was", "will", "were"], c:2},
+    {q:"I think education _____ change with technology.", a:["changes", "changed", "will change", "changing"], c:2},
+
+    // 51-70 May
+    {q:"I _____ become a teacher one day.", a:["will", "may", "did", "am"], c:1},
+    {q:"She _____ study abroad in the future.", a:["is", "may", "was", "did"], c:1},
+    {q:"We _____ move to another city next year.", a:["are", "may", "were", "did"], c:1},
+    {q:"He _____ be famous one day.", a:["did", "is", "may", "was"], c:2},
+    {q:"I _____ travel around the world after university.", a:["may", "am", "was", "did"], c:0},
+    {q:"They _____ start their own business.", a:["are", "may", "were", "did"], c:1},
+    {q:"She _____ help people in need.", a:["is", "was", "may", "did"], c:2},
+    {q:"I think I _____ change my plans.", a:["did", "am", "may", "was"], c:2},
+    {q:"My brother _____ become an engineer.", a:["becomes", "may", "became", "is"], c:1},
+    {q:"We _____ succeed if we work hard.", a:["are", "may", "were", "did"], c:1},
+    {q:"I _____ study harder next year.", a:["was", "did", "may", "am"], c:2},
+    {q:"She _____ join a language course.", a:["joins", "joined", "may", "is"], c:2},
+    {q:"They _____ visit another country.", a:["are", "was", "may", "did"], c:2},
+    {q:"I _____ choose a different job.", a:["choose", "chose", "may", "am"], c:2},
+    {q:"He _____ change his dream in the future.", a:["changed", "may", "is", "did"], c:1},
+    {q:"We _____ need help with our plans.", a:["need", "needed", "may", "are"], c:2},
+    {q:"I _____ not achieve my dream easily.", a:["do", "did", "may", "am"], c:2},
+    {q:"She _____ become very successful.", a:["becomes", "became", "may", "is"], c:2},
+    {q:"They _____ decide to study abroad.", a:["decide", "decided", "may", "are"], c:2},
+    {q:"My dream _____ come true one day.", a:["comes", "came", "may", "is"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 50) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Gelecek senin için çok parlak görünüyor! Harika! 🚀✨" : "Gayretin güzel! 'Will' ve 'May' arasındaki farklara biraz daha odaklanarak geleceği daha net görebilirsin! 🔮";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

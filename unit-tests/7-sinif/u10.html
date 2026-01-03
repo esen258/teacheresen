@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 10. Ünite Planets - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f51b5; /* Uzay Mavisi */
+            --secondary-color: #1a237e; /* Gece Yarısı Mavisi */
+            --accent-color: #ffeb3b; /* Yıldız Sarısı */
+            --bg-color: #0d1117;
+            --text-color: #e6edf3;
+            --correct: #4caf50;
+            --wrong: #f44336;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #161b22 0%, #0d1117 100%);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), #4a148c);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 4px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(255, 235, 59, 0.2);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.1);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed var(--accent-color);
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: #1c2128; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--accent-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .question-card {
+            background: #1c2128; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; color: #fff; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #2d333b; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+            color: #adbac7;
+        }
+
+        .option-label:hover { background: #444c56; border-color: var(--accent-color); color: #fff; }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #000; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #fbc02d;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #8b949e; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 10. Ünite - Planets</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Discover the Secrets of Space! 🚀🌌🪐</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text" style="color: var(--accent-color);"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Restart Mission</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🪐 1–15: Words & Phrases (Planets & Solar System)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">⚖️ 16–35: Comparatives & Superlatives</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">📜 36–55: Simple Past Tense (Positive)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">❌ 56–70: Simple Past Tense (Negative)</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">MISSION ACCOMPLISHED ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Aim for the stars! 🌠🔭</div>
+
+<script>
+const quizData = [
+    // 1-15 Vocabulary
+    {q:"Earth is the _____ planet from the Sun.", a:["first", "second", "third", "fourth"], c:2},
+    {q:"The Sun is a _____.", a:["planet", "moon", "star", "satellite"], c:2},
+    {q:"The Moon is the Earth’s _____.", a:["star", "planet", "satellite", "galaxy"], c:2},
+    {q:"Mars is also called the _____ Planet.", a:["Blue", "Red", "Green", "Yellow"], c:1},
+    {q:"The Solar System has eight _____.", a:["stars", "moons", "planets", "galaxies"], c:2},
+    {q:"Jupiter is the _____ planet in the Solar System.", a:["smallest", "coldest", "biggest", "nearest"], c:2},
+    {q:"Venus is closer to the Sun than _____.", a:["Earth", "Mercury", "Jupiter", "Saturn"], c:0},
+    {q:"Saturn is famous for its _____.", a:["oceans", "rings", "mountains", "clouds"], c:1},
+    {q:"Mercury is the _____ planet to the Sun.", a:["farthest", "nearest", "coldest", "wettest"], c:1},
+    {q:"Astronauts travel to space in a _____.", a:["submarine", "rocket", "plane", "train"], c:1},
+    {q:"The Sun gives us heat and _____.", a:["water", "light", "soil", "air"], c:1},
+    {q:"Earth is the only planet with _____.", a:["rings", "life", "fire", "gas"], c:1},
+    {q:"The Milky Way is a _____.", a:["planet", "star", "galaxy", "satellite"], c:2},
+    {q:"Mars is _____ than Earth.", a:["bigger", "hotter", "smaller", "wetter"], c:2},
+    {q:"Space is full of stars and _____.", a:["oceans", "forests", "planets", "rivers"], c:2},
+
+    // 16-35 Grammar
+    {q:"Jupiter is _____ than Earth.", a:["big", "bigger", "biggest", "more big"], c:1},
+    {q:"Mercury is the _____ planet.", a:["hot", "hotter", "hottest", "most hot"], c:2},
+    {q:"Earth is _____ than Mars.", a:["warmer", "warmest", "most warm", "warm"], c:0},
+    {q:"Saturn is the _____ planet with rings.", a:["beautiful", "more beautiful", "most beautiful", "beautifuller"], c:2},
+    {q:"Venus is _____ than Mercury.", a:["hot", "hottest", "hotter", "most hot"], c:2},
+    {q:"Neptune is the _____ planet from the Sun.", a:["far", "farther", "farthest", "most far"], c:2},
+    {q:"Mars is _____ than Jupiter.", a:["smaller", "smallest", "small", "more small"], c:0},
+    {q:"The Sun is the _____ object in the Solar System.", a:["brighter", "brightest", "more bright", "bright"], c:1},
+    {q:"Earth is _____ than Venus for life.", a:["better", "best", "more good", "good"], c:0},
+    {q:"Mercury is _____ than Earth.", a:["cold", "colder", "coldest", "most cold"], c:1},
+    {q:"Jupiter has the _____ number of moons.", a:["many", "more", "most", "much"], c:2},
+    {q:"Mars is one of the _____ planets.", a:["cold", "colder", "coldest", "most cold"], c:2},
+    {q:"Venus is _____ than Earth.", a:["close", "closer", "closest", "most close"], c:1},
+    {q:"Earth is the _____ planet we know.", a:["important", "more important", "most important", "importanter"], c:2},
+    {q:"Mercury is _____ than Mars.", a:["small", "smaller", "smallest", "most small"], c:1},
+    {q:"Saturn is _____ than Uranus.", a:["big", "bigger", "biggest", "more big"], c:1},
+    {q:"Neptune is the _____ planet.", a:["windy", "windier", "windiest", "most windy"], c:2},
+    {q:"Earth is _____ than all other planets for humans.", a:["safe", "safer", "safest", "most safe"], c:1},
+    {q:"Jupiter is the _____ gas planet.", a:["large", "larger", "largest", "more large"], c:2},
+    {q:"Mars is _____ than Earth.", a:["dry", "drier", "driest", "most dry"], c:1},
+
+    // 36-55 Past Positive
+    {q:"Scientists _____ Mars many years ago.", a:["study", "studies", "studied", "studying"], c:2},
+    {q:"Astronauts _____ to the Moon in 1969.", a:["travel", "travels", "traveled", "traveling"], c:2},
+    {q:"Galileo _____ the planets with a telescope.", a:["observe", "observes", "observed", "observing"], c:2},
+    {q:"Humans _____ the Moon for the first time in 1969.", a:["visit", "visited", "visits", "visiting"], c:1},
+    {q:"Scientists _____ many discoveries about space.", a:["make", "makes", "made", "making"], c:2},
+    {q:"We _____ about planets last year.", a:["learn", "learns", "learned", "learning"], c:2},
+    {q:"The spacecraft _____ information from space.", a:["send", "sends", "sent", "sending"], c:2},
+    {q:"They _____ a new planet recently.", a:["discover", "discovered", "discovers", "discovering"], c:1},
+    {q:"Astronauts _____ special clothes in space.", a:["wear", "wore", "wears", "wearing"], c:1},
+    {q:"Scientists _____ photos of Mars.", a:["take", "took", "takes", "taking"], c:1},
+
+    // 56-70 Past Negative
+    {q:"People _____ live on Mars in the past.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"Astronauts _____ find water on the Moon.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"We _____ study planets yesterday.", a:["don’t", "didn’t", "doesn’t", "aren’t"], c:1},
+    {q:"Scientists _____ travel to Mars last year.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"Humans _____ know much about space long ago.", a:["don’t", "didn’t", "doesn’t", "aren’t"], c:1},
+    {q:"The rocket _____ land safely.", a:["don’t", "didn’t", "doesn’t", "wasn’t"], c:1},
+    {q:"They _____ see any aliens.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"We _____ learn about Neptune at primary school.", a:["don’t", "didn’t", "doesn’t", "aren’t"], c:1},
+    {q:"Astronauts _____ stay long on the Moon.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"Scientists _____ stop space research.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"The spacecraft _____ return on time.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"We _____ understand space before technology.", a:["don’t", "didn’t", "doesn’t", "aren’t"], c:1},
+    {q:"Humans _____ explore other planets easily.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"The astronauts _____ feel safe without equipment.", a:["don’t", "didn’t", "doesn’t", "weren’t"], c:1},
+    {q:"People _____ travel to space 100 years ago.", a:["don’t", "didn’t", "doesn’t", "aren’t"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 15) containerId = 'p1-container';
+        else if (index < 35) containerId = 'p2-container';
+        else if (index < 45) containerId = 'p3-container'; // Adjusted for your 55 questions limit
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Uzay kaşifi rütbesini kazandın! Mükemmel! ☄️👨‍🚀" : "Gayretin takdire şayan! Comparatives ve Past Tense kalıplarına tekrar bakarak bir sonraki görevde kusursuz olabilirsin! 🛰️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

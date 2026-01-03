@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 6. Ünite Celebrations - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff4757; /* Parti Pembesi */
+            --secondary-color: #2f3542; /* Koyu Mod */
+            --accent-color: #ffa502; /* Altın Sarısı */
+            --bg-color: #fffaf0;
+            --correct: #2ed573;
+            --wrong: #ff6b81;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #b33939;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 6. Ünite - Celebrations</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Let's Party and Learn! 🎈🍰✨</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Testi Sıfırla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 1–10: Words & Phrases (Parties – Celebrations)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟩 11–25: Expressing Need & Quantity (a/an, some/any, much/many)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟨 26–45: Making Arrangements & Sequencing Actions</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🟥 46–70: Making Suggestions & Offers</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Congratulations on your progress! 🎊🎓</div>
+
+<script>
+const quizData = [
+    // 1-10 Vocabulary
+    {q:"We need balloons, cake and candles for the _____.", a:["exam", "meeting", "party", "lesson"], c:2},
+    {q:"My birthday party is on Saturday. Please don’t forget to _____.", a:["invite", "celebrate", "decorate", "organize"], c:0},
+    {q:"We put colorful lights on the wall to ____ the room.", a:["clean", "decorate", "invite", "prepare"], c:1},
+    {q:"Which one is related to a party?", a:["Homework", "Invitation card", "Dictionary", "Blackboard"], c:1},
+    {q:"People usually _____ gifts at birthday parties.", a:["borrow", "receive", "sell", "break"], c:1},
+    {q:"Let’s make a shopping list for the party _____.", a:["food", "guests", "arrangements", "rules"], c:2},
+    {q:"We need a big chocolate _____ for the celebration.", a:["juice", "sandwich", "cake", "soup"], c:2},
+    {q:"What do you say when you want someone to come to your party?", a:["Thank you", "Welcome", "Congratulations", "You are invited"], c:3},
+    {q:"Which one is a celebration?", a:["Exam day", "Birthday party", "School rule", "Homework time"], c:1},
+    {q:"We should _____ the music before the guests arrive.", a:["turn on", "turn off", "clean", "cancel"], c:0},
+
+    // 11-25 Quantity
+    {q:"We need _____ cake for the party.", a:["a", "an", "some", "any"], c:2},
+    {q:"Is there _____ juice left in the fridge?", a:["some", "many", "any", "a"], c:2},
+    {q:"I need _____ balloons for the party.", a:["much", "many", "little", "a"], c:1},
+    {q:"There isn’t _____ sugar in the bowl.", a:["many", "a few", "much", "some"], c:2},
+    {q:"We bought _____ snacks for the guests.", a:["a little", "much", "a lot of", "any"], c:2},
+    {q:"How _____ people are coming to the party?", a:["much", "many", "little", "some"], c:1},
+    {q:"There is _____ milk left. We should buy more.", a:["many", "a few", "a little", "some"], c:2},
+    {q:"I need _____ apple to make a cake.", a:["a", "an", "some", "many"], c:1},
+    {q:"Are there _____ plates on the table?", a:["much", "any", "a little", "a"], c:1},
+    {q:"We don’t have _____ candles for the cake.", a:["some", "much", "enough", "a"], c:2},
+    {q:"She bought _____ flowers to decorate the room.", a:["much", "many", "a little", "any"], c:1},
+    {q:"There are _____ guests, so the room is crowded.", a:["much", "many", "little", "a little"], c:1},
+    {q:"I have _____ money, so I can buy drinks.", a:["a few", "many", "a little", "any"], c:2},
+    {q:"We need _____ invitation cards.", a:["a", "an", "some", "much"], c:2},
+    {q:"There isn’t _____ time to organize a big party.", a:["many", "much", "some", "a few"], c:1},
+
+    // 26-45 Sequencing
+    {q:"First, we _____ the guests.", a:["serve", "invite", "clean", "celebrate"], c:1},
+    {q:"After inviting guests, we should _____.", a:["cancel the party", "buy food", "say goodbye", "open gifts"], c:1},
+    {q:"_____ decorating the room, we prepare the food.", a:["Before", "After", "During", "Between"], c:1},
+    {q:"What comes first?", a:["Serve the cake", "Invite guests", "Say goodbye", "Clean the room"], c:1},
+    {q:"Let’s _____ the party at 7 p.m.", a:["arrange", "prepare", "celebrate", "decorate"], c:0},
+    {q:"We should _____ who will bring the drinks.", a:["decide", "clean", "celebrate", "invite"], c:0},
+    {q:"_____ the guests arrive, we turn on the music.", a:["After", "Before", "While", "Because"], c:1},
+    {q:"What do you do last at a party?", a:["Invite guests", "Decorate the room", "Say goodbye", "Prepare food"], c:2},
+    {q:"First, clean the house. _____, decorate it.", a:["Finally", "Next", "Last", "Never"], c:1},
+    {q:"We need to make _____ for the party.", a:["homework", "arrangements", "exams", "mistakes"], c:1},
+    {q:"Let’s meet _____ the party to prepare everything.", a:["after", "during", "before", "between"], c:2},
+    {q:"_____ buying food, we prepared the table.", a:["Before", "After", "While", "Between"], c:1},
+    {q:"Don’t forget to _____ the music system.", a:["prepare", "arrange", "set up", "clean"], c:2},
+    {q:"We planned the party _____ the weekend.", a:["on", "in", "at", "to"], c:0},
+    {q:"First invite friends, then _____ the cake.", a:["eat", "buy", "serve", "cut"], c:1},
+    {q:"We should _____ the guests about the time.", a:["inform", "decorate", "prepare", "celebrate"], c:0},
+    {q:"The party will _____ at 8 p.m.", a:["start", "finish", "clean", "decorate"], c:0},
+    {q:"Let’s make a list _____ things we need.", a:["at", "of", "for", "with"], c:1},
+    {q:"After the party, we _____ the house.", a:["invite", "decorate", "clean", "celebrate"], c:2},
+    {q:"Finally, we _____ goodbye to the guests.", a:["say", "tell", "speak", "talk"], c:0},
+
+    // 46-70 Suggestions
+    {q:"_____ have a surprise party for her?", a:["Why don’t we", "Let", "Shall not", "Do"], c:0},
+    {q:"Let’s _____ some snacks.", a:["buying", "buys", "buy", "bought"], c:2},
+    {q:"Shall I _____ the drinks?", a:["bring", "brings", "bringing", "brought"], c:0},
+    {q:"What about _____ a big cake?", a:["buy", "buying", "buys", "bought"], c:1},
+    {q:"Would you like me to _____ the music?", a:["turn on", "turning on", "turns on", "turned on"], c:0},
+    {q:"Let’s _____ the room together.", a:["clean", "cleans", "cleaning", "cleaned"], c:0},
+    {q:"Why don’t we _____ earlier?", a:["come", "comes", "coming", "came"], c:0},
+    {q:"Shall we _____ some games at the party?", a:["play", "plays", "playing", "played"], c:0},
+    {q:"I can _____ the invitation cards.", a:["prepare", "prepares", "preparing", "prepared"], c:0},
+    {q:"Would you like _____ help?", a:["some", "any", "many", "much"], c:0},
+    {q:"Let me _____ the table.", a:["set", "sets", "setting", "setted"], c:0},
+    {q:"How about _____ decorations together?", a:["make", "making", "makes", "made"], c:1},
+    {q:"I can _____ the guests at the door.", a:["welcome", "welcomes", "welcoming", "welcomed"], c:0},
+    {q:"Shall I _____ the cake now?", a:["cut", "cuts", "cutting", "cutted"], c:0},
+    {q:"Let’s _____ a plan for the party.", a:["do", "make", "take", "get"], c:1},
+    {q:"Why don’t we _____ some music on?", a:["turn", "turns", "turning", "turned"], c:0},
+    {q:"Would you like me to _____ the balloons?", a:["blow up", "blowing up", "blows up", "blew up"], c:0},
+    {q:"Let’s _____ the party simple.", a:["keep", "keeps", "keeping", "kept"], c:0},
+    {q:"Shall we _____ pizza or sandwiches?", a:["order", "orders", "ordering", "ordered"], c:0},
+    {q:"I can _____ the shopping.", a:["do", "does", "doing", "did"], c:0},
+    {q:"Why don’t we _____ a guest list?", a:["prepare", "prepares", "preparing", "prepared"], c:0},
+    {q:"Let me _____ you with the bags.", a:["help", "helps", "helping", "helped"], c:0},
+    {q:"Shall I _____ the candles?", a:["light", "lights", "lighting", "lighted"], c:0},
+    {q:"Let’s _____ the party fun.", a:["make", "makes", "making", "made"], c:0},
+    {q:"Would you like to _____ the games?", a:["organize", "organizes", "organizing", "organized"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 25) containerId = 'p2-container';
+        else if (index < 45) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Tam bir parti organizatörüsün! 🎈🌟" : "İyi iş! Miktar belirleyiciler (some/any) ve öneri kalıplarına (shall/let's) tekrar bakarak mükemmele ulaşabilirsin! 🍰";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
