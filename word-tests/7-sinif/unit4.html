@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 4. Ünite Kelimeleri (Okunaklı)</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            /* Yazı tipi daha okunaklı modern fontlarla değiştirildi */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+        }
+        
+        /* İmza Stili */
+        .signature {
+            text-align: center;
+            margin: 15px 0;
+            padding: 5px 0;
+            font-size: 1.1rem; 
+            color: #f1faee; 
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .top-signature {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 2.5rem; 
+            color: #ffbe0b; 
+            text-shadow: 
+                -2px -2px 0 #e63946,
+                 2px -2px 0 #e63946,
+                -2px  2px 0 #e63946,
+                 2px  2px 0 #e63946;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+        }
+
+        #quiz-container {
+            width: 90%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+            border-radius: 20px; 
+            border: 5px solid #ffbe0b; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.6rem; 
+            border-bottom: 3px dashed #a8dadc; 
+            padding-bottom: 10px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ced4da; 
+        }
+
+        .question-text {
+            font-size: 1.2rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 12px;
+            background-color: #f1faee; 
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 5px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 10px;
+            border: 2px solid #a8dadc; 
+            border-radius: 12px; 
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        /* Renk ve Geri Bildirimler */
+        .option-button.correct {
+            background-color: #d4edda !important; 
+            border-color: #28a745 !important;    
+            color: #155724;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da !important; 
+            border-color: #dc3545 !important;    
+            color: #721c24;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 16px;
+            background-color: #457b9d; 
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        #results {
+            margin-top: 25px;
+            padding: 20px;
+            border: 3px solid #e63946; 
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signature top-signature">Esen Teacher</div>
+
+    <div id="quiz-container">
+        <h1>7. Sınıf 4. Ünite Kelimeleri</h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <div class="signature">Esen Teacher</div>
+
+    <script>
+        // Kelime listesi (Orijinal içerik korunmuştur)
+        const wordList = [
+            { en: "bear", tr: "ayı" }, { en: "bison", tr: "bizon" }, { en: "camel", tr: "deve" },
+            { en: "cheetah", tr: "çita" }, { en: "chimpanzee", tr: "şempanze" }, { en: "crocodile", tr: "timsah" },
+            { en: "deer", tr: "geyik" }, { en: "dolphin", tr: "yunus" }, { en: "eagle", tr: "kartal" },
+            { en: "elephant", tr: "fil" }, { en: "falcon", tr: "şahin" }, { en: "giraffe", tr: "zürafa" },
+            { en: "gorilla", tr: "goril" }, { en: "hawk", tr: "şahin" }, { en: "horse", tr: "at" },
+            { en: "kangaroo", tr: "kanguru" }, { en: "koala bear", tr: "koala" }, { en: "lion", tr: "aslan" },
+            { en: "lizard", tr: "kertenkele" }, { en: "monkey", tr: "maymun" }, { en: "octopus", tr: "ahtapot" },
+            { en: "ostrich", tr: "deve kuşu" }, { en: "owl", tr: "baykuş" }, { en: "penguin", tr: "penguen" },
+            { en: "pigeon", tr: "güvercin" }, { en: "polar bear", tr: "kutup ayısı" }, { en: "rhino", tr: "gergedan" },
+            { en: "seagull", tr: "martı" }, { en: "seal", tr: "fok" }, { en: "shark", tr: "köpek balığı" },
+            { en: "snake", tr: "yılan" }, { en: "squirrel", tr: "sincap" }, { en: "tiger", tr: "kaplan" },
+            { en: "turtle", tr: "kaplumbağa" }, { en: "whale", tr: "balina" }, { en: "zebra", tr: "zebra" },
+            { en: "desert", tr: "çöl" }, { en: "forest", tr: "orman" }, { en: "grassland", tr: "çayır" },
+            { en: "jungle", tr: "orman (balta girmemiş)" }, { en: "land", tr: "kara" }, { en: "mountain", tr: "dağ" },
+            { en: "ocean", tr: "okyanus" }, { en: "sea caves", tr: "deniz mağarası" }, { en: "sky", tr: "gökyüzü" },
+            { en: "water", tr: "su" }, { en: "claw", tr: "pençe" }, { en: "ear", tr: "kulak" },
+            { en: "fin", tr: "yüzgeç" }, { en: "foot", tr: "ayak" }, { en: "fur", tr: "post, kürk" },
+            { en: "nail", tr: "tırnak" }, { en: "neck", tr: "boyun" }, { en: "paw", tr: "pati" },
+            { en: "skin", tr: "deri" }, { en: "stripe", tr: "şerit" }, { en: "teeth", tr: "diş" },
+            { en: "trunk", tr: "fil hortumu" }, { en: "wing", tr: "kanat" }, { en: "birds", tr: "kuşlar" },
+            { en: "carnivores", tr: "etoburlar" }, { en: "cold-blooded", tr: "soğukkanlı" }, { en: "herbivores", tr: "otoburlar" },
+            { en: "mammals", tr: "memeliler" }, { en: "reptiles", tr: "sürüngenler" }, { en: "vertebrates", tr: "omurgalılar" },
+            { en: "warm-blooded", tr: "sıcakkanlı" }, { en: "attack", tr: "saldırmak" }, { en: "awesome", tr: "harika" },
+            { en: "become extinct", tr: "nesli tükenmiş olmak" }, { en: "big", tr: "büyük" },
+            { en: "cause global warming", tr: "küresel ısınmaya sebep olmak" }, { en: "cute", tr: "tatlı" },
+            { en: "dangerous", tr: "tehlikeli" }, { en: "destroy", tr: "yok etmek" }, { en: "diet", tr: "yiyecek, beslenme" },
+            { en: "educate people", tr: "insanları eğitmek" }, { en: "endangered animals", tr: "nesli tükenmekte olan hayvanlar" },
+            { en: "enormous", tr: "devasa" }, { en: "excellent", tr: "müthiş" }, { en: "extinct animals", tr: "nesli tükenmiş hayvanlar" },
+            { en: "fast", tr: "hızlı" }, { en: "find prey", tr: "av bulmak" }, { en: "funny", tr: "komik, eğlenceli" },
+            { en: "give harm", tr: "zarar vermek" }, { en: "global warming", tr: "küresel ısınma" }, { en: "habitat", tr: "doğal yaşam alanı" },
+            { en: "harm", tr: "zarar vermek" }, { en: "heavy", tr: "ağır" }, { en: "hunt animals", tr: "hayvanları avlamak" },
+            { en: "hunt", tr: "avlanmak" }, { en: "hunter", tr: "avcı" }, { en: "in danger", tr: "tehlikede" },
+            { en: "incredible", tr: "inanılmaz" }, { en: "interesting", tr: "ilginç" }, { en: "keep clean", tr: "temiz tutmak" },
+            { en: "kill", tr: "öldürmek" }, { en: "kind", tr: "tür" }, { en: "large", tr: "geniş, büyük" },
+            { en: "lifespan", tr: "yaşam süresi" }, { en: "plant tree", tr: "ağaç dikmek" }, { en: "poisonous", tr: "zehirli" },
+            { en: "pollute environment", tr: "çevreyi kirletmek" }, { en: "population", tr: "nüfus" }, { en: "pretty", tr: "sevimli" },
+            { en: "prevent", tr: "önlemek" }, { en: "prey", tr: "av" }, { en: "protect forest", tr: "ormanı korumak" },
+            { en: "protect wild life", tr: "vahşi yaşamı korumak" }, { en: "sharp", tr: "keskin" }, { en: "size", tr: "büyüklük" },
+            { en: "stop global warming", tr: "küresel ısınmayı durdurmak" }, { en: "stop overhunting", tr: "aşırı avlanmayı önlemek" },
+            { en: "strong", tr: "güçlü" }, { en: "survive", tr: "hayatta kalmak" }, { en: "take precaution", tr: "önlem almak" },
+            { en: "unusual", tr: "olağan dışı" }, { en: "wear fur", tr: "kürk giymek" }, { en: "weight", tr: "ağırlık" },
+            { en: "wild", tr: "vahşi" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {}; 
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTurkishMeanings = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let htmlContent = '';
+            shuffledWords.forEach((word, index) => {
+                const questionId = `q${index + 1}`;
+                const correctMeaning = word.tr;
+                let distractors = uniqueTurkishMeanings.filter(m => m !== correctMeaning);
+                shuffleArray(distractors);
+                distractors = distractors.slice(0, 3); 
+                let options = shuffleArray([correctMeaning, ...distractors]);
+                
+                htmlContent += `
+                    <div class="question" id="${questionId}">
+                        <p class="question-text">${index + 1}. ${word.en}</p>
+                `;
+                options.forEach(option => {
+                    const escapedOption = option.replace(/'/g, "\\'");
+                    htmlContent += `
+                        <button class="option-button" data-answer="${option}" onclick="checkAnswer('${questionId}', '${escapedOption}')">
+                            ${option}
+                        </button>
+                    `;
+                });
+                htmlContent += `</div>`;
+            });
+            quizArea.innerHTML = htmlContent;
+        }
+
+        function checkAnswer(questionId, selectedAnswer) {
+            if (answeredQuestions[questionId]) return;
+            const questionElement = document.getElementById(questionId);
+            const buttons = questionElement.querySelectorAll('.option-button');
+            const questionText = questionElement.querySelector('.question-text').textContent.replace(/^\d+\.\s+/, '').trim();
+            const correctWordObject = wordList.find(w => w.en === questionText);
+            const correctAnswer = correctWordObject ? correctWordObject.tr : null;
+
+            if (selectedAnswer === correctAnswer) {
+                score++;
+            }
+
+            buttons.forEach(button => {
+                button.disabled = true;
+                const buttonAnswer = button.getAttribute('data-answer');
+                if (buttonAnswer === correctAnswer) button.classList.add('correct');
+                else if (buttonAnswer === selectedAnswer) button.classList.add('incorrect');
+            });
+            answeredQuestions[questionId] = true;
+        }
+
+        function showResults() {
+            const totalQuestions = wordList.length;
+            const resultsDiv = document.getElementById('results');
+            const answeredCount = Object.keys(answeredQuestions).length;
+
+            if (answeredCount < totalQuestions) {
+                if (!confirm(`Tüm soruları cevaplamadınız. Bitirmek istiyor musunuz?`)) return;
+            }
+
+            resultsDiv.innerHTML = `<h2>TEST SONUCU</h2><p>Doğru: ${score} / ${totalQuestions}</p>`;
+            resultsDiv.style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        window.onload = generateQuiz;
+    </script>
+</body>
+</html>
