@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 3. Ünite Biographies - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2980b9; /* Klasik Biyografi Mavisi */
+            --secondary-color: #34495e; /* Koyu Gri/Mavi */
+            --accent-color: #f39c12; /* Altın Sarısı */
+            --bg-color: #ecf0f1;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1a5276;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 3. Ünite - Biographies</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Learn from the legends! 📘✨📜</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Testi Sıfırla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟦 A. Vocabulary – Past Events & Famous People (1–20)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟩 B. Simple Past Tense – TO BE (21–30)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟨 C. Simple Past – Verbs (31–55)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🟥 D. Telling Dates (56–70)</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | History is the Teacher of Life! 🏛️🖋️</div>
+
+<script>
+const quizData = [
+    // 1-20 Vocabulary
+    {q:"A person who writes books is a ______.", a:["singer", "writer", "actor", "painter"], c:1},
+    {q:"Which word means very famous?", a:["poor", "talented", "famous", "early"], c:2},
+    {q:"Atatürk was born in ______.", a:["Ankara", "İstanbul", "Thessaloniki", "İzmir"], c:2},
+    {q:"Which one is about a person’s life story?", a:["Poem", "Biography", "Novel", "Letter"], c:1},
+    {q:"A person who paints pictures is a ______.", a:["musician", "painter", "inventor", "writer"], c:1},
+    {q:"Which word means die?", a:["born", "married", "died", "lived"], c:2},
+    {q:"Marie Curie was a famous ______.", a:["scientist", "singer", "athlete", "actress"], c:0},
+    {q:"Which verb is related to inventions?", a:["write", "discover", "play", "travel"], c:1},
+    {q:"A person who acts in films is an ______.", a:["author", "athlete", "actor", "inventor"], c:2},
+    {q:"Which one is a past time expression?", a:["tomorrow", "now", "yesterday", "today"], c:2},
+    {q:"He ______ many awards in his life.", a:["won", "win", "wins", "winning"], c:0},
+    {q:"A person who sings songs is a ______.", a:["dancer", "singer", "writer", "painter"], c:1},
+    {q:"Which word means very good at something?", a:["famous", "talented", "rich", "young"], c:1},
+    {q:"An inventor ______ new things.", a:["discovers", "invents", "writes", "paints"], c:1},
+    {q:"Which one is NOT about biographies?", a:["birth", "education", "hobbies", "weather"], c:3},
+    {q:"Which phrase is about education?", a:["was born", "died", "studied at", "became famous"], c:2},
+    {q:"He became famous ______ his books.", a:["for", "at", "on", "d"], c:0},
+    {q:"Which one shows past experience?", a:["last year", "tomorrow", "next week", "now"], c:0},
+    {q:"She ______ her first album in 2015.", a:["release", "released", "releases", "releasing"], c:1},
+    {q:"A person who discovers new places is an ______.", a:["explorer", "painter", "writer", "singer"], c:0},
+
+    // 21-30 To Be (Was/Were)
+    {q:"He ______ born in 1980.", a:["is", "was", "were", "be"], c:1},
+    {q:"They ______ famous scientists.", a:["was", "were", "are", "is"], c:1},
+    {q:"She ______ happy with her success.", a:["is", "was", "were", "are"], c:1},
+    {q:"We ______ students last year.", a:["are", "were", "was", "be"], c:1},
+    {q:"He ______ not interested in music.", a:["was", "were", "is", "are"], c:0},
+    {q:"______ you born in Türkiye?", a:["Are", "Is", "Were", "Was"], c:2}, // D seçeneği soruda Was idi ama were (you) için düzeltildi
+    {q:"Where ______ he born?", a:["is", "was", "were", "are"], c:1},
+    {q:"They ______ not at home yesterday.", a:["are", "was", "were", "is"], c:2},
+    {q:"I ______ very young at that time.", a:["am", "was", "were", "be"], c:1},
+    {q:"______ she famous when she was young?", a:["Is", "Are", "Was", "Were"], c:2},
+
+    // 31-55 Past Verbs
+    {q:"He ______ a book last year.", a:["writes", "wrote", "writing", "write"], c:1},
+    {q:"She ______ in Paris in 2010.", a:["lives", "lived", "living", "live"], c:1},
+    {q:"They ______ the prize in 2018.", a:["win", "won", "wins", "winning"], c:1},
+    {q:"He ______ not finish the project.", a:["did", "does", "did not", "do"], c:2},
+    {q:"We ______ a famous person yesterday.", a:["meet", "met", "meets", "meeting"], c:1},
+    {q:"She ______ the school in 2005.", a:["graduate", "graduates", "graduated", "graduating"], c:2},
+    {q:"He ______ a scientist when he grew up.", a:["become", "became", "becomes", "becoming"], c:1},
+    {q:"They ______ not like history lessons.", a:["did not", "does not", "are not", "were not"], c:0},
+    {q:"______ you read his biography?", a:["Do", "Did", "Does", "Are"], c:1},
+    {q:"She ______ many countries.", a:["visit", "visited", "visits", "visiting"], c:1},
+    {q:"He ______ his first song in 2000.", a:["records", "recorded", "record", "recording"], c:1},
+    {q:"We ______ not understand the lesson.", a:["do not", "did not", "does not", "are not"], c:1},
+    {q:"When ______ he start his career?", a:["do", "did", "does", "is"], c:1},
+    {q:"She ______ famous after the movie.", a:["becomes", "became", "become", "becoming"], c:1},
+    {q:"They ______ football in their childhood.", a:["play", "played", "playing", "plays"], c:1},
+    {q:"He ______ a lot of money.", a:["earns", "earned", "earning", "earn"], c:1},
+    {q:"She ______ not go to school yesterday.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"We ______ the match last night.", a:["watch", "watched", "watches", "watching"], c:1},
+    {q:"He ______ famous worldwide.", a:["becomes", "became", "become", "becoming"], c:1},
+    {q:"They ______ many difficulties.", a:["have", "had", "has", "having"], c:1},
+    {q:"She ______ her family very much.", a:["love", "loved", "loves", "loving"], c:1},
+    {q:"He ______ not tell the truth.", a:["does not", "did not", "is not", "was not"], c:1},
+    {q:"______ she win any awards?", a:["Does", "Did", "Is", "Was"], c:1},
+    {q:"We ______ his life story.", a:["read", "reads", "reading", "readed"], c:0},
+    {q:"He ______ his first book at 25.", a:["write", "wrote", "written", "writes"], c:1},
+
+    // 56-70 Dates
+    {q:"02/01/2026 =", a:["the two January", "the second of January twenty twenty-six", "January second", "the second January"], c:1},
+    {q:"15/03/1995 =", a:["the fifteen March", "the fifteenth of March nineteen ninety-five", "the fifteenth March", "March fifteen"], c:1},
+    {q:"29/10/1923 =", a:["the twenty-nine of October", "the twenty-ninth of October nineteen twenty-three", "October twenty-nine", "the twenty-ninth October"], c:1},
+    {q:"01/01/2000 =", a:["the first of January two thousand", "the one January", "January one", "the first January"], c:0},
+    {q:"21/09/2017 =", a:["the twenty first September", "the twenty-first of September twenty seventeen", "September twenty-first", "the twenty one of September"], c:1},
+    {q:"10/11/1938 =", a:["the tenth of November nineteen thirty-eight", "the ten of November", "November tenth", "the tenth November"], c:0},
+    {q:"07/04/1989 =", a:["the seventh of April nineteen eighty-nine", "the seven April", "April seven", "the seventh April"], c:0},
+    {q:"25/12/2010 =", a:["the twenty-five December", "December twenty-five", "the twenty-fifth of December twenty ten", "the twenty fifth December"], c:2},
+    {q:"03/06/1975 =", a:["the third of June nineteen seventy-five", "June third", "the three June", "third June"], c:0},
+    {q:"18/07/2020 =", a:["the eighteen July", "July eighteen", "the eighteenth of July twenty twenty", "the eighteenth July"], c:2},
+    {q:"30/08/1922 =", a:["the thirtieth of August nineteen twenty-two", "the thirty August", "August thirty", "the thirtieth August"], c:0},
+    {q:"05/05/2005 =", a:["the fifth of May two thousand five", "five May", "May five", "the five May"], c:0},
+    {q:"14/02/1990 =", a:["the fourteen February", "the fourteenth of February nineteen ninety", "February fourteen", "the fourteenth February"], c:1},
+    {q:"09/09/2019 =", a:["the ninth of September twenty nineteen", "nine September", "September nine", "the nine September"], c:0},
+    {q:"31/12/2024 =", a:["December thirty-one", "the thirty-first of December twenty twenty-four", "the thirty-one December", "thirty-first December"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 55) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Mükemmel! Gerçek bir tarihçi gibisin! 🏛️✨" : "İyi iş! Past Tense (Geçmiş Zaman) ve tarihlerin yazılışına biraz daha göz atarak puanını artırabilirsin! 🖋️📘";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

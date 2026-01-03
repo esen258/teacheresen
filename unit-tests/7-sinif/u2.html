@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 2. Ünite Sports - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Spor turuncusu */
+            --secondary-color: #2c3e50; /* Koyu lacivert */
+            --accent-color: #f1c40f; /* Altın sarısı */
+            --bg-color: #fdf2e9;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            border-left: 10px solid var(--accent-color);
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #b45f06;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>7. Sınıf 2. Ünite - Sports</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Train hard, play smart! 🏀⚽🏅</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Testi Sıfırla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🟩 A. Sports & Equipment Vocabulary (1–25)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🟨 B. Simple Present Tense (26–45)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🟥 C. Prepositions & Adverbs (46–70)</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Healthy Body, Healthy Mind! 🏃‍♂️💪</div>
+
+<script>
+const quizData = [
+    // 1-25 Sports & Equipment
+    {q:"Which sport uses a ball and a goal?", a:["Tennis", "Basketball", "Football", "Swimming"], c:2},
+    {q:"You need a racket to play ______.", a:["football", "tennis", "basketball", "volleyball"], c:1},
+    {q:"Which sport is played on ice?", a:["Skiing", "Ice hockey", "Surfing", "Cycling"], c:1},
+    {q:"A person who swims is a ______.", a:["runner", "swimmer", "player", "coach"], c:1},
+    {q:"Which equipment do you need for basketball?", a:["Helmet", "Net", "Ball", "Racket"], c:2},
+    {q:"Which sport uses a helmet?", a:["Basketball", "Cycling", "Volleyball", "Tennis"], c:1},
+    {q:"You play football on a ______.", a:["court", "pool", "pitch", "ring"], c:2},
+    {q:"Which sport uses a net and a ball?", a:["Volleyball", "Boxing", "Wrestling", "Running"], c:0},
+    {q:"A person who teaches sports is a ______.", a:["referee", "coach", "player", "fan"], c:1},
+    {q:"Which one is an individual sport?", a:["Football", "Basketball", "Tennis", "Volleyball"], c:2},
+    {q:"You need skis to do ______.", a:["skating", "skiing", "surfing", "climbing"], c:1},
+    {q:"Which sport is played in a pool?", a:["Running", "Swimming", "Cycling", "Tennis"], c:1},
+    {q:"Which equipment is used in boxing?", a:["Gloves", "Helmet", "Racket", "Ball"], c:0},
+    {q:"A person who runs is a ______.", a:["swimmer", "runner", "climber", "player"], c:1},
+    {q:"Which sport uses a ring?", a:["Boxing", "Football", "Tennis", "Cycling"], c:0},
+    {q:"Which sport is done on water?", a:["Surfing", "Skiing", "Wrestling", "Jogging"], c:0},
+    {q:"A referee’s job is to ______.", a:["score goals", "teach players", "control the match", "play the game"], c:2},
+    {q:"Which one is a team sport?", a:["Tennis", "Swimming", "Football", "Running"], c:2},
+    {q:"You need a bat to play ______.", a:["basketball", "baseball", "volleyball", "tennis"], c:1},
+    {q:"Which sport uses a bicycle?", a:["Cycling", "Skating", "Skiing", "Running"], c:0},
+    {q:"Which one is NOT sports equipment?", a:["Ball", "Helmet", "Racket", "Uniform"], c:3},
+    {q:"A person who supports a team is a ______.", a:["referee", "coach", "fan", "player"], c:2},
+    {q:"Which sport is very popular in Türkiye?", a:["Ice hockey", "Football", "Baseball", "Rugby"], c:1},
+    {q:"You wear special shoes for ______.", a:["swimming", "boxing", "running", "cycling"], c:2},
+    {q:"Which sport is dangerous?", a:["Chess", "Climbing", "Walking", "Yoga"], c:1},
+
+    // 26-45 Simple Present
+    {q:"I ______ football every weekend.", a:["play", "plays", "played", "playing"], c:0},
+    {q:"She ______ basketball after school.", a:["play", "plays", "playing", "played"], c:1},
+    {q:"They ______ tennis on Sundays.", a:["plays", "play", "played", "playing"], c:1},
+    {q:"He ______ like extreme sports.", a:["don’t", "doesn’t", "isn’t", "aren’t"], c:1},
+    {q:"We ______ swimming in winter.", a:["don’t go", "doesn’t go", "aren’t go", "didn’t go"], c:0},
+    {q:"She ______ jogging in the morning.", a:["do", "does", "doesn’t", "did"], c:2},
+    {q:"Do you ______ basketball?", a:["plays", "playing", "play", "played"], c:2},
+    {q:"______ he like football?", a:["Do", "Does", "Is", "Did"], c:1},
+    {q:"Where ______ you do sports?", a:["do", "does", "did", "are"], c:0},
+    {q:"My brother ______ watch matches on TV.", a:["don’t", "doesn’t", "isn’t", "aren’t"], c:1},
+    {q:"We ______ up early for training.", a:["get", "gets", "getting", "got"], c:0},
+    {q:"She ______ yoga at home.", a:["do", "does", "doing", "did"], c:1},
+    {q:"They ______ go cycling on weekdays.", a:["doesn’t", "don’t", "aren’t", "isn’t"], c:1},
+    {q:"______ you wear sports shoes at school?", a:["Are", "Do", "Does", "Did"], c:1},
+    {q:"He ______ play volleyball at school.", a:["don’t", "doesn’t", "isn’t", "didn’t"], c:1},
+    {q:"My friends ______ sports together.", a:["does", "do", "did", "doing"], c:1},
+    {q:"She ______ swimming because she is afraid of water.", a:["likes", "doesn’t like", "don’t like", "liking"], c:1},
+    {q:"What time ______ the match start?", a:["do", "does", "did", "is"], c:1},
+    {q:"We ______ football on Fridays.", a:["plays", "play", "playing", "played"], c:1},
+    {q:"He ______ usually train in the evening.", a:["don’t", "doesn’t", "isn’t", "didn’t"], c:1},
+
+    // 46-70 Prepositions & Frequency
+    {q:"I play football ______ Sundays.", a:["in", "on", "at", "to"], c:1},
+    {q:"We have training ______ 5 o’clock.", a:["in", "on", "at", "from"], c:2},
+    {q:"She goes swimming ______ summer.", a:["on", "at", "in", "to"], c:2},
+    {q:"The match is ______ Monday evening.", a:["in", "at", "on", "to"], c:2},
+    {q:"I usually wake up ______ 7 a.m.", a:["in", "on", "at", "to"], c:2},
+    {q:"He ______ plays basketball after school.", a:["never", "always", "yesterday", "tomorrow"], c:1},
+    {q:"She is ______ late for training.", a:["often", "always", "never", "sometimes"], c:2},
+    {q:"We ______ watch sports on TV. (çok sık)", a:["never", "rarely", "often", "sometimes"], c:2},
+    {q:"My brother ______ does exercise. (hiç)", a:["always", "often", "never", "usually"], c:2},
+    {q:"I play tennis ______ the afternoon.", a:["at", "on", "in", "to"], c:2},
+    {q:"They train ______ weekdays.", a:["in", "at", "on", "to"], c:2},
+    {q:"She ______ goes jogging in the morning.", a:["usually", "never", "yesterday", "now"], c:0},
+    {q:"We have a match ______ April.", a:["on", "at", "in", "to"], c:2},
+    {q:"I ______ eat junk food before a match.", a:["always", "never", "often", "sometimes"], c:1},
+    {q:"He plays football ______ the weekend.", a:["in", "on", "at", "to"], c:1},
+    {q:"My sister ______ does yoga at home.", a:["often", "yesterday", "now", "tomorrow"], c:0},
+    {q:"The competition is ______ Friday.", a:["in", "at", "on", "to"], c:2},
+    {q:"I ______ go swimming in winter.", a:["always", "often", "sometimes", "never"], c:3},
+    {q:"We train ______ the morning.", a:["in", "on", "at", "to"], c:0},
+    {q:"She ______ watches matches with her family.", a:["usually", "yesterday", "now", "last night"], c:0},
+    {q:"The lesson starts ______ 9:00.", a:["in", "on", "at", "to"], c:2},
+    {q:"He ______ plays computer games after school.", a:["always", "often", "sometimes", "never"], c:2},
+    {q:"We go skiing ______ winter.", a:["at", "on", "in", "to"], c:2},
+    {q:"I ______ forget my sports bag.", a:["always", "never", "often", "sometimes"], c:1},
+    {q:"They play basketball ______ Saturdays.", a:["in", "at", "on", "to"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Şampiyon! Harika bir maç çıkardın! 🏆🔥" : "İyi bir başlangıç! Antrenmanlara (Simple Present & Time Prepositions) devam ederek formunu korumalısın! 🏃‍♂️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
