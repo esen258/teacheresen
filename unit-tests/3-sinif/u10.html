@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 10. Ünite Nature - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #27ae60; /* Doğa Yeşili */
+            --secondary-color: #8e44ad; /* Çiçek Moru */
+            --accent-color: #f1c40f; /* Güneş Sarısı */
+            --bg-color: #f1f8e9;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2c3e50;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #2ecc71);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 6px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 20px; box-shadow: 0 6px 0px #bdc3c7;
+            border: 2px solid #ecf0f1;
+        }
+
+        .question-text { font-size: 1.25em; font-weight: 700; margin-bottom: 20px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9f9; padding: 15px; border-radius: 15px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+        }
+
+        .option-label:hover { background: #f1f8e9; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #71338d;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 10. Ünite: Nature</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Do you like nature? 🌿🐞🌳🌸</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">DOĞAYA DÖN 🔄</button>
+</div>
+
+<div class="container" id="quiz-container"></div>
+
+<div class="footer">Teacher Esen - 2025 | Love Nature, Protect Animals! 🐾</div>
+
+<script>
+const quizData = [
+    {q: "\"I ............ playing football.\"", a: ["likes", "like", "am like", "is like"], c: 1},
+    {q: "\"She ............ reading books.\"", a: ["love", "loves", "is love", "are love"], c: 1},
+    {q: "\"They ............ broccoli.\"", a: ["dislikes", "dislike", "is dislike", "am dislike"], c: 1},
+    {q: "\"He ............ chocolate.\"", a: ["loves", "love", "am love", "are love"], c: 0},
+    {q: "\"We ............ ice cream.\"", a: ["likes", "like", "does like", "is like"], c: 1},
+    {q: "\"Do you like flowers?\" - \"Yes, I ............ .\"", a: ["do", "does", "am", "have"], c: 0},
+    {q: "\"............ you love ice cream?\"", a: ["Does", "Do", "Is", "Are"], c: 1},
+    {q: "\"Does she like swimming?\" - \"No, she ............ .\"", a: ["don't", "doesn't", "isn't", "hasn't"], c: 1},
+    {q: "\"............ he like watching TV?\"", a: ["Do", "Does", "Is", "Are"], c: 1},
+    {q: "\"Like\" kelimesinin zıt anlamlısı hangisidir?", a: ["Love", "Dislike", "Good", "Nice"], c: 1},
+    {q: "\"Love\" kelimesinin zıt anlamlısı hangisidir?", a: ["Like", "Hate", "Happy", "Great"], c: 1},
+    {q: "\"Good\" kelimesinin zıt anlamlısı hangisidir?", a: ["Bad", "Nice", "Fine", "Happy"], c: 0},
+    {q: "\"What ............ you like?\"", a: ["does", "do", "am", "is"], c: 1},
+    {q: "\"What ............ Ali like?\"", a: ["do", "does", "are", "am"], c: 1},
+    {q: "\"I like ............ books.\"", a: ["read", "reading", "reads", "is read"], c: 1},
+    {q: "\"She loves ............ tennis.\"", a: ["play", "playing", "plays", "is play"], c: 1},
+    {q: "\"My cat ............ milk.\"", a: ["like", "likes", "am like", "are like"], c: 1},
+    {q: "\"Happy\" kelimesinin zıt anlamlısı hangisidir?", a: ["Sad", "Good", "Energetic", "Tired"], c: 0},
+    {q: "\"Beautiful\" kelimesinin zıt anlamlısı hangisidir?", a: ["Ugly", "Nice", "Great", "New"], c: 0},
+    {q: "\"Big\" kelimesinin zıt anlamlısı hangisidir?", a: ["Tall", "Small", "Long", "Fast"], c: 1},
+    {q: "\"............ do you like doing in your free time?\"", a: ["What", "Where", "Who", "How"], c: 0},
+    {q: "\"Ayşe ............ watching TV.\"", a: ["like", "likes", "do like", "am like"], c: 1},
+    {q: "\"I ............ like flowers.\"", a: ["doesn't", "don't", "am not", "isn't"], c: 1},
+    {q: "\"He ............ like pizza.\"", a: ["don't", "doesn't", "isn't", "hasn't"], c: 1},
+    {q: "\"Does your brother like dogs?\" - \"Yes, ............ .\"", a: ["he do", "he does", "she does", "I do"], c: 1},
+    {q: "\"Do they like cats?\" - \"No, ............ .\"", a: ["they don't", "they doesn't", "they isn't", "I don't"], c: 0},
+    {q: "\"Clean\" kelimesinin zıt anlamlısı hangisidir?", a: ["Dirty", "Empty", "Full", "New"], c: 0},
+    {q: "\"New\" kelimesinin zıt anlamlısı hangisidir?", a: ["Old", "Young", "Fast", "Slow"], c: 0},
+    {q: "\"Fast\" kelimesinin zıt anlamlısı hangisidir?", a: ["Quick", "Slow", "Big", "Small"], c: 1},
+    {q: "\"Strong\" kelimesinin zıt anlamlısı hangisidir?", a: ["Weak", "Fat", "Tall", "Short"], c: 0},
+    {q: "\"I love ............ trees.\"", a: ["climb", "climbing", "climbs", "is climb"], c: 1},
+    {q: "\"What ............ your mother like doing?\"", a: ["do", "does", "is", "am"], c: 1},
+    {q: "\"They like ............ chess.\"", a: ["play", "playing", "plays", "are play"], c: 1},
+    {q: "\"My father ............ driving a car.\"", a: ["love", "loves", "am love", "are love"], c: 1},
+    {q: "\"Do you like ............ ?\"", a: ["dance", "dancing", "dances", "is dance"], c: 1},
+    {q: "\"Soft\" kelimesinin zıt anlamlısı hangisidir?", a: ["Hard", "Pink", "Small", "New"], c: 0},
+    {q: "\"Hot\" kelimesinin zıt anlamlısı hangisidir?", a: ["Warm", "Cold", "Sunny", "Dry"], c: 1},
+    {q: "\"Wet\" kelimesinin zıt anlamlısı hangisidir?", a: ["Rainy", "Dry", "Cold", "Snowy"], c: 1},
+    {q: "\"Quiet\" kelimesinin zıt anlamlısı hangisidir?", a: ["Noisy", "Small", "Good", "Calm"], c: 0},
+    {q: "\"I ............ like spiders.\"", a: ["dislike", "likes", "am", "does"], c: 0},
+    {q: "\"She ............ dislike snakes.\"", a: ["do", "does", "is", "am"], c: 1},
+    {q: "\"What ............ they like?\"", a: ["does", "do", "are", "is"], c: 1},
+    {q: "\"............ she like birds?\"", a: ["Do", "Does", "Is", "Are"], c: 1},
+    {q: "\"I like nature ............ I love animals.\"", a: ["and", "but", "is", "are"], c: 0},
+    {q: "\"I like apples ............ I dislike broccoli.\"", a: ["and", "but", "is", "are"], c: 1},
+    {q: "\"First\" kelimesinin zıt anlamlısı hangisidir?", a: ["Second", "Last", "New", "Old"], c: 1},
+    {q: "\"True\" kelimesinin zıt anlamlısı hangisidir?", a: ["False", "Right", "Good", "Bad"], c: 0},
+    {q: "\"Heavy\" kelimesinin zıt anlamlısı hangisidir?", a: ["Light", "Big", "Tall", "Small"], c: 0},
+    {q: "\"Empty\" kelimesinin zıt anlamlısı hangisidir?", a: ["Full", "Clean", "New", "Large"], c: 0},
+    {q: "\"Near\" kelimesinin zıt anlamlısı hangisidir?", a: ["Far", "Next to", "On", "Under"], c: 0},
+    {q: "\"We ............ playing in the park.\"", a: ["likes", "love", "loves", "does love"], c: 1},
+    {q: "\"It ............ like eating grass.\"", a: ["like", "likes", "am like", "are like"], c: 1},
+    {q: "\"Does Ali love nature?\" - \"Yes, ............ .\"", a: ["he love", "he loves", "he does", "he is"], c: 2},
+    {q: "\"Do you ............ ladybirds?\"", a: ["likes", "like", "loves", "dislikes"], c: 1},
+    {q: "\"What does she ............ ?\"", a: ["likes", "like", "linking", "liked"], c: 1},
+    {q: "\"Cheap\" kelimesinin zıt anlamlısı hangisidir?", a: ["Expensive", "New", "Small", "Fast"], c: 0},
+    {q: "\"Difficult\" kelimesinin zıt anlamlısı hangisidir?", a: ["Easy", "Hard", "Big", "Short"], c: 0},
+    {q: "\"High\" kelimesinin zıt anlamlısı hangisidir?", a: ["Low", "Tall", "Long", "Wide"], c: 0},
+    {q: "\"Dark\" kelimesinin zıt anlamlısı hangisidir?", a: ["Bright", "Small", "Old", "New"], c: 0},
+    {q: "\"Up\" kelimesinin zıt anlamlısı hangisidir?", a: ["Down", "Left", "Right", "Near"], c: 0},
+    {q: "\"I ............ like winter.\"", a: ["doesn't", "don't", "am not", "isn't"], c: 1},
+    {q: "\"He ............ like summer.\"", a: ["don't", "doesn't", "isn't", "am not"], c: 1},
+    {q: "\"They ............ playing outside.\"", a: ["likes", "like", "loves", "does like"], c: 1},
+    {q: "\"............ you like seeds?\"", a: ["Does", "Do", "Are", "Is"], c: 1},
+    {q: "\"What ............ he like doing?\"", a: ["do", "does", "is", "am"], c: 1},
+    {q: "\"Tall\" kelimesinin zıt anlamlısı hangisidir?", a: ["Short", "Long", "Big", "Thin"], c: 0},
+    {q: "\"Fat\" kelimesinin zıt anlamlısı hangisidir?", a: ["Thin", "Big", "Tall", "Old"], c: 0},
+    {q: "\"Young\" kelimesinin zıt anlamlısı hangisidir?", a: ["Old", "New", "Fast", "Small"], c: 0},
+    {q: "\"Early\" kelimesinin zıt anlamlısı hangisidir?", a: ["Late", "First", "Fast", "Slow"], c: 0},
+    {q: "\"Day\" kelimesinin zıt anlamlısı hangisidir?", a: ["Night", "Morning", "Evening", "Afternoon"], c: 0}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'DOĞAYI KEŞFET! 🐾';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f8f9f9';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#f1f8e9';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Mükemmel! Sen gerçek bir doğa dostusun! 🌿🏅" : "Harika çaba! Birkaç tekrarla 70'te 70 yapabilirsin! 🐾📖";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
