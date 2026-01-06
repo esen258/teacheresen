@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 4. Ünite Feelings - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffcc00; /* Mutlu Sarı */
+            --secondary-color: #ff4757; /* Enerjik Kırmızı */
+            --accent-color: #2f3542;
+            --bg-color: #fff9e6;
+            --correct: #2ed573;
+            --wrong: #ff4757;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: var(--accent-color);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #ff6b81);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid #ffa502;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; text-shadow: 2px 2px #e67e22; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: rgba(255,255,255,0.3); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 25px; box-shadow: 0 6px 0px #f1f2f6;
+            border: 2px solid #ced4da;
+            transition: transform 0.2s;
+        }
+
+        .question-text { font-size: 1.3em; font-weight: 700; margin-bottom: 20px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 15px; border-radius: 15px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+            font-size: 1.1em;
+        }
+
+        .option-label:hover { background: #e9ecef; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; border-color: #218c74; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; border-color: #b33939; }
+
+        #submit-btn {
+            display: block; width: 100%; background: #1e90ff;
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #0984e3;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #747d8c; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 4. Ünite: Feelings</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>How do you feel today? 😊😢😡😴</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">YENİDEN BAŞLA 🔄</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | Feel the English! ✨🌈</div>
+
+<script>
+const quizData = [
+    {q: "\"Happy\" (Mutlu) kelimesinin zıt anlamlısı hangisidir?", a: ["Good", "Sad/Unhappy", "Energetic", "Hungry"], c: 1},
+    {q: "\"Hot\" (Sıcak) kelimesinin zıt anlamlısı hangisidir?", a: ["Angry", "Thirsty", "Cold", "Surprised"], c: 2},
+    {q: "\"Good\" (İyi) kelimesinin zıt anlamlısı hangisidir?", a: ["Bad", "Fine", "OK", "Great"], c: 0},
+    {q: "\"Hungry\" (Aç) kelimesinin zıt anlamlısı hangisidir?", a: ["Thirsty", "Full (Tok)", "Tired", "Sad"], c: 1},
+    {q: "\"I ............ happy.\"", a: ["is", "are", "am", "can"], c: 2},
+    {q: "\"She ............ tired.\"", a: ["am", "are", "is", "can't"], c: 2},
+    {q: "\"They ............ energetic.\"", a: ["am", "is", "are", "it"], c: 2},
+    {q: "\"How ............ you feel?\"", a: ["does", "do", "are", "is"], c: 1},
+    {q: "\"How ............ she feel?\"", a: ["do", "does", "is", "are"], c: 1},
+    {q: "\"I feel ............ .\" (Susadım) diyen biri ne içmek ister?", a: ["Water", "Apple", "Pizza", "Cake"], c: 0},
+    {q: "\"Let’s ............ milk.\"", a: ["eat", "drink", "dance", "sleep"], c: 1},
+    {q: "\"Let’s ............ a book.\"", a: ["watch", "write", "read", "listen"], c: 2},
+    {q: "\"Let's ............ .\" (Haydi dans edelim)", a: ["swim", "dance", "cook", "study"], c: 1},
+    {q: "\"Let's\" yapısından sonra gelen fiil nasıl olmalıdır?", a: ["Ek almamış, yalın halde", "İng takısı almış", "S takısı almış", "Geçmiş zamanda"], c: 0},
+    {q: "\"I feel hungry. Let's ............ a sandwich.\"", a: ["drink", "eat", "play", "go"], c: 1},
+    {q: "\"I feel tired. Let's ............ .\"", a: ["run", "sleep", "jump", "dance"], c: 1},
+    {q: "\"How do you feel?\" sorusuna hangisiyle başlanır?", a: ["I am...", "He is...", "I feel...", "She feels..."], c: 2},
+    {q: "\"Angry\" (Kızgın) kelimesinin zıt anlamlısı hangisidir?", a: ["Calm (Sakin)", "Sad", "Hungry", "Tired"], c: 0},
+    {q: "\"Is he surprised?\" sorusuna olumlu cevap hangisidir?", a: ["No, he isn't.", "Yes, he is.", "Yes, she is.", "No, I am not."], c: 1},
+    {q: "\"Are you OK?\" sorusuna olumsuz cevap hangisidir?", a: ["Yes, I am.", "No, I am not.", "No, he isn't.", "Yes, she is."], c: 1},
+    {q: "\"I feel thirsty. ............ drink water.\"", a: ["Do", "Let's", "Is", "Am"], c: 1},
+    {q: "\"She feels unhappy. Let's ............ a comedy.\"", a: ["read", "eat", "watch", "sleep"], c: 2},
+    {q: "\"He ............ feel good.\" (O iyi hissetmiyor)", a: ["don't", "doesn't", "isn't", "am not"], c: 1},
+    {q: "\"I ............ feel energetic.\" (Enerjik hissetmiyorum)", a: ["don't", "doesn't", "am not", "is not"], c: 0},
+    {q: "\"Sleepy\" ne demektir?", a: ["Aç", "Uykulu", "Üzgün", "Kızgın"], c: 1},
+    {q: "\"Surprised\" kelimesinin Türkçe karşılığı nedir?", a: ["Şaşırmış", "Korkmuş", "Yorgun", "Mutlu"], c: 0},
+    {q: "\"Scared\" ne demektir?", a: ["Cesur", "Korkmuş", "Enerjik", "Susamış"], c: 1},
+    {q: "\"Energetic\" (Hareketli) kelimesinin zıt anlamlısı hangisidir?", a: ["Happy", "Tired (Yorgun)", "Hungry", "Cold"], c: 1},
+    {q: "\"Let's ............ to the pool (havuza).\"", a: ["go", "eat", "read", "sleep"], c: 0},
+    {q: "\"Drink\" (İçmek) kelimesinin zıt eylemi hangisidir?", a: ["Eat (Yemek)", "Run", "Sleep", "Watch"], c: 0},
+    {q: "\"I ............ sorry.\" (Üzgünüm)", a: ["is", "are", "am", "feel"], c: 2},
+    {q: "\"You ............ look happy.\"", a: ["is", "are", "do", "am"], c: 1},
+    {q: "\"Let's ............ chess.\"", a: ["play", "do", "eat", "drink"], c: 0},
+    {q: "\"Let's ............ a song.\"", a: ["sing", "dance", "cook", "jump"], c: 0},
+    {q: "\"I ............ sad.\" cümlesinde boşluğa hangisi gelebilir?", a: ["Sadece am", "Sadece feel", "İkisi de gelebilir", "Hiçbiri"], c: 2},
+    {q: "\"She feels ............ . Let's eat a cake.\"", a: ["thirsty", "hungry", "tired", "cold"], c: 1},
+    {q: "\"We ............ happy.\"", a: ["am", "is", "are", "do"], c: 2},
+    {q: "\"It ............ a cat.\"", a: ["am", "are", "is", "feel"], c: 2},
+    {q: "\"How does he feel?\"", a: ["I feel...", "He feels...", "She feels...", "They feel..."], c: 1},
+    {q: "\"He feels happy.\" cümlesinde neden \"-s\" takısı vardır?", a: ["Çoğul olduğu için", "Özne He olduğu için", "Geçmiş zaman için", "Soru olduğu için"], c: 1},
+    {q: "\"Bad\" (Kötü) kelimesinin zıt anlamlısı hangisidir?", a: ["Sad", "Good", "Angry", "Tired"], c: 1},
+    {q: "\"Old\" (Yaşlı) kelimesinin zıt anlamlısı hangisidir?", a: ["New/Young", "Big", "Small", "Short"], c: 0},
+    {q: "\"Let's ............ a face.\" (Haydi bir yüz çizelim)", a: ["sing", "draw", "eat", "drink"], c: 1},
+    {q: "\"I'm ............ . Let's play football.\"", a: ["tired", "energetic", "sleepy", "sad"], c: 1},
+    {q: "\"I'm ............ . Let's go to bed.\"", a: ["hungry", "thirsty", "tired/sleepy", "happy"], c: 2},
+    {q: "\"Are you happy?\" en kısa olumlu cevap?", a: ["Yes, I am.", "Yes, I feel.", "Yes, I do.", "Yes, you are."], c: 0},
+    {q: "\"Does she feel bad?\" olumsuz cevap hangisidir?", a: ["No, she doesn't.", "No, she isn't.", "No, he doesn't.", "No, I don't."], c: 0},
+    {q: "\"Let's drink ............ .\"", a: ["pizza", "lemonade", "hamburger", "apple"], c: 1},
+    {q: "\"Let's eat ............ .\"", a: ["water", "milk", "cake", "tea"], c: 2},
+    {q: "\"Happy\" kelimesindeki harf sayısı \"Sad\"dan kaç fazladır?", a: ["1", "2", "3", "4"], c: 1},
+    {q: "\"Thin\" (İnce) kelimesinin zıt anlamlısı hangisidir?", a: ["Tall", "Fat (Şişman)", "Short", "Big"], c: 1},
+    {q: "\"Small\" (Küçük) kelimesinin zıt anlamlısı hangisidir?", a: ["Little", "Big (Büyük)", "Short", "Thin"], c: 1},
+    {q: "\"Fast\" (Hızlı) kelimesinin zıt anlamlısı hangisidir?", a: ["Quick", "Slow (Yavaş)", "Strong", "Weak"], c: 1},
+    {q: "\"He ............ happy today.\"", a: ["feel", "feels", "feeling", "am"], c: 1},
+    {q: "\"I ............ thirsty.\"", a: ["feel", "feels", "am feel", "is"], c: 0},
+    {q: "\"Do you feel angry?\"", a: ["I do", "I am", "I feel", "I does"], c: 0},
+    {q: "\"Is she sad?\"", a: ["she doesn't", "she isn't", "he isn't", "I'm not"], c: 1},
+    {q: "\"Let's ............ basketball.\"", a: ["play", "do", "go", "sing"], c: 0},
+    {q: "\"Let's ............ to music.\"", a: ["watch", "listen", "read", "sing"], c: 1},
+    {q: "\"Let's ............ TV.\"", a: ["listen", "watch", "read", "draw"], c: 1},
+    {q: "\"I feel hungry. ............ eat pizza.\"", a: ["Is", "Let's", "Are", "Do"], c: 1},
+    {q: "\"She feels ............ .\" (Üzgün)", a: ["happy", "unhappy/sad", "energetic", "fine"], c: 1},
+    {q: "\"He feels ............ .\" (Kızgın)", a: ["angry", "hungry", "thirsty", "surprised"], c: 0},
+    {q: "\"I feel ............ .\" (İyi)", a: ["bad", "good", "sad", "tired"], c: 1},
+    {q: "\"Up\" kelimesinin zıt anlamlısı hangisidir?", a: ["Down", "In", "Out", "Near"], c: 0},
+    {q: "\"Right\" (Sağ) kelimesinin zıt anlamlısı hangisidir?", a: ["Left (Sol)", "Near", "Under", "On"], c: 0},
+    {q: "\"Stop\" (Dur) kelimesinin zıt anlamlısı hangisidir?", a: ["Wait", "Go (Git)", "Sit", "Stand"], c: 1},
+    {q: "\"How ............ they feel?\"", a: ["do", "does", "is", "are"], c: 0},
+    {q: "\"Let's ............ English.\"", a: ["play", "study", "drink", "eat"], c: 1},
+    {q: "\"Feelings\" ne demektir?", a: ["Renklere", "Sayılara", "Duygular", "Aile"], c: 2}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'DUYGULARIMI KONTROL ET! ✨';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f8f9fa';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#fffae6';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Harika hissediyor olmalısın! Duygular konusunda uzmansın! 🥳🌟" : "İyi bir başlangıç! Biraz daha 'feelings' çalışarak 70'te 70 yapabilirsin! 😊📚";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

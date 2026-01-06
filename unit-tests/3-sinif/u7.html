@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 7. Ünite In My City - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #34495e; /* Şehir Grisi */
+            --secondary-color: #f1c40f; /* Taksi Sarısı */
+            --accent-color: #e74c3c; /* Dur İşareti Kırmızısı */
+            --bg-color: #ecf0f1;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2c3e50;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #7f8c8d);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 6px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; text-shadow: 2px 2px #000; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: var(--secondary-color); color: #333; display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 20px; box-shadow: 0 6px 0px #bdc3c7;
+            border: 2px solid #bdc3c7;
+        }
+
+        .question-text { font-size: 1.25em; font-weight: 700; margin-bottom: 20px; color: #2c3e50; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f9f9f9; padding: 15px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+        }
+
+        .option-label:hover { background: #eee; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #962d22;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 7. Ünite: In My City</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Where are you? In the park or at the museum? 🏥🏫🦁🌳</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">ŞEHRİ TEKRAR GEZ 🔄</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | Explore your city! 🏙️✨</div>
+
+<script>
+const quizData = [
+    {q: "\"Big\" bir şehrin zıt anlamlısı hangisidir?", a: ["Small", "Tall", "Fast", "New"], c: 0},
+    {q: "\"Old\" bir müzenin zıt anlamlısı hangisidir?", a: ["Big", "New", "Short", "Bad"], c: 1},
+    {q: "\"I am ............ school.\" (Okuldayım - belirli bir nokta)", a: ["in", "at", "under", "on"], c: 1},
+    {q: "\"I am ............ Turkey.\" (Ülke ismi)", a: ["at", "in", "on", "behind"], c: 1},
+    {q: "\"She is ............ the park.\" (Alan içinde)", a: ["at", "in", "on", "under"], c: 1},
+    {q: "\"He is ............ home.\"", a: ["in", "at", "on", "next to"], c: 1},
+    {q: "\"Near\" kelimesinin zıt anlamlısı hangisidir?", a: ["Far", "Next to", "In", "At"], c: 0},
+    {q: "\"Where ............ you?\"", a: ["is", "am", "are", "do"], c: 2},
+    {q: "\"Where ............ she?\"", a: ["are", "is", "am", "does"], c: 1},
+    {q: "\"I am ............ London.\" (Şehir ismi)", a: ["at", "in", "on", "under"], c: 1},
+    {q: "\"He is ............ the bus stop.\" (Nokta)", a: ["in", "at", "over", "behind"], c: 1},
+    {q: "\"They are ............ the house.\" (İçinde)", a: ["at", "in", "on", "under"], c: 1},
+    {q: "\"Right\" kelimesinin zıt anlamlısı nedir?", a: ["Left", "Up", "Down", "Straight"], c: 0},
+    {q: "\"Short\" bir yolun zıttı nedir?", a: ["Big", "Long", "Small", "New"], c: 1},
+    {q: "\"Beautiful\" bir parkın zıt anlamlısı nedir?", a: ["Clean", "Ugly", "New", "Old"], c: 1},
+    {q: "\"Museum\" kelimesinin Türkçe karşılığı nedir?", a: ["Park", "Okul", "Müze", "Hastane"], c: 2},
+    {q: "\"Zoo\" kelimesinin Türkçe karşılığı nedir?", a: ["Kütüphane", "Hayvanat Bahçesi", "Banka", "Market"], c: 1},
+    {q: "\"We are ............ the classroom.\"", a: ["at", "in", "on", "behind"], c: 1},
+    {q: "\"Quiet\" bir sokağın zıttı nedir?", a: ["Noisy", "Small", "Cold", "Slow"], c: 0},
+    {q: "\"Fast\" bir trenin zıttı nedir?", a: ["Quick", "Slow", "New", "Old"], c: 1},
+    {q: "\"Where is the cat?\" - \"It is ............ the garden.\"", a: ["at", "in", "over", "under"], c: 1},
+    {q: "\"Are you ............ İstanbul?\"", a: ["at", "in", "on", "under"], c: 1},
+    {q: "\"Is she ............ work?\" (İşte - nokta)", a: ["in", "at", "on", "behind"], c: 1},
+    {q: "\"Clean\" bir sokağın zıttı nedir?", a: ["Dirty", "Empty", "Full", "Big"], c: 0},
+    {q: "\"Empty\" bir otobüsün zıttı nedir?", a: ["Small", "Full", "Short", "Old"], c: 1},
+    {q: "\"Where ............ the bank?\"", a: ["are", "is", "am", "do"], c: 1},
+    {q: "\"They ............ at the hospital.\"", a: ["is", "am", "are", "do"], c: 2},
+    {q: "\"I ............ at the library.\"", a: ["is", "are", "am", "be"], c: 2},
+    {q: "\"Hospital\" kelimesinin anlamı nedir?", a: ["Okul", "Hastane", "Kütüphane", "Park"], c: 1},
+    {q: "\"Shopping centre\" ne demektir?", a: ["Alışveriş merkezi", "Müze", "Sinema", "Park"], c: 0},
+    {q: "\"In\" edatı hangi yerler için daha uygundur?", a: ["Küçük noktalar", "Şehir ve ülke gibi büyük alanlar", "Sadece masalar", "Hiçbiri"], c: 1},
+    {q: "\"At\" edatı hangisiyle kullanılır?", a: ["Ankara", "Turkey", "The bus stop", "France"], c: 2},
+    {q: "\"True\" kelimesinin zıt anlamlısı nedir?", a: ["False", "Right", "Good", "Bad"], c: 0},
+    {q: "\"Up\" kelimesinin zıt anlamlısı nedir?", a: ["Near", "Down", "Left", "Right"], c: 1},
+    {q: "\"Is the museum big?\" - \"Yes, it ............\"", a: ["are", "is", "am", "do"], c: 1},
+    {q: "\"Are the children in the park?\" - \"Yes, they ............\"", a: ["is", "am", "are", "are in"], c: 2},
+    {q: "\"Library\" kelimesinin anlamı nedir?", a: ["Laboratuvar", "Kütüphane", "Kitapçı", "Okul"], c: 1},
+    {q: "\"Cinema\" kelimesinin anlamı nedir?", a: ["Tiyatro", "Sinema", "Lokanta", "Kafe"], c: 1},
+    {q: "\"Open\" bir dükkanın zıttı nedir?", a: ["Closed", "New", "Big", "Hot"], c: 0},
+    {q: "\"Cheap\" bir marketin zıttı nedir?", a: ["Expensive", "Small", "Near", "Far"], c: 0},
+    {q: "\"Where is Ayşe?\" - \"She is ............ the mosque.\"", a: ["at", "on", "under", "over"], c: 0},
+    {q: "\"We are ............ Antalya.\"", a: ["at", "in", "on", "behind"], c: 1},
+    {q: "\"I am ............ the cinema.\"", a: ["at", "in", "ikisi de olabilir", "on"], c: 2},
+    {q: "\"Bank\" kelimesinin anlamı nedir?", a: ["Park", "Banka", "Okul", "Bahçe"], c: 1},
+    {q: "\"School\" kelimesinin anlamı nedir?", a: ["Okul", "Hastane", "Kütüphane", "Müze"], c: 0},
+    {q: "\"Hot\" bir şehrin zıttı nedir?", a: ["Warm", "Cold", "Sunny", "Big"], c: 1},
+    {q: "\"Easy\" bir yolun zıttı nedir?", a: ["Hard", "Small", "Short", "New"], c: 0},
+    {q: "\"Is he at home?\" - \"No, he ............\"", a: ["is", "isn't", "am not", "aren't"], c: 1},
+    {q: "\"Are they in London?\" - \"No, they ............\"", a: ["isn't", "aren't", "am not", "don't"], c: 1},
+    {q: "\"City\" ne demektir?", a: ["Köy", "Şehir", "Ülke", "Mahalle"], c: 1},
+    {q: "\"Good\" bir şehrin zıttı nedir?", a: ["Nice", "Bad", "Great", "Big"], c: 1},
+    {q: "\"Strong\" kelimesinin zıt anlamlısı nedir?", a: ["Weak", "Fat", "Small", "Old"], c: 0},
+    {q: "\"I am ............ the airport.\"", a: ["in", "at", "on", "under"], c: 1},
+    {q: "\"Where are the kids?\" - \"............ are in the zoo.\"", a: ["He", "She", "They", "It"], c: 2},
+    {q: "\"Restaurant\" kelimesinin anlamı nedir?", a: ["Hastane", "Lokanta/Restoran", "Okul", "Park"], c: 1},
+    {q: "\"Toy shop\" kelimesinin anlamı nedir?", a: ["Oyuncakçı", "Kitapçı", "Market", "Manav"], c: 0},
+    {q: "\"Light\" bir sokağın zıttı nedir?", a: ["Dark", "Small", "Big", "New"], c: 0},
+    {q: "\"High\" bir binanın zıttı nedir?", a: ["Low", "Tall", "Big", "Long"], c: 0},
+    {q: "\"Is there a park in the city?\" - \"Yes, there ............\"", a: ["is", "are", "am", "be"], c: 0},
+    {q: "\"How many museums are there?\" - \"There ............ two museums.\"", a: ["is", "are", "am", "do"], c: 1},
+    {q: "\"Market\" kelimesinin anlamı nedir?", a: ["Müze", "Market/Pazar", "Park", "Bahçe"], c: 1},
+    {q: "\"Bus stop\" kelimesinin anlamı nedir?", a: ["Tren garı", "Otobüs durağı", "Havaalanı", "Liman"], c: 1},
+    {q: "\"Near\" kelimesi hangisiyle zıt anlamlıdır?", a: ["Next to", "Far", "On", "Under"], c: 1},
+    {q: "\"In\" edatı hangisinden önce gelir?", a: ["Home", "The bus stop", "France", "The point"], c: 2},
+    {q: "\"At\" edatı hangisiyle sık kullanılır?", a: ["School", "Turkey", "Germany", "İstanbul"], c: 0},
+    {q: "\"Park\" kelimesinin anlamı nedir?", a: ["Hastane", "Okul", "Park", "Banka"], c: 2},
+    {q: "\"Modern\" bir şehrin zıttı nedir?", a: ["Old-fashioned", "New", "Big", "Fast"], c: 0},
+    {q: "\"Safe\" bir sokağın zıttı nedir?", a: ["Dangerous", "Small", "Long", "Short"], c: 0},
+    {q: "\"Is İzmir in Turkey?\"", a: ["Yes, it is.", "No, it isn't.", "Yes, I am.", "No, she isn't."], c: 0},
+    {q: "\"Where are we?\" - \"We ............ in the museum.\"", a: ["is", "am", "are", "do"], c: 2}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'ŞEHRİ KONTROL ET! 🏙️';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f9f9f9';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#fef9e7';
+            this.style.borderColor = 'var(--secondary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Harika! Şehri avucunun içi gibi biliyorsun! 🏙️🏆" : "İyi iş! Şehirdeki yerleri ve 'in/at' kullanımını biraz daha çalışarak mükemmel olabilirsin! 🚶‍♂️📖";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

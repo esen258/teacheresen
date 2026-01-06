@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 1. Ünite Greeting - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b; /* Neşeli Kırmızı */
+            --secondary-color: #4ecdc4; /* Canlı Turkuaz */
+            --accent-color: #feca57; /* Güneş Sarısı */
+            --bg-color: #f7f1e3;
+            --correct: #1dd1a1;
+            --wrong: #ff6b6b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2f3542;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 30px 20px;
+            border-bottom: 8px solid var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; text-shadow: 3px 3px 0px rgba(0,0,0,0.1); }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 15px; border-radius: 15px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 5px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 30px; box-shadow: 0 8px 0px #dfe4ea;
+            border: 3px solid #f1f2f6;
+            transition: transform 0.2s;
+        }
+
+        .question-text { font-size: 1.3em; font-weight: 700; margin-bottom: 20px; color: #2f3542; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .option-label {
+            background: #f1f2f6; padding: 15px; border-radius: 20px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; font-size: 1.1em;
+            text-align: center;
+        }
+
+        .option-label:hover { background: #e1e2e6; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; border-color: #10ac84; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; border-color: #ee5253; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 25px;
+            font-size: 1.8em; font-family: 'Fredoka One', cursive;
+            border-radius: 30px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 8px 0px #01a3a4;
+            transition: all 0.2s;
+        }
+
+        #submit-btn:active { transform: translateY(4px); box-shadow: 0 4px 0px #01a3a4; }
+
+        .footer { text-align: center; padding: 40px; color: #57606f; font-weight: bold; font-size: 1.1em; }
+
+        @media (max-width: 600px) {
+            .options { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 1. Ünite: Greeting</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Let's Learn English! 🎈⭐🌈</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">TEKRAR ÇÖZ 🔁</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2024 | Enjoy Learning! 🖍️📚</div>
+
+<script>
+const quizData = [
+    {q: "\"Merhaba\" kelimesinin İngilizce karşılığı hangisidir?", a: ["Hi", "Bye", "See you", "Good night"], c: 0},
+    {q: "\"Good morning\" ne demektir?", a: ["İyi akşamlar", "İyi geceler", "Günaydın", "Tünaydın"], c: 2},
+    {q: "\"Nice to meet you\" diyen birine hangi cevabı veririz?", a: ["Hello", "Nice to meet you, too", "Take care", "Good bye"], c: 1},
+    {q: "\"Hoşça kal\" anlamına gelen ifade hangisidir?", a: ["Good morning", "Good afternoon", "Good bye", "Hi"], c: 2},
+    {q: "\"İyi geceler\" ifadesinin İngilizcesi nedir?", a: ["Good evening", "Good night", "Good afternoon", "Good day"], c: 1},
+    {q: "\"How are you?\" sorusunun anlamı nedir?", a: ["Adın ne?", "Kaç yaşındasın?", "Nasılsın?", "Nerelisin?"], c: 2},
+    {q: "\"I am fine, thank you.\" cümlesinin anlamı nedir?", a: ["İyiyim, teşekkür ederim.", "Merhaba, nasılsın?", "Tanıştığımıza memnun oldum.", "Kendine iyi bak."], c: 0},
+    {q: "Birine \"Tünaydın / İyi öğlenler\" demek için hangisini kullanırız?", a: ["Good morning", "Good afternoon", "Good evening", "Hello"], c: 1},
+    {q: "\"Take care\" ne demektir?", a: ["Görüşürüz", "Kendine iyi bak", "Günaydın", "Selam"], c: 1},
+    {q: "\"See you\" ifadesinin anlamı nedir?", a: ["Memnun oldum", "Hoş geldin", "Görüşürüz", "İyi günler"], c: 2},
+    {q: "\"Have a good day\" ne demektir?", a: ["İyi geceler", "İyi akşamlar", "İyi şanslar", "İyi günler"], c: 3},
+    {q: "İngiliz alfabesinin ilk harfi hangisidir?", a: ["B", "C", "A", "E"], c: 2},
+    {q: "\"Seven\" sayısının rakamla yazılışı hangisidir?", a: ["6", "7", "8", "9"], c: 1},
+    {q: "\"Twelve\" hangi sayıdır?", a: ["11", "12", "20", "2"], c: 1},
+    {q: "15 sayısının İngilizce yazılışı hangisidir?", a: ["Fifteen", "Fifty", "Fiveteen", "Five"], c: 0},
+    {q: "\"Spell your name, please.\" cümlesi ne anlama gelir?", a: ["Adını yaz, lütfen.", "Adını söyle, lütfen.", "Adını hecele, lütfen.", "Adını unutma."], c: 2},
+    {q: "\"Eighteen\" sayısı hangisidir?", a: ["8", "18", "80", "17"], c: 1},
+    {q: "\"Four - ......... - Six\" sıralamasında boşluğa hangisi gelmelidir?", a: ["Three", "Seven", "Five", "Eight"], c: 2},
+    {q: "İngiliz alfabesinde \"K\" harfinden sonra hangi harf gelir?", a: ["L", "M", "J", "N"], c: 0},
+    {q: "Hangisi bir selamlama (greetings) ifadesi değildir?", a: ["Hello", "Hi", "Pencil", "Good morning"], c: 2},
+    {q: "\"Ten\" sayısından sonra hangi sayı gelir?", a: ["Nine", "Eleven", "Twelve", "Zero"], c: 1},
+    {q: "\"Twenty\" sayısının rakamla yazılışı nedir?", a: ["12", "20", "2", "10"], c: 1},
+    {q: "\"Good evening\" ne zaman söylenir?", a: ["Sabah", "Öğlen", "Akşam", "Gece"], c: 2},
+    {q: "\"Thirteen\" hangi sayıdır?", a: ["3", "13", "30", "14"], c: 1},
+    {q: "\"Sixteen\" sayısının rakamla yazılışı hangisidir?", a: ["6", "16", "60", "26"], c: 1},
+    {q: "İngilizce alfabede \"Y\" harfinden sonra hangi harf gelir?", a: ["X", "Z", "W", "V"], c: 1},
+    {q: "\"Eleven\" hangi sayıdır?", a: ["1", "11", "12", "21"], c: 1},
+    {q: "\"One, two, three, ............\" boşluğa hangisi gelmelidir?", a: ["Five", "Six", "Four", "Ten"], c: 2},
+    {q: "\"Goodbye\" diyen birine ne cevap verilir?", a: ["Bye", "Good morning", "Hi", "Nice to meet you"], c: 0},
+    {q: "\"Nineteen\" sayısı hangisidir?", a: ["9", "18", "19", "20"], c: 2},
+    {q: "\"Fourteen\" sayısı hangisidir?", a: ["4", "14", "40", "24"], c: 1},
+    {q: "Alfabede \"A, B, C, D, ...\" şeklinde giden dizide D'den sonra ne gelir?", a: ["F", "E", "G", "D"], c: 1},
+    {q: "\"Seventeen\" hangi sayıdır?", a: ["7", "17", "70", "27"], c: 1},
+    {q: "\"Great\" kelimesi ne anlama gelir?", a: ["Kötü", "Harika/Çok iyi", "Üzgün", "Yorgun"], c: 1},
+    {q: "\"I am ........ . How are you?\" boşluğa hangisi gelebilir?", a: ["OK", "morning", "name", "alphabet"], c: 0},
+    {q: "\"What is your name?\" sorusunun anlamı nedir?", a: ["Kaç yaşındasın?", "Adın ne?", "Nerelisin?", "Nasılsın?"], c: 1},
+    {q: "\"My name is Ali.\" cümlesinin anlamı nedir?", a: ["Ben Ali'yim.", "Ali benim arkadaşım.", "Ali buraya gel.", "Günaydın Ali."], c: 0},
+    {q: "\"Night\" kelimesi hangi vakti ifade eder?", a: ["Sabah", "Öğlen", "Gece", "İkindi"], c: 2},
+    {q: "\"Two + Three = ?\" işleminin sonucu İngilizce olarak nedir?", a: ["Four", "Five", "Six", "Seven"], c: 1},
+    {q: "\"Ten - Two = ?\" işleminin sonucu nedir?", a: ["Seven", "Nine", "Eight", "Six"], c: 2},
+    {q: "Alfabede \"L\" harfinden önce hangi harf gelir?", a: ["K", "M", "J", "N"], c: 0},
+    {q: "\"Five, ten, fifteen, .........\" boşluğa hangisi gelmelidir?", a: ["Sixteen", "Twenty", "Twelve", "Eighteen"], c: 1},
+    {q: "\"Good\" ne demektir?", a: ["Kötü", "İyi", "Büyük", "Küçük"], c: 1},
+    {q: "Hangisi bir vedalaşma ifadesidir?", a: ["Hello", "Good bye", "Good morning", "Hi"], c: 1},
+    {q: "\"Nine\" sayısından önce hangi sayı gelir?", a: ["Ten", "Eight", "Seven", "Six"], c: 1},
+    {q: "\"Eight\" hangi sayıdır?", a: ["6", "7", "8", "9"], c: 2},
+    {q: "\"Zero\" hangi sayıdır?", a: ["1", "0", "10", "100"], c: 1},
+    {q: "\"Two\" sayısının okunuşu hangisine yakındır?", a: ["Tu", "Tıri", "For", "Van"], c: 0},
+    {q: "\"Nice\" kelimesi ne anlama gelir?", a: ["Hoş/Güzel", "Kötü", "Eski", "Zor"], c: 0},
+    {q: "\"Alphabet\" kelimesinin Türkçe karşılığı nedir?", a: ["Sayılar", "Alfabe", "Renklere", "Selamlaşma"], c: 1}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'SONUCU GÖR ✨';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    // Option selection effect
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.borderColor = 'transparent';
+                input.parentElement.style.background = '#f1f2f6';
+            });
+            this.style.borderColor = 'var(--secondary-color)';
+            this.style.background = '#e1e2e6';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 50`;
+    let feedback = "";
+    if(score >= 45) feedback = "Mükemmel! Sen bir İngilizce yıldızısın! ⭐🚀";
+    else if(score >= 30) feedback = "Harika! Çok iyi gidiyorsun! 🎈🌈";
+    else feedback = "Biraz daha tekrarla daha iyi olacaksın! 📚🖍️";
+    
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 6. Ünite My House - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Ev Turuncusu - Sıcaklık */
+            --secondary-color: #27ae60; /* Bahçe Yeşili */
+            --accent-color: #2980b9; /* Oda Mavisi */
+            --bg-color: #fffaf0;
+            --correct: #2ed573;
+            --wrong: #ff4757;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2d3436;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #f39c12);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 6px solid #d35400;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 25px; box-shadow: 0 6px 0px #dfe6e9;
+            border: 2px solid #edf2f4;
+        }
+
+        .question-text { font-size: 1.25em; font-weight: 700; margin-bottom: 20px; color: #2d3436; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f1f2f6; padding: 15px; border-radius: 15px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+        }
+
+        .option-label:hover { background: #dfe4ea; border-color: var(--accent-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #219150;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 6. Ünite: My House</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Welcome to My Sweet Home! 🏠🛋️🛏️🍳</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--accent-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">TEKRAR DENE 🔄</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | There's no place like home! 🏠✨</div>
+
+<script>
+const quizData = [
+    {q: "\"Big\" (Büyük) kelimesinin zıt anlamlısı hangisidir?", a: ["Small (Küçük)", "Tall", "New", "Long"], c: 0},
+    {q: "\"Old\" (Eski) kelimesinin zıt anlamlısı hangisidir?", a: ["Big", "New (Yeni)", "Short", "Fast"], c: 1},
+    {q: "\"In\" (İçinde) kelimesinin zıt anlamlısı hangisidir?", a: ["On", "Under", "Out (Dışında)", "Near"], c: 2},
+    {q: "\"Long\" (Uzun) kelimesinin zıt anlamlısı hangisidir?", a: ["Small", "Short (Kısa)", "Big", "Thin"], c: 1},
+    {q: "\"I ............ got a big house.\"", a: ["has", "have", "is", "am"], c: 1},
+    {q: "\"She ............ got a blue bed.\"", a: ["have", "has", "are", "do"], c: 1},
+    {q: "\"My cat ............ got a small house.\"", a: ["have", "has", "is", "are"], c: 1},
+    {q: "\"We ............ got a garden.\"", a: ["has", "have", "am", "does"], c: 1},
+    {q: "\"They ............ got two armchairs.\"", a: ["has", "have", "is", "are"], c: 1},
+    {q: "\"He ............ got a computer.\" (Olumsuz: O bir bilgisayara sahip değil)", a: ["haven't", "hasn't", "isn't", "don't"], c: 1},
+    {q: "\"I ............ got a television in my room.\" (Olumsuz)", a: ["hasn't", "haven't", "am not", "aren't"], c: 1},
+    {q: "\"............ you got a sister?\"", a: ["Has", "Have", "Do", "Are"], c: 1},
+    {q: "\"............ she got a doll?\"", a: ["Have", "Has", "Is", "Does"], c: 1},
+    {q: "\"Have you got a bike?\" - \"Yes, I ............\"", a: ["have", "has", "do", "am"], c: 0},
+    {q: "\"Has he got a ball?\" - \"No, he ............\"", a: ["haven't", "hasn't", "isn't", "doesn't"], c: 1},
+    {q: "Evin hangi bölümünde yemek pişirilir?", a: ["Bathroom", "Kitchen", "Bedroom", "Garage"], c: 1},
+    {q: "Evin hangi bölümünde uyunur?", a: ["Living room", "Bedroom", "Garden", "Kitchen"], c: 1},
+    {q: "\"True\" (Doğru) kelimesinin zıt anlamlısı nedir?", a: ["Right", "False (Yanlış)", "Good", "Bad"], c: 1},
+    {q: "\"Clean\" (Temiz) bir odanın zıttı nedir?", a: ["Empty", "Dirty (Kirli)", "Small", "New"], c: 1},
+    {q: "\"Left\" (Sol) kelimesinin zıt anlamlısı nedir?", a: ["Up", "Right (Sağ)", "Down", "Near"], c: 1},
+    {q: "\"The book is ............ the table.\" (Kitap masanın üstünde)", a: ["in", "on", "under", "behind"], c: 1},
+    {q: "\"The ball is ............ the box.\" (Top kutunun içinde)", a: ["on", "in", "under", "near"], c: 1},
+    {q: "\"The cat is ............ the chair.\" (Kedi sandalyenin altında)", a: ["in", "on", "under", "behind"], c: 2},
+    {q: "\"Where ............ the cup?\" (Bardak nerede?)", a: ["is", "are", "have", "has"], c: 0},
+    {q: "\"Where ............ the blocks?\" (Bloklar nerede?)", a: ["is", "are", "do", "have"], c: 1},
+    {q: "\"High\" (Yüksek) kelimesinin zıt anlamlısı nedir?", a: ["Short", "Low (Alçak)", "Small", "Near"], c: 1},
+    {q: "\"Beautiful\" (Güzel) bir bahçenin zıttı nedir?", a: ["Small", "Ugly (Çirkin)", "New", "Old"], c: 1},
+    {q: "\"Soft\" (Yumuşak) bir yastığın zıttı nedir?", a: ["Hard (Sert)", "Big", "Small", "New"], c: 0},
+    {q: "\"How many chairs ............ there in the kitchen?\"", a: ["is", "are", "have", "has"], c: 1},
+    {q: "\"There ............ a fridge in the kitchen.\"", a: ["are", "is", "have", "has"], c: 1},
+    {q: "\"There ............ two sofas in the living room.\"", a: ["is", "are", "am", "has"], c: 1},
+    {q: "\"Is there a carpet in the bedroom?\" - \"Yes, there ............\"", a: ["are", "is", "have", "has"], c: 1},
+    {q: "\"Are there any books in the bookcase?\" - \"No, there ............\"", a: ["isn't", "aren't", "haven't", "don't"], c: 1},
+    {q: "\"My ............ is in the garage.\" (Arabam garajda)", a: ["bed", "car", "kettle", "soap"], c: 1},
+    {q: "\"I wash my hands in the ............\"", a: ["bathroom", "kitchen", "garage", "garden"], c: 0},
+    {q: "\"Near\" (Yakın) kelimesinin zıt anlamlısı hangisidir?", a: ["Next to", "Far (Uzak)", "On", "In"], c: 1},
+    {q: "\"Empty\" (Boş) bir bardağın zıttı nedir?", a: ["Full (Dolu)", "Clean", "Big", "Small"], c: 0},
+    {q: "\"Up\" (Yukarı) kelimesinin zıt anlamlısı hangisidir?", a: ["Left", "Right", "Down (Aşağı)", "Near"], c: 2},
+    {q: "\"She ............ got three pillows.\"", a: ["have", "has", "is", "am"], c: 1},
+    {q: "\"............ they got a garden?\"", a: ["Has", "Have", "Are", "Do"], c: 1},
+    {q: "\"Where is the kettle?\" - \"It is in the ............\"", a: ["bathroom", "kitchen", "bedroom", "garage"], c: 1},
+    {q: "\"There is a ............ in the bathroom.\" (Banyoda bir ayna var)", a: ["sofa", "mirror", "bed", "bookcase"], c: 1},
+    {q: "\"Fast\" (Hızlı) kelimesinin zıt anlamlısı nedir?", a: ["Slow (Yavaş)", "Quick", "Big", "Small"], c: 0},
+    {q: "\"Heavy\" (Ağır) bir dolabın zıt anlamlısı nedir?", a: ["Light (Hafif)", "Large", "Old", "New"], c: 0},
+    {q: "\"There is ............ apple on the table.\"", a: ["a", "an", "two", "are"], c: 1},
+    {q: "\"There are ............ blocks in the bag.\"", a: ["a", "an", "five", "is"], c: 2},
+    {q: "\"My brother ............ got a computer.\"", a: ["have", "has", "is", "are"], c: 1},
+    {q: "\"Your ............ is in the kitchen.\" (Bardağın mutfakta)", a: ["cup", "soap", "bed", "shampoo"], c: 0},
+    {q: "\"Inside\" (İçerisi) kelimesinin zıt anlamlısı nedir?", a: ["Outside (Dışarısı)", "Under", "Over", "Between"], c: 0},
+    {q: "\"Strong\" (Güçlü) kelimesinin zıt anlamlısı nedir?", a: ["Big", "Weak (Güçsüz)", "Tall", "Short"], c: 1},
+    {q: "\"Where are the soaps?\" - \"............ are in the bathroom.\"", a: ["It", "They", "There", "She"], c: 1},
+    {q: "\"Is the ball under the bed?\" - \"No, it ............\"", a: ["isn't", "aren't", "hasn't", "doesn't"], c: 0},
+    {q: "\"............ many rooms are there in your house?\"", a: ["What", "How", "Who", "Where"], c: 1},
+    {q: "\"I have got a table ............ four chairs.\"", a: ["and", "but", "is", "are"], c: 0},
+    {q: "\"Hot\" (Sıcak) kelimesinin zıt anlamlısı nedir?", a: ["Warm", "Cold (Soğuk)", "Cool", "Dry"], c: 1},
+    {q: "\"Thick\" (Kalın) bir halının zıttı nedir?", a: ["Thin (İnce)", "Big", "Long", "Short"], c: 0},
+    {q: "\"He ............ got a big bedroom.\"", a: ["haven't", "hasn't", "isn't", "don't"], c: 1},
+    {q: "\"............ you got a carpet in your room?\"", a: ["Has", "Have", "Do", "Are"], c: 1},
+    {q: "\"There ............ a bookcase in the living room.\"", a: ["is", "are", "has", "have"], c: 0},
+    {q: "\"Where are the cushions?\" - \"They are ............ the sofa.\" (Kanepenin üstünde)", a: ["in", "on", "under", "near"], c: 1},
+    {q: "\"Day\" (Gündüz) kelimesinin zıt anlamlısı nedir?", a: ["Morning", "Night (Gece)", "Evening", "Noon"], c: 1},
+    {q: "\"Quiet\" (Sessiz) bir odanın zıttı nedir?", a: ["Noisy (Gürültülü)", "Big", "Small", "Clean"], c: 0},
+    {q: "\"I ............ got a small house.\"", a: ["has", "have", "am", "is"], c: 1},
+    {q: "\"My sister ............ got a pink bed.\"", a: ["have", "has", "are", "is"], c: 1},
+    {q: "\"Are there two armchairs?\" - \"Yes, there ............\"", a: ["is", "are", "have", "do"], c: 1},
+    {q: "\"Is there a computer in the garage?\" - \"No, there ............\"", a: ["isn't", "aren't", "hasn't", "doesn't"], c: 0},
+    {q: "\"First\" (Birinci) kelimesinin zıt anlamlısı nedir?", a: ["Second", "Last (Sonuncu)", "New", "Old"], c: 1},
+    {q: "\"Dark\" (Karanlık) bir odanın zıttı nedir?", a: ["Bright (Aydınlık)", "Small", "Big", "Old"], c: 0},
+    {q: "\"We haven't ............ a television.\"", a: ["get", "got", "gets", "is"], c: 1},
+    {q: "\"Has Ali got a robot?\" - \"Yes, he ............\"", a: ["has", "have", "does", "is"], c: 0}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'EVİMİ KONTROL ET! ✨';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f1f2f6';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#fff5e6';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Harika! Evin her yerini çok iyi biliyorsun! 🏠🏆" : "Güzel deneme! Ev bölümlerini ve eşyaları biraz daha tekrar ederek 70'te 70 yapabilirsin! ✨📚";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

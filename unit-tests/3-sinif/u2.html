@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 2. Ünite My Family - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff9f43; /* Sıcak Turuncu */
+            --secondary-color: #ff6b6b; /* Sevgi Pembesi */
+            --accent-color: #54a0ff; /* Gökyüzü Mavisi */
+            --bg-color: #fefaf1;
+            --correct: #1dd1a1;
+            --wrong: #ee5253;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2f3542;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 6px solid #ee5253;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.3em; margin: 0; }
+        .contact-info { font-size: 1.1em; margin-top: 10px; font-weight: bold; background: rgba(255,255,255,0.2); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 25px; box-shadow: 0 5px 0px #f1f2f6;
+            border: 2px solid #f1f2f6;
+            transition: all 0.3s ease;
+        }
+
+        .question-text { font-size: 1.25em; font-weight: 700; margin-bottom: 20px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 15px; border-radius: 15px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+        }
+
+        .option-label:hover { background: #f1f2f6; border-color: var(--accent-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #e67e22;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #a4b0be; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 2. Ünite: My Family</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>I Love My Family! 👨‍👩‍👧‍👦🏠💖</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--accent-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">TEKRAR DENE 🔄</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | Family is Everything! 👨‍👩‍👦‍👦✨</div>
+
+<script>
+const quizData = [
+    {q: "\"Mother\" kelimesinin Türkçe karşılığı nedir?", a: ["Baba", "Anne", "Hala", "Dede"], c: 1},
+    {q: "\"Father\" kelimesinin Türkçe karşılığı nedir?", a: ["Amca", "Erkek kardeş", "Baba", "Dayı"], c: 2},
+    {q: "\"Grandfather\" ne demektir?", a: ["Büyükbaba", "Büyükanne", "Kuzen", "Teyze"], c: 0},
+    {q: "\"Grandmother\" ne demektir?", a: ["Dede", "Büyükanne", "Anne", "Kız kardeş"], c: 1},
+    {q: "\"Sister\" kelimesinin anlamı nedir?", a: ["Erkek kardeş", "Kız kardeş", "Teyze", "Kuzen"], c: 1},
+    {q: "\"Brother\" kelimesinin anlamı nedir?", a: ["Amca", "Erkek kardeş", "Baba", "Dayı"], c: 1},
+    {q: "\"Uncle\" kelimesi kimler için kullanılır?", a: ["Hala/Teyze", "Amca/Dayı", "Dede", "Kuzen"], c: 1},
+    {q: "\"Aunt\" kelimesinin Türkçe karşılığı nedir?", a: ["Amca", "Hala/Teyze", "Dayı", "Büyükbaba"], c: 1},
+    {q: "\"Cousin\" ne demektir?", a: ["Yeğen", "Kuzen", "Kardeş", "Arkadaş"], c: 1},
+    {q: "\"Family\" kelimesinin anlamı nedir?", a: ["Okul", "Sınıf", "Aile", "Ev"], c: 2},
+    {q: "Erkekler için kullanılan \"O\" zamiri hangisidir?", a: ["She", "It", "He", "I"], c: 2},
+    {q: "Kadınlar için kullanılan \"O\" zamiri hangisidir?", a: ["He", "She", "You", "They"], c: 1},
+    {q: "\"Who is he?\" sorusunun anlamı nedir?", a: ["O kim? (Erkek)", "O kim? (Kadın)", "Sen kimsin?", "Bu ne?"], c: 0},
+    {q: "\"Who is she?\" sorusunun anlamı nedir?", a: ["O kim? (Erkek)", "O kim? (Kadın)", "Bu kim?", "Onlar kim?"], c: 1},
+    {q: "\"This is my mum.\" cümlesinin anlamı nedir?", a: ["Bu benim babam.", "Bu benim annem.", "O benim annem.", "Şu benim annem."], c: 1},
+    {q: "\"He is my dad.\" cümlesinde boşluğa hangisi gelebilir?", a: ["She", "He", "This", "My"], c: 1},
+    {q: "Yakındaki birini tanıtırken hangi kelimeyi kullanırız?", a: ["That", "This", "Who", "He"], c: 1},
+    {q: "Uzaktaki birini tanıtırken hangi kelimeyi kullanırız?", a: ["This", "That", "She", "My"], c: 1},
+    {q: "\"Son\" kelimesinin anlamı nedir?", a: ["Kız evlat", "Erkek evlat", "Güneş", "Çocuk"], c: 1},
+    {q: "\"Daughter\" kelimesinin anlamı nedir?", a: ["Erkek evlat", "Kız evlat", "Doktor", "Hala"], c: 1},
+    {q: "\"Who?\" sorusunun Türkçe karşılığı nedir?", a: ["Ne?", "Nerede?", "Kim?", "Nasıl?"], c: 2},
+    {q: "\"This is my brother.\" cümlesinin anlamı nedir?", a: ["Bu benim kız kardeşim.", "Bu benim erkek kardeşim.", "Şu benim abim.", "O benim babam."], c: 1},
+    {q: "\"She is my grandma.\" cümlesinde bahsedilen kişi kimdir?", a: ["Dede", "Nine", "Teyze", "Anne"], c: 1},
+    {q: "\"He is my grandpa.\" cümlesinde bahsedilen kişi kimdir?", a: ["Amca", "Dede", "Baba", "Abi"], c: 1},
+    {q: "\"Me\" kelimesinin anlamı nedir?", a: ["Sen", "O", "Ben", "Biz"], c: 2},
+    {q: "\"My family\" ne demektir?", a: ["Senin ailen", "Onun ailesi", "Benim ailem", "Bizim ailemiz"], c: 2},
+    {q: "Aşağıdakilerden hangisi bir aile bireyi değildir?", a: ["Teacher", "Mother", "Father", "Sister"], c: 0},
+    {q: "\"This\" ne demektir?", a: ["Şu", "O", "Bu", "Kim"], c: 2},
+    {q: "\"That\" ne demektir?", a: ["Bu", "Şu", "Ben", "Kim"], c: 1},
+    {q: "\"Who is this?\" sorusunun anlamı nedir?", a: ["Şu kim?", "Bu kim?", "O kim?", "Sen kimsin?"], c: 1},
+    {q: "Annemizin kız kardeşine ne deriz?", a: ["Uncle", "Aunt", "Sister", "Grandmother"], c: 1},
+    {q: "Babamızın erkek kardeşine ne deriz?", a: ["Uncle", "Father", "Brother", "Grandfather"], c: 0},
+    {q: "Annemizin babasına ne deriz?", a: ["Father", "Uncle", "Grandfather", "Brother"], c: 2},
+    {q: "Babamızın annesine ne deriz?", a: ["Mother", "Aunt", "Grandmother", "Sister"], c: 2},
+    {q: "Teyzemizin çocuğuna ne deriz?", a: ["Brother", "Sister", "Cousin", "Uncle"], c: 2},
+    {q: "\"She is my sister.\" cümlesindeki \"she\" yerine hangisi gelebilir?", a: ["Ali", "Ayşe", "Ahmet", "Mehmet"], c: 1},
+    {q: "\"He is my uncle.\" cümlesindeki \"he\" yerine hangisi gelebilir?", a: ["Fatma", "Pelin", "Murat", "Merve"], c: 2},
+    {q: "\"Is she your mother?\" sorusuna verilebilecek cevap hangisidir?", a: ["Yes, he is.", "Yes, she is.", "No, he isn't.", "Hello."], c: 1},
+    {q: "\"Is he your father?\" sorusuna verilebilecek cevap hangisidir?", a: ["Yes, he is.", "Yes, she is.", "I am fine.", "Hi."], c: 0},
+    {q: "\"This is my ............. .\" (Resimde bir bebek var)", a: ["Grandfather", "Baby", "Uncle", "Aunt"], c: 1},
+    {q: "\"Mum\" kelimesinin uzun hali nedir?", a: ["Mother", "Father", "Sister", "Brother"], c: 0},
+    {q: "\"Dad\" kelimesinin uzun hali nedir?", a: ["Mother", "Father", "Grandmother", "Grandfather"], c: 1},
+    {q: "\"Grandpa\" kelimesinin uzun hali nedir?", a: ["Grandmother", "Grandfather", "Father", "Uncle"], c: 1},
+    {q: "\"Grandma\" kelimesinin uzun hali nedir?", a: ["Grandfather", "Grandmother", "Mother", "Aunt"], c: 1},
+    {q: "\"Who is that?\" sorusunun anlamı nedir?", a: ["Bu kim?", "Şu kim?", "O kim?", "Sen kimsin?"], c: 1},
+    {q: "\"That is my aunt.\" cümlesinin anlamı nedir?", a: ["Bu benim halam.", "Şu benim halam.", "O benim amcam.", "Bu benim teyzem."], c: 1},
+    {q: "\"He is my cousin.\" cümlesinde anlatılan kimdir?", a: ["Kız kuzen", "Erkek kuzen", "Anne", "Baba"], c: 1},
+    {q: "\"She is my cousin.\" cümlesinde anlatılan kimdir?", a: ["Erkek kuzen", "Kız kuzen", "Dede", "Amca"], c: 1},
+    {q: "Aşağıdaki eşleşmelerden hangisi yanlıştır?", a: ["Mother - Anne", "Father - Baba", "Sister - Erkek kardeş", "Uncle - Amca"], c: 2},
+    {q: "Aşağıdaki eşleşmelerden hangisi doğrudur?", a: ["He - Kadın", "She - Erkek", "This - Bu", "That - Kim"], c: 2},
+    {q: "\"Nice to meet you.\" - \".......................... .\"", a: ["Fine, thanks", "Nice to meet you, too", "Hello", "Goodbye"], c: 1},
+    {q: "\"Hello, I am Eda. This is my ............. .\" (Eda annesini gösteriyor)", a: ["father", "mother", "brother", "son"], c: 1},
+    {q: "\"Who is he?\" - \"He is my ............. .\" (Resimde yaşlı bir adam var)", a: ["grandmother", "grandfather", "sister", "daughter"], c: 1},
+    {q: "\"Who is she?\" - \"She is my ............. .\" (Resimde küçük bir kız var)", a: ["brother", "father", "sister", "uncle"], c: 2},
+    {q: "\"This is my family.\" ne demektir?", a: ["Bu benim okulum.", "Bu benim ailem.", "Şu benim ailem.", "O benim ailem."], c: 1},
+    {q: "\"He\" zamiri hangisi için kullanılamaz?", a: ["Brother", "Uncle", "Sister", "Father"], c: 2},
+    {q: "\"She\" zamiri hangisi için kullanılamaz?", a: ["Mother", "Aunt", "Brother", "Grandmother"], c: 2},
+    {q: "\"This is ............ father.\"", a: ["me", "my", "he", "she"], c: 1},
+    {q: "\"Is that your uncle?\" sorusunun anlamı nedir?", a: ["Bu senin amcan mı?", "Şu senin amcan mı?", "O senin baban mı?", "Kim o?"], c: 1},
+    {q: "\"That is my grandpa.\" cümlesinin anlamı nedir?", a: ["Bu benim dedem.", "Şu benim dedem.", "O benim dedem.", "Şu benim ninem."], c: 1},
+    {q: "Ailemizdeki erkek çocuklara ne denir?", a: ["Daughter", "Son", "Aunt", "Mother"], c: 1},
+    {q: "Ailemizdeki kız çocuklara ne denir?", a: ["Son", "Daughter", "Father", "Uncle"], c: 1},
+    {q: "\"How are you?\" - \"........................ .\"", a: ["My name is Can", "I am fine, thank you", "She is my mother", "This is my dad"], c: 1},
+    {q: "\"What is your name?\" - \"........................ .\"", a: ["I am nine", "My name is Ali", "I am fine", "He is my brother"], c: 1},
+    {q: "\"This is my uncle Murat.\" cümlesinde Murat kimdir?", a: ["Teyze", "Amca", "Dede", "Kuzen"], c: 1},
+    {q: "\"She is my aunt Selma.\" cümlesinde Selma kimdir?", a: ["Hala", "Dayı", "Baba", "Abi"], c: 0},
+    {q: "\"Who is this?\" sorusuna verilecek doğru cevap hangisidir?", a: ["It is a pencil", "This is my mother", "I am a student", "Fine, thanks"], c: 1},
+    {q: "\"Who is he?\" sorusuna verilecek doğru cevap hangisidir?", a: ["He is my brother", "She is my sister", "I am Ali", "Yes, she is"], c: 0},
+    {q: "\"Is she your sister?\" - \"No, ............. .\"", a: ["she is", "she isn't", "he isn't", "I am not"], c: 1},
+    {q: "\"Is he your brother?\" - \"Yes, ............. .\"", a: ["he is", "she is", "I am", "it is"], c: 0}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'AILEMİ TANIYORUM ❤️';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f8f9fa';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#f1f2f6';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Harika! Aileni çok iyi tanıyorsun! 👨‍👩‍👧‍👦🌟" : "İyi bir deneme! Biraz daha çalışarak uzman olabilirsin. 🏠📚";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

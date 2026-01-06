@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 3. Ünite People I Love - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7; /* Modern Mor */
+            --secondary-color: #a29bfe; 
+            --accent-color: #ff7675; /* Sevgi Pembesi */
+            --bg-color: #f9f9ff;
+            --correct: #00b894;
+            --wrong: #d63031;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+            color: #2d3436;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 6px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; background: rgba(0,0,0,0.1); display: inline-block; padding: 5px 20px; border-radius: 20px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 25px;
+            border-radius: 25px; box-shadow: 0 6px 0px #dfe6e9;
+            border: 2px solid #edf2f4;
+            transition: all 0.3s ease;
+        }
+
+        .question-text { font-size: 1.25em; font-weight: 700; margin-bottom: 20px; color: #2d3436; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f1f2f6; padding: 15px; border-radius: 15px;
+            cursor: pointer; transition: all 0.2s; display: block; 
+            border: 2px solid transparent; font-weight: bold; text-align: center;
+        }
+
+        .option-label:hover { background: #dfe4ea; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 25px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #4834d4;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>3. Sınıf 3. Ünite: People I Love</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Strong, Beautiful and Talented! 💪❤️✨</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--accent-color); border:none; color:white; padding:10px 20px; border-radius:12px; cursor:pointer; font-weight:bold;">TEKRAR DENE 🔄</button>
+</div>
+
+<div class="container" id="quiz-container">
+    </div>
+
+<div class="footer">Teacher Esen - 2025 | We Love English! ❤️📖</div>
+
+<script>
+const quizData = [
+    {q: "\"Beautiful\" kelimesinin Türkçe karşılığı nedir?", a: ["Çirkin", "Güzel", "Yaşlı", "Genç"], c: 1},
+    {q: "\"Ugly\" kelimesinin zıt anlamlısı hangisidir?", a: ["Small", "Strong", "Beautiful", "Weak"], c: 2},
+    {q: "\"Strong\" ne demektir?", a: ["Zayıf", "Güçlü", "Hızlı", "Yavaş"], c: 1},
+    {q: "\"Weak\" kelimesinin Türkçe karşılığı nedir?", a: ["Güçlü", "Şişman", "Zayıf/Güçsüz", "Uzun"], c: 2},
+    {q: "\"Tall\" kelimesinin zıt anlamlısı hangisidir?", a: ["Big", "Short", "Fat", "Fast"], c: 1},
+    {q: "\"Small\" ne demektir?", a: ["Büyük", "Küçük", "İnce", "Yaşlı"], c: 1},
+    {q: "\"Young\" kelimesinin Türkçe karşılığı nedir?", a: ["Yaşlı", "Genç", "Mutlu", "Yorgun"], c: 1},
+    {q: "\"Old\" ne demektir?", a: ["Yeni", "Genç", "Yaşlı", "Hızlı"], c: 2},
+    {q: "\"Fat\" kelimesinin zıt anlamlısı hangisidir?", a: ["Tall", "Thin", "Big", "Slow"], c: 1},
+    {q: "\"Fast\" ne demektir?", a: ["Yavaş", "Hızlı", "Güçlü", "Zayıf"], c: 1},
+    {q: "\"Slow\" kelimesinin Türkçe karşılığı nedir?", a: ["Hızlı", "Yavaş", "Uzun", "Kısa"], c: 1},
+    {q: "\"This is my grandma. She is ......... .\" cümlesini hangisi en iyi tamamlar?", a: ["young", "old", "fast", "strong"], c: 1},
+    {q: "\"He is strong.\" cümlesinin anlamı nedir?", a: ["O zayıftır.", "O güçlüdür.", "O yaşlıdır.", "O hızlıdır."], c: 1},
+    {q: "\"It is fast.\" cümlesi hangisi için söylenmiş olabilir?", a: ["Bir kaplumbağa", "Bir tavşan", "Bir bebek", "Bir ağaç"], c: 1},
+    {q: "\"Is she young?\" sorusuna \"Evet\" cevabı nasıl verilir?", a: ["Yes, he is.", "Yes, she is.", "No, she isn't.", "Yes, I am."], c: 1},
+    {q: "\"Is he tall?\" sorusuna \"Hayır, değil\" cevabı nasıl verilir?", a: ["No, he isn't.", "No, she isn't.", "Yes, he is.", "No, I'm not."], c: 0},
+    {q: "\"Dance\" kelimesinin anlamı nedir?", a: ["Şarkı söylemek", "Dans etmek", "Koşmak", "Yüzmek"], c: 1},
+    {q: "\"Sing\" kelimesinin anlamı nedir?", a: ["Şarkı söylemek", "Resim çizmek", "Yemek pişirmek", "Uçmak"], c: 0},
+    {q: "\"Swim\" ne demektir?", a: ["Yürümek", "Yüzmek", "Atlamak", "Binmek"], c: 1},
+    {q: "\"Cook\" kelimesinin Türkçe karşılığı nedir?", a: ["Temizlik yapmak", "Yemek pişirmek", "Uyumak", "Oyun oynamak"], c: 1},
+    {q: "\"Fly\" ne demektir?", a: ["Koşmak", "Uçmak", "Düşmek", "Kalkmak"], c: 1},
+    {q: "\"Draw\" kelimesinin anlamı nedir?", a: ["Yazmak", "Okumak", "Çizmek", "Boyamak"], c: 2},
+    {q: "\"Climb a tree\" ne demektir?", a: ["Ağaç dikmek", "Ağaca tırmanmak", "Çiçek sulamak", "Ormanda yürümek"], c: 1},
+    {q: "\"Fly a kite\" ne demektir?", a: ["Uçak sürmek", "Uçurtma uçurmak", "Kuş beslemek", "Balon şişirmek"], c: 1},
+    {q: "\"Skip rope\" kelimesinin karşılığı nedir?", a: ["İp atlamak", "Top oynamak", "Koşmak", "Saklambaç oynamak"], c: 0},
+    {q: "\"Lift weight\" ne demektir?", a: ["Top sektirmek", "Ağırlık kaldırmak", "Hızlı yürümek", "Jimnastik yapmak"], c: 1},
+    {q: "\"Drive a car\" ne demektir?", a: ["Bisiklet sürmek", "Araba sürmek", "At sürmek", "Otobüse binmek"], c: 1},
+    {q: "\"Ride a horse\" ne demektir?", a: ["Ata binmek", "Eşeğe binmek", "Atı beslemek", "Atla koşmak"], c: 0},
+    {q: "\"Ride a bike\" ne demektir?", a: ["Motosiklet sürmek", "Bisiklete binmek", "Kaykaya binmek", "Yürümek"], c: 1},
+    {q: "\"I can dance.\" cümlesinin anlamı nedir?", a: ["Dans edemem.", "Dans edebilirim.", "Dans etmeyi severim.", "Dans edelim mi?"], c: 1},
+    {q: "\"He can't swim.\" cümlesinin anlamı nedir?", a: ["O yüzebilir.", "O yüzemez.", "O yüzmeyi sever.", "O denizi sevmez."], c: 1},
+    {q: "\"Rabbit is fast. It can ............ fast.\"", a: ["fly", "run", "climb", "cook"], c: 1},
+    {q: "\"Play the piano\" ne demektir?", a: ["Gitar çalmak", "Piyano çalmak", "Şarkı söylemek", "Müzik dinlemek"], c: 1},
+    {q: "\"Play the guitar\" ne demektir?", a: ["Flüt çalmak", "Gitar çalmak", "Davul çalmak", "Keman çalmak"], c: 1},
+    {q: "\"Play chess\" ne demektir?", a: ["Dama oynamak", "Satranç oynamak", "Tavla oynamak", "Kart oynamak"], c: 1},
+    {q: "\"Play football\" ne demektir?", a: ["Basketbol oynamak", "Futbol oynamak", "Tenis oynamak", "Voleybol oynamak"], c: 1},
+    {q: "\"Run fast\" ne demektir?", a: ["Yavaş koşmak", "Hızlı koşmak", "Çok yürümek", "Uzağa zıplamak"], c: 1},
+    {q: "\"Can you ride a bike?\" sorusunun anlamı nedir?", a: ["Bisikletin var mı?", "Bisiklete binebilir miyiz?", "Bisiklete binebilir misin?", "Bisikletin ne renk?"], c: 2},
+    {q: "\"Can you sing a song?\" sorusuna \"Evet, yapabilirim\" cevabı hangisidir?", a: ["Yes, I can.", "No, I can't.", "Yes, he can.", "No, she can't."], c: 0},
+    {q: "\"A bird can ......... but it can't ......... .\"", a: ["fly / swim", "swim / fly", "run / fly", "climb / fly"], c: 0},
+    {q: "\"A fish can ......... but it can't ......... .\"", a: ["fly / swim", "swim / fly", "walk / swim", "jump / swim"], c: 1},
+    {q: "\"I ......... play basketball, but I ......... play tennis.\"", a: ["can / can't", "can't / can't", "can / can", "is / isn't"], c: 0},
+    {q: "Hangisi fiziksel bir özelliktir?", a: ["Sing", "Tall", "Dance", "Cook"], c: 1},
+    {q: "Hangisi bir yetenektir (ability)?", a: ["Small", "Weak", "Swim", "Fat"], c: 2},
+    {q: "\"My friend Ali is strong. He can ......... weight.\"", a: ["fly", "lift", "drive", "ride"], c: 1},
+    {q: "\"This ball is ......... .\" (Görselde büyük bir top var)", a: ["small", "big", "thin", "short"], c: 1},
+    {q: "\"She is fat.\" cümlesinin zıttı hangisidir?", a: ["She is thin.", "She is tall.", "She is young.", "She is beautiful."], c: 0},
+    {q: "\"He is short.\" cümlesinin zıttı hangisidir?", a: ["He is small.", "He is tall.", "He is old.", "He is fast."], c: 1},
+    {q: "\"Can a monkey climb a tree?\"", a: ["Yes, it can.", "No, it can't.", "Yes, he is.", "No, she isn't."], c: 0},
+    {q: "\"Can an elephant fly?\"", a: ["Yes, it can.", "No, it can't.", "Yes, it is.", "No, it isn't."], c: 1},
+    {q: "\"Beautiful\" kelimesindeki eksik harfleri tamamla: B_ _ut_ful", a: ["e, a, i", "a, e, u", "e, i, a", "o, u, i"], c: 0},
+    {q: "\"Thin\" kelimesinin eş anlamlısı hangisidir?", a: ["Slim", "Fat", "Short", "Big"], c: 0},
+    {q: "\"Play basketball\" Türkçesi nedir?", a: ["Basketbol oynamak", "Beyzbol oynamak", "Futbol oynamak", "Voleybol oynamak"], c: 0},
+    {q: "\"He can drive a car.\" Resimde kim olabilir?", a: ["Bebek", "Çocuk", "Adam", "Kedi"], c: 2},
+    {q: "\"It can run fast.\" Bu hangi hayvan olabilir?", a: ["Turtle (Kaplumbağa)", "Cheetah (Çita)", "Snail (Salyangoz)", "Fish (Balık)"], c: 1},
+    {q: "\"Is the fish small?\" - \"Yes, ......... .\"", a: ["it is", "it can", "she is", "he is"], c: 0},
+    {q: "\"Are you strong?\" - \"Yes, ......... .\"", a: ["I am", "I can", "he is", "you are"], c: 0},
+    {q: "\"Can you cook?\" - \"No, ......... .\"", a: ["I can't", "I am not", "he can't", "you can't"], c: 0},
+    {q: "\"My father is ......... . He is not young.\"", a: ["old", "small", "thin", "weak"], c: 0},
+    {q: "\"This is my pet. It is ......... .\"", a: ["big", "small", "fat", "tall"], c: 1},
+    {q: "\"Jump\" kelimesinin anlamı nedir?", a: ["Koşmak", "Zıplamak", "Yüzmek", "Uçmak"], c: 1},
+    {q: "\"I can't skip rope.\" ne demektir?", a: ["İp atlayabilirim.", "İp atlayamam.", "İp atlamayı seviyorum.", "İp nerede?"], c: 1},
+    {q: "\"He is my friend. He is ......... .\"", a: ["ugly", "beautiful", "thin", "strong"], c: 2},
+    {q: "\"Can you play the guitar?\"", a: ["No, I can't.", "Yes, I am.", "No, she isn't.", "Yes, it is."], c: 0},
+    {q: "\"A bird can't ......... .\"", a: ["fly", "sing", "drive a car", "jump"], c: 2},
+    {q: "\"A snake (yılan) can't ......... .\"", a: ["crawl (sürünmek)", "walk", "be long", "be green"], c: 1},
+    {q: "\"Is she beautiful?\"", a: ["Yes, she is.", "Yes, she can.", "No, he isn't.", "No, I can't."], c: 0},
+    {q: "\"People I Love\" ünitesinin Türkçe adı nedir?", a: ["Okulum", "Sevdiğim İnsanlar", "Ailem", "Evim"], c: 1},
+    {q: "\"Fly a kite\" ifadesindeki \"kite\" nedir?", a: ["Uçak", "Uçurtma", "Kuş", "Balon"], c: 1},
+    {q: "\"I can ......... the piano.\"", a: ["ride", "drive", "play", "climb"], c: 2}
+];
+
+function buildQuiz() {
+    const container = document.getElementById('quiz-container');
+    quizData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}" style="display:none"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btn = document.createElement('button');
+    btn.id = 'submit-btn';
+    btn.innerText = 'YETENEKLERİMİ GÖSTER! ✨';
+    btn.onclick = checkAnswers;
+    container.appendChild(btn);
+
+    document.querySelectorAll('.option-label').forEach(label => {
+        label.addEventListener('click', function() {
+            const name = this.querySelector('input').name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+                input.parentElement.style.background = '#f1f2f6';
+                input.parentElement.style.borderColor = 'transparent';
+            });
+            this.style.background = '#dfe4ea';
+            this.style.borderColor = 'var(--primary-color)';
+        });
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                document.getElementById(`label-${index}-${selected.value}`).classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skorun: ${score} / 70`;
+    let feedback = score >= 60 ? "Müthişsin! Sen gerçek bir süper kahramansın! 💪🌟" : "Çok iyi! Bazı kelimelere tekrar bakarak 70'te 70 yapabilirsin! 📚❤️";
+    document.getElementById('feedback-text').innerText = feedback;
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
