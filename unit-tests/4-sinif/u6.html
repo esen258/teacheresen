@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 6. Ünite Fun with Science - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #a29bfe; /* Laboratuvar Moru */
+            --secondary-color: #00cec9; /* Deney Turkuazı */
+            --accent-color: #ffeaa7; /* Deney Tüpü Sarısı */
+            --bg-color: #f5f6fa;
+            --correct: #55efc4;
+            --wrong: #ff7675;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #00b5b1;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 6. Ünite - Fun with Science</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Let's do an experiment! 🧪🔬✨</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">📍 Bölüm 1: Yer Yön Zarfları (Prepositions of Place)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">📢 Bölüm 2: Emir Cümleleri ve Talimatlar (Imperatives)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔍 Bölüm 3: Soru Kalıpları ve "Where" Sorusu</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🧪 Bölüm 4: Deney Aşamaları ve Gramer Dizilimi</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🌀 Bölüm 5: Karma Gramer Soruları</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Science is fun! 🧫🔭</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"The brush is _______ the glass. (Fırça bardağın İÇİNDE)", a:["on", "in", "under", "behind"], c:1},
+    {q:"The paper is _______ the table. (Kağıt masanın ÜSTÜNDE)", a:["near", "in", "under", "on"], c:3},
+    {q:"The box is _______ the chair. (Kutu sandalyenin ALTINDA)", a:["under", "on", "in", "behind"], c:0},
+    {q:"The bottle is _______ the cup. (Şişe fincanın YANINDA)", a:["under", "on", "near", "in"], c:2},
+    {q:"The pencil is _______ the book. (Kalem kitabın ÖNÜNDE)", a:["behind", "in front of", "near", "under"], c:1},
+    {q:"The ball is _______ the box. (Top kutunun ARKASINDA)", a:["behind", "in front of", "near", "on"], c:0},
+    {q:"Görsele göre doğru edat hangisidir? (Kutu sandalyenin altında)", a:["under", "on", "in", "in front of"], c:0},
+    {q:"'Where is the glass?' sorusuna hangisiyle başlanır?", a:["It is...", "I am...", "This is...", "They are..."], c:0},
+    {q:"The plant is _______ the window. (Bitki pencerenin önünde)", a:["in front of", "under", "in", "behind"], c:0},
+    {q:"Masanın üstünde bir nesne varsa hangi edat kullanılır?", a:["in", "under", "on", "near"], c:2},
+
+    // P2: 11-20
+    {q:"'_______ the window, please.' (Pencereyi aç)", a:["Close", "Open", "Give", "Fold"], c:1},
+    {q:"'_______ the bottle.' (Şişeyi salla)", a:["Shake", "Cut", "Fold", "Plant"], c:0},
+    {q:"'_______ the paper.' (Kağıdı kes)", a:["Water", "Mix", "Cut", "Shake"], c:2},
+    {q:"'_______ the seeds.' (Tohumları ek)", a:["Plant", "Cut", "Open", "Give"], c:0},
+    {q:"'_______ the flowers.' (Çiçekleri sula)", a:["Shake", "Cut", "Water", "Close"], c:2},
+    {q:"Don't _______ the flowers. (Çiçekleri koparma)", a:["plant", "pick", "water", "cut"], c:1},
+    {q:"'_______ the colors.' (Renkleri karıştır)", a:["Cut", "Fold", "Mix", "Shake"], c:2},
+    {q:"'_______ the paper.' (Kağıdı katla)", a:["Fold", "Mix", "Cut", "Water"], c:0},
+    {q:"Birine bir şey vermesini söylerken hangi fiille başlarız?", a:["Take", "Give", "Cut", "Fold"], c:1},
+    {q:"'_______ the cup.' (Fincanı boya)", a:["Paint", "Cut", "Fold", "Water"], c:0},
+
+    // P3: 21-30
+    {q:"'_______ is the scissors?' - It is on the table.", a:["What", "Who", "Where", "How"], c:2},
+    {q:"'Where _______ the book?'", a:["am", "is", "are", "do"], c:1},
+    {q:"'Where are the pencils?' sorusunun cevabı hangisiyle başlar?", a:["It is...", "They are...", "I am...", "He is..."], c:1},
+    {q:"'_______ me the bottle, please.'", a:["Give", "Where", "Under", "On"], c:0},
+    {q:"'Can I take the brush?' sorusuna nasıl cevap verilir?", a:["Yes, you can.", "No, it is.", "It is in.", "Under the box."], c:0},
+    {q:"'Where is the cat?' sorusuna hangisi uygun bir cevaptır?", a:["It is under the car.", "Yes, it is.", "No, thank you.", "Cut the paper."], c:0},
+    {q:"'_______ the box.' (Kutuyu kapat)", a:["Open", "Close", "Water", "Plant"], c:1},
+    {q:"'Where is _______ pencil?'", a:["a", "the", "an", "is"], c:1},
+    {q:"'Is the ball in the box?' sorusuna kısa cevap hangisidir?", a:["Yes, it is.", "No, it does.", "Yes, they are.", "On the box."], c:0},
+    {q:"Hangi soru 'nerede' anlamı katar?", a:["How", "What", "Where", "Who"], c:2},
+
+    // P4: 31-40
+    {q:"Hangisi olumsuz bir emir cümlesidir?", a:["Cut the paper.", "Don't cut the paper.", "Is it on the table?", "Where is the paper?"], c:1},
+    {q:"'_______ the glass with water.' (Bardağı suyla doldur)", a:["Cut", "Mix", "Fill", "Fold"], c:2},
+    {q:"'Let's _______ an experiment.' (Haydi deney yapalım)", a:["do", "doing", "does", "are"], c:0},
+    {q:"'_______ the pebble in the water.' (Çakıl taşını suyun içine koy)", a:["Freeze", "Leave/Put", "Cut", "Fold"], c:1},
+    {q:"Birine 'Lütfen' demek için hangisini kullanırız?", a:["Please", "Where", "Under", "Give"], c:0},
+    {q:"'_______ the paper.' (Kağıdı boya)", a:["Color", "Give", "Water", "Fold"], c:0},
+    {q:"Give _______ the scissors. (Bana makası ver)", a:["I", "my", "me", "mine"], c:2},
+    {q:"'_______ the window.' (Pencerenin önünde)", a:["In front of", "On", "In", "Under"], c:0},
+    {q:"Hangisi bir yer belirtmez?", a:["near", "behind", "cut", "on"], c:2},
+    {q:"'_______ are the brushes?' - They are in the box.", a:["Where", "What", "When", "Who"], c:0},
+
+    // P5: 41-70
+    {q:"The book is _______ the bag. (Kitap çantanın içinde)", a:["in", "on", "under", "near"], c:0},
+    {q:"The glass is _______ the table. (Bardak masanın üstünde)", a:["in", "on", "under", "behind"], c:1},
+    {q:"The dog is _______ the chair. (Köpek sandalyenin altında)", a:["under", "on", "in", "in front of"], c:0},
+    {q:"The car is _______ the house. (Araba evin önünde)", a:["behind", "in front of", "under", "near"], c:1},
+    {q:"_______ me the paper, please.", a:["Give", "Taking", "Cut", "Mix"], c:0},
+    {q:"Don't _______ the flowers. (Çiçekleri koparma)", a:["pick", "water", "plant", "fold"], c:0},
+    {q:"'_______ the blue and yellow.' (Mavi ve sarıyı karıştır)", a:["Mix", "Cut", "Shake", "Open"], c:0},
+    {q:"'_______ the paper.' (Kağıdı katla)", a:["Fold", "Mix", "Give", "Water"], c:0},
+    {q:"'Where _______ my glasses?'", a:["is", "are", "am", "do"], c:1},
+    {q:"'It is _______ the box.' (O kutunun yanında)", a:["near", "in", "under", "behind"], c:0},
+    {q:"'Where is the brush?' - 'It's _______ the glass.' (Fincanın arkasında)", a:["behind", "in front of", "on", "under"], c:0},
+    {q:"'_______ the seeds into the soil.' (Tohumları toprağa ek)", a:["Plant", "Cut", "Mix", "Shake"], c:0},
+    {q:"'_______ the water into the glass.' (Suyu bardağa dök)", a:["Pour", "Cut", "Fold", "Shake"], c:0},
+    {q:"'_______ it in the freezer.' (Dondurucuya koy/dondur)", a:["Freeze", "Water", "Pick", "Open"], c:0},
+    {q:"'Is the pencil on the desk?'", a:["Yes, it is.", "Yes, I am.", "No, they are.", "Near the desk."], c:0},
+    {q:"'Where is the cat?' - 'It's _______ the door.' (Kapının önünde)", a:["in front of", "under", "behind", "in"], c:0},
+    {q:"'Where is the cup?' - 'It's _______ the laptop.' (Yanında)", a:["near", "under", "on", "in"], c:0},
+    {q:"'_______ the paper with scissors.' (Makasla kağıdı kes)", a:["Cut", "Fold", "Shake", "Water"], c:0},
+    {q:"'_______ the bottle.' (Şişeyi salla)", a:["Shake", "Mix", "Cut", "Fold"], c:0},
+    {q:"'Where _______ the keys?' - 'They are on the table.'", a:["are", "is", "am", "be"], c:0},
+    {q:"'_______ the door, please.' (Kapıyı kapat)", a:["Close", "Open", "Give", "Fold"], c:0},
+    {q:"'_______ the plant.' (Bitkiyi sula)", a:["Water", "Mix", "Shake", "Cut"], c:0},
+    {q:"'Where is the ball?' - 'It's _______ the box.' (İçinde)", a:["in", "on", "under", "near"], c:0},
+    {q:"'Where is the chair?' - 'It's _______ the table.' (Yanında)", a:["near", "in", "under", "behind"], c:0},
+    {q:"'Don't _______ the experiment.' (Deneyi yapma)", a:["do", "does", "doing", "are"], c:0},
+    {q:"The pen is _______ the book. (Kalem kitabın altında)", a:["under", "on", "in", "behind"], c:0},
+    {q:"The flower is _______ the vase. (Çiçek vazonun içinde)", a:["in", "on", "under", "near"], c:0},
+    {q:"'Where is the teacher?' - 'She is _______ the class.' (Önünde)", a:["in front of", "under", "on", "behind"], c:0},
+    {q:"'_______ the cup.' (Fincanı boya)", a:["Paint", "Cut", "Fold", "Water"], c:0},
+    {q:"'_______ is the ball?' - 'On the bed.'", a:["Where", "What", "Who", "How"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Gerçek bir bilim insanısın! Deneyler senden sorulur! 🧪✨" : "Harika bir merakın var! Yer yön edatlarını ve emir cümlelerini biraz daha tekrar ederek laboratuvarın yıldızı olabilirsin! 🔭🧬";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

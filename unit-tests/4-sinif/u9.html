@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 9. Ünite My Friends - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7; /* Arkadaşlık Moru */
+            --secondary-color: #fab1a0; /* Ten/Şeftali Tonu */
+            --accent-color: #00cec9; /* Neşeli Turkuaz */
+            --bg-color: #f0f2f5;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--primary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #4834d4;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 9. Ünite - My Friends</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Describe your best friends! 👧👦✨</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">👤 Bölüm 1: Am / Is / Are (Durum Bildirme)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">✨ Bölüm 2: Have Got / Has Got (Sahiplik)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔍 Bölüm 3: Soru Kalıpları (Dış Görünüş)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">💬 Bölüm 4: Kısa Cevaplar (Yes / No)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🧩 Bölüm 5: Cümle Tamamlama ve Yapı</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">✔️ Bölüm 6: Doğru Gramer Yapısını Seçme</div>
+    <div id="p6-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | We are all unique! 🌈</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"'She ______ tall and slim.'", a:["am", "is", "are", "have"], c:1},
+    {q:"'I ______ young and strong.'", a:["am", "is", "are", "has"], c:0},
+    {q:"'They ______ plump and beautiful.'", a:["am", "is", "are", "has"], c:2},
+    {q:"'He ______ handsome and tall.'", a:["am", "is", "are", "have"], c:1},
+    {q:"'My grandmother ______ old and short.'", a:["am", "are", "is", "have"], c:2},
+    {q:"'You ______ very beautiful.'", a:["am", "is", "are", "has"], c:2},
+    {q:"'It ______ a small dog.'", a:["am", "is", "are", "has"], c:1},
+    {q:"'We ______ best friends.'", a:["am", "are", "is", "has"], c:1},
+    {q:"'My sister ______ blonde.'", a:["am", "are", "is", "has"], c:2},
+    {q:"'Your hair ______ brown.'", a:["am", "is", "are", "has"], c:1},
+
+    // P2: 11-20
+    {q:"'I ______ blue eyes.'", a:["have got", "has got", "am got", "is got"], c:0},
+    {q:"'She ______ long curly hair.'", a:["have got", "has got", "am got", "are got"], c:1},
+    {q:"'He ______ a moustache.'", a:["have got", "has got", "is got", "am got"], c:1},
+    {q:"'They ______ straight hair.'", a:["has got", "is got", "have got", "am got"], c:2},
+    {q:"'My father ______ a beard.'", a:["has got", "have got", "is got", "am got"], c:0},
+    {q:"'We ______ green eyes.'", a:["has got", "am got", "have got", "is got"], c:2},
+    {q:"'The cat ______ white fur.'", a:["have got", "is got", "has got", "am got"], c:2},
+    {q:"'You ______ short wavy hair.'", a:["has got", "have got", "am got", "is got"], c:1},
+    {q:"'My grandfather ______ glasses.'", a:["have got", "has got", "am got", "are got"], c:1},
+    {q:"'It ______ a long tail.'", a:["has got", "have got", "am got", "is got"], c:0},
+
+    // P3: 21-30
+    {q:"Birinin dış görünüşünü sorarken hangisini kullanırız?", a:["What does he look like?", "What does he like?", "Where is he?", "How is he?"], c:0},
+    {q:"'What ______ she look like?'", a:["do", "does", "am", "is"], c:1},
+    {q:"'______ you have got brown eyes?'", a:["Do", "Does", "Have", "Has"], c:2},
+    {q:"'______ he got a beard?'", a:["Do", "Does", "Have", "Has"], c:3},
+    {q:"'What ______ they look like?'", a:["do", "does", "am", "is"], c:0},
+    {q:"'Does she ______ curly hair?'", a:["has", "have", "is", "got"], c:1},
+    {q:"'Has he ______ short hair?'", a:["got", "have", "is", "do"], c:0},
+    {q:"'______ your sister tall?'", a:["Am", "Is", "Are", "Do"], c:1},
+    {q:"'______ your friends slim?'", a:["Am", "Is", "Are", "Do"], c:2},
+    {q:"'What color ______ your eyes?'", a:["am", "is", "are", "have"], c:2},
+
+    // P4: 31-40
+    {q:"'Has she got blonde hair?' - 'Yes, ______.'", a:["she is", "she has", "she does", "I have"], c:1},
+    {q:"'Are they tall?' - 'No, ______.'", a:["they aren't", "they haven't", "they don't", "they isn't"], c:0},
+    {q:"'Have you got glasses?' - 'No, ______.'", a:["I don't", "I haven't", "I am not", "she hasn't"], c:1},
+    {q:"'Does he have short hair?' - 'Yes, ______.'", a:["he has", "he does", "he is", "he got"], c:1},
+    {q:"'Is your mother beautiful?' - 'Yes, ______.'", a:["she is", "she has", "she does", "I am"], c:0},
+    {q:"'Have they got dark hair?' - 'Yes, ______.'", a:["they are", "they have", "they do", "they got"], c:1},
+    {q:"'Is he handsome?' - 'No, ______.'", a:["he isn't", "he hasn't", "he doesn't", "I am not"], c:0},
+    {q:"'Has the dog got a long tail?' - 'Yes, ______.'", a:["it is", "it has", "it does", "he has"], c:1},
+    {q:"'Are you plump?' - 'No, ______.'", a:["I am not", "I haven't", "I don't", "you aren't"], c:0},
+    {q:"'Have you got a friend?' - 'Yes, ______.'", a:["I do", "I have", "I am", "you have"], c:1},
+
+    // P5: 41-50
+    {q:"'My brother is ______.' (Fiziksel özellik)", a:["curly hair", "blue eyes", "tall and handsome", "moustache"], c:2},
+    {q:"'She has got ______.' (Sahiplik)", a:["slim", "young", "long straight hair", "beautiful"], c:2},
+    {q:"'I am ______ and I have got ______.'", a:["tall / brown eyes", "brown eyes / tall", "tall / slim", "brown eyes / blue eyes"], c:0},
+    {q:"'He is ______ but he has got ______ hair.'", a:["old / gray", "bald / short", "handsome / long", "plump / slim"], c:0},
+    {q:"'Who is ______?' (O kim?)", a:["she", "her", "his", "my"], c:0},
+    {q:"'______ eyes are green.' (Benim gözlerim)", a:["I", "Me", "My", "Mine"], c:2},
+    {q:"'______ hair is blonde.' (Onun saçı - Kız)", a:["She", "Her", "His", "He"], c:1},
+    {q:"'______ is my best friend.'", a:["He", "His", "Him", "Has"], c:0},
+    {q:"'What does your father ______?'", a:["look like", "looks like", "looking like", "is look like"], c:0},
+    {q:"'He has ______ a beard.'", a:["get", "got", "is", "has"], c:1},
+
+    // P6: 51-70
+    {q:"Hangisi doğrudur?", a:["She have got blonde hair.", "She is got blonde hair.", "She has got blonde hair.", "She has blonde hair got."], c:2},
+    {q:"Hangisi doğrudur?", a:["I am short and plump.", "I have short and plump.", "I has short and plump.", "I am got short and plump."], c:0},
+    {q:"Hangisi bir sorudur?", a:["He has got blue eyes.", "Has he got blue eyes?", "He is blue eyes.", "He blue eyes has got."], c:1},
+    {q:"'He isn't tall. He is ______.'", a:["slim", "short", "handsome", "beautiful"], c:1},
+    {q:"'She hasn't got straight hair. She has got ______ hair.'", a:["blonde", "long", "curly", "short"], c:2},
+    {q:"'What color ______ her hair?'", a:["is", "are", "am", "has"], c:0},
+    {q:"'They ______ got curly hair.'", a:["haven't", "hasnt", "aren't", "isn't"], c:0},
+    {q:"'My father ______ bald.'", a:["has got", "is", "have got", "are"], c:1},
+    {q:"'______ she got a headscarf?'", a:["Has", "Have", "Is", "Does"], c:0},
+    {q:"'Is he old?' - 'No, he is ______.'", a:["young", "handsome", "tall", "slim"], c:0},
+    {q:"'I have ______ hair.'", a:["blonde", "curly", "straight", "hepsi doğru"], c:3},
+    {q:"'He wears ______.'", a:["glasses", "blue eyes", "tall", "plump"], c:0},
+    {q:"'She is ______.'", a:["moustache", "beard", "beautiful", "curly hair"], c:2},
+    {q:"'Has your friend got a moustache?'", a:["Yes, he has.", "Yes, he is.", "Yes, he does.", "Yes, I have."], c:0},
+    {q:"'______ you slim?'", a:["Is", "Are", "Do", "Have"], c:1},
+    {q:"'He ______ got a beard.'", a:["doesn't", "hasn't", "isn't", "haven't"], c:1},
+    {q:"'What ______ you look like?'", a:["do", "does", "am", "is"], c:0},
+    {q:"'We ______ dark hair.'", a:["have got", "has got", "are", "is"], c:0},
+    {q:"'Is your grandmother old?'", a:["Yes, she is.", "Yes, she has.", "Yes, she does.", "Yes, I am."], c:0},
+    {q:"'What color are your eyes?' - 'They ______ brown.'", a:["is", "am", "are", "have got"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else if (index < 50) containerId = 'p5-container';
+        else containerId = 'p6-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika bir gözlemcisin! Arkadaşlarını tanımlama konusunda bir numarasın! 🌟👫" : "Çok iyi gidiyorsun! 'Be' ve 'Have got' yapılarını biraz daha tekrar ederek tüm özellikleri kusursuz tanımlayabilirsin! 👓✨";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

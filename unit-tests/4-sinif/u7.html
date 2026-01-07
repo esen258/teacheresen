@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 7. Ünite Jobs - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff7675; /* Şef/Doktor Kırmızısı */
+            --secondary-color: #0984e3; /* Pilot/Polis Mavisi */
+            --accent-color: #fdcb6e; /* Çiftçi Sarısı */
+            --bg-color: #f9f9f9;
+            --correct: #00b894;
+            --wrong: #d63031;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--accent-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #06528e;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 7. Ünite - Jobs</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>What do you want to be? 👩‍🔬👨‍✈️🧑‍🍳</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">👔 Bölüm 1: Mesleği ve Yapılan İşi Sorma (What / Who)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🏢 Bölüm 2: Çalışma Yerini Sorma (Where)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">❤️ Bölüm 3: Sevilen İşler (Like / Love)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">💪 Bölüm 4: Yetenekler (Can / Can't)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🧩 Bölüm 5: Karışık Gramer ve Soru Yapıları</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Choose a job you love! 🌟</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"'What is your job?' sorusuna hangisiyle başlanır?", a:["I am a...", "He is a...", "Yes, I am.", "I like..."], c:0},
+    {q:"Birine mesleğini sormanın diğer yolu hangisidir?", a:["Where do you work?", "What do you do?", "Who are you?", "Can you fly?"], c:1},
+    {q:"'I am a teacher. I ______ students.'", a:["cook", "teach", "examine", "fly"], c:1},
+    {q:"'He is a cook. He ______ meals.'", a:["cooks", "cut", "teaches", "helps"], c:0},
+    {q:"'Who am I?' sorusunun anlamı nedir?", a:["Sen nesin?", "Ben kimim?", "O nerede?", "Ne yaparsın?"], c:1},
+    {q:"'What ______ his job?' boşluğa hangisi gelir?", a:["am", "are", "is", "do"], c:2},
+    {q:"'What ______ you do?' boşluğa hangisi gelir?", a:["am", "is", "are", "do"], c:3},
+    {q:"'She is a doctor. She ______ ill people.'", a:["helps", "cooks", "flies", "plants"], c:0},
+    {q:"'I ______ students.' diyen biri ne iş yapıyordur?", a:["Nurse", "Teacher", "Pilot", "Farmer"], c:1},
+    {q:"Meslek sorarken 'O'nun mesleği ne?' (Erkek için) nasıl denir?", a:["What is your job?", "What is her job?", "What is his job?", "What is my job?"], c:2},
+
+    // P2: 11-20
+    {q:"'Where do you work?' sorusunun anlamı nedir?", a:["Ne iş yaparsın?", "Nerede çalışırsın?", "Nereye gidersin?", "Kiminle çalışırsın?"], c:1},
+    {q:"'I work ______ a school.' (OkulDA)", a:["on", "at", "under", "behind"], c:1},
+    {q:"'Where ______ he work?' boşluğa hangisi gelir?", a:["do", "does", "is", "are"], c:1},
+    {q:"'A nurse works at a ______.'", a:["school", "hospital", "farm", "airport"], c:1},
+    {q:"'I work at a police station.' cevabının sorusu hangisidir?", a:["What is your job?", "Where do you work?", "Who are you?", "Are you a policeman?"], c:1},
+    {q:"'Where does a farmer work?'", a:["At a farm", "At a school", "At a hospital", "At a restaurant"], c:0},
+    {q:"'Where do you work?' sorusuna hangisiyle cevap verilmez?", a:["I work at a hospital.", "I am at the farm.", "I am a doctor.", "At a school."], c:2},
+    {q:"'A pilot works ______ an airport.'", a:["in", "at", "on", "under"], c:1},
+    {q:"'Does he work at a restaurant?' (Kısa olumlu cevap)", a:["Yes, he is.", "Yes, he does.", "Yes, I do.", "No, he doesn't work."], c:1},
+    {q:"Çalışma yeri sorarken 'Nerede' anlamına gelen kelime hangisidir?", a:["What", "Where", "When", "Who"], c:1},
+
+    // P3: 21-30
+    {q:"'I like ______ people.' (Yardım etmeyi severim)", a:["help", "helping", "helps", "helped"], c:1},
+    {q:"'What do you like doing?' sorusuna nasıl başlanır?", a:["I am...", "I can...", "I like...", "I work..."], c:2},
+    {q:"'I love ______ meals.' (Yemek pişirmeyi severim)", a:["cook", "cooks", "cooking", "cooked"], c:2},
+    {q:"'Do you like helping people?' sorusuna olumlu cevap hangisidir?", a:["Yes, I do.", "No, I don't.", "I am a nurse.", "I like help."], c:0},
+    {q:"'I like ______ students.'", a:["teach", "teaches", "teaching", "teacher"], c:2},
+    {q:"'What ______ she like doing?'", a:["do", "does", "is", "are"], c:1},
+    {q:"'She ______ helping animals.'", a:["like", "likes", "liking", "is like"], c:1},
+    {q:"'______ do you like doing?'", a:["Where", "What", "Who", "When"], c:1},
+    {q:"'He likes ______ vegetables.'", a:["plant", "plants", "planting", "plantin"], c:2},
+    {q:"'Like' ve 'Love'dan sonra gelen fiile hangi takı gelir?", a:["-s", "-ed", "-ing", "-es"], c:2},
+
+    // P4: 31-40
+    {q:"'I am a pilot. I ______ fly a plane.'", a:["can", "can't", "am", "do"], c:0},
+    {q:"'Can a doctor fly a plane?'", a:["Yes, he can.", "No, he can't.", "Yes, he does.", "No, he doesn't."], c:1},
+    {q:"'I ______ help animals because I am a vet.'", a:["can", "can't", "am", "is"], c:0},
+    {q:"'______ you teach English?'", a:["Do", "Are", "Can", "Is"], c:2},
+    {q:"'What ______ you do?' (Ne yapabilirsin?)", a:["am", "do", "can", "is"], c:2},
+    {q:"'I ______ cook meals.' (Aşçı değilim, yapamam)", a:["can", "can't", "am not", "don't"], c:1},
+    {q:"'Can she help ill people?'", a:["Yes, she can.", "No, she can.", "Yes, she is.", "No, she doesn't."], c:0},
+    {q:"Yetenek sorarken hangi yardımcı fiil kullanılır?", a:["Do", "Is", "Can", "Where"], c:2},
+    {q:"'A writer ______ write books.'", a:["can", "can't", "is", "doing"], c:0},
+    {q:"Mesleklerle ilgili hangisi yanlıştır?", a:["A teacher can teach.", "A vet can help animals.", "A nurse can fly a plane.", "A cook can cook."], c:2},
+
+    // P5: 41-70
+    {q:"'______ she a nurse?'", a:["Do", "Is", "Are", "Can"], c:1},
+    {q:"'What is ______ job?' (Kadın için 'O'nun')", a:["his", "her", "my", "your"], c:1},
+    {q:"'I am ______ nurse.' (Bir hemşireyim)", a:["a", "an", "the", "at"], c:0},
+    {q:"'He is ______ engineer.' (O bir mühendis)", a:["a", "an", "the", "at"], c:1},
+    {q:"'Do you ______ at a hospital?'", a:["work", "works", "working", "worker"], c:0},
+    {q:"'What ______ your father do?'", a:["do", "does", "is", "are"], c:1},
+    {q:"'My mother ______ at a school.'", a:["work", "works", "working", "is"], c:1},
+    {q:"'Are you a fireman?'", a:["Yes, I am.", "Yes, I do.", "Yes, I can.", "No, I am a fireman."], c:0},
+    {q:"'______ job do you want?'", a:["What", "Which", "Who", "Where"], c:0},
+    {q:"'I ______ helping people.'", a:["like", "likes", "liking", "is"], c:0},
+    {q:"'Where ______ your mother work?'", a:["do", "does", "is", "are"], c:1},
+    {q:"'He works ______ the police station.'", a:["at", "on", "under", "with"], c:0},
+    {q:"'I ______ a dancer.'", a:["am", "is", "are", "can"], c:0},
+    {q:"'You ______ fly a plane.' (Uçak uçuramazsın)", a:["can", "can't", "am", "don't"], c:1},
+    {q:"'What ______ you like?'", a:["do", "does", "is", "can"], c:0},
+    {q:"'She ______ students.'", a:["teach", "teaches", "teaching", "teacher"], c:1},
+    {q:"'I am a vet. I ______ animals.'", a:["love", "loves", "loving", "is love"], c:0},
+    {q:"'Where does a ______ work?' - 'At an airport.'", a:["nurse", "pilot", "farmer", "cook"], c:1},
+    {q:"'What do you do?' sorusuna hangisi cevap olamaz?", a:["I am a cook.", "I am at school.", "I help people.", "I am a teacher."], c:1},
+    {q:"'A farmer ______ vegetables.'", a:["grow", "grows", "growing", "grower"], c:1},
+    {q:"'I work at a ______.' (Garson için)", a:["hospital", "restaurant", "farm", "school"], c:1},
+    {q:"'Is he a doctor?' - 'No, ______.'", a:["he isn't", "he doesn't", "he can't", "he is"], c:0},
+    {q:"'I am a waiter. I ______ meals.'", a:["cook", "serve", "fly", "teach"], c:1},
+    {q:"'What do you want to ______?'", a:["be", "do", "work", "like"], c:0},
+    {q:"'I like ______ flowers.'", a:["plant", "planting", "plants", "planted"], c:1},
+    {q:"'Where do you work?'", a:["At school", "I am a teacher", "On Monday", "Yes, I do"], c:0},
+    {q:"'What is his job?' - '______ is a fireman.'", a:["He", "She", "It", "I"], c:0},
+    {q:"'______ am a student.'", a:["I", "You", "He", "She"], c:0},
+    {q:"'Does she ______ meals?'", a:["cook", "cooks", "cooking", "cooker"], c:0},
+    {q:"'I ______ a plane.'", a:["can fly", "can flies", "can flying", "can to fly"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Geleceğin kariyeri için hazırsın! Harika bir iş çıkardın! 👩‍⚕️🏗️" : "Gayretin çok güzel! Meslekleri ve çalışma yerlerini biraz daha tekrar ederek bir uzman olabilirsin! 👨‍🍳🌾";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

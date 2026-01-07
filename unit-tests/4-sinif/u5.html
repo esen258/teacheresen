@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 5. Ünite My Day - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #48dbfb; /* Gündüz Mavisi */
+            --secondary-color: #ff9f43; /* Gün Batımı Turuncusu */
+            --accent-color: #54a0ff; 
+            --bg-color: #f0f7ff;
+            --correct: #1dd1a1;
+            --wrong: #ff6b6b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--correct);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #10ac84;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 5. Ünite - My Day</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Time to Plan Your Day! ⏰🥪🚌</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">⏰ Bölüm 1: Saatler (What Time is it?)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🗓️ Bölüm 2: Zaman Edatları (In, On, At)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">📅 Bölüm 3: Haftanın Günleri (Days of the Week)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">❓ Bölüm 4: Soru Kalıpları (What, When, What Time)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🏃 Bölüm 5: Günlük Aktiviteler (I/You/We/They)</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">🔄 Bölüm 6: Karışık Gramer Tekrarı</div>
+    <div id="p6-container"></div>
+
+    <div class="section-title">🎯 Bölüm 7: Doğru Cevabı Bulma (Final)</div>
+    <div id="p7-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Use your time wisely! ⏳🌞</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"Saat 08:00 ise nasıl söyleriz?", a:["It is eight o'clock.", "It is nine o'clock.", "It is half past eight.", "It is eight."], c:0},
+    {q:"Görseldeki saati bulunuz (10:00).", a:["It is ten o'clock.", "It is twelve o'clock.", "It is ten past ten.", "It is half past ten."], c:0},
+    {q:"'What time is it?' sorusuna hangisiyle başlanmaz?", a:["It is...", "It's...", "I am...", "It is four..."], c:2},
+    {q:"'Saat kaç?' sorusunun bir diğer şekli hangisidir?", a:["When is it?", "What is the time?", "What do you do?", "How is the time?"], c:1},
+    {q:"'It is five o'clock.' saati hangisidir?", a:["05:30", "05:05", "05:00", "04:00"], c:2},
+    {q:"Tam saatlerde cümlenin sonuna hangi kelime gelir?", a:["at", "on", "o'clock", "past"], c:2},
+    {q:"'12:00' saati hangisidir?", a:["Twelve o'clock.", "Two o'clock.", "Ten o'clock.", "One o'clock."], c:0},
+    {q:"'It is seven o'clock.' saati hangisidir?", a:["07:30", "08:00", "07:00", "06:00"], c:2},
+    {q:"'04:00' saati nasıl söylenir?", a:["It is four o'clock.", "It is five o'clock.", "It is half past four.", "It is four."], c:0},
+    {q:"'What time is it?' sorusunun cevabı hangisi olamaz?", a:["It is nine o'clock.", "It is six o'clock.", "I get up at seven.", "It is one o'clock."], c:2},
+    
+    // P2: 11-20
+    {q:"'I get up ______ seven o'clock.'", a:["in", "on", "at", "under"], c:2},
+    {q:"'I watch TV ______ the evening.'", a:["in", "on", "at", "next to"], c:0},
+    {q:"Günlerden önce (Örn: Monday) hangisi kullanılır?", a:["in", "on", "at", "o'clock"], c:1},
+    {q:"Saatlerden önce hangisi kullanılır?", a:["in", "on", "at", "for"], c:2},
+    {q:"'______ noon' (Öğleyin) ifadesinde hangisi gelir?", a:["in", "on", "at", "with"], c:2},
+    {q:"'I have a shower ______ Sunday.'", a:["in", "on", "at", "by"], c:1},
+    {q:"'______ the morning' ifadesinde hangisi kullanılır?", a:["in", "on", "at", "for"], c:0},
+    {q:"'______ night' (Geceleyin) ifadesinde hangisi kullanılır?", a:["in", "on", "at", "morning"], c:2},
+    {q:"'______ the afternoon' (Öğleden sonra) ifadesinde hangisi kullanılır?", a:["in", "on", "at", "behind"], c:0},
+    {q:"'I meet friends ______ nine o'clock.'", a:["in", "on", "at", "between"], c:2},
+
+    // P3: 21-30
+    {q:"Haftanın ilk günü (Pazartesi) hangisidir?", a:["Tuesday", "Monday", "Friday", "Sunday"], c:1},
+    {q:"'Weekend' (Hafta sonu) hangi günleri kapsar?", a:["Monday-Tuesday", "Friday-Saturday", "Saturday-Sunday", "Wednesday-Thursday"], c:2},
+    {q:"'Wednesday' hangi gündür?", a:["Salı", "Perşembe", "Çarşamba", "Cuma"], c:2},
+    {q:"'Thursday' hangi gündür?", a:["Salı", "Perşembe", "Pazartesi", "Cumartesi"], c:1},
+    {q:"Hangisi bir 'weekday' (hafta içi) günüdür?", a:["Sunday", "Saturday", "Tuesday", "Weekend"], c:2},
+    {q:"'Tuesday' hangi gündür?", a:["Cuma", "Perşembe", "Salı", "Pazar"], c:2},
+    {q:"'Friday' hangi gündür?", a:["Cuma", "Cumartesi", "Pazartesi", "Salı"], c:0},
+    {q:"'Saturday' hangi gündür?", a:["Pazar", "Cumartesi", "Perşembe", "Pazartesi"], c:1},
+    {q:"'Sunday' hangi gündür?", a:["Cumartesi", "Pazar", "Pazartesi", "Cuma"], c:1},
+    {q:"Monday-Friday gruplandırmasına ne denir?", a:["Weekend", "Weekdays", "Nights", "Mornings"], c:1},
+
+    // P4: 31-40
+    {q:"Bir eylemin 'ne zaman' yapıldığını sormak için hangisi kullanılır?", a:["What", "When", "How", "Who"], c:1},
+    {q:"'______ do you get up?' (Saat kaçta kalkarsın?)", a:["What time", "When", "What", "How"], c:0},
+    {q:"'What do you do ______ the afternoon?'", a:["in", "on", "at", "next"], c:0},
+    {q:"'What ______ you do in the evening?'", a:["are", "is", "do", "does"], c:2},
+    {q:"'I watch TV' cümlesi hangi sorunun cevabıdır?", a:["What do you do?", "When do you do?", "What time is it?", "How are you?"], c:0},
+    {q:"'When do you go to the playground?' sorusunun cevabı hangisi olabilir?", a:["At five o'clock.", "On Saturday.", "It is six o'clock.", "I am fine."], c:1},
+    {q:"'______ do you have a shower?' (Saat kaçta duş alırsın?)", a:["What time", "When", "What", "Where"], c:0},
+    {q:"'I have a shower ______ Sunday.'", a:["at", "on", "in", "o'clock"], c:1},
+    {q:"'I have a shower ______ eight o'clock.'", a:["at", "on", "in", "next"], c:0},
+    {q:"'What do you do ______ noon?'", a:["in", "on", "at", "afternoon"], c:2},
+
+    // P5: 41-50
+    {q:"'I ______ my teeth.'", a:["brush", "brushes", "brushing", "brushs"], c:0},
+    {q:"'I ______ breakfast.'", a:["has", "have", "having", "haves"], c:1},
+    {q:"'I ______ my face.'", a:["washes", "washing", "wash", "washs"], c:2},
+    {q:"'I ______ dressed.'", a:["get", "gets", "getting", "gets up"], c:0},
+    {q:"'I ______ home.' (Evden çıkarım)", a:["leaves", "leaf", "leave", "leaving"], c:2},
+    {q:"'I ______ to school.'", a:["goes", "go", "going", "gos"], c:1},
+    {q:"'I ______ friends.'", a:["meet", "meets", "meeting", "meetes"], c:0},
+    {q:"'I ______ my homework.'", a:["does", "do", "doing", "doos"], c:1},
+    {q:"'I ______ a rest.'", a:["have", "has", "having", "haves"], c:0},
+    {q:"'I ______ to bed.'", a:["go", "goes", "going", "get up"], c:0},
+
+    // P6: 51-60
+    {q:"I have dinner ______ the evening.", a:["at", "on", "in", "afternoon"], c:2},
+    {q:"I go ______ at 10 o'clock.", a:["shopping", "playground", "bed", "shower"], c:2},
+    {q:"It ______ nine o'clock.", a:["am", "are", "is", "do"], c:2},
+    {q:"What time ______ you arrive at school?", a:["do", "does", "are", "is"], c:0},
+    {q:"I ______ the bus.", a:["take", "takes", "taking", "takees"], c:0},
+    {q:"I ______ at school at 08:30.", a:["leave", "arrive", "meet", "go"], c:1},
+    {q:"I have lunch ______ noon.", a:["at", "in", "on", "night"], c:0},
+    {q:"When do you ______ shopping?", a:["goes", "going", "go", "goes up"], c:2},
+    {q:"I go shopping ______ Tuesday.", a:["at", "in", "on", "night"], c:2},
+    {q:"What ______ you do at noon?", a:["are", "is", "do", "does"], c:2},
+
+    // P7: 61-70
+    {q:"I get up ______ seven o'clock ______ the morning.", a:["at / in", "in / at", "on / in", "at / on"], c:0},
+    {q:"I watch TV ______ 19:00 ______ the evening.", a:["on / at", "at / in", "in / on", "at / at"], c:1},
+    {q:"When do you have a shower?", a:["At ten o'clock.", "On Sunday.", "It is four.", "I am student."], c:1},
+    {q:"What time do you have a shower?", a:["On Saturday.", "At eight o'clock.", "In the morning.", "In the afternoon."], c:1},
+    {q:"I ______ my homework ______ the afternoon.", a:["do / in", "do / on", "do / at", "does / in"], c:0},
+    {q:"______ do you go to the playground? - On Monday.", a:["What time", "When", "What", "How"], c:1},
+    {q:"______ time is it? - It is six o'clock.", a:["When", "How", "What", "Why"], c:2},
+    {q:"I ______ my hair ______ the morning.", a:["comb / in", "comb / on", "combs / at", "comb / at"], c:0},
+    {q:"I ______ my friends ______ nine o'clock.", a:["meet / at", "meet / on", "meets / at", "meet / in"], c:0},
+    {q:"What do you do ______ night?", a:["in", "on", "at", "noon"], c:2}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else if (index < 50) containerId = 'p5-container';
+        else if (index < 60) containerId = 'p6-container';
+        else containerId = 'p7-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Zaman yönetiminde bir numarasın! Harika! ⏰🌟" : "Günlük rutinleri ve saatleri tekrar ederek gününü daha iyi planlayabilirsin! 🥪📅";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

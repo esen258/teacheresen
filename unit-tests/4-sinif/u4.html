@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 4. Ünite Free Time - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00b894; /* Doğa/Hobi Yeşili */
+            --secondary-color: #6c5ce7; /* Aktivite Moru */
+            --accent-color: #fab1a0; /* Somon Turuncusu */
+            --bg-color: #f1f2f6;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #00947a;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 4. Ünite - Free Time</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Enjoy Your Hobbies! 🎨🎾🎸</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">❤️ BÖLÜM 1: Like / Dislike / Love + V(ing) Yapısı</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">💬 BÖLÜM 2: Soru Kalıpları ve Kısa Cevaplar</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🪁 BÖLÜM 3: Boş Zaman Etkinlikleri Gramer Tamamlama</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🔀 BÖLÜM 4: Karışık Gramer Soruları</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Do what you love! 🌈✨</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: 1-20
+    {q:"I like _______ pictures in my free time.", a:["draw", "drawing", "draws", "to drawing"], c:1},
+    {q:"He _______ playing chess.", a:["like", "likes", "is like", "liking"], c:1},
+    {q:"She _______ like watching cartoons.", a:["don't", "isn't", "doesn't", "hasn't"], c:2},
+    {q:"We love _______ to music.", a:["listen", "listening", "listens", "are listen"], c:1},
+    {q:"They _______ like flying a kite.", a:["doesn't", "don't", "isn't", "aren't"], c:1},
+    {q:"I _______ reading books. (Güçlü sevgi)", a:["dislike", "love", "am", "hate"], c:1},
+    {q:"My brother _______ playing computer games.", a:["love", "loves", "is love", "loving"], c:1},
+    {q:"_______ you like swimming?", a:["Do", "Does", "Are", "Is"], c:0},
+    {q:"_______ he like riding a bike?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"I dislike _______ in the pool.", a:["swim", "swims", "swimming", "to swim"], c:2},
+    {q:"Mary _______ playing with marbles.", a:["don't like", "doesn't like", "isn't like", "like"], c:1},
+    {q:"Do you like coloring? Yes, I _______.", a:["am", "do", "like", "does"], c:1},
+    {q:"Does she like dancing? No, she _______.", a:["doesn't", "don't", "isn't", "do"], c:0},
+    {q:"I _______ (sevmiyorum) planting trees.", a:["like", "love", "don't like", "doesn't like"], c:2},
+    {q:"He _______ (nefret eder) doing puzzles.", a:["likes", "loves", "hates", "hate"], c:2},
+    {q:"What _______ you like doing?", a:["do", "does", "are", "is"], c:0},
+    {q:"What _______ she like doing?", a:["do", "does", "is", "are"], c:1},
+    {q:"We _______ playing badminton.", a:["likes", "like", "does like", "is like"], c:1},
+    {q:"_______ your father like driving?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"I am good at _______ English.", a:["learn", "learning", "learns", "to learn"], c:1},
+
+    // BÖLÜM 2: 21-30
+    {q:"Do you like singing? No, _______.", a:["I do", "I don't", "she doesn't", "he don't"], c:1},
+    {q:"Does Ali like skating? Yes, _______.", a:["he does", "she does", "he do", "I do"], c:0},
+    {q:"Do they like learning English? Yes, _______.", a:["we do", "they do", "they does", "I do"], c:1},
+    {q:"Does your mother like cooking? No, _______.", a:["he doesn't", "she doesn't", "she don't", "I don't"], c:1},
+    {q:"'I love diving.' cümlesinin olumsuzu hangisidir?", a:["I not love diving.", "I don't love diving.", "I doesn't love diving.", "I am not love diving."], c:1},
+    {q:"'He likes drawing.' cümlesinin sorusu hangisidir?", a:["Do he like drawing?", "Does he like drawing?", "Is he like drawing?", "Does he likes drawing?"], c:1},
+    {q:"'Do you like ...?' sorusuna hangisi cevap olamaz?", a:["Yes, I do.", "No, I don't.", "Sure.", "Yes, I am."], c:3},
+    {q:"My friends _______ watching movies.", a:["like", "likes", "does like", "is like"], c:0},
+    {q:"Tom and Jerry _______ like running.", a:["doesn't", "don't", "isn't", "aren't"], c:1},
+    {q:"_______ like reading comics.", a:["He", "She", "I", "It"], c:2},
+
+    // BÖLÜM 3: 31-40
+    {q:"I like _______ a kite.", a:["fly", "flying", "flies", "to flying"], c:1},
+    {q:"She _______ (nefret eder) skiping a rope.", a:["hate", "hates", "hating", "doesn't hate"], c:1},
+    {q:"We _______ (sevmiyoruz) playing table tennis.", a:["don't like", "doesn't like", "aren't like", "not like"], c:0},
+    {q:"Does she like _______?", a:["dance", "dancing", "dances", "to dance"], c:1},
+    {q:"Do you like _______?", a:["fish", "fishing", "fishes", "to fish"], c:1},
+    {q:"My cat _______ (sever) sleeping.", a:["like", "likes", "love", "is like"], c:1},
+    {q:"They _______ like playing soccer.", a:["don't", "doesn't", "isn't", "are"], c:0},
+    {q:"_______ you like listening to music?", a:["Do", "Does", "Am", "Is"], c:0},
+    {q:"_______ he like taking photos?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"I love _______ guitar.", a:["play", "playing", "plays", "is playing"], c:1},
+
+    // BÖLÜM 4: 41-70
+    {q:"She _______ (sevmez) riding a scooter.", a:["dislike", "dislikes", "don't dislike", "isn't dislike"], c:1},
+    {q:"I _______ like doing my homework.", a:["don't", "doesn't", "am not", "no"], c:0},
+    {q:"Does your brother like _______?", a:["run", "running", "runs", "to run"], c:1},
+    {q:"What _______ your favorite hobby?", a:["do", "does", "is", "are"], c:2},
+    {q:"My favorite activity _______ reading.", a:["is", "are", "do", "does"], c:0},
+    {q:"I _______ (severim) collecting stamps.", a:["like", "likes", "am like", "don't like"], c:0},
+    {q:"Do you like skating? _______, I do.", a:["No", "Yes", "Not", "Don't"], c:1},
+    {q:"_______ your sister like singing?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"He _______ like playing the piano.", a:["don't", "doesn't", "isn't", "are"], c:1},
+    {q:"We love _______ books.", a:["read", "reading", "reads", "to reading"], c:1},
+    {q:"They _______ (nefret ederler) playing checkers.", a:["hate", "hates", "hating", "doesn't hate"], c:0},
+    {q:"I _______ like watching TV.", a:["don't", "doesn't", "am not", "no"], c:0},
+    {q:"Does she love _______?", a:["sing", "singing", "sings", "to sing"], c:1},
+    {q:"Do they like _______?", a:["swim", "swimming", "swims", "to swim"], c:1},
+    {q:"My father _______ (sever) driving his car.", a:["like", "likes", "is like", "linking"], c:1},
+    {q:"_______ you like playing computer games?", a:["Do", "Does", "Are", "Is"], c:0},
+    {q:"_______ he like planting flowers?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"I love _______ photos.", a:["take", "taking", "takes", "to take"], c:1},
+    {q:"She _______ (sevmez) doing puzzles.", a:["dislike", "dislikes", "don't dislike", "isn't dislike"], c:1},
+    {q:"I _______ like listening to stories.", a:["don't", "doesn't", "am not", "no"], c:0},
+    {q:"Does your friend like _______?", a:["jump", "jumping", "jumps", "to jump"], c:1},
+    {q:"What _______ your hobby?", a:["is", "are", "do", "does"], c:0},
+    {q:"My hobbies _______ drawing and singing.", a:["is", "are", "do", "does"], c:1},
+    {q:"I _______ (severim) riding my bike.", a:["like", "likes", "am like", "don't like"], c:0},
+    {q:"Do you like coloring? _______, I don't.", a:["No", "Yes", "Sure", "Of course"], c:0},
+    {q:"_______ your mother like cooking?", a:["Do", "Does", "Is", "Are"], c:1},
+    {q:"He _______ like flying a kite.", a:["don't", "doesn't", "isn't", "are"], c:1},
+    {q:"We love _______ basketball.", a:["play", "playing", "plays", "to playing"], c:1},
+    {q:"They _______ (nefret ederler) watching cartoons.", a:["hate", "hates", "hating", "doesn't hate"], c:0},
+    {q:"Do you like English? Yes, I _______.", a:["do", "am", "like", "does"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 20) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 40) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Hobilerini İngilizce anlatmakta ustasın! Tebrikler! 🎨✨" : "Gayretin harika! Like/Dislike yapısından sonra fiile -ing takısı getirmeyi unutma, o zaman skorun daha da artacaktır! 🎾📚";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

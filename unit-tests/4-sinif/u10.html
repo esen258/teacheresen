@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 10. Ünite Food and Drinks - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Ekmek/Kurabiye Turuncusu */
+            --secondary-color: #27ae60; /* Sebze Yeşili */
+            --accent-color: #f1c40f; /* Limon Sarısı */
+            --bg-color: #fff9f0;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(0,0,0,0.1);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #d35400;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 10. Ünite - Food and Drinks</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Enjoy your meal! 🍎🍕🥛</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🍰 Bölüm 1: "Would you like...?" (Teklif Etme)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🥗 Bölüm 2: "How about / What about" (Öneri)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">💧 Bölüm 3: "Can I have...?" (Rica Etme)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🏃‍♂️ Bölüm 4: "Let's" (Haydi) Kalıbı</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🍕 Bölüm 5: Durumlar (Hungry, Thirsty, Full)</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">🍳 Bölüm 6: Karışık Gramer Soruları</div>
+    <div id="p6-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Bon Appétit! 🥨🥤</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"'Would you like _______ cupcake?'", a:["a", "an", "any", "are"], c:0},
+    {q:"'Would you like _______ milk?' (Bir miktar/biraz)", a:["a", "an", "some", "are"], c:2},
+    {q:"'Would you like some tea?' sorusuna olumlu cevap hangisidir?", a:["Yes, please.", "No, thanks.", "I am full.", "It is a tea."], c:0},
+    {q:"'Would you like an apple?' - '_______, I am full.' (Olumsuz)", a:["Yes, please", "No, thanks", "Of course", "Sure"], c:1},
+    {q:"'Would _______ like some bread?' boşluğa hangisi gelir?", a:["you", "your", "yours", "am"], c:0},
+    {q:"'Would you like _______ orange juice?'", a:["a", "an", "some", "are"], c:2},
+    {q:"'Would you like to _______ some chicken?'", a:["eat", "drinking", "eats", "ate"], c:0},
+    {q:"'Would you like to _______ some lemonade?'", a:["eat", "drink", "eats", "drinking"], c:1},
+    {q:"'Would you like some cheese?' - 'Yes, _______.'", a:["I am", "please", "thanks", "no"], c:1},
+    {q:"'Would you like _______ egg?'", a:["a", "an", "some", "are"], c:1},
+
+    // P2: 11-20
+    {q:"'How about _______ pasta?'", a:["some", "a", "an", "is"], c:0},
+    {q:"'How about _______ some milk?' (-ing kuralı)", a:["drink", "drinking", "drinks", "drank"], c:1},
+    {q:"'What about _______ an apple?'", a:["eat", "eating", "eats", "ate"], c:1},
+    {q:"'How about some honey?' sorusunun anlamı nedir?", a:["Balı sever misin?", "Biraz bala ne dersin?", "Bal nerede?", "Bal tatlıdır."], c:1},
+    {q:"'How about some tea?' - '_______ now. Maybe later.'", a:["Not", "No", "Not now", "Yes"], c:2},
+    {q:"'What _______ some olives?'", a:["are", "about", "is", "do"], c:1},
+    {q:"'How about having _______ dinner?'", a:["some", "a", "an", "any"], c:0},
+    {q:"'How about some coffee?' - 'No, thanks. I'm _______.' (Tokum)", a:["hungry", "thirsty", "full", "happy"], c:2},
+    {q:"'How about _______ cereal?'", a:["some", "a", "an", "is"], c:0},
+    {q:"'What about _______ some cake?'", a:["making", "make", "makes", "is"], c:0},
+
+    // P3: 21-30
+    {q:"'Can I _______ some water, please?'", a:["have", "has", "having", "am"], c:0},
+    {q:"'Can I have some soup?' - 'Yes, _______.'", a:["of course", "no", "I am full", "thanks"], c:0},
+    {q:"'Can I have some chips?' - 'I'm sorry, it's _______.' (Bitti)", a:["a", "all gone", "some", "please"], c:1},
+    {q:"'Can _______ have some honey?'", a:["I", "my", "me", "mine"], c:0},
+    {q:"'Can I have _______ apple, please?'", a:["a", "an", "some", "are"], c:1},
+    {q:"'Can I have some more soup?' - '_______ you are.'", a:["Here", "There", "This", "It"], c:0},
+    {q:"'Can I have some juice?' - '_______, not now.'", a:["Sure", "Of course", "I'm sorry", "Yes"], c:2},
+    {q:"'Can I have some tea?' - '_______, it is hot.'", a:["Be careful", "Enjoy it", "You're welcome", "No, thanks"], c:0},
+    {q:"'Can I have _______ butter?'", a:["some", "a", "an", "are"], c:0},
+    {q:"'Can I have some milk?' sorusunun Türkçesi nedir?", a:["Süt sever misin?", "Biraz süt alabilir miyim?", "Süt sıcak mı?", "Süt nerede?"], c:1},
+
+    // P4: 31-40
+    {q:"'_______ eat some pizza.'", a:["Let's", "How about", "Would you", "Can I"], c:0},
+    {q:"'Let's _______ some lemonade.'", a:["drink", "drinking", "drinks", "drank"], c:0},
+    {q:"'Let's _______ a cake.'", a:["make", "making", "makes", "is"], c:0},
+    {q:"'Let's go out and _______ some fish.'", a:["have", "having", "has", "is"], c:0},
+    {q:"'Let's have breakfast.' - 'That is a _______ idea.'", a:["bad", "great", "thirsty", "full"], c:1},
+    {q:"'Let's drink some tea.' - 'No, _______.'", a:["please", "thanks", "sure", "okay"], c:1},
+    {q:"'Let's'den sonra gelen fiil nasıl olmalıdır?", a:["-ing takılı", "-s takılı", "Yalın (ek almamış)", "-ed takılı"], c:2},
+    {q:"'Let's _______ some olives.'", a:["eat", "eating", "eats", "ate"], c:0},
+    {q:"'Let's drink some milk.' - 'Great _______.'", a:["idea", "hungry", "full", "thirsty"], c:0},
+    {q:"'_______ have some cereal.'", a:["Let's", "How", "What", "Are"], c:0},
+
+    // P5: 41-50
+    {q:"'I am _______. Can I have a sandwich?'", a:["hungry", "thirsty", "full", "happy"], c:0},
+    {q:"'I am _______. Can I have some water?'", a:["hungry", "thirsty", "full", "angry"], c:1},
+    {q:"'I don't want any more. I am _______.'", a:["hungry", "thirsty", "full", "sad"], c:2},
+    {q:"'Are you hungry?' - 'No, I am _______.'", a:["not", "full", "hungry", "thirsty"], c:1},
+    {q:"'Are you _______? Can I give you bsome juice?'", a:["thirsty", "full", "hungry", "tired"], c:0},
+    {q:"'My cat is _______. Give it some meat.'", a:["hungry", "thirsty", "full", "cold"], c:0},
+    {q:"'I am _______, but I am not hungry.'", a:["thirsty", "full", "happy", "okay"], c:0},
+    {q:"'Are you hungry?' - 'Yes, _______.'", a:["I am", "I do", "I can", "please"], c:0},
+    {q:"'I am full. _______, thanks.'", a:["No", "Yes", "Please", "Sure"], c:0},
+    {q:"'Is he _______?' - 'Yes, he wants some water.'", a:["thirsty", "hungry", "full", "big"], c:0},
+
+    // P6: 51-70
+    {q:"'Do you _______ some cheese?'", a:["want", "wants", "wanting", "is"], c:0},
+    {q:"'_______ you like some coffee?'", a:["Do", "Would", "Are", "Can"], c:1},
+    {q:"'_______ you hungry?'", a:["Are", "Is", "Do", "Can"], c:0},
+    {q:"'I _______ some bread, please.'", a:["want", "wants", "wanting", "is"], c:0},
+    {q:"'Do you want some milk?' - 'Yes, I _______.'", a:["do", "am", "can", "would"], c:0},
+    {q:"'Would you like some tea?' - 'Yes, I _______.'", a:["do", "would", "am", "can"], c:1},
+    {q:"'I _______ like some pasta.'", a:["would", "am", "do", "can"], c:0},
+    {q:"'_______ some more soup?' - 'No, thanks.'", a:["Want", "Wants", "Wanting", "Is"], c:0},
+    {q:"'_______ you thirsty?' - 'Yes, please give me water.'", a:["Are", "Is", "Do", "Can"], c:0},
+    {q:"'I _______ like eating salad.'", a:["love", "is", "are", "am"], c:0},
+    {q:"'_______ you like to have some fish?'", a:["Would", "Do", "Can", "Are"], c:0},
+    {q:"'I _______ thirsty. Can I have some lemonade?'", a:["am", "is", "are", "do"], c:0},
+    {q:"'How _______ having some cake?'", a:["about", "is", "are", "do"], c:0},
+    {q:"'Let's _______ some chocolate.'", a:["eat", "eating", "eats", "ate"], c:0},
+    {q:"'Would you like _______ banana?'", a:["a", "an", "some", "are"], c:0},
+    {q:"'Can I have some water?' - 'Of _______.'", a:["course", "please", "thanks", "idea"], c:0},
+    {q:"'I am hungry. I want _______ eat.'", a:["to", "at", "in", "on"], c:0},
+    {q:"'_______ I have some more chips?'", a:["Can", "Do", "Is", "Are"], c:0},
+    {q:"'How about some honey?' - 'Yes, _______.'", a:["please", "no", "thanks", "full"], c:0},
+    {q:"'I _______ want any more cheese. I am full.'", a:["don't", "doesn't", "am not", "isn't"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else if (index < 50) containerId = 'p5-container';
+        else containerId = 'p6-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harika! İngilizce mutfağının şefi sensin! 👨‍🍳🍳" : "Çok iyi! Öneri ve rica kalıplarını biraz daha çalışarak mükemmel bir ev sahibi olabilirsin! 🥯🥤";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

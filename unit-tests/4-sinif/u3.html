@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 3. Ünite Cartoon Characters - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff9f43; /* Canlı Turuncu */
+            --secondary-color: #2e86de; /* Süper Kahraman Mavisi */
+            --accent-color: #feca57; /* Parlak Sarı */
+            --bg-color: #f7f1e3;
+            --correct: #10ac84;
+            --wrong: #ee5253;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--correct);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #087f62;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 3. Ünite - Cartoon Characters</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Unleash Your Superpowers! 🦸‍♂️🦸‍♀️⚡</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">⚡ BÖLÜM 1: Can & Can't (Yetenek Yapıları)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🎁 BÖLÜM 2: Possessive Adjectives (My, Your, His, Her, Its)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🌀 BÖLÜM 3: Karma Dil Bilgisi (Can & Possessives)</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | You are a hero! 🌟🔥</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: 1-26
+    {q:"I _______ fly, because I am not a bird.", a:["can", "can't", "am", "is"], c:1},
+    {q:"A fish _______ swim, but it _______ walk.", a:["can / can", "can't / can't", "can / can't", "can't / can"], c:2},
+    {q:"_______ you climb a tree? Yes, I can.", a:["Are", "Is", "Can", "Do"], c:2},
+    {q:"Superman _______ lift a car. He is very strong.", a:["can", "can't", "isn't", "hasn't"], c:0},
+    {q:"A: Can she play the piano? B: No, she _______.", a:["can", "can't", "isn't", "doesn't"], c:1},
+    {q:"Spiderman _______ climb walls.", a:["can", "can't", "is", "are"], c:0},
+    {q:"_______ your brother ride a horse?", a:["Can", "Is", "Are", "Do"], c:0},
+    {q:"I _______ speak English, but I _______ speak Chinese.", a:["can / can", "can / can't", "can't / can't", "is / isn't"], c:1},
+    {q:"Can a dog fly? No, it _______.", a:["can", "is", "can't", "isn't"], c:2},
+    {q:"He is a fast runner. He _______ run very fast.", a:["can", "can't", "is", "has"], c:0},
+    {q:"_______ you cook? No, I ______.", a:["Can / can", "Can / can't", "Are / am not", "Is / isn't"], c:1},
+    {q:"A baby _______ drive a car.", a:["can", "can't", "is", "does"], c:1},
+    {q:"My father _______ play football well.", a:["can", "is", "are", "do"], c:0},
+    {q:"Birds _______ fly in the sky.", a:["can", "can't", "is", "am"], c:0},
+    {q:"A: _______ they jump high? B: Yes, they can.", a:["Is", "Are", "Can", "Do"], c:2},
+    {q:"I _______ carry this bag. It is very heavy.", a:["can", "can't", "am", "isn't"], c:1},
+    {q:"Can she dance? No, _______.", a:["she can", "she can't", "he can't", "I can't"], c:1},
+    {q:"A turtle _______ run fast.", a:["can", "can't", "is", "has"], c:1},
+    {q:"_______ you dive? Yes, I can.", a:["Can", "Is", "Are", "Do"], c:0},
+    {q:"Monkeys _______ climb trees easily.", a:["can", "can't", "is", "does"], c:0},
+    {q:"My mother _______ play basketball.", a:["can", "is", "are", "am"], c:0},
+    {q:"Can he ride a bike? Yes, _______.", a:["he can", "he can't", "she can", "I can"], c:0},
+    {q:"Elephants _______ jump.", a:["can", "can't", "is", "are"], c:1},
+    {q:"_______ she sing a song?", a:["Can", "Is", "Are", "Do"], c:0},
+    {q:"I _______ draw pictures. I am an artist.", a:["can", "can't", "is", "am not"], c:0},
+
+    // BÖLÜM 2: 27-46
+    {q:"This is Tom. _______ bike is blue.", a:["My", "Your", "His", "Her"], c:2},
+    {q:"This is Ayşe. _______ dress is pink.", a:["His", "Her", "My", "Its"], c:1},
+    {q:"I am a student. _______ name is Ali.", a:["My", "Your", "His", "Her"], c:0},
+    {q:"You are a teacher. _______ book is on the table.", a:["My", "Your", "His", "Her"], c:1},
+    {q:"The dog is small. _______ tail is short.", a:["His", "Her", "Its", "My"], c:2},
+    {q:"Look at the girl. _______ hair is long.", a:["His", "Her", "Your", "My"], c:1},
+    {q:"This is my brother. _______ car is red.", a:["My", "His", "Her", "Your"], c:1},
+    {q:"What is _______ name? My name is Efe.", a:["your", "my", "his", "her"], c:0},
+    {q:"She has a doll. _______ doll is beautiful.", a:["His", "Her", "Your", "My"], c:1},
+    {q:"He has a guitar. _______ guitar is new.", a:["His", "Her", "My", "Your"], c:0},
+    {q:"The cat is white. _______ eyes are green.", a:["His", "Her", "Its", "Your"], c:2},
+    {q:"This is Susan. _______ mother is a nurse.", a:["His", "Her", "My", "Your"], c:1},
+    {q:"This is Mark. _______ father is a doctor.", a:["His", "Her", "My", "Your"], c:0},
+    {q:"I have a kite. _______ kite is big.", a:["My", "Your", "His", "Her"], c:0},
+    {q:"Are you a pilot? Is this _______ plane?", a:["my", "your", "his", "her"], c:1},
+    {q:"This is a bird. _______ wings are yellow.", a:["His", "Her", "Its", "My"], c:2},
+    {q:"Mary is from Britain. _______ friend is Turkish.", a:["His", "Her", "Your", "My"], c:1},
+    {q:"Jack is from the USA. _______ house is big.", a:["His", "Her", "My", "Your"], c:0},
+    {q:"I have a sister. _______ name is Selin.", a:["His", "Her", "My", "Your"], c:1},
+    {q:"You have a computer. _______ computer is fast.", a:["My", "Your", "His", "Her"], c:1},
+
+    // BÖLÜM 3: 47-70
+    {q:"He _______ play the guitar. _______ guitar is old.", a:["can / His", "can't / Her", "is / My", "can / Her"], c:0},
+    {q:"Can she cook? Yes, _______ can.", a:["he", "she", "I", "they"], c:1},
+    {q:"This is a rabbit. _______ ears are long.", a:["His", "Her", "Its", "My"], c:2},
+    {q:"_______ can jump high. He is a basketball player.", a:["She", "He", "I", "They"], c:1},
+    {q:"_______ can sing. She is a singer.", a:["He", "She", "It", "You"], c:1},
+    {q:"Can you swim? No, I _______.", a:["can", "can't", "am not", "don't"], c:1},
+    {q:"This is my book. _______ name is 'English'.", a:["Its", "My", "His", "Her"], c:0},
+    {q:"My father _______ drive. _______ car is white.", a:["can / His", "can / Her", "can't / My", "is / His"], c:0},
+    {q:"Can Spiderman fly? No, he _______.", a:["can", "can't", "isn't", "doesn't"], c:1},
+    {q:"I _______ lift this heavy box. I am weak.", a:["can", "can't", "am", "is"], c:1},
+    {q:"This is a tree. _______ leaves are green.", a:["Its", "His", "Her", "Your"], c:0},
+    {q:"_______ can you do? I can dance.", a:["Where", "What", "Who", "How"], c:1},
+    {q:"Can she skip a rope? Yes, she _______.", a:["can", "can't", "is", "does"], c:0},
+    {q:"This is my desk. _______ pencil is on the desk.", a:["My", "Your", "His", "Her"], c:0},
+    {q:"A kangaroo _______ jump, but it _______ fly.", a:["can / can", "can / can't", "can't / can", "can't / can't"], c:1},
+    {q:"Is she a doctor? Yes, _______ is.", a:["he", "she", "it", "you"], c:1},
+    {q:"_______ name is Tom. I am 10 years old.", a:["My", "Your", "His", "Her"], c:2},
+    {q:"Can he play chess? No, _______.", a:["he can", "he can't", "she can't", "I can't"], c:1},
+    {q:"This is a car. _______ color is blue.", a:["Its", "His", "Her", "Your"], c:0},
+    {q:"Can you ride a bike? Yes, I _______.", a:["can", "can't", "am", "do"], c:0},
+    {q:"She _______ play the violin. _______ violin is new.", a:["can / Her", "can / His", "can't / My", "is / Her"], c:0},
+    {q:"Can a bird swim? No, it _______.", a:["can", "can't", "is", "isn't"], c:1},
+    {q:"This is a boy. _______ name is Sam.", a:["His", "Her", "My", "Your"], c:0},
+    {q:"_______ can dive. He is a diver.", a:["She", "He", "It", "They"], c:1},
+    {q:"Can you speak Turkish? Yes, _______ can.", a:["I", "you", "he", "she"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 25) containerId = 'p1-container';
+        else if (index < 46) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Süper kahraman gibisin! Harika bir sonuç! 🦸‍♂️✨" : "Güzel bir deneme! 'Can' ve iyelik eklerini biraz daha tekrar ederek bir süper kahraman olabilirsin! ⚡🎨";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

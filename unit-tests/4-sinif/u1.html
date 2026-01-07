@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 1. Ünite Classroom Rules - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff7675; /* Okul Kırmızısı/Turuncu */
+            --secondary-color: #2d3436; 
+            --accent-color: #ffeaa7; /* Tebeşir Sarısı */
+            --bg-color: #f9f9f9;
+            --correct: #00b894;
+            --wrong: #d63031;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #fab1a0, var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--correct);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #00947a;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 1. Ünite - Classroom Rules</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Listen, Learn and Have Fun! 🏫✏️🍎</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">📝 Bölüm 1: May I / Can I (İzin İsteme)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">📢 Bölüm 2: Imperatives (Komutlar)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔢 Bölüm 3: Numbers (Sayılar 1-50)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📚 Bölüm 4: Gramer ve Diyalog Karma</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">⭐ Bölüm 5: İleri Seviye Gramer ve Sayılar</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Study hard, be smart! 🌈⭐</div>
+
+<script>
+const quizData = [
+    // 1-10 May I / Can I
+    {q:'"Dışarı çıkabilir miyim?" sorusunun doğru karşılığı hangisidir?', a:["May I come in?", "May I go out?", "Can I sit down?", "Can I stay here?"], c:1},
+    {q:'A: May I take your eraser? - B: _______, here you are.', a:["No", "Sorry", "Sure", "Not now"], c:2},
+    {q:'Öğretmenine "İçeri girebilir miyim?" diyecek bir öğrenci hangisini kullanmalıdır?', a:["Can I look?", "May I come in?", "May I turn left?", "Can I go out?"], c:1},
+    {q:'"Can I borrow your pencil?" sorusuna verilebilecek "olumsuz" cevap hangisidir?', a:["Of course", "Yes, you can", "Here you are", "Sorry, not now"], c:3},
+    {q:'"May I ______ the window? It is hot."', a:["close", "open", "clean", "draw"], c:1},
+    {q:'"May I ______ the board?" (Tahtayı silebilir miyim?)', a:["listen", "stay", "clean", "turn"], c:2},
+    {q:'"Can I ______ your book?" (Kitabını alabilir miyim?)', a:["give", "take", "say", "show"], c:1},
+    {q:'Arkadaşından sözlüğünü isteyen bir çocuk söze nasıl başlar?', a:["May I use...", "Stand up...", "You are...", "Look at..."], c:0},
+    {q:'"May I ______ here?" (Burada oturabilir miyim?)', a:["stand", "sit", "turn", "open"], c:1},
+    {q:'A: Can I stay in the class? - B: ________ (Hayır, kalamazsın).', a:["Yes, you can", "No, you can’t", "Of course", "Sure"], c:1},
+
+    // 11-20 Imperatives
+    {q:'"Ayağa kalkın" komutu hangisidir?', a:["Sit down", "Stand up", "Turn round", "Go back"], c:1},
+    {q:'"Lütfen kapıyı kapat" cümlesi hangisidir?', a:["Open the door", "Close the door", "Look at the door", "Point to the door"], c:1},
+    {q:'"Be quiet, please" cümlesinin Türkçe karşılığı nedir?', a:["Lütfen konuşun", "Lütfen dinleyin", "Lütfen sessiz olun", "Lütfen buraya gelin"], c:2},
+    {q:'"______ to your teacher." (Öğretmenini dinle.)', a:["Look", "Listen", "Say", "Give"], c:1},
+    {q:'"Turn ______" (Sola dön).', a:["right", "left", "back", "round"], c:1},
+    {q:'"Give me the ruler, please." cümlesine karşılık ne söylenir?', a:["Not now", "Here you are", "Thank you", "Sorry"], c:1},
+    {q:'"Draw a picture" komutu ne anlama gelir?', a:["Bir resim boya", "Bir resim çiz", "Bir şarkı söyle", "Bir kitap oku"], c:1},
+    {q:'"______ round." (Kendi etrafında dön.)', a:["Turn", "Stay", "Go", "Sit"], c:0},
+    {q:'"Sırasına geri dön" diyen öğretmen hangisini söyler?', a:["Come here", "Go back to your seat", "Sit down", "Stand up"], c:1},
+    {q:'"Say that again, please." ne zaman söylenir?', a:["Kapıyı açarken", "Bir şeyi anlamayıp tekrar istendiğinde", "Teşekkür ederken", "Vedalaşırken"], c:1},
+
+    // 21-30 Numbers
+    {q:'"Thirty-five" hangi sayıdır?', a:["35", "45", "25", "53"], c:0},
+    {q:'"42" sayısının İngilizce yazılışı hangisidir?', a:["Forty-two", "Fourteen-two", "Four-two", "Fifty-two"], c:0},
+    {q:'"20 + 10 = ?" işleminin sonucu hangisidir?', a:["Twenty", "Thirty", "Forty", "Fifty"], c:1},
+    {q:'"48" sayısının okunuşu hangisidir?', a:["Forty-eight", "Fifty-eight", "Thirty-eight", "Fourteen-eight"], c:0},
+    {q:'"Twelve" ve "Twenty" sayıları hangileridir?', a:["2 - 10", "12 - 20", "20 - 12", "12 - 22"], c:1},
+    {q:'"15 + 5 = ?" işleminin sonucu nedir?', a:["Fifteen", "Twenty-five", "Twenty", "Fifty"], c:2},
+    {q:'"37" sayısı nasıl söylenir?', a:["Thirty-seven", "Thirteen-seven", "Three-seven", "Thirty-six"], c:0},
+    {q:'"29" sayısından bir sonraki sayı hangisidir?', a:["Twenty-eight", "Thirty", "Forty", "Twenty-ten"], c:1},
+    {q:'"Fifty" sayısı kaç tanedir?', a:["15", "5", "50", "55"], c:2},
+    {q:'Hangi eşleştirme YANLIŞTIR?', a:["13-Thirteen", "30-Thirty", "40-Fourty", "50-Fifty"], c:2},
+
+    // 31-50 Mixed
+    {q:'"Give ____ the pencil, please." (Bana kalemi ver)', a:["me", "you", "I", "my"], c:0},
+    {q:'"____ I take your sharpener?"', a:["Am", "Is", "Can", "Are"], c:2},
+    {q:'"Open your book" cümlesinin zıttı hangisidir?', a:["Close your book", "Read your book", "Show your book", "Give your book"], c:0},
+    {q:'"I am sorry, ____ now."', a:["yes", "not", "can", "may"], c:1},
+    {q:'Sınıfta ışığı açmak için hangisi söylenir?', a:["Open the light", "Turn on the light", "Close the light", "Turn off the light"], c:1},
+    {q:'"Wait!" komutu ne demektir?', a:["Koş!", "Oku!", "Bekle!", "Dinle!"], c:2},
+    {q:'"22 + 11 = ?" işleminin sonucu nedir?', a:["Thirty-three", "Twenty-three", "Forty-three", "Thirteen"], c:0},
+    {q:'"49" İngilizce okunuşu hangisidir?', a:["Forty-nine", "Fifty-nine", "Thirty-nine", "Fourteen-nine"], c:0},
+    {q:'"Go back to your _____" (Sırana dön).', a:["book", "pencil", "seat", "door"], c:2},
+    {q:'"Color the picture" ne demektir?', a:["Resmi çiz", "Resmi boya", "Resmi göster", "Resmi kes"], c:1},
+    {q:'"Point to the window" ne demektir?', a:["Pencereye bak", "Pencereyi aç", "Pencereyi işaret et", "Pencereyi kapat"], c:2},
+    {q:'"Raise your hand" ne zaman söylenir?', a:["Ders bittiğinde", "Parmak kaldırıp söz isterken", "Kitap okurken", "Koşarken"], c:1},
+    {q:'"Leave it here" ne demektir?', a:["Onu oraya götür", "Onu buradan al", "Onu burada bırak", "Onu çöpe at"], c:2},
+    {q:'"Excuse me" ne zaman kullanılır?', a:["Teşekkür ederken", "İzin isterken", "Vedalaşırken", "Selamlaşırken"], c:1},
+    {q:'"Show me your ruler."', a:["Cetvelini göster", "Cetvelini ver", "Cetvelini al", "Cetvelini kır"], c:0},
+    {q:'"Join the game."', a:["Oyunu izle", "Oyunu bitir", "Oyuna katıl", "Oyunu kur"], c:2},
+    {q:'"Clean the board."', a:["Tahtayı karala", "Tahtayı sil", "Tahtaya bak", "Tahtaya kalk"], c:1},
+    {q:'"Come here, please."', a:["Lütfen oraya git", "Lütfen buraya gel", "Lütfen otur", "Lütfen kalk"], c:1},
+    {q:'"Stand up, please" komutuna öğrenci ne cevap verir?', a:["Okay", "No", "Sorry", "May I?"], c:0},
+    {q:'"Touch the desk."', a:["Sıraya dokun", "Sıradan kalk", "Sırayı sil", "Sıraya bak"], c:0},
+
+    // 51-70 Advanced & Numbers
+    {q:'"One, two, three, ______" boşluğa hangisi gelir?', a:["Six", "Five", "Four", "Ten"], c:2},
+    {q:'"Ten, twenty, ______, forty"', a:["Fifteen", "Thirty", "Twelve", "Fifty"], c:1},
+    {q:'Hangi sayı "forty-five"dan küçüktür?', a:["Fifty", "Forty-six", "Forty-four", "Fifty-five"], c:2},
+    {q:'"Stay in the line." (Sırada bekle/kal).', a:["line", "board", "light", "door"], c:0},
+    {q:'"May I open the door?" - "Yes, you ______."', a:["can", "may", "are", "do"], c:1},
+    {q:'"Look at the picture."', a:["Resme bak", "Resmi boya", "Resmi çiz", "Resmi al"], c:0},
+    {q:'"Listen to the ______." (Müziği dinle).', a:["teacher", "music", "door", "board"], c:1},
+    {q:'"Close your eyes."', a:["Gözlerini aç", "Gözlerini kapat", "Ağzını aç", "Ellerini yıka"], c:1},
+    {q:'"May I ______ in?"', a:["go", "sit", "come", "turn"], c:2},
+    {q:'"Can I ______ your pen?"', a:["borrow", "listen", "sit", "stand"], c:0},
+    {q:'"Thank you" diyen birine ne denir?', a:["Please", "You are welcome", "Sorry", "Not now"], c:1},
+    {q:'"Right" kelimesinin zıttı hangisidir?', a:["Back", "Left", "Round", "Down"], c:1},
+    {q:'"Up" kelimesinin zıttı hangisidir?', a:["Down", "Left", "Right", "Round"], c:0},
+    {q:'"45 - 5 = ?" işleminin sonucu hangisidir?', a:["Fifty", "Forty", "Thirty", "Forty-five"], c:1},
+    {q:'"Twenty-eight" sayısı hangisidir?', a:["28", "38", "18", "48"], c:0},
+    {q:'"Sit down" dedikten sonra ne yapılır?', a:["Ayağa kalkılır", "Oturulur", "Sola dönülür", "Koşulur"], c:1},
+    {q:'"Can I take your eraser?" - "No, ______."', a:["you can't", "I am not", "you may", "it isn't"], c:0},
+    {q:'"31" sayısının okunuşu hangisidir?', a:["Thirty-one", "Thirteen-one", "Twenty-one", "Forty-one"], c:0},
+    {q:'"May I turn on the light?" sorusu ne zaman sorulur?', a:["Hava karardığında", "Hava sıcak olduğunda", "Zil çaldığında", "Acıktığımızda"], c:0},
+    {q:'"May I ______ the pencil?" (Kalemi verebilir miyim?)', a:["give", "take", "listen", "clean"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 50) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Harikasın! Sınıf kurallarını ve sayıları çok iyi biliyorsun! 🌟" : "Güzel deneme! Bazı komutları ve sayıları tekrar ederek tam puan alabilirsin! 📚";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

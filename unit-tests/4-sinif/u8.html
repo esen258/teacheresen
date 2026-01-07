@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 8. Ünite My Clothes - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff9f43; /* Güneş Turuncusu */
+            --secondary-color: #54a0ff; /* Yağmur Mavisi */
+            --accent-color: #1dd1a1; /* Bahar Yeşili */
+            --bg-color: #f7f9fc;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--secondary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--accent-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--secondary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--secondary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--secondary-color);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #2980b9;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 8. Ünite - My Clothes</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Wear your favorite clothes! 👗👔🧥</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--secondary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🙋‍♂️ Bölüm 1: İzin İsteme Kalıpları (May I / Can I)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">👕 Bölüm 2: "Wear" ve "Put on" (Giyinme Fiilleri)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🆘 Bölüm 3: "Need" (İhtiyaç Duyma) Kalıbı</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🌤️ Bölüm 4: Hava Durumu ve Kıyafet Uyumu</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🌀 Bölüm 5: Karma Gramer Tekrarı</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Dress for the weather! ☀️🌨️</div>
+
+<script>
+const quizData = [
+    // P1: 1-10
+    {q:"Birinden ödünç bir kıyafet isterken hangisiyle başlarız?", a:["May I borrow...?", "I am wearing...", "Put on your...", "It is sunny."], c:0},
+    {q:"'May I borrow your jacket?' sorusuna olumlu cevap hangisidir?", a:["No, you can't.", "Yes, you may.", "It is cold.", "Wear your jacket."], c:1},
+    {q:"'Can I ______ your umbrella?' (Şemsiyeni ödünç alabilir miyim?)", a:["wear", "borrow", "put on", "need"], c:1},
+    {q:"'May I borrow your sunglasses?' - '______ , it is broken.' (Olumsuz cevap)", a:["Yes, of course", "Here you are", "I'm sorry, no", "Sure"], c:2},
+    {q:"'May I ______ your boots?'", a:["borrows", "borrowing", "borrow", "to borrow"], c:2},
+    {q:"'Can I borrow your dress?' - '______.' (Buyur al/İşte burada)", a:["Here you are", "No, thank you", "It is rainy", "I need it"], c:0},
+    {q:"İzin isterken 'May I' kalıbından sonra gelen fiile hangi takı gelir?", a:["-ing", "-s", "Hiçbir takı gelmez (yalın hal)", "-ed"], c:2},
+    {q:"'______ I borrow your scarf?'", a:["Am", "Is", "May", "Do"], c:2},
+    {q:"'May I borrow your hat?' - 'Yes, ______.'", a:["you can't", "you may", "I am", "it is"], c:1},
+    {q:"'I am sorry, ______.' (İzin vermediğimizde hangisini deriz?)", a:["not now", "of course", "sure", "here you are"], c:0},
+
+    // P2: 11-20
+    {q:"'It is cold. ______ your coat.' (Montunu giy)", a:["Borrow", "Put on", "Need", "May"], c:1},
+    {q:"'I ______ my trousers every day.'", a:["wears", "wear", "wearing", "am wear"], c:1},
+    {q:"'She ______ a pink dress today.'", a:["wear", "wears", "wearing", "is wear"], c:1},
+    {q:"'______ your sunglasses. It is sunny.'", a:["Put on", "Borrow", "Need", "May"], c:0},
+    {q:"'Don't ______ your sweater. It is hot.'", a:["wear", "borrows", "needs", "am"], c:0},
+    {q:"'He ______ his boots in winter.'", a:["wear", "wearing", "wears", "is wear"], c:2},
+    {q:"'______ I wear your hat?'", a:["Do", "Am", "Can", "Is"], c:2},
+    {q:"'Wait! ______ your shoes.'", a:["Borrow", "Put on", "Need", "May"], c:1},
+    {q:"'I ______ my pajamas at night.'", a:["wear", "wears", "wearing", "is wear"], c:0},
+    {q:"'Does she ______ a scarf?'", a:["wears", "wearing", "wear", "to wear"], c:2},
+
+    // P3: 21-30
+    {q:"'It is rainy. I ______ my umbrella.' (Şemsiyeye ihtiyacım var)", a:["borrow", "wear", "need", "put on"], c:2},
+    {q:"'We ______ our sunglasses in summer.'", a:["needs", "need", "needing", "am need"], c:1},
+    {q:"'She ______ a coat because it is cold.'", a:["need", "needs", "needing", "is need"], c:1},
+    {q:"'I ______ my boots. It is snowy.'", a:["borrow", "put on", "need", "may"], c:2},
+    {q:"'______ you need your gloves?'", a:["Do", "Does", "Is", "Are"], c:0},
+    {q:"'Does he ______ a hat?'", a:["needs", "need", "needing", "to need"], c:1},
+    {q:"'I don't ______ my jacket. It is hot.'", a:["need", "needs", "borrowing", "wears"], c:0},
+    {q:"'It is sunny. I ______ my t-shirt.'", a:["am", "need", "borrow", "may"], c:1},
+    {q:"'They ______ their umbrellas.'", a:["needs", "need", "is need", "wearing"], c:1},
+    {q:"'Do you need your coat?' - 'Yes, ______.'", a:["I am", "I do", "I can", "I may"], c:1},
+
+    // P4: 31-40
+    {q:"'It is sunny. ______ your sunglasses.'", a:["Wear", "Borrow", "Need", "Don't wear"], c:0},
+    {q:"'It is ______ . Wear your coat.'", a:["hot", "cold", "sunny", "warm"], c:1},
+    {q:"'It is rainy. ______ your umbrella.'", a:["Wear", "Don't borrow", "Take", "May I"], c:2},
+    {q:"'Is it snowy?' - 'Yes, ______ your boots.'", a:["put on", "don't wear", "borrow", "need"], c:0},
+    {q:"'It is hot. ______ wear your sweater.'", a:["Do", "Does", "Don't", "May"], c:2},
+    {q:"'It is ______ . I need my gloves.'", a:["sunny", "cold", "hot", "warm"], c:1},
+    {q:"'Is it ______ ? Put on your raincoat.'", a:["sunny", "rainy", "hot", "warm"], c:1},
+    {q:"'It is sunny. ______ wear your sunglasses.'", a:["Do", "Don't", "May", "Can"], c:0},
+    {q:"'I need my hat because it is ______ .'", a:["cold", "rainy", "sunny", "snowy"], c:2},
+    {q:"'It is ______ . Don't wear your coat.'", a:["cold", "snowy", "hot", "rainy"], c:2},
+
+    // P5: 41-70
+    {q:"'______ is your jacket?' - 'It is blue.'", a:["What colour", "Where", "When", "Who"], c:0},
+    {q:"'______ are your trousers?' - 'They are on the bed.'", a:["What", "Where", "How", "Who"], c:1},
+    {q:"'May I borrow your ______ ?' - 'Yes, of course.'", a:["sunny", "cold", "umbrella", "rainy"], c:2},
+    {q:"'I wear my ______ in summer.'", a:["coat", "sunglasses", "boots", "gloves"], c:1},
+    {q:"'She ______ a raincoat in rainy weather.'", a:["wear", "wears", "needing", "borrow"], c:1},
+    {q:"'______ I borrow your gloves?' - 'I'm sorry, no.'", a:["Do", "Am", "May", "Is"], c:2},
+    {q:"'I ______ my jeans today.'", a:["wearing", "wears", "wear", "am wear"], c:2},
+    {q:"'It is snowy. ______ your boots.'", a:["Don't put on", "Put on", "Borrow", "May I"], c:1},
+    {q:"'Do you need a scarf?' - 'No, ______ .'", a:["I don't", "I am not", "I can't", "I may not"], c:0},
+    {q:"'______ your shoes, please.'", a:["Put on", "Need", "Borrow", "May"], c:0},
+    {q:"'Where ______ my socks?'", a:["is", "are", "am", "do"], c:1},
+    {q:"'The dress ______ pink.'", a:["am", "is", "are", "do"], c:1},
+    {q:"'These ______ my shoes.'", a:["am", "is", "are", "do"], c:2},
+    {q:"'______ color is your skirt?'", a:["What", "Where", "When", "How"], c:0},
+    {q:"'May I ______ your t-shirt?'", a:["wear", "borrow", "needs", "put on"], c:1},
+    {q:"'I ______ a hat in sunny weather.'", a:["needs", "needing", "need", "is need"], c:2},
+    {q:"'It is rainy. ______ your raincoat.'", a:["Don't wear", "Wear", "Borrow", "May"], c:1},
+    {q:"'Can I borrow your shoes?' - '______ .' (Olumlu)", a:["I'm sorry", "Not now", "Sure", "No"], c:2},
+    {q:"'He ______ his sweater in winter.'", a:["wear", "wears", "wearing", "is wear"], c:1},
+    {q:"'______ you wear boots in summer?'", a:["Do", "Does", "Is", "Are"], c:0},
+    {q:"'I ______ my umbrella today.'", a:["needs", "need", "is need", "borrows"], c:1},
+    {q:"'May I borrow your gloves?' - '______ , I need them.'", a:["Yes", "Of course", "I'm sorry, no", "Sure"], c:2},
+    {q:"'______ your coat. It is very cold.'", a:["Put on", "Don't wear", "Borrow", "May"], c:0},
+    {q:"'She ______ her sunglasses in winter.' (Olumsuz)", a:["doesn't wear", "don't wear", "isn't wear", "wear"], c:0},
+    {q:"'______ I borrow your jacket?' - 'Yes, you may.'", a:["Can", "Do", "May", "Is"], c:2},
+    {q:"'I ______ my pajamas now.'", a:["wear", "wears", "wearing", "am wear"], c:0},
+    {q:"'It is hot. I ______ my t-shirt.'", a:["need", "needs", "borrowing", "borrows"], c:0},
+    {q:"'______ your hat. It is sunny.'", a:["Put on", "Don't wear", "Borrow", "May"], c:0},
+    {q:"'Do you ______ a scarf?'", a:["need", "needs", "needing", "to need"], c:0},
+    {q:"'May I borrow your socks?' - 'Yes, ______ .'", a:["here you are", "no", "not now", "I'm sorry"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 40) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Moda ve mevsimler senden sorulur! Harikasın! 👗✨" : "Gayretin harika! Kıyafet isimlerini ve hava durumuyla eşleştirmeleri tekrar ederek stilini konuşturabilirsin! 🧣🌤️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

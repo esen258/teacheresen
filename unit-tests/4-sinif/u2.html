@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 2. Ünite Nationality - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0984e3; /* Deniz Mavisi */
+            --secondary-color: #2d3436; 
+            --accent-color: #fdcb6e; /* Altın Sarısı */
+            --bg-color: #f5f6fa;
+            --correct: #00b894;
+            --wrong: #d63031;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #74b9ff, var(--primary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+        header p { 
+            font-size: 1.1em; font-weight: bold; background: rgba(255,255,255,0.2);
+            color: white; display: inline-block; padding: 8px 25px;
+            border-radius: 20px; margin-top: 10px; border: 1px dashed white;
+        }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid transparent;
+        }
+
+        .option-label:hover { background: #eef2f3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--correct);
+            color: white; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #00947a;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>4. Sınıf 2. Ünite - Nationality</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Explore the World! 🌍🚩✈️</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Tekrar Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🌍 BÖLÜM 1: Ülkeler ve Milliyetler (Gramer Yapıları)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🧭 BÖLÜM 2: Yönler ve Konumlar (Gramer Yapıları)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🧩 BÖLÜM 3: Karma Dil Bilgisi & Kısa Cevaplar</div>
+    <div id="p3-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">PUANIMI HESAPLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2025 | Discover your world! 🌈🌍</div>
+
+<script>
+const quizData = [
+    // 1-35 Section 1
+    {q:"Where ________ you from?", a:["is", "are", "am", "do"], c:1},
+    {q:"I ________ from Turkey.", a:["is", "are", "am", "does"], c:2},
+    {q:"Where ________ he from?", a:["is", "are", "am", "have"], c:0},
+    {q:"She ________ from Germany.", a:["am", "are", "is", "do"], c:2},
+    {q:"A: Are you British? B: Yes, I ________.", a:["is", "am", "are", "aren’t"], c:1},
+    {q:"A: Is he Japanese? B: No, he ________.", a:["is", "isn’t", "am", "aren’t"], c:1},
+    {q:"A: ________ she from Spain? B: Yes, she is.", a:["Are", "Am", "Is", "Do"], c:2},
+    {q:"A: ________ they from Russia? B: Yes, they are.", a:["Is", "Am", "Are", "Does"], c:2},
+    {q:"He is from Britain. He is ________.", a:["Britain", "British", "Britianish", "from British"], c:1},
+    {q:"I am from France. I ________ French.", a:["am", "is", "are", "from"], c:0},
+    {q:"She is Spanish. She is from ________.", a:["Spain", "Spanish", "Spaniard", "the Spain"], c:0},
+    {q:"They ________ American. They are from the USA.", a:["is", "are", "am", "isn't"], c:1},
+    {q:"Is Hans ________ Germany?", a:["in", "at", "from", "on"], c:2},
+    {q:"________ nationality is she?", a:["Where", "What", "Who", "How"], c:1},
+    {q:"A: Is she Russian? B: No, she is ________. (O bir Alman)", a:["Germany", "German", "Germans", "from German"], c:1},
+    {q:"Where ________ Mary and Tom from?", a:["is", "are", "am", "be"], c:1},
+    {q:"I ________ from Japan. I ________ Japanese.", a:["am / am", "is / is", "are / are", "am / is"], c:0},
+    {q:"A: Are you from China? B: No, I ________.", a:["am", "not", "am not", "isn’t"], c:2},
+    {q:"________ is from Turkey. She is Turkish.", a:["He", "She", "It", "You"], c:1},
+    {q:"________ is from Pakistan. He is Pakistani.", a:["She", "He", "I", "They"], c:1},
+    {q:"Are ________ Japanese? Yes, we are.", a:["you", "he", "she", "it"], c:0},
+    {q:"Is ________ British? Yes, he is.", a:["she", "you", "he", "they"], c:2},
+    {q:"Is ________ American? No, she isn't.", a:["he", "they", "she", "you"], c:2},
+    {q:"Where ________ I from? You are from Turkey.", a:["is", "are", "am", "do"], c:2},
+    {q:"You are ________ Spain.", a:["from", "to", "at", "on"], c:0},
+    {q:"He ________ German. He ________ from Germany.", a:["is / is", "is / are", "are / is", "is / am"], c:0},
+    {q:"A: ________ is he? B: He is from Russia.", a:["Where", "What nationality", "How", "Who"], c:0},
+    {q:"A: ________ is he? B: He is Russian.", a:["Where", "What nationality", "How", "When"], c:1},
+    {q:"I ________ not from France.", a:["is", "are", "am", "do"], c:2},
+    {q:"They ________ not Turkish.", a:["am", "is", "are", "be"], c:2},
+    {q:"Is it from China? Yes, it ________.", a:["is", "are", "am", "isn’t"], c:0},
+    {q:"Are they Spanish? No, they ________.", a:["is", "isn't", "are", "aren't"], c:3},
+    {q:"A: Is she French? B: ________. She is from Britain.", a:["Yes, she is", "No, she isn't", "Yes, he is", "No, he isn't"], c:1},
+    {q:"________ you from the USA?", a:["Is", "Are", "Am", "Do"], c:1},
+    {q:"What nationality ________ you?", a:["am", "is", "are", "do"], c:2},
+
+    // 36-50 Section 2
+    {q:"Where ________ İzmir?", a:["are", "is", "am", "do"], c:1},
+    {q:"It ________ in the west.", a:["is", "are", "am", "does"], c:0},
+    {q:"Samsun is ________ the north.", a:["on", "at", "c", "to"], c:2},
+    {q:"Where is Van? It is in ________ east.", a:["a", "an", "the", "some"], c:2},
+    {q:"Where is Adana? ________ is in the south.", a:["He", "She", "It", "They"], c:2},
+    {q:"A: Is Sinop in the north? B: Yes, it ________.", a:["is", "are", "isn't", "am"], c:0},
+    {q:"A: Is Muğla in the east? B: No, it ________.", a:["is", "isn't", "are", "aren't"], c:1},
+    {q:"________ is Ağrı? It is in the east.", a:["What", "Where", "How", "Who"], c:1},
+    {q:"Trabzon and Rize ________ in the north.", a:["is", "are", "am", "be"], c:1},
+    {q:"Is Ankara ________ the middle of Turkey?", a:["on", "at", "in", "from"], c:2},
+    {q:"Aydın is in the ________.", a:["north", "south", "west", "east"], c:2},
+    {q:"Antakya is in the ________.", a:["north", "south", "east", "west"], c:1},
+    {q:"________ is in the east? Erzurum is in the east.", a:["Where", "What", "Who", "How"], c:1},
+    {q:"Is İzmir in the west ________ the east?", a:["and", "but", "or", "so"], c:2},
+    {q:"Antalya is ________ the south.", a:["in", "on", "from", "at"], c:0},
+
+    // 51-70 Section 3
+    {q:"________ you Turkish? No, I am not.", a:["Is", "Are", "Do", "Am"], c:1},
+    {q:"Is Ayşe ________ Turkey? Yes, she is.", a:["from", "in", "on", "at"], c:0},
+    {q:"Are you from Japan? Yes, ________.", a:["I am", "I'm from", "you are", "she is"], c:0},
+    {q:"What ________ is he? He is German.", a:["country", "nationality", "city", "from"], c:1},
+    {q:"Where is he ________?", a:["from", "in", "nationality", "is"], c:0},
+    {q:"She isn't from Russia. She ________ from Spain.", a:["is", "are", "am", "isn't"], c:0},
+    {q:"They are from ________. They are British.", a:["Britain", "British", "American", "Turkey"], c:0},
+    {q:"________ are you from? I'm from Germany.", a:["What", "Where", "How", "Who"], c:1},
+    {q:"Is he American? ________. He is from the USA.", a:["Yes, he is", "No, he isn't", "Yes, she is", "No, she isn't"], c:0},
+    {q:"Is your friend French? No, ________ is German.", a:["he", "it", "you", "they"], c:0},
+    {q:"Where ________ the compass?", a:["is", "are", "am", "do"], c:0},
+    {q:"The paperclip is ________ the desk.", a:["in", "on", "from", "at"], c:1},
+    {q:"Are you from ________? No, I am Japanese.", a:["China", "Chinese", "Spain", "Turkish"], c:0},
+    {q:"Is she from Italy? No, she ________.", a:["isn't", "is", "aren't", "am not"], c:0},
+    {q:"________ is she from? She is from Russia.", a:["Where", "What", "How", "Who"], c:0},
+    {q:"What nationality are ________? We are Turkish.", a:["you", "he", "she", "I"], c:0},
+    {q:"Is Istanbul in ________ west? Yes, it is.", a:["the", "a", "an", "(hiçbiri)"], c:0},
+    {q:"I ________ from France. I ________ French.", a:["am / am", "is / is", "are / are", "am / is"], c:0},
+    {q:"Are they from the USA? Yes, ________ are.", a:["they", "we", "you", "he"], c:0},
+    {q:"Where is Sinop? It is ________ the north.", a:["in", "on", "at", "from"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 35) containerId = 'p1-container';
+        else if (index < 50) containerId = 'p2-container';
+        else containerId = 'p3-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Dünya vatandaşı olmaya hazırsın! Harika! 🌍✨" : "Ülkeler ve milliyetler konusuna biraz daha çalışarak haritayı fethedebilirsin! 🧭🚩";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
