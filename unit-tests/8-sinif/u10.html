@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 10. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2ecc71; /* Doğa Yeşili */
+            --secondary-color: #27ae60;
+            --accent-color: #3498db; /* Su Mavisi */
+            --warning-color: #e67e22; /* Toprak Turuncusu */
+            --bg-color: #f1f8f4;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/leaf.png');
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), #16a085);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--warning-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 12px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 20px 0; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--warning-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #eef9f2; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; border-color: var(--wrong) !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #fff; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 15px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #2980b9;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 10. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 📞 0530 477 30 73</div>
+    <p>Natural Forces: Eco-Friendly Solutions for a Sustainable World! 🌍🌱</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">TEKRAR DENE</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">📢 BÖLÜM 1: Giving Advice (Should / Shouldn't)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🔮 BÖLÜM 2: Future Predictions (Will / Won't)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔗 BÖLÜM 3: Reason and Result (Because / So)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📊 BÖLÜM 4: Quantifiers (More / Less / Fewer)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🌪️ BÖLÜM 5: Karışık Gramer ve Doğal Afetler</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">DOĞAYI KORU VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Be the change you want to see in the world! 🌿</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Should/Shouldn't (1-10)
+    {q:"We ___________ plant more trees to prevent erosion.", a:["should", "shouldn't", "will", "won't"], c:0},
+    {q:"People ___________ waste water because of the drought.", a:["should", "shouldn't", "must", "are"], c:1},
+    {q:"We ___________ use renewable energy sources like solar and wind.", a:["should", "shouldn't", "were", "did"], c:0},
+    {q:"You ___________ throw trash into the rivers.", a:["should", "shouldn't", "will", "does"], c:1},
+    {q:"We ___________ recycle paper, glass, and plastic.", a:["shouldn't", "should", "am", "was"], c:1},
+    {q:"People ___________ cut down forests for new buildings.", a:["should", "shouldn't", "will", "do"], c:1},
+    {q:"We ___________ turn off the lights when we leave a room.", a:["should", "shouldn't", "was", "were"], c:0},
+    {q:"You ___________ use less plastic to protect the oceans.", a:["shouldn't", "should", "does", "are"], c:1},
+    {q:"We ___________ hunt endangered animals.", a:["should", "shouldn't", "will", "must"], c:1},
+    {q:"Everyone ___________ educate their children about nature.", a:["should", "shouldn't", "is", "am"], c:0},
+
+    // BÖLÜM 2: Will/Won't (11-20)
+    {q:"I think there ___________ be a water shortage in the future.", a:["will", "won't", "is", "are"], c:0},
+    {q:"If we don't take precautions, global warming ___________ increase.", a:["will", "won't", "was", "were"], c:0},
+    {q:"Scientists believe that many animals ___________ become extinct.", a:["won't", "will", "are", "do"], c:1},
+    {q:"I hope people ___________ stop polluting the air soon.", a:["will", "won't", "did", "was"], c:0},
+    {q:"If we plant trees, the world ___________ be a better place.", a:["will", "won't", "is", "are"], c:0},
+    {q:"There ___________ be enough food if the drought continues.", a:["will", "won't", "is", "was"], c:1},
+    {q:"I am sure we ___________ find a solution for energy shortage.", a:["will", "won't", "am", "did"], c:0},
+    {q:"In the future, people ___________ use more electric cars.", a:["will", "won't", "are", "were"], c:0},
+    {q:"Global warming ___________ stop if we don't change our habits.", a:["will", "won't", "does", "is"], c:1},
+    {q:"Perhaps, there ___________ be new types of disasters in 2050.", a:["will", "won't", "was", "did"], c:0},
+
+    // BÖLÜM 3: Because/So (21-25)
+    {q:"There is a flood ___________ it rained heavily for three days.", a:["because", "so", "but", "and"], c:0},
+    {q:"People cut down trees, ___________ deforestation is a big problem.", a:["because", "so", "but", "or"], c:1},
+    {q:"We must recycle ___________ we want to save our planet.", a:["because", "so", "but", "or"], c:0},
+    {q:"The earth is heating up, ___________ glaciers are melting.", a:["because", "so", "and", "but"], c:1},
+    {q:"There is no rain, ___________ there is a drought in the region.", a:["because", "so", "but", "and"], c:1},
+
+    // BÖLÜM 4: Quantifiers (26-30)
+    {q:"We should use ___________ water to prevent water shortage.", a:["more", "less", "many", "few"], c:1},
+    {q:"People should plant ___________ trees every year.", a:["more", "less", "much", "any"], c:0},
+    {q:"We need ___________ pollution for a healthy life.", a:["more", "less", "many", "a lot of"], c:1},
+    {q:"You should drive ___________ and walk more.", a:["more", "less", "much", "many"], c:1},
+    {q:"There are ___________ animals in the wild than before.", a:["more", "fewer", "less", "much"], c:1},
+
+    // BÖLÜM 5: Mixed (31-70)
+    {q:"An earthquake ___________ a natural disaster.", a:["is", "are", "was", "were"], c:0},
+    {q:"What ___________ the main cause of air pollution?", a:["are", "is", "do", "does"], c:1},
+    {q:"We ___________ use rechargeable batteries.", a:["should", "shouldn't", "won't", "was"], c:0},
+    {q:"Global warming ___________ the temperature of the Earth.", a:["increase", "increases", "increasing", "increased"], c:1},
+    {q:"How ___________ we stop global warming?", a:["can", "are", "is", "were"], c:0},
+    {q:"Last year, a big flood ___________ many houses.", a:["destroy", "destroyed", "destroying", "destroys"], c:1},
+    {q:"People ___________ use more public transportation.", a:["should", "shouldn't", "am", "was"], c:0},
+    {q:"If the temperature increases, ice ___________ melt.", a:["will", "won't", "did", "was"], c:0},
+    {q:"___________ there any survivors after the earthquake?", a:["Was", "Were", "Is", "Do"], c:1},
+    {q:"We ___________ save nature for our children.", a:["must", "mustn't", "shouldn't", "don't"], c:0},
+    {q:"Deforestation ___________ to landslides.", a:["lead", "leads", "leading", "led"], c:1},
+    {q:"What ___________ happen if we don't take precautions?", a:["will", "won't", "is", "are"], c:0},
+    {q:"We should ___________ eco-friendly products.", a:["buy", "buying", "bought", "buys"], c:0},
+    {q:"A tornado ___________ very fast and destructive.", a:["is", "are", "am", "were"], c:0},
+    {q:"Why ___________ the climate changing?", a:["is", "are", "do", "does"], c:0},
+    {q:"We ___________ waste energy.", a:["shouldn't", "should", "will", "are"], c:0},
+    {q:"There ___________ many forest fires in summer.", a:["are", "is", "am", "was"], c:0},
+    {q:"Toxic waste ___________ the soil.", a:["pollute", "pollutes", "polluting", "polluted"], c:1},
+    {q:"We should ___________ less electricity.", a:["use", "using", "used", "uses"], c:0},
+    {q:"The magnitude of the earthquake ___________ 7.4.", a:["was", "were", "did", "are"], c:0},
+    {q:"I believe we ___________ protect the environment.", a:["will", "are", "do", "did"], c:0},
+    {q:"Don't ___________ the water running while brushing your teeth.", a:["leave", "leaving", "left", "leaves"], c:0},
+    {q:"Glaciers ___________ melting because of high temperatures.", a:["is", "are", "was", "am"], c:1},
+    {q:"___________ should we do to save the earth?", a:["What", "Who", "Which", "When"], c:0},
+    {q:"We ___________ use solar energy instead of coal.", a:["should", "shouldn't", "won't", "were"], c:0},
+    {q:"The landslide ___________ last week.", a:["happen", "happened", "happening", "happens"], c:1},
+    {q:"Many species ___________ in danger.", a:["is", "are", "am", "was"], c:1},
+    {q:"We ___________ recycle more trash.", a:["should", "shouldn't", "don't", "was"], c:0},
+    {q:"Will there ___________ enough water in 20 years?", a:["be", "is", "are", "was"], c:0},
+    {q:"People ___________ throwing plastic bags into the sea.", a:["are", "is", "am", "was"], c:0},
+    {q:"___________ of people suffer from water shortage.", a:["Millions", "Million", "Much", "Little"], c:0},
+    {q:"We must ___________ trees to stop erosion.", a:["plant", "planting", "planted", "plants"], c:0},
+    {q:"The storm ___________ very strong yesterday.", a:["was", "were", "is", "are"], c:0},
+    {q:"If we recycle, we ___________ reduce trash.", a:["will", "won't", "are", "do"], c:0},
+    {q:"You ___________ waste food.", a:["shouldn't", "should", "will", "does"], c:0},
+    {q:"What ___________ the results of global warming?", a:["are", "is", "do", "was"], c:0},
+    {q:"We ___________ use eco-friendly bags.", a:["should", "shouldn't", "were", "am"], c:0},
+    {q:"The volcano ___________ yesterday.", a:["erupt", "erupted", "erupting", "erupts"], c:1},
+    {q:"Scientists ___________ working on a solution.", a:["are", "is", "am", "was"], c:0},
+    {q:"We ___________ keep our world clean.", a:["must", "mustn't", "don't", "shouldn't"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 25) containerId = 'p3-container';
+        else if (index < 30) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name=\"q${index}\"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Doğa dostu bir lidersin! Harika sonuç! 🌳♻️" : "Gayretin güzel! Because/So ve Less/Fewer farklarına tekrar bakarak dünyayı kurtarabilirsin! 🌱🌍";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

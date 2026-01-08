@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 9. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00bcd4; /* Laboratuvar Turkuazı */
+            --secondary-color: #1a237e; /* Derin Bilim Mavisi */
+            --accent-color: #7c4dff; /* Teknoloji Moru */
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #263238;
+            --correct: #00c853;
+            --wrong: #ff1744;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            background-image: radial-gradient(#d1d9e6 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white; text-align: center; padding: 50px 20px;
+            border-bottom: 5px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.5em; margin: 0; }
+        .contact-info { font-family: 'JetBrains+Mono', monospace; font-size: 1.1em; margin-top: 10px; }
+
+        #result-banner {
+            display: none; position: sticky; top: 15px; z-index: 100;
+            background: white; padding: 30px; border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2); text-align: center;
+            max-width: 500px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 18px; border-radius: 15px; margin-top: 45px;
+            font-family: 'Fredoka One', cursive; font-size: 1.2em;
+            letter-spacing: 1px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 25px 0; padding: 25px;
+            border-radius: 20px; box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+            border-right: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.15em; font-weight: 700; margin-bottom: 18px; line-height: 1.5; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        .option-label {
+            background: #f1f3f4; padding: 15px; border-radius: 12px;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block; border: 2px solid transparent; font-weight: 600;
+        }
+
+        .option-label:hover { background: #e0f7fa; transform: translateY(-2px); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--primary-color);
+            color: #fff; border: none; padding: 25px;
+            font-size: 1.6em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 50px 0;
+            transition: 0.3s; box-shadow: 0 8px 0px #0097a7;
+        }
+
+        #submit-btn:hover { background: #00acc1; transform: scale(1.02); }
+
+        .footer { text-align: center; padding: 50px; color: var(--secondary-color); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 9. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 🧬 0530 477 30 73</div>
+    <p>SCIENCE: Discovering the Secrets of the Universe! 🔬⚛️🧪</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--accent-color); border:none; color:white; padding:12px 25px; border-radius:12px; cursor:pointer; font-weight:bold;">YENİ BİR DENEYE BAŞLA</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">⌛ BÖLÜM 1: Past Simple Tense (Geçmiş Zaman)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">⚙️ BÖLÜM 2: Was / Were ve Pasif Yapı Girişi</div>
+    <div id="p2-container"></div>
+
+    <div id="mid-image-1"></div>
+
+    <div class="section-title">❓ BÖLÜM 3: Soru Kelimeleri (Who, When, Where, What)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🧪 BÖLÜM 4: Şimdiki Zaman (Scientific Studies)</div>
+    <div id="p4-container"></div>
+
+    <div id="mid-image-2"></div>
+
+    <div class="section-title">🌀 BÖLÜM 5: Karışık Gramer Tekrarı</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">BİLİMSEL ANALİZİ TAMAMLA 🚀</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Science is the key to the future! 🔭</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Past Simple (1-10)
+    {q:"Albert Einstein ___________ the theory of relativity.", a:["develop", "developed", "developing", "develops"], c:1},
+    {q:"Marie Curie ___________ the Nobel Prize in 1903.", a:["win", "wins", "won", "winning"], c:2},
+    {q:"Isaac Newton ___________ born in England in 1643.", a:["is", "was", "were", "did"], c:1},
+    {q:"Scientists ___________ the first cell many years ago.", a:["discover", "discovered", "discovers", "discovering"], c:1},
+    {q:"Graham Bell ___________ the telephone, he didn't invent the radio.", a:["invent", "invented", "inventing", "invents"], c:1},
+    {q:"Archimedes ___________ 'Eureka!' when he found the law of buoyancy.", a:["say", "said", "saying", "says"], c:1},
+    {q:"Aziz Sancar ___________ the Nobel Prize for Chemistry in 2015.", a:["receive", "received", "receives", "receiving"], c:1},
+    {q:"High school students ___________ an experiment in the lab yesterday.", a:["do", "does", "did", "doing"], c:2},
+    {q:"They ___________ find the cure for the disease last year.", a:["didn't", "wasn't", "don't", "weren't"], c:0},
+    {q:"Where ___________ Marie Curie born?", a:["did", "was", "were", "is"], c:1},
+
+    // BÖLÜM 2: Was/Were Passive (11-20)
+    {q:"The telephone ___________ invented by Alexander Graham Bell.", a:["is", "was", "were", "did"], c:1},
+    {q:"Radium and Polonium ___________ discovered by Marie Curie.", a:["was", "were", "did", "are"], c:1},
+    {q:"The first steps on the moon ___________ taken in 1969.", a:["was", "were", "are", "is"], c:1},
+    {q:"This experiment ___________ conducted by a group of scientists.", a:["was", "did", "were", "is"], c:0},
+    {q:"Many scientific prizes ___________ given to successful researchers.", a:["was", "were", "did", "been"], c:1},
+    {q:"The Nobel Prize ___________ received by Aziz Sancar.", a:["was", "were", "is", "did"], c:0},
+    {q:"Barcodes ___________ first used on products in the 1970s.", a:["was", "were", "did", "are"], c:1},
+    {q:"The steam engine ___________ developed by James Watt.", a:["were", "was", "is", "did"], c:1},
+    {q:"Important theories ___________ produced by Einstein.", a:["was", "were", "are", "did"], c:1},
+    {q:"Electricity ___________ discovered by Benjamin Franklin.", a:["was", "were", "is", "did"], c:0},
+
+    // BÖLÜM 3: Questions (21-30)
+    {q:"___________ discovered the DNA structure? (James Watson)", a:["What", "Who", "When", "Where"], c:1},
+    {q:"___________ did Marie Curie die? (In 1934)", a:["When", "Who", "What", "How"], c:0},
+    {q:"___________ did he receive the Nobel Prize? (In Stockholm)", a:["When", "Where", "Who", "Why"], c:1},
+    {q:"___________ did they win the prize for? (For Physics)", a:["When", "Where", "What", "Who"], c:2},
+    {q:"___________ many Nobel Prizes did Marie Curie receive?", a:["How", "What", "Which", "Who"], c:0},
+    {q:"___________ was Albert Einstein's nationality? (German)", a:["What", "Where", "Who", "When"], c:0},
+    {q:"___________ did the first home computers go on sale?", a:["What", "When", "Who", "Where"], c:1},
+    {q:"___________ field of science are you interested in?", a:["Which", "Who", "When", "Where"], c:0},
+    {q:"___________ was born in Warsaw, Poland?", a:["Who", "What", "Where", "When"], c:0},
+    {q:"___________ did they discover the new planet? (By using a telescope)", a:["How", "Who", "What", "Where"], c:0},
+
+    // BÖLÜM 4: Current Science (31-35)
+    {q:"Scientists ___________ looking for a cure for cancer right now.", a:["is", "are", "was", "were"], c:1},
+    {q:"The technician ___________ repairing the lab equipment at the moment.", a:["is", "are", "am", "be"], c:0},
+    {q:"We ___________ doing an experiment in the chemistry lab today.", a:["is", "am", "are", "be"], c:2},
+    {q:"A chemist ___________ testing the new medicine in the lab.", a:["is", "are", "am", "be"], c:0},
+    {q:"Astronauts ___________ currently living on the International Space Station.", a:["is", "are", "was", "were"], c:1},
+
+    // BÖLÜM 5: Mixed (36-70)
+    {q:"Isaac Newton ___________ an apple falling from a tree.", a:["see", "saw", "seen", "seeing"], c:1},
+    {q:"Alexander Fleming ___________ penicillin in 1928.", a:["discover", "discovered", "discovering", "discovers"], c:1},
+    {q:"The theory ___________ developed many years ago.", a:["was", "were", "is", "did"], c:0},
+    {q:"Who ___________ the inventor of the light bulb?", a:["did", "was", "were", "is"], c:1},
+    {q:"They ___________ not find any evidence in the last study.", a:["didn't", "don't", "wasn't", "weren't"], c:0},
+    {q:"I am interested ___________ astronomy and space.", a:["in", "at", "on", "of"], c:0},
+    {q:"She ___________ born in 1867.", a:["was", "were", "is", "did"], c:0},
+    {q:"Scientific studies ___________ very important for our future.", a:["is", "are", "was", "be"], c:1},
+    {q:"Graham Bell ___________ born in Scotland.", a:["was", "were", "is", "did"], c:0},
+    {q:"They ___________ working on a new project these days.", a:["is", "are", "was", "were"], c:1},
+    {q:"What ___________ he produce in 1905?", a:["did", "was", "is", "does"], c:0},
+    {q:"Many elements ___________ discovered in the 19th century.", a:["was", "were", "are", "did"], c:1},
+    {q:"Einstein ___________ receive the Nobel Prize for his theory of relativity.", a:["did", "was", "is", "does"], c:0},
+    {q:"She ___________ the youngest of five children.", a:["was", "were", "is", "are"], c:0},
+    {q:"The first airbags ___________ used in cars in 1980.", a:["was", "were", "are", "did"], c:1},
+    {q:"Newton ___________ born on 4th January.", a:["was", "were", "is", "did"], c:0},
+    {q:"What ___________ the elements they discovered?", a:["was", "were", "is", "are"], c:1},
+    {q:"A lot of people ___________ to the science fair last week.", a:["go", "went", "going", "goes"], c:1},
+    {q:"It ___________ a very important discovery.", a:["was", "were", "is", "did"], c:0},
+    {q:"Science ___________ help us understand the world.", a:["can", "was", "were", "been"], c:0},
+    {q:"The wheel ___________ invented thousands of years ago.", a:["was", "were", "is", "did"], c:0},
+    {q:"Marie Curie ___________ another Nobel Prize in 1911.", a:["receive", "received", "receives", "receiving"], c:1},
+    {q:"He ___________ a genius in mathematics.", a:["was", "were", "is", "are"], c:0},
+    {q:"When ___________ the first telephone invented?", a:["was", "were", "did", "is"], c:0},
+    {q:"They ___________ win the prize together.", a:["did", "was", "is", "were"], c:0},
+    {q:"I ___________ like science fiction movies.", a:["don't", "wasn't", "am not", "did"], c:0},
+    {q:"Where ___________ Aziz Sancar live now?", a:["does", "did", "is", "was"], c:0},
+    {q:"The experiment ___________ unsuccessful last time.", a:["was", "were", "did", "is"], c:0},
+    {q:"How ___________ she die? (Of a blood disease)", a:["did", "was", "were", "is"], c:0},
+    {q:"We ___________ exploring the space in the future.", a:["will", "are", "do", "was"], c:0},
+    {q:"Science ___________ a bridge between the past and future.", a:["is", "are", "was", "be"], c:0},
+    {q:"They ___________ the results on the computer now.", a:["is checking", "are checking", "checked", "checks"], c:1},
+    {q:"The lab ___________ very clean yesterday.", a:["was", "were", "is", "are"], c:0},
+    {q:"I ___________ want to be an astronaut when I grow up.", a:["want", "wanting", "wants", "to want"], c:0},
+    {q:"Physics ___________ my favorite subject at school.", a:["is", "are", "were", "be"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 35) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Muazzam bir zeka! Bilim dünyasının yeni Aziz Sancar'ı olabilirsin! 🧪✨" : "Bilimsel merakın takdire şayan! Past Passive kalıplarına ve fiillerin 2. hallerine biraz daha göz atarak bir sonraki laboratuvar testinde kusursuz olabilirsin! 🔬⚛️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

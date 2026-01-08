@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 7. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #f39c12; /* Turizm Sarısı */
+            --secondary-color: #2c3e50; /* Gezgin Laciverti */
+            --accent-color: #3498db; /* Gökyüzü Mavisi */
+            --bg-color: #ecf0f1;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #d35400);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: #fff; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 12px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 20px 0; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #fff9e6; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; border-color: var(--wrong) !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #fff; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 15px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #2980b9;
+        }
+
+        #submit-btn:hover { background: #2980b9; }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 7. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 📞 0530 477 30 73</div>
+    <p>Tourism: Explore the History, Culture and Wonders! 🏯✈️🌍</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">YENİ BİR GEZİYE BAŞLA</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🏰 BÖLÜM 1: Present Perfect Tense Temelleri (Have / Has)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">📝 BÖLÜM 2: Fiillerin 3. Hali (Past Participle - V3)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">⚖️ BÖLÜM 3: Ever ve Never Kullanımı</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">⏳ BÖLÜM 4: Just, Already ve Yet Kullanımı</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🏙️ BÖLÜM 5: Karşılaştırmalar ve Tercihler</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">🗺️ BÖLÜM 6: Karışık Gramer Soruları</div>
+    <div id="p6-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TURU TAMAMLA VE PASAPORTU ONAYLA 🛂</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Travel is the only thing you buy that makes you richer! 🗺️</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Have/Has (1-10)
+    {q:"I ___________ visited Ephesus before.", a:["have", "has", "am", "do"], c:0},
+    {q:"She ___________ seen the Taj Mahal.", a:["have", "has", "is", "does"], c:1},
+    {q:"My parents ___________ been to Italy twice.", a:["have", "has", "are", "were"], c:0},
+    {q:"Tom ___________ never tried scuba diving.", a:["have", "has", "is", "was"], c:1},
+    {q:"We ___________ already bought our flight tickets.", a:["have", "has", "are", "do"], c:0},
+    {q:"My sister ___________ not packed her suitcase yet.", a:["have", "has", "is", "does"], c:1},
+    {q:"They ___________ visited many historic sites this summer.", a:["have", "has", "are", "were"], c:0},
+    {q:"The cat ___________ eaten its food.", a:["have", "has", "is", "does"], c:1},
+    {q:"You ___________ stayed at a five-star hotel before.", a:["have", "has", "are", "do"], c:0},
+    {q:"It ___________ rained a lot in London recently.", a:["have", "has", "is", "was"], c:1},
+
+    // BÖLÜM 2: V3 (11-20)
+    {q:"I have ___________ (visit) the museum.", a:["visit", "visiting", "visited", "visits"], c:2},
+    {q:"She has ___________ (go) to the seaside.", a:["go", "went", "gone", "going"], c:2},
+    {q:"We have ___________ (be) to Paris.", a:["be", "was", "were", "been"], c:3},
+    {q:"They have ___________ (see) the ancient theater.", a:["see", "saw", "seen", "seeing"], c:2},
+    {q:"Have you ___________ (buy) any souvenirs?", a:["buy", "bought", "buys", "buying"], c:1},
+    {q:"He has ___________ (take) many photographs.", a:["take", "took", "taken", "taking"], c:2},
+    {q:"I have ___________ (try) traditional food.", a:["try", "tried", "trying", "tries"], c:1},
+    {q:"We have ___________ (stay) in a tent.", a:["stay", "stayed", "staying", "stays"], c:1},
+    {q:"Has she ___________ (eat) Italian pizza?", a:["eat", "ate", "eaten", "eating"], c:2},
+    {q:"I have ___________ (do) my homework.", a:["do", "did", "done", "doing"], c:2},
+
+    // BÖLÜM 3: Ever/Never (21-25)
+    {q:"Have you ___________ been to a castle?", a:["never", "ever", "yet", "just"], c:1},
+    {q:"I have ___________ seen a pyramid in my life.", a:["ever", "never", "yet", "already"], c:1},
+    {q:"Has he ___________ visited a mosque?", a:["never", "ever", "just", "already"], c:1},
+    {q:"My brother has ___________ traveled by plane.", a:["ever", "never", "yet", "so"], c:1},
+    {q:"This is the best fish I have ___________ eaten.", a:["never", "ever", "yet", "just"], c:1},
+
+    // BÖLÜM 4: Just/Already/Yet (26-30)
+    {q:"I haven't finished my project __________.", a:["just", "already", "yet", "ever"], c:2},
+    {q:"We have ___________ arrived at the hotel. (Yeni geldik)", a:["just", "yet", "never", "ever"], c:0},
+    {q:"She has ___________ booked the flight. (Çoktan yaptı)", a:["yet", "already", "ever", "never"], c:1},
+    {q:"Have you seen the palace ___________?", a:["just", "already", "yet", "never"], c:2},
+    {q:"I have ___________ had dinner, so I am full.", a:["yet", "just", "ever", "never"], c:1},
+
+    // BÖLÜM 5: Comp/Pref (31-35)
+    {q:"Historic sites are ___________ than modern cities.", a:["interesting", "more interesting", "most interesting", "the most interesting"], c:1},
+    {q:"I prefer ___________ to a resort to camping.", a:["go", "going", "to go", "goes"], c:1},
+    {q:"Which one ___________ you prefer: a cruise or a safari?", a:["do", "are", "have", "did"], c:0},
+    {q:"I would rather ___________ at a boutique hotel.", a:["stay", "staying", "to stay", "stayed"], c:0},
+    {q:"For me, a beach vacation is ___________ than a winter vacation.", a:["good", "better", "best", "the best"], c:1},
+
+    // BÖLÜM 6: Mixed (36-70)
+    {q:"___________ you ever been to Mardin?", a:["Do", "Have", "Has", "Are"], c:1},
+    {q:"My father ___________ been to Japan.", a:["has", "have", "is", "was"], c:0},
+    {q:"We ___________ not seen the statues yet.", a:["have", "has", "do", "are"], c:0},
+    {q:"I have ___________ visited an ancient city.", a:["never", "yet", "ever", "or"], c:0},
+    {q:"She ___________ already taken many photos.", a:["has", "have", "is", "was"], c:0},
+    {q:"Have you ___________ your suitcase yet?", a:["pack", "packed", "packing", "packs"], c:1},
+    {q:"I think London is ___________ than Paris.", a:["expensive", "more expensive", "most expensive", "the most expensive"], c:1},
+    {q:"I ___________ been to Fethiye three times.", a:["have", "has", "am", "was"], c:0},
+    {q:"___________ he ever tried traditional dishes?", a:["Has", "Have", "Does", "Is"], c:0},
+    {q:"I haven't seen the Great Wall __________.", a:["just", "already", "yet", "ever"], c:2},
+    {q:"We have ___________ been to the national park.", a:["already", "yet", "ever", "any"], c:0},
+    {q:"He ___________ never attended a festival.", a:["has", "have", "is", "was"], c:0},
+    {q:"I have ___________ eaten sushi before.", a:["never", "yet", "ever", "so"], c:0},
+    {q:"Have they ___________ arrived?", a:["yet", "just", "ever", "never"], c:1},
+    {q:"I ___________ rather go sightseeing.", a:["would", "will", "do", "am"], c:0},
+    {q:"My sister has ___________ to England but she is here now.", a:["gone", "been", "being", "went"], c:1},
+    {q:"Where ___________ you been lately?", a:["have", "has", "are", "do"], c:0},
+    {q:"I ___________ just seen the Colosseum.", a:["have", "has", "am", "was"], c:0},
+    {q:"She ___________ not visited the temple yet.", a:["has", "have", "is", "does"], c:0},
+    {q:"Have you ___________ a camel?", a:["ride", "rode", "ridden", "riding"], c:2},
+    {q:"I have ___________ (spend) all my money.", a:["spend", "spent", "spending", "spends"], c:1},
+    {q:"We ___________ never stayed in a dorm.", a:["have", "has", "are", "were"], c:0},
+    {q:"Has he ___________ his room yet?", a:["clean", "cleaned", "cleaning", "cleans"], c:1},
+    {q:"I have already ___________ (buy) the souvenirs.", a:["buy", "bought", "buying", "buys"], c:1},
+    {q:"They ___________ just left the museum.", a:["have", "has", "are", "do"], c:0},
+    {q:"___________ is the population of Turkey?", a:["What", "How", "Who", "Where"], c:0},
+    {q:"How ___________ people live in Tokyo?", a:["much", "many", "often", "long"], c:1},
+    {q:"I prefer ___________ ancient cities.", a:["visit", "visiting", "to visit", "visited"], c:1},
+    {q:"This is the ___________ beautiful place I've seen.", a:["more", "most", "much", "very"], c:1},
+    {q:"I have ___________ my keys. I can't find them.", a:["lose", "lost", "losing", "loses"], c:1},
+    {q:"___________ she ever been to a palace?", a:["Has", "Have", "Is", "Does"], c:0},
+    {q:"We ___________ not seen the pyramid yet.", a:["have", "has", "do", "are"], c:0},
+    {q:"I have ___________ heard about that place.", a:["never", "yet", "ever", "or"], c:0},
+    {q:"Have you ___________ your passport?", a:["find", "found", "finding", "finds"], c:1},
+    {q:"I ___________ never been so happy.", a:["have", "has", "am", "was"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 25) containerId = 'p3-container';
+        else if (index < 30) containerId = 'p4-container';
+        else if (index < 35) containerId = 'p5-container';
+        else containerId = 'p6-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Dünya vatandaşı rütbesini kazandın! Mükemmel bir geziydi! 🌍✈️" : "Güzel bir turdu! Present Perfect Tense ve düzensiz fiillerin 3. hallerine (V3) biraz daha odaklanarak bir sonraki rotada kusursuz olabilirsin! 🏯🗺️";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 3. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Mutfak/Pişirme Turuncusu */
+            --secondary-color: #d35400;
+            --accent-color: #f1c40f; /* Mutfak Sarısı */
+            --bg-color: #fdf5e6;
+            --text-color: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #fdf2e9; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #fae5d3; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #000; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #f39c12;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #7f8c8d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 3. Ünite Testleri - In The Kitchen</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Gramer Ağırlıklı Tarama Testi 🍳🔪🥘</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text" style="color: var(--primary-color);"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">👨‍🍳 1-15: Emir Kipleri (Imperatives)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🔢 16-30: Sıralama Zarfları (Sequence Adverbs)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔗 31-50: Bağlaçlar (After, Before, Until, When)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">⚖️ 51-70: Karışık Gramer ve Miktar Yapıları</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Bon Appétit! 🍽️✨</div>
+
+<script>
+const quizData = [
+    // 1-15: Imperatives
+    {q:"__________ some onions and put them into the frying pan.", a:["Chop", "Chops", "Chopping", "To chop"], c:0},
+    {q:"__________ the mixture for about five minutes.", a:["Whisks", "Whisk", "Whisking", "To whisk"], c:1},
+    {q:"__________ add too much salt; it is unhealthy.", a:["Not", "No", "Don't", "Doesn't"], c:2},
+    {q:"__________ the eggs in a large bowl.", a:["Mixes", "To mix", "Mix", "Mixing"], c:2},
+    {q:"First, __________ some water in a kettle.", a:["boil", "boils", "boiling", "boiled"], c:0},
+    {q:"__________ the potatoes before you mash them.", a:["Peel", "Peels", "Peeling", "To peel"], c:0},
+    {q:"__________ the chicken in the oven for 45 minutes.", a:["Roast", "Roasts", "Roasting", "To roast"], c:0},
+    {q:"Please __________ the dough for ten minutes.", a:["knead", "kneads", "kneading", "kneaded"], c:0},
+    {q:"__________ eat junk food every day.", a:["Doesn't", "Don't", "Not", "Isn't"], c:1},
+    {q:"__________ the butter in a pan over low heat.", a:["Melt", "Melts", "Melting", "To melt"], c:0},
+    {q:"__________ the lemon into the salad.", a:["Squeeze", "Squeezes", "Squeezing", "To squeeze"], c:0},
+    {q:"__________ the cake into small pieces.", a:["Slice", "Slices", "Slicing", "Sliced"], c:0},
+    {q:"__________ the pizza with some olives.", a:["Decorating", "Decorate", "Decorates", "To decorate"], c:1},
+    {q:"__________ pour cold water on a hot pan.", a:["No", "Don't", "Not", "Doesn't"], c:1},
+    {q:"__________ the vegetables in the steamer.", a:["Steam", "Steams", "Steaming", "Steamed"], c:0},
+
+    // 16-30: Sequence Adverbs
+    {q:"__________, put some oil in the pan. (Sürecin en başı)", a:["Second", "Then", "First", "Finally"], c:2},
+    {q:"First, chop the tomatoes. __________, add some salt.", a:["Finally", "Last", "Second", "First"], c:2},
+    {q:"After you mix the flour, __________ pour the milk.", a:["first", "then", "last", "before"], c:1},
+    {q:"__________, serve the dish while it is hot. (Sürecin sonu)", a:["First", "Second", "Next", "Finally"], c:3},
+    {q:"__________ , bake the cookies for 20 minutes.", a:["First", "Next", "Finally", "Second"], c:1},
+    {q:"First, dice the meat. __________, fry it with some butter.", a:["Finally", "Then", "First", "Before"], c:1},
+    {q:"__________ , spread some honey on the bread.", a:["Last", "First", "Next", "Second"], c:2},
+    {q:"First, wash the fruit. Second, peel them. __________ , slice them.", a:["Finally", "Then", "Before", "Until"], c:1},
+    {q:"What is the __________ step of the recipe? (Son adım)", a:["first", "second", "final", "next"], c:2},
+    {q:"__________ , whisk the eggs. (Başlangıç adımı)", a:["Next", "After", "First", "Last"], c:2},
+    {q:"Fry the onions. __________, add the garlic.", a:["After", "Then", "Until", "When"], c:1},
+    {q:"__________ , enjoy your meal!", a:["Next", "Second", "Finally", "First"], c:2},
+    {q:"First, boil the pasta. __________ , drain the water.", a:["Next", "Finally", "Before", "Until"], c:0},
+    {q:"Put the flour in. __________ , mix it well.", a:["After", "Then", "First", "When"], c:1},
+    {q:"In the __________ step, we serve the cake.", a:["first", "last", "second", "before"], c:1},
+
+    // 31-50: Conjunctions
+    {q:"__________ I have breakfast, I brush my teeth.", a:["Until", "After", "When", "Before"], c:1},
+    {q:"Wash the vegetables __________ you cook them.", a:["before", "until", "when", "then"], c:0},
+    {q:"Stir the soup __________ it boils.", a:["before", "until", "after", "next"], c:1},
+    {q:"__________ the water boils, add the pasta.", a:["Until", "Before", "When", "Last"], c:2},
+    {q:"Wash your hands __________ you start cooking.", a:["after", "before", "until", "finally"], c:1},
+    {q:"__________ you chop the onions, fry them.", a:["Before", "After", "Until", "When"], c:1},
+    {q:"Bake the cake __________ it turns brown.", a:["after", "before", "until", "when"], c:2},
+    {q:"__________ I play football, I hurt my knee.", a:["Until", "After", "Before", "When"], c:3},
+    {q:"Pour the mixture into the pan __________ you heat the oil.", a:["until", "after", "before", "finally"], c:1},
+    {q:"__________ he goes to bed, he brushes his teeth.", a:["After", "Until", "Before", "When"], c:2},
+    {q:"I do my homework __________ my online classes.", a:["before", "after", "until", "next"], c:0},
+    {q:"Wait __________ the cake cools down.", a:["after", "when", "until", "before"], c:2},
+    {q:"__________ you finish the meal, wash the dishes.", a:["Before", "After", "Until", "First"], c:1},
+    {q:"Mix the ingredients __________ you put them in the oven.", a:["after", "when", "before", "until"], c:2},
+    {q:"__________ I have homework, I go to the library.", a:["After", "When", "Until", "Before"], c:1},
+    {q:"Boil the potatoes __________ they are soft.", a:["until", "before", "after", "when"], c:0},
+    {q:"__________ you serve the tea, put some sugar in it.", a:["Until", "After", "Before", "Next"], c:2},
+    {q:"I play football __________ school.", a:["after", "until", "when", "before"], c:0},
+    {q:"Knead the dough __________ it is smooth.", a:["before", "until", "after", "when"], c:1},
+    {q:"__________ you slice the bread, put it on the table.", a:["Until", "Before", "After", "Next"], c:2},
+
+    // 51-70: Mixed Grammar
+    {q:"How __________ sugar do we need?", a:["many", "much", "any", "few"], c:1},
+    {q:"There are __________ tomatoes in the fridge.", a:["some", "any", "much", "a little"], c:0},
+    {q:"We don't have __________ eggs for the cake.", a:["some", "any", "much", "a little"], c:1},
+    {q:"__________ is the kitchen tool for grating cheese?", a:["Who", "What", "Why", "When"], c:1},
+    {q:"Can you give me __________ salt?", a:["any", "some", "many", "few"], c:1},
+    {q:"Is there __________ milk in the bottle?", a:["any", "many", "few", "some"], c:0},
+    {q:"__________ much time do we need to bake it?", a:["How", "What", "Which", "Who"], c:0},
+    {q:"I need __________ flour for the bread.", a:["a few", "many", "a little", "any"], c:2},
+    {q:"__________ many eggs do you use?", a:["How", "What", "When", "Why"], c:0},
+    {q:"__________ the oven to 180°C.", a:["Heat", "Heats", "Heating", "To heat"], c:0},
+    {q:"Don't __________ the rice for too long.", a:["boil", "boils", "boiling", "boiled"], c:0},
+    {q:"After __________ the eggs, add the sugar.", a:["whisk", "whisks", "whisking", "whisked"], c:2},
+    {q:"Before __________ the pan, put some oil.", a:["heat", "heating", "heats", "heated"], c:1},
+    {q:"When the cake is ready, __________ it out.", a:["take", "takes", "taking", "to take"], c:0},
+    {q:"__________ use a microwave for this recipe.", a:["Don't", "Not", "No", "Doesn't"], c:0},
+    {q:"Do you prefer __________ or grilling?", a:["fry", "frying", "fries", "fried"], c:1},
+    {q:"Is the meal __________? (Soru sorma yapısı)", a:["ready", "readies", "readily", "readied"], c:0},
+    {q:"__________ do you cook the steak? (Pişirme yöntemi sorusu)", a:["What", "How", "When", "Who"], c:1},
+    {q:"I __________ like spicy food.", a:["don't", "am not", "not", "doesn't"], c:0},
+    {q:"__________ your favorite cooking method?", a:["What's", "Where's", "When's", "How's"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 15) containerId = 'p1-container';
+        else if (index < 30) containerId = 'p2-container';
+        else if (index < 50) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 55 ? "Şahane! Tam bir şef adayı gibi her şeyi biliyorsun! 🥗🧁" : "Gayretin güzel! Emir kiplerine ve sıralama zarflarına (First, Then...) biraz daha çalışarak mükemmel olabilirsin! 🍳📖";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

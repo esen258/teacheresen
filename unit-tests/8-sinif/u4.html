@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 4. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00acc1; /* İletişim/Teknoloji Turkuazı */
+            --secondary-color: #006064;
+            --accent-color: #ffeb3b; /* Vurgu Sarısı */
+            --bg-color: #e0f7fa;
+            --text-color: #263238;
+            --correct: #2e7d32;
+            --wrong: #c62828;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #f1f8e9; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #e1f5fe; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #000; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #fbc02d;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #546e7a; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 4. Ünite Testleri - On The Phone</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Gramer Ağırlıklı Tarama Testi 📱📞☎️</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text" style="color: var(--primary-color);"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Dene</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">💬 1-35: En Uygun İfade veya Gramer Yapısı</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">📞 36-45: Duruma Uygun İfadeler</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">⚙️ 46-60: Gramer ve Hata Giderme</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🔮 61-70: "Will" Gelecek Zaman ve Tahmin</div>
+    <div id="p4-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Thanks for calling! 📱🎧</div>
+
+<script>
+const quizData = [
+    // 1-35: Completion
+    {q:"Secretary: Hello, Mr. Adam's office. Caller: Hello, ___________ I speak to Mr. Adam, please?", a:["do", "may", "am", "was"], c:1},
+    {q:"Wait a minute. I’ll ___________ you through to the manager.", a:["put", "speak", "tell", "hang"], c:0},
+    {q:"I’m afraid he isn’t available at the moment. Would you like to ___________ a message?", a:["take", "leave", "tell", "speak"], c:1},
+    {q:"I can’t hear you well. It’s a bad ___________.", a:["line", "phone", "call", "note"], c:0},
+    {q:"Don’t ___________ up the phone. I’ll get him in a second.", a:["put", "wait", "hang", "hold"], c:2},
+    {q:"Customer: I'd like to ___________ a flight ticket from Ankara to Berlin.", a:["book", "arrive", "fly", "help"], c:0},
+    {q:"I believe I ___________ be there on time.", a:["am", "will", "do", "was"], c:1},
+    {q:"A: Can you ___________ that, please? I didn’t understand. B: Of course. I said 'Meet me at 5'.", a:["repeat", "tell", "say", "talk"], c:0},
+    {q:"A: May I ask ___________ is calling? B: This is Kadriye.", a:["what", "where", "who", "how"], c:2},
+    {q:"Please ___________ on the line. I’ll check if he is in.", a:["hold", "hang", "speak", "leave"], c:0},
+    {q:"A: Is your sister in? B: No, she is out. ___________ you like to leave a message?", a:["Will", "Do", "Are", "Would"], c:3},
+    {q:"I ___________ call you back as soon as possible.", a:["will", "am", "do", "going to"], c:0},
+    {q:"A: Could you ___________ him to call me back? B: Sure, I will note it down.", a:["tell", "speak", "say", "talk"], c:0},
+    {q:"I ___________ probably go on a vacation next week.", a:["am", "do", "will", "did"], c:2},
+    {q:"I’m writing ___________ your message right now.", a:["down", "up", "in", "at"], c:0},
+    {q:"A: Can I ___________ a message? B: Yes, please tell him I called.", a:["leave", "take", "speak", "tell"], c:1},
+    {q:"I am sure he ___________ help you with your problem.", a:["will", "is", "does", "can be"], c:0},
+    {q:"A: Is Sidar there? B: ___________ on a minute. I’ll get her.", a:["Hang", "Speak", "Tell", "Call"], c:0},
+    {q:"Hello, this ___________ Kadriye calling.", a:["is", "am", "are", "dolu"], c:0},
+    {q:"I’ll ___________ back to you in an hour.", a:["get", "speak", "tell", "call"], c:0},
+    {q:"A: I beg your ___________? B: I said the meeting is at 2 p.m.", a:["excuse", "sorry", "pardon", "please"], c:2},
+    {q:"We ___________ probably meet at the café.", a:["will", "are", "do", "have"], c:0},
+    {q:"A: Can you say it ___________, please? I can't follow you. B: Okay. I - will - be - there - at - ten.", a:["fast", "slowly", "loudly", "quickly"], c:1},
+    {q:"I’m ___________ he is busy now.", a:["afraid", "sure", "happy", "sorry"], c:0},
+    {q:"The flight ___________ from Ankara at 10:30.", a:["leaves", "arrives", "stays", "costs"], c:0},
+    {q:"I ___________ I will pass the exam.", a:["believe", "probably", "sure", "will"], c:0},
+    {q:"A: ___________ or return ticket? B: Single, please.", a:["One", "First", "Single", "Double"], c:2},
+    {q:"Wait a sec. I will ___________ a note for him.", a:["take", "leave", "speak", "say"], c:0},
+    {q:"A: Is Oktay in? B: I’ll check. ___________ the line, please.", a:["Hold", "Talk", "Call", "Leave"], c:0},
+    {q:"I ___________ get my driving license next year.", a:["will", "am", "do", "was"], c:0},
+    {q:"Hello! Pegasus Airlines, ___________ can I help you?", a:["who", "how", "what", "why"], c:1},
+    {q:"A: Can I talk to Yağmur? B: Sorry, she is in a ___________.", a:["meeting", "line", "phone", "message"], c:0},
+    {q:"I guess I ___________ be at home tonight.", a:["will", "am", "do", "are"], c:0},
+    {q:"Could you ___________ me through to the manager, please?", a:["put", "take", "hold", "call"], c:0},
+    {q:"I hope I ___________ see you there.", a:["will", "am", "do", "did"], c:0},
+
+    // 36-45: Situations
+    {q:"Telefonu açtınız ve kendinizi tanıtmak istiyorsunuz.", a:["Who is calling?", "This is Esen speaking.", "Hold on.", "Is she there?"], c:1},
+    {q:"Birini telefona bağlamadan önce beklemesini söyleyeceksiniz.", a:["Hang up.", "Please hold the line.", "Call back later.", "Leave a message."], c:1},
+    {q:"Aradığınız kişi orada değil, mesaj bırakmak istiyorsunuz.", a:["Can I leave a message?", "Can I take a message?", "Who is calling?", "I’ll get him."], c:0},
+    {q:"Karşı tarafın ne dediğini anlamadınız, tekrar etmesini rica edeceksiniz.", a:["Sorry?", "Can you repeat that, please?", "Both A and B.", "Hang up."], c:2},
+    {q:"Hattın kötü olduğunu ve karşı tarafı iyi duyamadığınızı belirteceksiniz.", a:["I can’t hear you well.", "It’s a bad line.", "Both A and B.", "Thanks for calling."], c:2},
+    {q:"Bir uçak bileti rezervasyonu yaptırmak istiyorsunuz.", a:["I would like to make a reservation.", "How much does it cost?", "Single or return?", "Have a good flight."], c:0},
+    {q:"Aradığınız kişi o an meşgul, daha sonra tekrar arayacağınızı söyleyeceksiniz.", a:["I’ll call you later.", "Leave a message.", "Hold on.", "Put me through."], c:0},
+    {q:"Birinin sizi geri aramasını rica edeceksiniz.", a:["Can you tell him to call me back?", "Can I leave a message?", "Is he there?", "Wait a minute."], c:0},
+    {q:"Telefonda konuştuğunuz kişinin kim olduğunu sormak istiyorsunuz.", a:["Who is calling?", "Who are you?", "Are you there?", "Can I talk to you?"], c:0},
+    {q:"Birine iyi uçuşlar dileyeceksiniz.", a:["Have a good day!", "Have a good flight!", "See you there.", "Welcome."], c:1},
+
+    // 46-60: Grammar Correction
+    {q:"A: May I ___________ to Ahmet? B: Yes, wait a minute.", a:["speaks", "speaking", "speak", "spoke"], c:2},
+    {q:"I ___________ tell him your message when he arrives.", a:["will", "am", "was", "do"], c:0},
+    {q:"A: Would you like to leave a message? B: Yes, please ___________ him to contact me.", a:["tell", "tells", "telling", "told"], c:0},
+    {q:"Wait a second, I ___________ take a note.", a:["will", "am", "was", "do"], c:0},
+    {q:"I’m ___________ I will be late for the meeting.", a:["sure", "will", "probably", "hope"], c:0},
+    {q:"Let me ___________ to connect you.", a:["try", "tries", "trying", "tried"], c:0},
+    {q:"A: Is Merve in? B: No, she ___________ out.", a:["is", "will", "am", "was"], c:0},
+    {q:"I guess they ___________ join us.", a:["will", "am", "do", "are"], c:0},
+    {q:"A: ___________ you put me through to İrem? B: Sure.", a:["Could", "Do", "Are", "Have"], c:0},
+    {q:"Your flight ___________ reserved.", a:["is", "will", "does", "am"], c:0},
+    {q:"I ___________ send an email to you tomorrow.", a:["will", "am", "do", "was"], c:0},
+    {q:"A: Can I take a message? B: No, thanks. I ___________ call back later.", a:["will", "am", "do", "was"], c:0},
+    {q:"I think he ___________ be busy.", a:["will", "is", "am", "does"], c:0},
+    {q:"A: Is Oktay there? B: Yes, ___________ on a moment.", a:["Hold", "Holding", "Holds", "Held"], c:0},
+    {q:"I’ll ___________ you there at 5.", a:["see", "saw", "seeing", "sees"], c:0},
+
+    // 61-70: Will & Predictions
+    {q:"I am sure I ___________ pass LGS.", a:["will", "am", "do", "was"], c:0},
+    {q:"We ___________ probably go on a holiday.", a:["will", "are", "do", "have"], c:0},
+    {q:"I believe it ___________ be a great day.", a:["will", "am", "do", "is"], c:0},
+    {q:"I think I ___________ turn 18 next year.", a:["will", "am", "do", "was"], c:0},
+    {q:"I guess he ___________ be late.", a:["will", "am", "is", "does"], c:0},
+    {q:"I ___________ call you as soon as possible.", a:["'ll", "am", "do", "was"], c:0},
+    {q:"I ___________ be there on time, don't worry.", a:["will", "am", "do", "was"], c:0},
+    {q:"I hope you ___________ have a good flight.", a:["will", "am", "do", "was"], c:0},
+    {q:"I think she ___________ arrive soon.", a:["will", "is", "am", "does"], c:0},
+    {q:"We ___________ get back to you in an hour.", a:["will", "am", "do", "was"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 35) containerId = 'p1-container';
+        else if (index < 45) containerId = 'p2-container';
+        else if (index < 60) containerId = 'p3-container';
+        else containerId = 'p4-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 55 ? "Bağlantı mükemmel! Telefon konuşmaları ve 'Will' yapısına tamamen hakimsin! 📱✨" : "Hatlarda biraz parazit var! 'Hold on', 'Put through' gibi kalıplara ve gelecek zaman tahminlerine tekrar bakmalısın. 📞📖";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 5. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0984e3; /* Modern Teknoloji Mavisi */
+            --secondary-color: #2d3436; /* Koyu Gri/Siyah */
+            --accent-color: #00b894; /* Güvenli Yeşil */
+            --bg-color: #1e272e; /* Koyu Mod Arka Plan */
+            --card-bg: #2f3542;
+            --text-color: #f1f2f6;
+            --correct: #2ed573;
+            --wrong: #ff4757;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0984e3, #6c5ce7);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: var(--card-bg); padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--accent-color);
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: #4834d4; color: white;
+            padding: 15px; border-radius: 12px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 20px 0; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-left: 6px solid var(--primary-color);
+            transition: transform 0.2s;
+        }
+
+        .question-card:hover { transform: translateY(-3px); }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; color: #74b9ff; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #3d4451; padding: 12px; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #57606f;
+            color: #dfe4ea;
+        }
+
+        .option-label:hover { background: #57606f; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: #1e272e !important; font-weight: bold; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #1e272e; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 15px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #218c74;
+        }
+
+        #submit-btn:active { transform: translateY(3px); box-shadow: none; }
+
+        .footer { text-align: center; padding: 40px; color: #a4b0be; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 5. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 📞 0530 477 30 73</div>
+    <p>The Internet: Connectivity & Digital World 🌐💻⚡</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">YENİDEN BAŞLAT</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🔗 BÖLÜM 1: Bağlaçlar (Because / So / And / But)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🔮 BÖLÜM 2: Gelecek Zaman (Will) ve Tahminler</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">📞 BÖLÜM 3: Telefon Görüşme Kalıpları</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🎯 BÖLÜM 4: İnternet Kullanım Amaçları (To / For)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">❓ BÖLÜM 5: Soru Kelimeleri ve Yapılar</div>
+    <div id="p5-container"></div>
+
+    <div class="section-title">🔀 BÖLÜM 6: Karışık Gramer Tekrarı</div>
+    <div id="p6-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ BİTİR VE ANALİZ ET 🔍</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Safety First in the Digital World! 🛡️</div>
+
+<script>
+// Quiz verisi öncekiyle aynı şekilde korunmuştur, sadece başlık ve tema güncellenmiştir.
+const quizData = [
+    // BÖLÜM 1: Conjunctions (1-10)
+    {q:"I cannot enter the website ___________ I don't have a password.", a:["because", "so", "and", "but"], c:0},
+    {q:"My computer is very old, ___________ it is very slow.", a:["but", "so", "because", "and"], c:1},
+    {q:"I like social media ___________ it is fun to share photos.", a:["but", "so", "because", "or"], c:2},
+    {q:"I have an Instagram account, ___________ I don't use it much.", a:["because", "so", "but", "and"], c:2},
+    {q:"The line is bad, ___________ I can't hear you well.", a:["because", "so", "or", "but"], c:1},
+    {q:"I can't hear you well ___________ the line is bad.", a:["so", "and", "but", "because"], c:3},
+    {q:"Tom is an Internet addict ___________ he stays online for 8 hours.", a:["because", "so", "but", "or"], c:0},
+    {q:"Tom stays online for 8 hours, ___________ he is an Internet addict.", a:["because", "so", "but", "and"], c:1},
+    {q:"I like chatting online ___________ playing online games.", a:["but", "because", "and", "so"], c:2},
+    {q:"I want to buy the ticket, ___________ I don't have enough money.", a:["because", "so", "but", "and"], c:2},
+
+    // BÖLÜM 2: Will (11-20)
+    {q:"I hope you ___________ have a good flight.", a:["are", "do", "will", "did"], c:2},
+    {q:"I ___________ probably be at home tonight.", a:["will", "am", "was", "does"], c:0},
+    {q:"I am sure he ___________ call you back in a minute.", a:["is", "will", "does", "can"], c:1},
+    {q:"I think people ___________ use messenger birds in the future.", a:["won't", "aren't", "don't", "wasn't"], c:0},
+    {q:"I believe she ___________ pass the exam.", a:["will", "is", "does", "am"], c:0},
+    {q:"A: Will you come to my party? B: Yes, I __________.", a:["do", "am", "will", "can"], c:2},
+    {q:"I ___________ tell him your message when he arrives.", a:["am", "will", "do", "was"], c:1},
+    {q:"Maybe I ___________ buy a new smartphone next month.", a:["will", "am", "do", "was"], c:0},
+    {q:"I guess it ___________ rain tomorrow.", a:["is", "will", "does", "was"], c:1},
+    {q:"I promise I ___________ help you with your homework.", a:["will", "am", "do", "was"], c:0},
+
+    // BÖLÜM 3: Phone (21-30)
+    {q:"A: Hello, is Ayşe there? B: Hang ___________ a second, please.", a:["on", "at", "in", "under"], c:0},
+    {q:"A: Can you put me ___________ to Mr. Brown? B: Sure, hold on.", a:["through", "between", "up", "over"], c:0},
+    {q:"A: Would you like to ___________ a message? B: Yes, tell him to call me.", a:["take", "leave", "speak", "talk"], c:1},
+    {q:"A: Can I ___________ a message? B: No, thanks. I'll call back later.", a:["take", "leave", "repeat", "say"], c:0},
+    {q:"I’ll ___________ you back as soon as possible.", a:["get", "speak", "tell", "say"], c:0},
+    {q:"A: I beg your ___________? B: I said 'Wait a minute'.", a:["excuse", "sorry", "pardon", "please"], c:2},
+    {q:"A: Can you ___________ that, please? B: Yes, I'll say it again.", a:["repeat", "tell", "speak", "talk"], c:0},
+    {q:"Don't ___________ up the phone! I have one more thing to say.", a:["hold", "hang", "put", "stay"], c:1},
+    {q:"Wait a ___________, I will take a note.", a:["second", "hour", "day", "year"], c:0},
+    {q:"A: Who is ___________? B: This is Berk.", a:["calling", "talking", "saying", "telling"], c:0},
+
+    // BÖLÜM 4: To/For (31-35)
+    {q:"I use the Net ___________ search for information.", a:["for", "to", "because", "so"], c:1},
+    {q:"People use the Internet ___________ online shopping.", a:["for", "to", "because", "but"], c:0},
+    {q:"I go online ___________ chat with my friends.", a:["because", "to", "so", "or"], c:1},
+    {q:"My father uses the Net ___________ paying the bills.", a:["to", "for", "because", "and"], c:1},
+    {q:"I use my tablet ___________ follow online courses.", a:["for", "so", "but", "to"], c:3},
+
+    // BÖLÜM 5: WH Questions (36-45)
+    {q:"___________ often do you check your notifications?", a:["How", "What", "Which", "Who"], c:0},
+    {q:"___________ do you access the Internet? (By phone or PC?)", a:["What", "Why", "How", "Who"], c:2},
+    {q:"___________ purpose do you use the Net?", a:["What", "For what", "How", "Which"], c:1},
+    {q:"___________ is your favorite social networking site?", a:["What", "How", "Who", "Why"], c:0},
+    {q:"___________ hours a day do you spend online?", a:["How many", "How much", "What", "Which"], c:0},
+    {q:"___________ do you think about the Internet?", a:["How", "What", "Why", "Who"], c:1},
+    {q:"___________ do you usually talk to on the Net?", a:["Who", "What", "Where", "Why"], c:0},
+    {q:"___________ does 'download' mean?", a:["What", "How", "Who", "Which"], c:0},
+    {q:"___________ do you prefer: Laptop or Tablet?", a:["Which", "Who", "How", "Why"], c:0},
+    {q:"___________ do you usually go online? (In the evening?)", a:["When", "How", "Who", "Which"], c:0},
+
+    // BÖLÜM 6: Mixed (46-70)
+    {q:"I ___________ call you later, I promise.", a:["will", "am", "do", "was"], c:0},
+    {q:"To log in, you ___________ enter your username.", a:["must", "won't", "aren't", "don't"], c:0},
+    {q:"I am not ___________ the Internet now because it's broken.", a:["in", "on", "at", "under"], c:1},
+    {q:"I prefer ___________ photos to writing comments.", a:["share", "sharing", "shared", "shares"], c:1},
+    {q:"Before ___________ a file, check it for viruses.", a:["download", "downloading", "downloaded", "downloads"], c:1},
+    {q:"I have a problem with my PC, ___________ I can't join the meeting.", a:["because", "so", "but", "or"], c:1},
+    {q:"My sister ___________ use social media; she thinks it's boring.", a:["doesn't", "don't", "isn't", "not"], c:0},
+    {q:"I ___________ there at 2 p.m. Wait for me!", a:["will be", "am", "was", "being"], c:0},
+    {q:"I can't hear you. Can you say it ___________, please?", a:["slowly", "fast", "quick", "early"], c:0},
+    {q:"I ___________ think she will come to the party.", a:["don't", "am not", "won't", "not"], c:0},
+    {q:"Is your brother ___________ home?", a:["in", "at", "on", "to"], c:1},
+    {q:"I use the Net ___________ practice my English.", a:["to", "for", "so", "because"], c:0},
+    {q:"I ___________ believe it will be a great day.", a:["will", "am", "do", "was"], c:2},
+    {q:"Would you like to ___________ a message?", a:["leave", "taking", "speak", "talk"], c:0},
+    {q:"I'll get back to you ___________ an hour.", a:["on", "in", "at", "for"], c:1},
+    {q:"I use the Internet ___________ it is useful for my lessons.", a:["so", "because", "but", "or"], c:1},
+    {q:"We ___________ probably meet at the café.", a:["will", "are", "do", "was"], c:0},
+    {q:"The flight ___________ at 10 o'clock.", a:["is", "will", "leaves", "am"], c:2},
+    {q:"Can I talk ___________ Mr. Smith?", a:["to", "with", "Both A and B", "at"], c:2},
+    {q:"I ___________ sign in because I forgot my password.", a:["can't", "don't", "won't", "am not"], c:0},
+    {q:"I am sure you ___________ find your way.", a:["will", "are", "do", "was"], c:0},
+    {q:"My mother is angry ___________ I spend too much time online.", a:["because", "so", "but", "and"], c:0},
+    {q:"I usually spend 2 hours ___________ the Net.", a:["in", "on", "at", "with"], c:1},
+    {q:"I think the Internet ___________ be more common in the future.", a:["will", "is", "does", "was"], c:0},
+    {q:"I am writing ___________ your message right now.", a:["down", "up", "in", "at"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 35) containerId = 'p4-container';
+        else if (index < 45) containerId = 'p5-container';
+        else containerId = 'p6-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('score-text').style.color = "var(--accent-color)";
+    document.getElementById('feedback-text').innerText = score > 60 ? "Siber uzman rütbesini kazandın! Mükemmel! 🚀🌐" : "Güzel bir bağlantı hızı! Hatalarını inceleyerek dijital okuryazarlığını geliştirebilirsin. 💻⚡";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

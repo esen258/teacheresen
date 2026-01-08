@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 6. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e67e22; /* Macera Turuncusu */
+            --secondary-color: #2c3e50; /* Koyu Doğa Mavisi */
+            --accent-color: #27ae60; /* Orman Yeşili */
+            --bg-color: #fdf2e9;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+            --correct: #2ecc71;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #d35400);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 12px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 20px 0; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #fff5eb; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; border-color: var(--wrong) !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #fff; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 15px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #1e8449;
+        }
+
+        #submit-btn:hover { background: #219150; }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 6. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 📞 0530 477 30 73</div>
+    <p>Adventures: Challenge Your Limits! 🧗‍♂️🪂🚣</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">YENİDEN DENE</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">⚖️ BÖLÜM 1: Karşılaştırma Yapıları (Comparatives)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">🏆 BÖLÜM 2: Üstünlük Yapıları (Superlatives)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🔄 BÖLÜM 3: Tercih Bildirme (Prefer / Would Rather)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">🔍 BÖLÜM 4: "Which" Soru Kalıpları</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🎒 BÖLÜM 5: Karışık Gramer ve Macera Terimleri</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">MACERAYI TAMAMLA VE PUANLA 🚩</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Life is either a daring adventure or nothing at all! 🌋</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Comparatives (1-10)
+    {q:"Climbing a mountain is ___________ than trekking.", a:["hard", "harder", "hardest", "more hard"], c:1},
+    {q:"Rafting is ___________ than canoeing.", a:["exciting", "more exciting", "most exciting", "excitinger"], c:1},
+    {q:"For me, skydiving is ___________ than paragliding.", a:["dangerous", "more dangerous", "most dangerous", "dangerously"], c:1},
+    {q:"Walking is ___________ than running.", a:["easy", "easier", "easiest", "more easy"], c:1},
+    {q:"A jeep safari is ___________ than a motorcycle tour.", a:["safe", "safer", "safest", "more safe"], c:1},
+    {q:"Caving is ___________ than swimming.", a:["mysterious", "more mysterious", "most mysterious", "mysteriouser"], c:1},
+    {q:"Motor racing is ___________ than cycling.", a:["fast", "faster", "fastest", "more fast"], c:1},
+    {q:"To me, bungee jumping is ___________ than scuba diving.", a:["risky", "riskier", "riskiest", "more risky"], c:1},
+    {q:"Summer is ___________ than winter for rafting.", a:["good", "better", "best", "gooder"], c:1},
+    {q:"This activity is ___________ than the previous one.", a:["boring", "more boring", "most boring", "boringer"], c:1},
+
+    // BÖLÜM 2: Superlatives (11-20)
+    {q:"Skydiving is ___________ sport of all.", a:["dangerous", "more dangerous", "the most dangerous", "most dangerous"], c:2},
+    {q:"Mount Everest is ___________ mountain in the world.", a:["high", "higher", "the highest", "highest"], c:2},
+    {q:"This is ___________ activity I have ever done.", a:["exciting", "more exciting", "the most exciting", "excitingest"], c:2},
+    {q:"Swimming with sharks is ___________ thing to do.", a:["scary", "scarier", "the scariest", "most scary"], c:2},
+    {q:"Who is ___________ person in your family?", a:["brave", "braver", "the bravest", "bravest"], c:2},
+    {q:"Heli-skiing is ___________ sport in this list.", a:["expensive", "more expensive", "the most expensive", "expensivest"], c:2},
+    {q:"It was ___________ day of my life.", a:["good", "better", "the best", "best"], c:2},
+    {q:"This is ___________ cave in Turkey.", a:["deep", "deeper", "the deepest", "deepest"], c:2},
+    {q:"Rafting is ___________ team sport.", a:["amusing", "more amusing", "the most amusing", "amusingest"], c:2},
+    {q:"What is ___________ adventure for you?", a:["challenging", "more challenging", "the most challenging", "challengingest"], c:2},
+
+    // BÖLÜM 3: Prefer / Would Rather (21-30)
+    {q:"I prefer ___________ scuba diving to rafting.", a:["go", "going", "to go", "goes"], c:1},
+    {q:"She would rather ___________ a mountain than trek.", a:["climb", "climbing", "to climb", "climbs"], c:0},
+    {q:"We prefer ___________ photographs during the tour.", a:["take", "taking", "to take", "takes"], c:1},
+    {q:"They would rather ___________ a jeep safari than a motorcycle tour.", a:["join", "joining", "to join", "joins"], c:0},
+    {q:"I prefer rafting ___________ canoeing.", a:["than", "to", "or", "from"], c:1},
+    {q:"I would rather stay at home ___________ go paragliding.", a:["to", "than", "and", "but"], c:1},
+    {q:"Do you prefer ___________ in a hot-air balloon?", a:["fly", "flying", "to fly", "flies"], c:1},
+    {q:"I’d rather ___________ a motorcycle.", a:["ride", "riding", "to ride", "rides"], c:0},
+    {q:"He prefers indoor sports ___________ outdoor sports.", a:["to", "than", "and", "from"], c:0},
+    {q:"Would you rather ___________ skydiving?", a:["try", "trying", "to try", "tries"], c:0},
+
+    // BÖLÜM 4: Which (31-35)
+    {q:"___________ do you prefer: bungee jumping or rafting?", a:["What", "Which", "Who", "How"], c:1},
+    {q:"___________ would you rather do on your vacation?", a:["What", "Where", "Which", "When"], c:0},
+    {q:"___________ sport is more dangerous, kayaking or canoeing?", a:["Which", "How", "Why", "Who"], c:0},
+    {q:"___________ kind of activities do you like?", a:["What", "Which", "Who", "Where"], c:0},
+    {q:"___________ is your favorite extreme sport?", a:["What", "Which", "Both A and B", "How"], c:2},
+
+    // BÖLÜM 5: Mixed (36-70)
+    {q:"I think caving is ___________ than trekking.", a:["more fascinating", "fascinatinger", "most fascinating", "fascinating"], c:0},
+    {q:"Adrenalin seekers ___________ taking risks.", a:["loves", "love", "loving", "to love"], c:1},
+    {q:"He is ___________ than me at climbing.", a:["courageous", "more courageous", "the most courageous", "courageouser"], c:1},
+    {q:"Paragliding is not ___________ as skydiving.", a:["dangerous", "so dangerous", "dangerouser", "more dangerous"], c:1},
+    {q:"I don't prefer ___________ risky sports.", a:["do", "doing", "does", "did"], c:1},
+    {q:"Bungee jumping is ___________ challenging than trekking.", a:["more", "most", "the more", "the most"], c:0},
+    {q:"To me, motor racing is ___________ than cycling.", a:["more entertaining", "entertaininger", "most entertaining", "entertaining"], c:0},
+    {q:"An elephant ride is ___________ than a camel ride.", a:["slow", "slower", "slowest", "more slow"], c:1},
+    {q:"Which one is ___________: heli-skiing or skiing?", a:["expensive", "more expensive", "most expensive", "expensivest"], c:1},
+    {q:"I would rather ___________ in a tent.", a:["sleep", "sleeping", "to sleep", "sleeps"], c:0},
+    {q:"Kayaking is ___________ than canoeing because it is faster.", a:["good", "better", "best", "gooder"], c:1},
+    {q:"Trekking is ___________ than climbing.", a:["safe", "safer", "safest", "more safe"], c:1},
+    {q:"I prefer ___________ to hot-air ballooning.", a:["hang-gliding", "to hang-glide", "hang-glides", "hang-gliding"], c:0},
+    {q:"My brother ___________ adventure sports.", a:["prefer", "prefers", "preferring", "to prefer"], c:1},
+    {q:"The weather is ___________ today than yesterday.", a:["bad", "worse", "worst", "badder"], c:1},
+    {q:"Scuba diving is ___________ than swimming.", a:["amazing", "more amazing", "the most amazing", "amazingest"], c:1},
+    {q:"I'd rather ___________ a tent than stay in a hotel.", a:["pitch", "pitching", "to pitch", "pitches"], c:0},
+    {q:"This is ___________ experience of my life.", a:["bad", "worse", "the worst", "badder"], c:2},
+    {q:"Exploring a cave is ___________ than walking in a park.", a:["adventurous", "more adventurous", "most adventurous", "adventurouser"], c:1},
+    {q:"I prefer ___________ underwater hockey.", a:["play", "playing", "to play", "plays"], c:1},
+    {q:"Is skydiving ___________ than paragliding?", a:["popular", "more popular", "most popular", "popularier"], c:1},
+    {q:"I think bungee jumping is ___________ exciting sport.", a:["the most", "more", "most", "the more"], c:0},
+    {q:"I ___________ rather go on a jeep safari.", a:["would", "will", "do", "am"], c:0},
+    {q:"She ___________ going trekking to climbing.", a:["prefer", "prefers", "would rather", "like"], c:1},
+    {q:"Riding an elephant is ___________ than riding a horse.", a:["unusual", "more unusual", "most unusual", "unusualer"], c:1},
+    {q:"Which activity is ___________ challenging for you?", a:["the most", "more", "most", "many"], c:0},
+    {q:"I ___________ like to try paragliding one day.", a:["would", "will", "do", "am"], c:0},
+    {q:"My friend is ___________ than me.", a:["brave", "braver", "bravest", "more brave"], c:1},
+    {q:"I prefer ___________ photographs to taking videos.", a:["take", "taking", "to take", "takes"], c:1},
+    {q:"Surfing is ___________ than swimming.", a:["difficult", "more difficult", "most difficult", "difficulter"], c:1},
+    {q:"I ___________ not prefer dangerous sports.", a:["do", "am", "will", "does"], c:0},
+    {q:"What is ___________ sport you have ever tried?", a:["risky", "riskier", "the riskiest", "most risky"], c:2},
+    {q:"I would rather ___________ at a campsite.", a:["stay", "staying", "to stay", "stays"], c:0},
+    {q:"Canoeing is ___________ than rafting.", a:["easy", "easier", "easiest", "more easy"], c:1},
+    {q:"I believe I ___________ try it next summer.", a:["will", "am", "do", "was"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 35) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Adrenalin tutkunu bir şampiyonsun! Tüm macera görevlerini başarıyla tamamladın! 🧗‍♂️🔥" : "Güzel bir deneme! Comparatives ve 'Prefer' kurallarını tekrar gözden geçirerek bir sonraki zirveye ulaşabilirsin! 🏔️✨";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 8. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db; /* Temizlik Mavisi */
+            --secondary-color: #2980b9;
+            --accent-color: #2ecc71; /* Hijyen Yeşili */
+            --bg-color: #f0f7fa;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 25px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 450px; margin: 20px auto; border: 4px solid var(--accent-color);
+        }
+
+        .container { max-width: 850px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 12px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .question-card {
+            background: var(--card-bg); margin: 20px 0; padding: 20px;
+            border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+        .option-label {
+            background: #f8f9fa; padding: 12px; border-radius: 10px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #e8f4fd; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; border-color: var(--correct) !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; border-color: var(--wrong) !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #fff; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 15px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #219150;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #636e72; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 8. Ünite Testleri</h1>
+    <div class="contact-info">Teacher Esen - 📞 0530 477 30 73</div>
+    <p>Chores: Responsibilities at Home and School! 🧹🧺🏠</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:bold;">TEKRAR ÇÖZ</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">🚫 BÖLÜM 1: Must / Mustn't (Zorunluluk ve Yasaklar)</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">👔 BÖLÜM 2: Have to / Has to (Dışsal Zorunluluklar)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">🧤 BÖLÜM 3: Responsibility & Being in Charge of</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">⏰ BÖLÜM 4: It's time to... (Vakti Geldi)</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🧺 BÖLÜM 5: Karışık Gramer ve Ev İşleri Soruları</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">GÖREVLERİ TAMAMLA VE PUANLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Everyone should share the responsibilities! 🤝</div>
+
+<script>
+const quizData = [
+    // BÖLÜM 1: Must/Mustn't (1-10)
+    {q:"We ___________ obey the classroom rules.", a:["must", "mustn't", "has to", "don't have to"], c:0},
+    {q:"You ___________ eat anything during the lesson.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"Students ___________ do their homework on time.", a:["has to", "must", "mustn't", "doesn't have to"], c:1},
+    {q:"You ___________ keep the environment clean.", a:["mustn't", "has to", "must", "doesn't have to"], c:2},
+    {q:"We ___________ be late for the school.", a:["must", "has to", "mustn't", "have to"], c:2},
+    {q:"You ___________ be quiet in the library.", a:["must", "mustn't", "has to", "don't have to"], c:0},
+    {q:"We ___________ use our mobile phones during the exam.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"You ___________ brush your teeth before you go to bed.", a:["must", "mustn't", "has to", "doesn't have to"], c:0},
+    {q:"Children ___________ talk with their mouths full.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"We ___________ help our parents with the housework.", a:["must", "mustn't", "has to", "don't have to"], c:0},
+
+    // BÖLÜM 2: Have to / Has to (11-20)
+    {q:"My mother ___________ cook the dinner every day.", a:["have to", "has to", "must", "mustn't"], c:1},
+    {q:"I ___________ tidy up my room at the weekends.", a:["has to", "have to", "mustn't", "am"], c:1},
+    {q:"Edward ___________ make his bed every morning.", a:["have to", "has to", "must", "do"], c:1},
+    {q:"We ___________ wear a school uniform.", a:["has to", "have to", "mustn't", "are"], c:1},
+    {q:"My father ___________ wash the car this week.", a:["have to", "has to", "must", "is"], c:1},
+    {q:"They ___________ do the laundry on Saturdays.", a:["has to", "have to", "must", "are"], c:1},
+    {q:"A nurse ___________ wear a white uniform.", a:["have to", "has to", "mustn't", "do"], c:1},
+    {q:"You ___________ finish your project today.", a:["has to", "have to", "must", "are"], c:1},
+    {q:"She ___________ take care of her baby brother.", a:["have to", "has to", "mustn't", "do"], c:1},
+    {q:"We ___________ pay the bills on time.", a:["has to", "have to", "must", "are"], c:1},
+
+    // BÖLÜM 3: Responsibility (21-30)
+    {q:"I am responsible for ___________ the table.", a:["set", "setting", "sets", "to set"], c:1},
+    {q:"My brother is in charge of ___________ the dog.", a:["walk", "walking", "walks", "to walk"], c:1},
+    {q:"Who is responsible ___________ taking out the garbage?", a:["of", "for", "to", "at"], c:1},
+    {q:"She is in charge ___________ vacuuming the carpets.", a:["for", "of", "to", "with"], c:1},
+    {q:"We are responsible for ___________ the dishes.", a:["wash", "washing", "washed", "dishes"], c:1},
+    {q:"Is he in charge of ___________ the lawn?", a:["mow", "mowing", "mows", "to mow"], c:1},
+    {q:"My father is responsible for ___________ the car.", a:["wash", "washing", "washed", "washes"], c:1},
+    {q:"I am in charge of ___________ my bed.", a:["make", "making", "makes", "to make"], c:1},
+    {q:"Who ___________ responsible for doing the shopping?", a:["is", "are", "am", "do"], c:0},
+    {q:"They are in charge of ___________ the flowers.", a:["water", "watering", "watered", "waters"], c:1},
+
+    // BÖLÜM 4: It's time to (31-35)
+    {q:"It is time ___________ the floor.", a:["mop", "to mop", "mopping", "mops"], c:1},
+    {q:"It's time ___________ the furniture.", a:["dust", "to dust", "dusting", "dusted"], c:1},
+    {q:"It is time ___________ the dishes.", a:["dry", "to dry", "drying", "dries"], c:1},
+    {q:"It's time ___________ the windows.", a:["clean", "to clean", "cleaning", "cleaned"], c:1},
+    {q:"It is time ___________ the table.", a:["set", "to set", "setting", "sets"], c:1},
+
+    // BÖLÜM 5: Mixed (36-70)
+    {q:"I ___________ do the ironing. It's my duty.", a:["must", "mustn't", "has to", "don't have to"], c:0},
+    {q:"My sister ___________ like doing chores, but she does them.", a:["doesn't", "don't", "isn't", "mustn't"], c:0},
+    {q:"Do you ___________ to wash the dishes?", a:["have", "has", "must", "should"], c:0},
+    {q:"My brother ___________ to empty the dishwasher.", a:["have", "has", "must", "should"], c:1},
+    {q:"We ___________ forget to water the plants.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"I am ___________ of cleaning the bathroom.", a:["responsible", "in charge", "duty", "obligation"], c:1},
+    {q:"My mother is responsible ___________ cooking the meals.", a:["for", "of", "to", "with"], c:0},
+    {q:"It is ___________ to take out the trash.", a:["time", "day", "hour", "month"], c:0},
+    {q:"You ___________ be careful with the glass.", a:["must", "mustn't", "have to", "has to"], c:0},
+    {q:"She ___________ have to do the laundry today.", a:["doesn't", "don't", "isn't", "mustn't"], c:0},
+    {q:"I have to ___________ up my room.", a:["tidy", "tidying", "tidied", "tidies"], c:0},
+    {q:"He ___________ to feed the cat every morning.", a:["has", "have", "must", "do"], c:0},
+    {q:"We ___________ make a mess in the living room.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"My duty is ___________ the carpets.", a:["vacuum", "vacuuming", "to vacuum", "vacuums"], c:2},
+    {q:"Who is in charge ___________ the car?", a:["of washing", "for washing", "to wash", "washing"], c:0},
+    {q:"We ___________ to obey the rules at home.", a:["have", "has", "must", "are"], c:0},
+    {q:"My father ___________ to mow the lawn.", a:["has", "have", "must", "do"], c:0},
+    {q:"I ___________ not allowed to come home late.", a:["am", "is", "are", "was"], c:0},
+    {q:"You ___________ keep your room tidy.", a:["must", "mustn't", "have to", "has to"], c:0},
+    {q:"Does she ___________ to do the shopping?", a:["have", "has", "must", "do"], c:0},
+    {q:"I ___________ responsible for the laundry.", a:["am", "is", "are", "was"], c:0},
+    {q:"My brother ___________ mustn't play with fire.", a:["-", "is", "does", "has"], c:0},
+    {q:"It is necessary ___________ the windows.", a:["to clean", "cleaning", "clean", "cleaned"], c:0},
+    {q:"We ___________ to prepare breakfast.", a:["have", "has", "must", "are"], c:0},
+    {q:"He ___________ to wash his hands before meals.", a:["has", "have", "must", "do"], c:0},
+    {q:"I ___________ not have to cook tonight.", a:["do", "am", "have", "does"], c:0},
+    {q:"You ___________ be respectful to your grandparents.", a:["must", "mustn't", "has to", "don't have to"], c:0},
+    {q:"She is in charge of ___________ the furniture.", a:["dusting", "to dust", "dust", "dusts"], c:0},
+    {q:"I ___________ to go to bed early.", a:["have", "has", "must", "am"], c:0},
+    {q:"Do they ___________ to clean the garage?", a:["have", "has", "must", "are"], c:0},
+    {q:"We ___________ not make noise at night.", a:["must", "mustn't", "have to", "has to"], c:1},
+    {q:"My father ___________ not have to work today.", a:["does", "do", "is", "has"], c:0},
+    {q:"It's time ___________ out the garbage.", a:["to take", "taking", "take", "takes"], c:0},
+    {q:"I ___________ responsible for the kitchen chores.", a:["am", "is", "are", "was"], c:0},
+    {q:"You ___________ to be quiet now.", a:["have", "has", "must", "do"], c:0}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 20) containerId = 'p2-container';
+        else if (index < 30) containerId = 'p3-container';
+        else if (index < 35) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Skor: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 60 ? "Ev işlerinin lideri sensin! Harika bir disiplin! 🧹💪" : "Gayretin güzel! 'Have to/Has to' ve fiillerin '-ing' hallerine biraz daha çalışarak sorumluluklarını kusursuz yönetebilirsin! 🧺🏠";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>

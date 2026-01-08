@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 2. Ünite Testleri - Teacher Esen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff5722; /* Dinamik Turuncu */
+            --secondary-color: #bf360c;
+            --accent-color: #ffeb3b; 
+            --bg-color: #fffbf0;
+            --text-color: #263238;
+            --correct: #4caf50;
+            --wrong: #f44336;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #d84315);
+            color: white; text-align: center; padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        header h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; margin: 0; }
+        .contact-info { font-size: 1.2em; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+        header p { font-style: italic; opacity: 0.9; }
+
+        #result-banner {
+            display: none; position: sticky; top: 10px; z-index: 100;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: center;
+            max-width: 400px; margin: 20px auto; border: 4px solid var(--primary-color);
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        .section-title {
+            background-color: var(--secondary-color); color: white;
+            padding: 15px; border-radius: 15px; margin-top: 40px;
+            font-family: 'Fredoka One', cursive; font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white; margin: 20px 0; padding: 20px;
+            border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 8px solid var(--primary-color);
+        }
+
+        .question-text { font-size: 1.1em; font-weight: 700; margin-bottom: 15px; }
+
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .option-label {
+            background: #fdf2ee; padding: 12px; border-radius: 12px;
+            cursor: pointer; transition: all 0.2s; display: block; border: 2px solid #eee;
+        }
+
+        .option-label:hover { background: #fbe9e7; border-color: var(--primary-color); }
+
+        .correct-answer { background-color: var(--correct) !important; color: white !important; }
+        .wrong-answer { background-color: var(--wrong) !important; color: white !important; }
+
+        #submit-btn {
+            display: block; width: 100%; background: var(--accent-color);
+            color: #333; border: none; padding: 20px;
+            font-size: 1.5em; font-family: 'Fredoka One', cursive;
+            border-radius: 20px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 6px 0px #fbc02d;
+        }
+
+        .footer { text-align: center; padding: 40px; color: #555; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>8. Sınıf 2. Ünite Testleri - Teen Life</h1>
+    <div class="contact-info">📞 0530 477 30 73</div>
+    <p>Gramer Ağırlıklı Tarama Testi 🎸🎧👟</p>
+</header>
+
+<div id="result-banner">
+    <h2 id="score-text" style="color: var(--primary-color);"></h2>
+    <p id="feedback-text"></p>
+    <button onclick="location.reload()" style="background:var(--primary-color); border:none; color:white; padding:10px 20px; border-radius:10px; cursor:pointer;">Yeniden Başla</button>
+</div>
+
+<div class="container" id="quiz-container">
+    <div class="section-title">⏰ 1–10: Sıklık Zarfları ve Zaman İfadeleri</div>
+    <div id="p1-container"></div>
+
+    <div class="section-title">❤️ 11–25: Prefer, Like, Enjoy & Hate (V+ing)</div>
+    <div id="p2-container"></div>
+
+    <div class="section-title">❓ 26–40: Simple Present Tense (Soru & Olumsuz)</div>
+    <div id="p3-container"></div>
+
+    <div class="section-title">📍 41–55: Edatlar (Prepositions) & Zaman Dizilimi</div>
+    <div id="p4-container"></div>
+
+    <div class="section-title">🔀 56–70: Karışık Gramer & Cümle Tamamlama</div>
+    <div id="p5-container"></div>
+
+    <button id="submit-btn" onclick="checkAnswers()">TESTİ TAMAMLA ✅</button>
+</div>
+
+<div class="footer">Teacher Esen - 2026 | Keep up with the fashion! 🛹🧥</div>
+
+<script>
+const quizData = [
+    // 1-10 Adverbs of Frequency & Time
+    {q:"How __________ do you go to the opera?", a:["many", "often", "much", "long"], c:1},
+    {q:"I __________ watch TV in the evenings. I hate it.", a:["always", "usually", "never", "often"], c:2},
+    {q:"My father __________ goes jogging once a week.", a:["once", "twice", "usually", "rarely"], c:2},
+    {q:"We go on vacation __________ May.", a:["on", "at", "in", "under"], c:2},
+    {q:"She does karate __________ Sunday.", a:["every", "once", "at", "in"], c:0},
+    {q:"I wake up __________ 7 o'clock every morning.", a:["on", "in", "at", "from"], c:2},
+    {q:"They have a party __________ Saturday nights.", a:["in", "at", "on", "until"], c:2},
+    {q:"Diyar __________ coffee every morning.", a:["enjoy", "enjoys", "enjoying", "to enjoy"], c:1},
+    {q:"__________ helps your mother with dinner?", a:["What", "Which", "Who", "When"], c:2},
+    {q:"I walk to school __________ a week.", a:["twice", "two", "second", "double"], c:0},
+
+    // 11-25 Verbs of Liking/Disliking
+    {q:"I prefer __________ action movies.", a:["watch", "watching", "watched", "watches"], c:1},
+    {q:"She prefers __________ tennis to basketball.", a:["play", "playing", "plays", "played"], c:1},
+    {q:"We enjoy __________ to the theatre.", a:["go", "to go", "going", "goes"], c:2},
+    {q:"David likes __________ to jazz music.", a:["listen", "listening", "listens", "listened"], c:1},
+    {q:"I hate __________ gothic books.", a:["read", "reading", "reads", "to reading"], c:1},
+    {q:"She dislikes __________ sci-fi films.", a:["watch", "watches", "watching", "watched"], c:2},
+    {q:"Ayşe can't stand __________ basketball.", a:["watch", "watching", "to watch", "watches"], c:1},
+    {q:"I prefer tea __________ coffee.", a:["than", "to", "for", "from"], c:1},
+    {q:"She prefers watching TV __________ playing soccer.", a:["to", "than", "against", "at"], c:0},
+    {q:"I am fond of __________ Fenerbahçe matches.", a:["watch", "watching", "watches", "watched"], c:1},
+    {q:"Sally is keen on __________ rock music.", a:["listen", "listening", "listens", "to listen"], c:1},
+    {q:"Sam is not interested in __________ English.", a:["study", "studies", "studying", "studied"], c:2},
+    {q:"Ali and Veli __________ interested in halay.", a:["is", "am", "are", "do"], c:2},
+    {q:"They are not fond of __________ cakes.", a:["eat", "eating", "eats", "ate"], c:1},
+    {q:"__________ Emma love going camping?", a:["Do", "Is", "Does", "Are"], c:2},
+
+    // 26-40 Simple Present
+    {q:"__________ you like watching movies?", a:["Do", "Does", "Are", "Is"], c:0},
+    {q:"Where __________ Kadriye snowboard?", a:["do", "is", "does", "are"], c:2},
+    {q:"I __________ like listening to Ajdar.", a:["doesn't", "am not", "don't", "not"], c:2},
+    {q:"Ömer __________ like opera.", a:["don't", "doesn't", "isn't", "not"], c:1},
+    {q:"What types of books __________ you prefer?", a:["do", "does", "is", "are"], c:0},
+    {q:"Why __________ you ride a bike?", a:["does", "do", "are", "is"], c:1},
+    {q:"He __________ usually get up early.", a:["don't", "doesn't", "isn't", "not"], c:1},
+    {q:"__________ your friends follow after-school activities?", a:["Does", "Are", "Do", "Is"], c:2},
+    {q:"My closest friend __________ me because she is honest.", a:["trust", "trusts", "trusting", "to trust"], c:1},
+    {q:"I __________ get high grades in history.", a:["want to", "wants", "wanting", "am want"], c:0},
+    {q:"__________ you usually have breakfast at home?", a:["Are", "Do", "Does", "Have"], c:1},
+    {q:"What __________ your favorite smartphone app?", a:["do", "does", "is", "are"], c:2},
+    {q:"Teenagers __________ like keeping up with the fashion.", a:["is", "do", "are", "does"], c:1},
+    {q:"She __________ in Erciyes every winter.", a:["snowboard", "snowboards", "snowboarding", "to snowboard"], c:1},
+    {q:"They __________ together every afternoon.", a:["study", "studies", "studying", "to study"], c:0},
+
+    // 41-55 Prepositions
+    {q:"I wash my hands __________ breakfast.", a:["before", "until", "at", "on"], c:0},
+    {q:"We watch TV programs __________ dinner.", a:["before", "after", "in", "at"], c:1},
+    {q:"From 9:00 __________ 3:00, I am at school.", a:["until", "to", "at", "in"], c:1},
+    {q:"I stay in bed __________ 10:00 a.m. on Sundays.", a:["until", "to", "after", "before"], c:0},
+    {q:"My brother is __________ home now.", a:["in", "on", "at", "into"], c:2},
+    {q:"I go to school __________ weekdays.", a:["in", "on", "at", "with"], c:1},
+    {q:"He was born __________ 1907.", a:["on", "at", "in", "by"], c:2},
+    {q:"We play soccer __________ the afternoon.", a:["in", "at", "on", "to"], c:0},
+    {q:"I read a newspaper __________ night.", a:["in", "on", "at", "during"], c:2},
+    {q:"They go camping __________ the weekend.", a:["in", "at", "on", "with"], c:2}, // Key says B or C, set to C
+    {q:"What do you do __________ Monday?", a:["in", "at", "on", "from"], c:2},
+    {q:"I listen to music __________ the evening.", a:["in", "at", "on", "through"], c:0},
+    {q:"We have lunch __________ noon.", a:["in", "at", "on", "after"], c:1},
+    {q:"It is 11 __________ p.m.", a:["o'clock", "minutes", "hours", "time"], c:0},
+    {q:"I spend time with my family __________ dinner.", a:["after", "before", "during", "at"], c:0},
+
+    // 56-70 Mixed & Completion
+    {q:"A: __________ do you think about Master Chef? B: I think it is boring.", a:["How", "Why", "What", "Who"], c:2},
+    {q:"In my opinion, jazz is __________. I can't stand it.", a:["exciting", "fun", "unbearable", "trendy"], c:2},
+    {q:"I'd like to __________ a video blogger in the future.", a:["be", "being", "am", "is"], c:0},
+    {q:"She __________ attention to the rules.", a:["pay", "pays", "paying", "to pay"], c:1},
+    {q:"We should __________ cultural heritage.", a:["protect", "protects", "protecting", "protected"], c:0},
+    {q:"Teenagers enjoy __________ selfies.", a:["take", "takes", "taking", "to take"], c:2},
+    {q:"I __________ skilled at drawing pictures.", a:["is", "am", "are", "do"], c:1},
+    {q:"The things that __________ me are sci-fi movies.", a:["interest", "interests", "interesting", "dated"], c:0},
+    {q:"To me, heavy metal is __________. I love the rhythm.", a:["ridiculous", "boring", "wonderful", "unbearable"], c:2},
+    {q:"Does your brother __________ video games?", a:["play", "plays", "playing", "to play"], c:0},
+    {q:"Why do you prefer reading detective books? Because they __________ exciting.", a:["is", "am", "are", "do"], c:2},
+    {q:"I usually __________ my relatives on Sundays.", a:["visit", "visits", "visiting", "to visit"], c:0},
+    {q:"How __________ you go to school?", a:["do", "are", "does", "is"], c:0},
+    {q:"I __________ money on trendy clothes.", a:["spend", "spends", "spending", "am spend"], c:0},
+    {q:"My favorite place __________ the countryside.", a:["are", "is", "am", "do"], c:1}
+];
+
+function buildQuiz() {
+    quizData.forEach((item, index) => {
+        let containerId;
+        if (index < 10) containerId = 'p1-container';
+        else if (index < 25) containerId = 'p2-container';
+        else if (index < 40) containerId = 'p3-container';
+        else if (index < 55) containerId = 'p4-container';
+        else containerId = 'p5-container';
+
+        let card = document.createElement('div');
+        card.className = 'question-card';
+        card.innerHTML = `
+            <div class="question-text">${index + 1}. ${item.q}</div>
+            <div class="options">
+                ${item.a.map((opt, i) => `
+                    <label class="option-label" id="label-${index}-${i}">
+                        <input type="radio" name="q${index}" value="${i}"> ${opt}
+                    </label>
+                `).join('')}
+            </div>
+        `;
+        document.getElementById(containerId).appendChild(card);
+    });
+}
+
+function checkAnswers() {
+    let score = 0;
+    quizData.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.c}`);
+        
+        item.a.forEach((_, i) => {
+            document.getElementById(`label-${index}-${i}`).classList.remove('correct-answer', 'wrong-answer');
+        });
+
+        if (selected) {
+            if (parseInt(selected.value) === item.c) {
+                score++;
+                correctLabel.classList.add('correct-answer');
+            } else {
+                const wrongLabel = document.getElementById(`label-${index}-${selected.value}`);
+                wrongLabel.classList.add('wrong-answer');
+                correctLabel.classList.add('correct-answer');
+            }
+        } else {
+            correctLabel.classList.add('correct-answer');
+        }
+    });
+
+    const banner = document.getElementById('result-banner');
+    document.getElementById('score-text').innerText = `Puan: ${score} / 70`;
+    document.getElementById('feedback-text').innerText = score > 50 ? "Mükemmel! Gençlik hayatına ve İngilizceye tam hakimsin! 🎸⚡" : "Güzel deneme! Prefer/Like yapılarına ve edatlara (at/in/on) tekrar göz atarak puanını artırabilirsin! 📚🎧";
+    banner.style.display = 'block';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+buildQuiz();
+</script>
+
+</body>
+</html>
