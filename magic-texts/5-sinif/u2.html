@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 2. Ünite: Classroom Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f7ff; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px; /* İçerik arttığı için kutuyu biraz genişlettim */
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.15); 
+            border: 1px solid #d1e9ff;
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 3px dashed #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #34495e;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 5px solid #3498db;
+            background-color: #fdfdfd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+        .sentence-box:hover {
+            background-color: #f0f8ff;
+            transform: translateX(5px);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e67e22;
+            font-style: italic;
+            margin-top: 3px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #f4fdf4;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #d5f5e3;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #27ae60;
+            border-bottom: 2px solid #27ae60;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #145a32;
+        }
+        .study-notes li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2. Ünite: Classroom Life</h1>
+    <p class="instruction">🏫 Sınıf yaşamını ve kuralları öğrenmek için cümlelere tıkla! 🏫</p>
+
+    <h2>Bölüm 1: Sınıf Eşyaları ve Tanıtım</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is a classroom. / This is my desk.</span>
+        <span class="turkish">Bu bir sınıftır. / Bu benim sıram.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">That is a whiteboard. / The window is open.</span>
+        <span class="turkish">Şu bir beyaz tahtadır. / Pencere açık.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The door is closed. / Where is the map?</span>
+        <span class="turkish">Kapı kapalı. / Harita nerede?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The map is on the wall. / There is a clock in the class.</span>
+        <span class="turkish">Harita duvarda. / Sınıfta bir saat var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My bag is under the desk. / Look at the board.</span>
+        <span class="turkish">Çantam sıranın altında. / Tahtaya bak.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is there a cupboard? - Yes, there is. / No, there isn't.</span>
+        <span class="turkish">Dolap var mı? - Evet, var. / Hayır, yok.</span>
+    </div>
+
+    <h2>Bölüm 2: Sayılar ve Miktarlar (1-100)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have ten pencils. / There are twenty students.</span>
+        <span class="turkish">On tane kalemim var. / Yirmi öğrenci var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Thirty, forty, fifty, sixty, seventy, eighty, ninety, a hundred.</span>
+        <span class="turkish">30, 40, 50, 60, 70, 80, 90, 100.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How many books are there? - There are five books.</span>
+        <span class="turkish">Kaç tane kitap var? - Beş tane kitap var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have twelve crayons. / Eleven notebooks, please.</span>
+        <span class="turkish">On iki tane pastel boyam var. / On bir defter, lütfen.</span>
+    </div>
+
+    <h2>Bölüm 3: Sınıf Komutları (Imperatives)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Sit down. / Stand up. / Open your book.</span>
+        <span class="turkish">Otur. / Ayağa kalk. / Kitabını aç.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Be quiet, please. / Repeat after me. / Raise your hand.</span>
+        <span class="turkish">Lütfen sessiz ol. / Benden sonra tekrar et. / Elini kaldır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Clean the board. / Draw a picture. / Color the shapes.</span>
+        <span class="turkish">Tahtayı temizle. / Bir resim çiz. / Şekilleri boya.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Turn on the light. / Turn off the light.</span>
+        <span class="turkish">Işığı aç. / Işığı kapat.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Give me the pencil. / Show me your ruler.</span>
+        <span class="turkish">Bana kalemi ver. / Bana cetvelini göster.</span>
+    </div>
+
+    <h2>Bölüm 4: İzin İsteme (May I...? / Can I...?)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">May I come in? / May I go out?</span>
+        <span class="turkish">İçeri girebilir miyim? / Dışarı çıkabilir miyim?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can I use your eraser? / May I open the window?</span>
+        <span class="turkish">Silgini kullanabilir miyim? / Pencereyi açabilir miyim?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Of course. / Sure. / Yes, you can. / Sorry, not right now.</span>
+        <span class="turkish">Tabii ki. / Elbette. / Evet, yapabilirsin. / Üzgünüm, şimdi değil.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can I borrow your sharpener? / Please, help me.</span>
+        <span class="turkish">Kalemtıraşını ödünç alabilir miyim? / Lütfen bana yardım et.</span>
+    </div>
+
+    <h2>Bölüm 5: Nesnelerin Yerini Belirtme</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The pen is in the pencil case. / The notebook is on the desk.</span>
+        <span class="turkish">Tükenmez kalem kalemliğin içinde. / Defter sıranın üstünde.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The ball is behind the door. / The chair is next to the table.</span>
+        <span class="turkish">Top kapının arkasında. / Sandalye masanın yanında.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the ruler? - It is under the book.</span>
+        <span class="turkish">Cetvel nerede? - Kitabın altında.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My friend is in front of me. / Put the book in the bag.</span>
+        <span class="turkish">Arkadaşım benim önümde. / Kitabı çantaya koy.</span>
+    </div>
+
+    <h2>Bölüm 6: Karışık Sınıf Diyalogları</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What color is the pencil? - It is blue.</span>
+        <span class="turkish">Kalem ne renk? - O mavidir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Whose book is this? - It is Ali's book.</span>
+        <span class="turkish">Bu kimin kitabı? - O Ali'nin kitabı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I'm sorry, I'm late. / Can you repeat that? / I don't understand.</span>
+        <span class="turkish">Üzgünüm, geç kaldım. / Bunu tekrar edebilir misin? / Anlamadım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Spell your name, please. / Give me the scissors.</span>
+        <span class="turkish">Adını hecele lütfen. / Bana makası ver.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Don't run in the corridor. / Listen carefully. / Great job!</span>
+        <span class="turkish">Koridorda koşma. / Dikkatlice dinleyin. / Harika iş!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Maarif Modeli)</h3>
+        <ul>
+            <li><strong>İzin İsteme (Asking for Permission):</strong> "May I...?" veya "Can I...?" kalıpları kullanılır. <em>May I</em> daha naziktir.</li>
+            <li><strong>Emir Kipleri (Imperatives):</strong> Bir işin yapılmasını istemek için fiil başa gelir (Open your book). Olumsuz yapmak için "Don't" kullanılır (Don't eat).</li>
+            <li><strong>Yer Yön Zarfları (Prepositions):</strong> 
+                <b>In:</b> İçinde, <b>On:</b> Üstünde, <b>Under:</b> Altında, <b>Next to:</b> Yanında, <b>In front of:</b> Önünde, <b>Behind:</b> Arkasında.
+            </li>
+            <li><strong>Sayılar:</strong> 13-19 arası "-teen" (thirteen), onar onar sayarken "-ty" (thirty) takısı gelir.</li>
+            <li><strong>Çoğullar:</strong> Nesneler birden fazlaysa "-s" takısı alır. "How many" sorusundan sonra kelime hep çoğul (books) gelir.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

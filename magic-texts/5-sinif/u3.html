@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 3. Ünite: Personal Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fdfaf5; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1); 
+            border: 1px solid #ebdef0;
+        }
+        h1 {
+            color: #8e44ad;
+            text-align: center;
+            border-bottom: 4px double #9b59b6;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #f4ecf7;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            margin-top: 30px;
+            border-left: 6px solid #8e44ad;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #7d3c98;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #af7ac5;
+            background-color: #fff;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.05);
+        }
+        .sentence-box:hover {
+            background-color: #f9f4fb;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d35400;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fef9e7;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #f9e79f;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d4ac0d;
+            border-bottom: 2px solid #f1c40f;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #7d6608;
+        }
+        .study-notes li {
+            margin-bottom: 10px;
+        }
+        strong { color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3. Ünite: Personal Life</h1>
+    <p class="instruction">🌟 Günlük hayatını ve hobilerini keşfetmek için cümlelere tıkla! 🌟</p>
+
+    <h2>Bölüm 1: Günlük Rutinler (Daily Routines)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I get up early and wash my face.</span>
+        <span class="turkish">Erken kalkarım ve yüzümü yıkarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I brush my teeth and have breakfast.</span>
+        <span class="turkish">Dişlerimi fırçalarım ve kahvaltı yaparım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I get dressed and go to school.</span>
+        <span class="turkish">Giyinirim ve okula giderim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have lunch at school and arrive home at four.</span>
+        <span class="turkish">Okulda öğle yemeği yerim ve eve saat dörtte varırım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I do my homework and have dinner with my family.</span>
+        <span class="turkish">Ödevimi yaparım ve ailemle akşam yemeği yerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I watch TV, read a book and go to bed at ten.</span>
+        <span class="turkish">TV izlerim, kitap okurum ve saat onda yatarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She combs her hair. / He washes his hands.</span>
+        <span class="turkish">O saçını tarar. / O ellerini yıkar.</span>
+    </div>
+
+    <h2>Bölüm 2: Hobiler ve Boş Zaman Aktiviteleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like playing football and swimming.</span>
+        <span class="turkish">Futbol oynamayı ve yüzmeyi severim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I enjoy dancing and drawing.</span>
+        <span class="turkish">Dans etmekten ve resim yapmaktan keyif alırım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like riding a bike and singing songs.</span>
+        <span class="turkish">Bisiklete binmeyi ve şarkı söylemeyi severim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I love playing chess and cooking.</span>
+        <span class="turkish">Satranç oynamayı ve yemek yapmayı çok severim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do you like skating? / Does he like fishing?</span>
+        <span class="turkish">Paten yapmayı sever misin? / O balık tutmayı sever mi?</span>
+    </div>
+
+    <h2>Bölüm 3: Beğeniler ve Nefret Edilen Şeyler (Likes/Dislikes)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like apples but I don't like milk.</span>
+        <span class="turkish">Elmaları severim ama sütü sevmem.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She likes tea but he doesn't like coffee.</span>
+        <span class="turkish">O çay sever ama o kahve sevmez.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I hate rainy weather, I love sunny days.</span>
+        <span class="turkish">Yağmurlu havadan nefret ederim, güneşli günleri çok severim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am crazy about basketball! Reading is exciting.</span>
+        <span class="turkish">Basketbola bayılırım! Kitap okumak heyecan vericidir.</span>
+    </div>
+
+    <h2>Bölüm 4 & 5: Kişisel Özellikler ve Yetenekler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is helpful and energetic. / She is kind and clever.</span>
+        <span class="turkish">O yardımsever ve enerjiktir. / O nazik ve zekidir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I can play the piano but I can't play the violin.</span>
+        <span class="turkish">Piyano çalabilirim ama keman çalamam.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can you climb a tree? - Yes, I can. / No, I can't.</span>
+        <span class="turkish">Ağaca tırmanabilir misin? - Evet, yapabilirim. / Hayır, yapamam.</span>
+    </div>
+
+    <h2>Bölüm 6: Saatler ve Zaman (Telling the Time)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What time is it? - It is half past seven.</span>
+        <span class="turkish">Saat kaç? - Saat yedi buçuk.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is quarter past eight. / It is quarter to ten.</span>
+        <span class="turkish">Sekizi çeyrek geçiyor. / Ona çeyrek var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Before dinner, I wash my hands.</span>
+        <span class="turkish">Yemekten önce ellerimi yıkarım.</span>
+    </div>
+
+    <h2>Bölüm 7-9: Diyaloglar, Günler ve Genel Tekrar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How do you feel? - I feel tired and hungry.</span>
+        <span class="turkish">Nasıl hissediyorsun? - Yorgun ve aç hissediyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My birthday is in May. Tomorrow is Sunday.</span>
+        <span class="turkish">Doğum günüm Mayıs'ta. Yarın Pazar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I want to be a doctor. Life is beautiful!</span>
+        <span class="turkish">Doktor olmak istiyorum. Hayat güzeldir!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Kişisel Yaşam Ünitesi)</h3>
+        <ul>
+            <li><strong>Simple Present Tense:</strong> Günlük rutinlerde kullanılır. He/She/It öznelerinde fiile <em>-s, -es, -ies</em> gelir (I wash / She washes).</li>
+            <li><strong>Like + -ing:</strong> Sevilen eylemlerde fiil "-ing" takısı alır (I like playing).</li>
+            <li><strong>Can / Can't:</strong> Yeteneklerde kullanılır, fiil ek almaz.</li>
+            <li><strong>Saatler:</strong> <em>O'clock</em> (tam), <em>Half past</em> (buçuk), <em>Quarter past</em> (çeyrek geçe), <em>Quarter to</em> (çeyrek kala).</li>
+            <li><strong>Zaman Edatları:</strong> Saatlerde <strong>at</strong>, günlerde <strong>on</strong>, aylarda <strong>in</strong> kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

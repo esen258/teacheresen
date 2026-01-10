@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 8. Ünite: Life in the Universe and Future</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #0b0d17; 
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #161b22;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(111, 66, 193, 0.3); 
+            border: 1px solid #30363d;
+        }
+        h1 {
+            color: #a371f7;
+            text-align: center;
+            border-bottom: 4px solid #58a6ff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #58a6ff;
+            background-color: #0d1117;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #a371f7;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #8b949e;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #58a6ff;
+            background-color: #21262d;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        }
+        .sentence-box:hover {
+            background-color: #30363d;
+            transform: translateX(10px);
+            border-left-color: #a371f7;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #79c0ff;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #0d1117;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #30363d;
+            border-top: 5px solid #a371f7;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #a371f7;
+            border-bottom: 2px solid #58a6ff;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #c9d1d9;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #58a6ff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>8. Ünite: Life in the Universe and Future</h1>
+    <p class="instruction">🚀 Evreni ve geleceği keşfetmek için cümlelere tıkla! 🌌</p>
+
+    <h2>Bölüm 1 & 2: Güneş Sistemi ve Uzay Araçları</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The universe is huge. There are eight planets in the Solar System.</span>
+        <span class="turkish">Evren devasadır. Güneş Sisteminde sekiz gezegen vardır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Mars is the red planet and Saturn has got rings.</span>
+        <span class="turkish">Mars kızıl gezegendir ve Satürn'ün halkaları vardır.</span>
+    </div>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I want to be an astronaut. They travel to space in a rocket.</span>
+        <span class="turkish">Astronot olmak istiyorum. Onlar uzaya bir roketle seyahat ederler.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There is no gravity in space. Astronauts wear space suits.</span>
+        <span class="turkish">Uzayda yerçekimi yoktur. Astronotlar uzay kıyafeti giyerler.</span>
+    </div>
+
+    <h2>Bölüm 3 & 5: Gelecek Tahminleri ve Teknoloji</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Robots will help us and cars will fly in the future.</span>
+        <span class="turkish">Robotlar bize yardım edecek ve gelecekte arabalar uçacak.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Will people live on the Moon? - Yes, they will. / No, they won't.</span>
+        <span class="turkish">İnsanlar Ay'da yaşayacak mı? - Evet, yaşayacaklar. / Hayır, yaşamayacaklar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We will have smart homes and use clean energy.</span>
+        <span class="turkish">Akıllı evlerimiz olacak ve temiz enerji kullanacağız.</span>
+    </div>
+
+    <h2>Bölüm 4 & 6: Uzay Terimleri ve Karşılaştırmalar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Jupiter is bigger than Earth. Neptune is colder than Earth.</span>
+        <span class="turkish">Jüpiter Dünya'dan daha büyüktür. Neptün Dünya'dan daha soğuktur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Rockets are faster than planes. The Moon is nearer than Mars.</span>
+        <span class="turkish">Roketler uçaklardan daha hızlıdır. Ay, Mars'tan daha yakındır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The Milky Way is our galaxy. I see a shooting star!</span>
+        <span class="turkish">Saman Yolu bizim galaksimizdir. Kayan bir yıldız görüyorum!</span>
+    </div>
+
+    <h2>Bölüm 7 - 10: Hayaller, Uzaylılar ve Tekrar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I will be a space scientist. I want to discover a new star.</span>
+        <span class="turkish">Bir uzay bilimcisi olacağım. Yeni bir yıldız keşfetmek istiyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do aliens live on other planets? Maybe they are friendly.</span>
+        <span class="turkish">Uzaylılar diğer gezegenlerde mi yaşıyor? Belki onlar arkadaş canlısıdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Watch the stars at night. The universe is waiting for us!</span>
+        <span class="turkish">Gece yıldızları izle. Evren bizi bekliyor!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Life in the Universe)</h3>
+        
+
+[Image of planets in the solar system compared by size]
+
+        <ul>
+            <li><strong>Will / Won't:</strong> Gelecek tahminleri için kullanılır. <em>Will</em> (olumlu), <em>Won't</em> (olumsuz). Fiil yalındır.</li>
+            <li><strong>Gezegen İsimleri:</strong> Her zaman büyük harfle başlar: <strong>Earth, Mars, Venus.</strong></li>
+            <li><strong>Karşılaştırma (Comparative):</strong> İki şeyi kıyaslarken sıfata <strong>-er</strong> eklenir ve <strong>than</strong> kullanılır. (Hotter than, smaller than).</li>
+            <li><strong>Önemli Kelimeler:</strong> 
+                <strong>Star:</strong> Yıldız, 
+                <strong>Planet:</strong> Gezegen, 
+                <strong>Orbit:</strong> Yörünge, 
+                <strong>Gravity:</strong> Yerçekimi.
+            </li>
+            <li><strong>Tahmin İpuçları:</strong> <em>I think</em> (Bence) veya <em>I hope</em> (Umarım) ile gelecek cümleleri kurulur.</li>
+        </ul>
+        
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 6. Ünite: Life in the World</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #eef7ff; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(41, 128, 185, 0.1); 
+            border: 1px solid #d6eaf8;
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #ebf5fb;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #3498db;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #2980b9;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #5dade2;
+            background-color: #fff;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.04);
+        }
+        .sentence-box:hover {
+            background-color: #f4faff;
+            transform: translateX(10px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fdfefe;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #d6eaf8;
+            border-top: 5px solid #2980b9;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #1a5276; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6. Ünite: Life in the World</h1>
+    <p class="instruction">🌍 Dünyayı, hava durumunu ve mevsimleri keşfetmek için cümlelere tıkla! 🌍</p>
+
+    <h2>Bölüm 1 & 2: Hava Durumu ve Mevsimler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How is the weather today? - It is sunny in Antalya and rainy in London.</span>
+        <span class="turkish">Bugün hava nasıl? - Antalya'da hava güneşli ve Londra'da yağmurlu.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is snowy in Erzurum and windy in Chicago. It is freezing!</span>
+        <span class="turkish">Erzurum'da hava karlı ve Chicago'da rüzgarlı. Hava dondurucu!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There are four seasons: Spring, Summer, Autumn and Winter.</span>
+        <span class="turkish">Dört mevsim vardır: İlkbahar, Yaz, Sonbahar ve Kış.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Flowers bloom in spring and leaves fall in autumn.</span>
+        <span class="turkish">İlkbaharda çiçekler açar ve sonbaharda yapraklar dökülür.</span>
+    </div>
+
+    <h2>Bölüm 3 & 4: Ülkeler ve Giysiler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Turkey is my country. Ankara is the capital city.</span>
+        <span class="turkish">Türkiye benim ülkem. Ankara başkenttir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Italy is famous for pizza. France is in Europe.</span>
+        <span class="turkish">İtalya pizzasıyla ünlüdür. Fransa Avrupa'dadır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is rainy, take your umbrella and put on your raincoat.</span>
+        <span class="turkish">Hava yağmurlu, şemsiyeni al ve yağmurluğunu giy.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Don't forget your hat and sunglasses in sunny weather.</span>
+        <span class="turkish">Güneşli havada şapkanı ve güneş gözlüğünü unutma.</span>
+    </div>
+
+    <h2>Bölüm 5 & 6: Duygular ve Doğal Yaşam</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel happy in sunny weather but she feels moody on rainy days.</span>
+        <span class="turkish">Güneşli havada mutlu hissederim ama o yağmurlu günlerde aksi hisseder.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Stormy weather is frightening. I feel scared of lightning.</span>
+        <span class="turkish">Fırtınalı hava korkutucudur. Şimşekten korkarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The mountains are high and the forest is green. Protect the nature!</span>
+        <span class="turkish">Dağlar yüksektir ve orman yeşildir. Doğayı koru!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The desert is very dry. The oceans are deep.</span>
+        <span class="turkish">Çöl çok kurudur. Okyanuslar derindir.</span>
+    </div>
+
+    <h2>Bölüm 7 - 10: Yaşam Şekilleri ve Genel Tekrar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Eskimos live in igloos. Saving water is important for our planet.</span>
+        <span class="turkish">Eskimolar iglolarda yaşarlar. Gezegenimiz için su tasarrufu önemlidir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is the temperature? - It is 25 degrees Celsius.</span>
+        <span class="turkish">Sıcaklık kaç derece? - Hava 25 derece.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is London? - It is in England. The weather is cloudy.</span>
+        <span class="turkish">Londra nerededir? - İngiltere'dedir. Hava bulutludur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There are seven continents. Asia is a large continent.</span>
+        <span class="turkish">Yedi kıta vardır. Asya büyük bir kıtadır.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Life in the World)</h3>
+        <ul>
+            <li><strong>Hava Durumu Sorusu:</strong> "Hava nasıl?" demek için <strong>"What is the weather like?"</strong> veya <strong>"How is the weather?"</strong> kullanılır.</li>
+            <li><strong>Sıcaklık:</strong> Derece belirtirken <strong>"degrees"</strong> kelimesi kullanılır.</li>
+            <li><strong>Edatlar (In):</strong> Mevsimlerde, ülkelerde ve kıtalarda <strong>"in"</strong> kullanılır. (In Winter, In Turkey, In Asia).</li>
+            <li><strong>Kıyafetler:</strong> <strong>"Wear"</strong> giymiş durumda olmayı, <strong>"Put on"</strong> ise giyme eylemini belirtir.</li>
+            <li><strong>Duygular:</strong> Hava durumuna göre hislerimizi belirtirken <strong>"feel"</strong> fiilini kullanırız. <em>(I feel energetic).</em></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

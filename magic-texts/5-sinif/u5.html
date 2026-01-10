@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 5. Ünite: Life in the Neighbourhood and City</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1); 
+            border: 1px solid #d5dbdb;
+        }
+        h1 {
+            color: #2e86c1;
+            text-align: center;
+            border-bottom: 4px solid #28b463;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #e8f6f3;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #28b463;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #16a085;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #3498db;
+            background-color: #fff;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.04);
+        }
+        .sentence-box:hover {
+            background-color: #f0f8ff;
+            transform: translateX(10px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e67e22;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fdfefe;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #d5dbdb;
+            border-top: 5px solid #2e86c1;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2e86c1;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #1a5276; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5. Ünite: Life in the Neighbourhood and City</h1>
+    <p class="instruction">🏘️ Mahallemizi ve şehrimizi keşfetmek için cümlelere tıkla! 🏙️</p>
+
+    <h2>Bölüm 1: Mahallemizdeki Yerler (Places)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my neighbourhood. It is beautiful.</span>
+        <span class="turkish">Bu benim mahallem. O güzeldir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The pharmacy is on the corner. The grocery store is small.</span>
+        <span class="turkish">Eczane köşededir. Bakkal küçüktür.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The museum is opposite the park. My school is near the hospital.</span>
+        <span class="turkish">Müze parkın karşısındadır. Okulum hastanenin yanındadır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The café is between the bank and the shop.</span>
+        <span class="turkish">Kafe banka ve dükkanın arasındadır.</span>
+    </div>
+
+    <h2>Bölüm 2 & 3: Şehir Hayatı ve Ulaşım</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The city is crowded and noisy. The village is quiet.</span>
+        <span class="turkish">Şehir kalabalık ve gürültülüdür. Köy sessizdir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I go to school by bus. My father rides a bike.</span>
+        <span class="turkish">Okula otobüsle giderim. Babam bisiklet sürer.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The bus stop is over there. Let's take a taxi.</span>
+        <span class="turkish">Otobüs durağı şuradadır. Haydi taksiye binelim.</span>
+    </div>
+
+    <h2>Bölüm 4 & 5: Yol Tarifi ve "There is / There are"</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Go straight ahead, turn left and turn right.</span>
+        <span class="turkish">Düz git, sola dön ve sağa dön.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Cross the street and walk past the bank.</span>
+        <span class="turkish">Caddeyi geç ve bankayı geç.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There is a tree in the garden. There are five cars in the street.</span>
+        <span class="turkish">Bahçede bir ağaç var. Caddede beş araba var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is there a café? - No, there isn't. / Yes, there is.</span>
+        <span class="turkish">Bir kafe var mı? - Hayır, yok. / Evet, var.</span>
+    </div>
+
+    <h2>Bölüm 6 & 7: Karşılaştırmalar ve Aktiviteler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The city is more crowded than the village.</span>
+        <span class="turkish">Şehir köyden daha kalabalıktır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I buy bread from the bakery and books from the bookstore.</span>
+        <span class="turkish">Fırından ekmek alırım ve kitapçıdan kitaplar alırım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I meet my friends at the café. We watch a movie at the cinema.</span>
+        <span class="turkish">Arkadaşlarımla kafede buluşurum. Sinemada bir film izleriz.</span>
+    </div>
+
+    <h2>Bölüm 8 - 10: Sorular, Komşuluk ve Güvenlik</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How can I get to the bank? Is the supermarket open?</span>
+        <span class="turkish">Bankaya nasıl gidebilirim? Süpermarket açık mı?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My neighbours are helpful. We help each other.</span>
+        <span class="turkish">Komşularım yardımseverdir. Birbirimize yardım ederiz.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Stop at the red light. Walk on the pavement. I love my city!</span>
+        <span class="turkish">Kırmızı ışıkta dur. Kaldırımda yürü. Şehrimi seviyorum!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Mahalle ve Şehir Yaşamı)</h3>
+        <ul>
+            <li><strong>There is / There are:</strong> Var olduğunu belirtir. Tekillerde <strong>There is</strong>, çoğullarda <strong>There are</strong> kullanılır.</li>
+            <li><strong>Yer Yön Zarfları:</strong> 
+                <strong>Opposite:</strong> Karşısında, <strong>Between:</strong> Arasında, 
+                <strong>Next to:</strong> Bitişiğinde, <strong>Near:</strong> Yakınında.
+            </li>
+            <li><strong>Ulaşım (By + Araç):</strong> Araçlarla "by" kullanılır (by bus, by car). <u>İstisna:</u> Yürüyerek gitmek <strong>"on foot"</strong> demektir.</li>
+            <li><strong>Sıfatlar:</strong> <strong>Crowded</strong> (Kalabalık), <strong>Quiet</strong> (Sessiz), <strong>Noisy</strong> (Gürültülü).</li>
+            <li><strong>Yol Tarifi:</strong> Emir kipleriyle verilir: <strong>Turn left</strong> (Sola dön), <strong>Go straight</strong> (Düz git).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

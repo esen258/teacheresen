@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 7. Ünite: Life in Nature</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f0; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.1); 
+            border: 1px solid #d4efdf;
+        }
+        h1 {
+            color: #1e8449;
+            text-align: center;
+            border-bottom: 4px solid #2ecc71;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #e9f7ef;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #27ae60;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #117a65;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #2ecc71;
+            background-color: #fff;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.04);
+        }
+        .sentence-box:hover {
+            background-color: #f1f9f5;
+            transform: translateX(10px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d35400;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fdfefe;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #d4efdf;
+            border-top: 5px solid #27ae60;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1e8449;
+            border-bottom: 2px solid #2ecc71;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #196f3d; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7. Ünite: Life in Nature</h1>
+    <p class="instruction">🌿 Doğayı ve hayvanları keşfetmek için cümlelere tıkla! 🦁</p>
+
+    <h2>Bölüm 1 & 2: Hayvanlar ve Vücut Bölümleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The elephant is very big and it has got a trunk.</span>
+        <span class="turkish">Fil çok büyüktür ve onun bir hortumu var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The giraffe is tall and the zebra has stripes.</span>
+        <span class="turkish">Zürafa uzundur ve zebranın çizgileri vardır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Birds have wings and feathers. A fish has fins.</span>
+        <span class="turkish">Kuşların kanatları ve tüyleri vardır. Bir balığın yüzgeçleri vardır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Turtles have hard shells and cats have soft fur.</span>
+        <span class="turkish">Kaplumbağaların sert kabukları, kedilerin yumuşak kürkü vardır.</span>
+    </div>
+
+    <h2>Bölüm 3 & 4: Yetenekler ve Yaşam Alanları</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Cheetahs can run fast, but elephants can't jump.</span>
+        <span class="turkish">Çitalar hızlı koşabilir ama filler zıplayamaz.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can a parrot talk? - Yes, it can. Penguins can't fly.</span>
+        <span class="turkish">Bir papağan konuşabilir mi? - Evet, konuşabilir. Penguenler uçamaz.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Lions live in the jungle. Polar bears live in the Arctic.</span>
+        <span class="turkish">Aslanlar ormanda yaşar. Kutup ayıları Kuzey Kutbu'nda yaşar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where does a tiger live? - It lives in the mountains.</span>
+        <span class="turkish">Bir kaplan nerede yaşar? - O, dağlarda yaşar.</span>
+    </div>
+
+    <h2>Bölüm 5 & 6: Betimlemeler ve Doğayı Koruma</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Wild animals are dangerous, but domestic animals are friendly.</span>
+        <span class="turkish">Vahşi hayvanlar tehlikelidir ama evcil hayvanlar arkadaş canlısıdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Snakes are poisonous. Butterflies are colorful.</span>
+        <span class="turkish">Yılanlar zehirlidir. Kelebekler renklidir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Protect the animals and don't cut down trees!</span>
+        <span class="turkish">Hayvanları koruyun ve ağaçları kesmeyin!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Keep the environment clean and plant more trees.</span>
+        <span class="turkish">Çevreyi temiz tutun ve daha fazla ağaç dikin.</span>
+    </div>
+
+    <h2>Bölüm 7 - 10: Beslenme ve Genel Bilgiler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What do lions eat? - They are carnivores and they eat meat.</span>
+        <span class="turkish">Aslanlar ne yer? - Onlar etçildir ve et yerler.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Herbivores eat plants. Rabbits eat vegetables.</span>
+        <span class="turkish">Otçullar bitki yer. Tavşanlar sebze yerler.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How many legs does a spider have? - It has eight legs.</span>
+        <span class="turkish">Bir örümceğin kaç bacağı var? - Onun sekiz bacağı var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Be kind to animals. Nature is our home. Goodbye!</span>
+        <span class="turkish">Hayvanlara nazik olun. Doğa bizim evimizdir. Güle güle!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Life in Nature)</h3>
+        
+
+[Image of the animal kingdom classification]
+
+        <ul>
+            <li><strong>Have Got / Has Got:</strong> Fiziksel özelliklerde kullanılır. (Lions <strong>have got</strong> tails / A lion <strong>has got</strong> a tail).</li>
+            <li><strong>Can / Can't:</strong> Yeteneklerde kullanılır. Soru için "Can" başa gelir. (Can it swim?).</li>
+            <li><strong>Geniş Zaman (Simple Present):</strong> Alışkanlık ve yaşam alanları için kullanılır. <em>He/She/It</em> öznelerinde fiile <strong>-s</strong> takısı gelir. (It live<strong>s</strong> in the forest).</li>
+            <li><strong>Beslenme Grupları:</strong> 
+                <strong>Herbivore:</strong> Otçul, 
+                <strong>Carnivore:</strong> Etçil, 
+                <strong>Omnivore:</strong> Hem etçil hem otçul.
+            </li>
+            <li><strong>Emir Cümleleri:</strong> Doğayı koruma komutlarında kullanılır. Olumsuz için <strong>Don't</strong> kullanılır. (Don't pollute!).</li>
+        </ul>
+        
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

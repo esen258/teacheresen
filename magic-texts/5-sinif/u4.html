@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 4. Ünite: Family Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fff9f0; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(211, 84, 0, 0.1); 
+            border: 1px solid #fae5d3;
+        }
+        h1 {
+            color: #d35400;
+            text-align: center;
+            border-bottom: 4px solid #e67e22;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #2c3e50;
+            background-color: #fef5e7;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #e67e22;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #a04000;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #f39c12;
+            background-color: #fff;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.04);
+        }
+        .sentence-box:hover {
+            background-color: #fffaf0;
+            transform: translateX(10px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fdf2e9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fadbd8;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #c0392b;
+            border-bottom: 2px solid #e74c3c;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #7b241c;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #1a5276; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4. Ünite: Family Life</h1>
+    <p class="instruction">👨‍👩‍👧‍👦 Aileni ve özelliklerini tanıtmak için cümlelere tıkla! 👨‍👩‍👧‍👦</p>
+
+    <h2>Bölüm 1: Aile Üyelerini Tanıma (Family Members)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my family. I have a big family.</span>
+        <span class="turkish">Bu benim ailem. Büyük bir ailem var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My father is a teacher and my mother is kind.</span>
+        <span class="turkish">Babam bir öğretmendir ve annem naziktir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is this man? He is my uncle.</span>
+        <span class="turkish">Bu adam kim? O benim amcam/dayımdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How many brothers do you have? I am an only child.</span>
+        <span class="turkish">Kaç erkek kardeşin var? Ben tek çocuğum.</span>
+    </div>
+
+    <h2>Bölüm 2: Sahip Olma (Have Got / Has Got)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have got a small family. We have got a big house.</span>
+        <span class="turkish">Küçük bir aileye sahibim. Büyük bir evimiz var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My sister has got a doll. He has got a blue car.</span>
+        <span class="turkish">Kız kardeşimin bir oyuncak bebeği var. Onun mavi bir arabası var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Have you got a brother? - Yes, I have. / No, I haven't.</span>
+        <span class="turkish">Erkek kardeşin var mı? - Evet, var. / Hayır, yok.</span>
+    </div>
+
+    <h2>Bölüm 3 & 4: Görünüş ve Kişilik (Appearance & Personality)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What does she look like? - She has got curly blonde hair.</span>
+        <span class="turkish">Dış görünüşü nasıl? - O kıvırcık sarı saçlıdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My brother is handsome and tall, but I am short.</span>
+        <span class="turkish">Erkek kardeşim yakışıklı ve boyludur ama ben kısayım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is your mother like? - She is very helpful and patient.</span>
+        <span class="turkish">Annen nasıl biridir? - O çok yardımsever ve sabırlıdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My uncle is funny and my friend is polite.</span>
+        <span class="turkish">Amcam komiktir ve arkadaşım kibardır.</span>
+    </div>
+
+    <h2>Bölüm 5 & 6: Evde Yaşam ve Aitlik</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We have breakfast together. My mother cooks delicious food.</span>
+        <span class="turkish">Birlikte kahvaltı yaparız. Annem lezzetli yemekler pişirir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is your father's name? - His name is Ahmet.</span>
+        <span class="turkish">Babanın adı ne? - Onun adı Ahmet.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is Ayşe's cat. Their car is red.</span>
+        <span class="turkish">Bu Ayşe'nin kedisi. Onların arabası kırmızı.</span>
+    </div>
+
+    <h2>Bölüm 7 - 10: Diyaloglar ve Genel Tekrar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is the tallest in your family? My father is very tall.</span>
+        <span class="turkish">Ailende en uzun kim? Babam çok uzundur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We visit our grandparents. We play games together.</span>
+        <span class="turkish">Büyüklerimizi ziyaret ederiz. Birlikte oyunlar oynarız.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We love spending time together. Family is everything.</span>
+        <span class="turkish">Birlikte vakit geçirmeyi seviyoruz. Aile her şeydir.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Family Life)</h3>
+        <ul>
+            <li><strong>Have Got / Has Got:</strong> Sahiplik belirtir. <em>I, You, We, They</em> için <strong>have got</strong>; <em>He, She, It</em> için <strong>has got</strong> kullanılır.</li>
+            <li><strong>Soru Kalıpları:</strong> <strong>"What does he look like?"</strong> dış görünüşü, <strong>"What is he like?"</strong> karakterini sormak için kullanılır.</li>
+            <li><strong>İyelik ('s):</strong> İsimlerin sonuna gelerek aitlik bildirir. Örn: <em>Ali’s car</em> (Ali’nin arabası).</li>
+            <li><strong>İyelik Sıfatları:</strong> <strong>My</strong> (Benim), <strong>Your</strong> (Senin), <strong>His/Her</strong> (Onun), <strong>Our</strong> (Bizim), <strong>Their</strong> (Onların).</li>
+            <li><strong>Akrabalık Terimleri:</strong> <strong>Uncle</strong> (amca/dayı), <strong>Aunt</strong> (hala/teyze) anlamlarına gelir.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

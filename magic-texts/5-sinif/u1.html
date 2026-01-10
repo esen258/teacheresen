@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 1. Ünite: School Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 10px solid #3498db;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+        .instruction {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        .sentence-box {
+            padding: 15px 20px;
+            background-color: #fafafa;
+            border: 1px solid #edf2f7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .sentence-box:hover {
+            background-color: #ebf8ff;
+            border-color: #bee3f8;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #38a169;
+            margin-top: 8px;
+            font-weight: 500;
+            border-top: 1px dashed #cbd5e0;
+            padding-top: 5px;
+        }
+        .study-notes {
+            background-color: #fffaf0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 1px solid #feebc8;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #c05621;
+            display: flex;
+            align-items: center;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            color: #744210;
+        }
+        .study-notes li {
+            margin-bottom: 10px;
+        }
+        strong { color: #2b6cb0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1. Ünite: School Life (Okul Yaşamı)</h1>
+    <p class="instruction">✏️ Cümlelerin üzerine tıklayarak Türkçe çevirilerini görebilirsin.</p>
+
+    <div class="grid-container">
+        
+        <h2>Bölüm 1: Okula Merhaba ve Kendini Tanıtma</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Hello, I am a student. My name is Can.</span><span class="turkish">Merhaba, ben bir öğrenciyim. Benim adım Can.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I am eleven years old. I study at Atatürk Middle School.</span><span class="turkish">On bir yaşındayım. Atatürk Ortaokulu'nda okuyorum.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I am in the 5th grade. My school is very big.</span><span class="turkish">5. sınıftayım. Okulum çok büyük.</span></div>
+
+        <h2>Bölüm 2: Ders İsimleri (School Subjects)</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Maths is difficult, but Science is fun.</span><span class="turkish">Matematik zordur ama Fen Bilimleri eğlencelidir.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">My favorite lesson is Art. I enjoy Turkish lesson.</span><span class="turkish">En sevdiğim ders Görsel Sanatlar. Türkçe dersinden keyif alırım.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I.T. is very interesting. History is easy for me.</span><span class="turkish">Bilişim Teknolojileri çok ilginç. Tarih benim için kolaydır.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">What is your favorite subject? - I love Social Studies.</span><span class="turkish">En sevdiğin ders hangisi? - Sosyal Bilgileri çok severim.</span></div>
+
+        <h2>Bölüm 3: Okul Araç-Gereçleri ve Sınıf</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Where is my eraser? I have a pencil case and a ruler.</span><span class="turkish">Silgim nerede? Bir kalem kutum ve bir cetvelim var.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Put your books in the bag. I need a sharpener.</span><span class="turkish">Kitaplarını çantaya koy. Bir kalemtraşa ihtiyacım var.</span></div>
+
+        <h2>Bölüm 4: Hoşlanılan Şeyler (Likes/Dislikes)</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I am good at drawing. He is bad at singing.</span><span class="turkish">Resim çizmede iyiyimdir. O, şarkı söylemede kötüdür.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I enjoy doing experiments and solving problems.</span><span class="turkish">Deney yapmayı ve problem çözmeyi severim.</span></div>
+
+        <h2>Bölüm 5: Ders Programı ve Günler</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">When is the Science lesson? - It is on Thursday.</span><span class="turkish">Fen Bilimleri dersi ne zaman? - Perşembe günü.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">The school starts at 08:30 and finishes at 15:00.</span><span class="turkish">Okul 08:30'da başlar ve 15:00'te biter.</span></div>
+
+        <h2>Bölüm 6: Hobiler ve Yetenekler</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I can play basketball, but I can't speak German.</span><span class="turkish">Basketbol oynayabilirim ama Almanca konuşamam.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Are you good at Maths? - Yes, I am.</span><span class="turkish">Matematikte iyi misin? - Evet, iyiyim.</span></div>
+
+        <h2>Bölüm 7: Arkadaşlar ve Okul Ortamı</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">My friend is very clever and hardworking.</span><span class="turkish">Arkadaşım çok zekidir ve çalışkandır.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">The canteen is crowded. Let's play together at break time.</span><span class="turkish">Kantin kalabalık. Haydi teneffüste birlikte oynayalım.</span></div>
+
+        <h2>Bölüm 8: Sorular ve Genel Tekrar</h2>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">Do you have a pencil? - Yes, here you are.</span><span class="turkish">Kalemin var mı? - Evet, buyur al.</span></div>
+        <div class="sentence-box" onclick="toggle(this)"><span class="english">I read books in the library. Learning is fun!</span><span class="turkish">Kütüphanede kitap okurum. Öğrenmek eğlencelidir!</span></div>
+    </div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Study Notes)</h3>
+        <ul>
+            <li><strong>Ders İsimleri:</strong> Özel isim statüsünde oldukları için <strong>English, Maths, Social Studies</strong> gibi dersler büyük harfle başlar.</li>
+            <li><strong>Zaman Edatı "On":</strong> Günlerden bahsederken mutlaka <strong>"on"</strong> kullanılır. (<em>On Monday</em>).</li>
+            <li><strong>Yetenekler (Good at):</strong> Bir alanda becerikliyseniz <strong>"good at"</strong>, değilseniz <strong>"bad at"</strong> kalıbını kullanın.</li>
+            <li><strong>Sayılamayanlar:</strong> "Music" veya "Maths" gibi derslerin önüne "a/an" gelmez.</li>
+            <li><strong>Nazik İfadeler:</strong> Birine bir şey verirken <strong>"Here you are"</strong> (Buyur, işte burada) demeyi unutma.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggle(box) {
+        const turkish = box.querySelector('.turkish');
+        turkish.style.display = (turkish.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+
+</body>
+</html>
