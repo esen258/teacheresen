@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 8. Ünite: My Clothes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fce4ec; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(194, 24, 91, 0.1); 
+            border: 1px solid #f8bbd0;
+        }
+        h1 {
+            color: #ad1457;
+            text-align: center;
+            border-bottom: 3px dashed #f06292;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #880e4f;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #f06292;
+            background-color: #fff9fa;
+        }
+        .sentence-box:hover {
+            background-color: #fce4ec;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #4a148c;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #ffe0b2;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #e65100;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #5d4037;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>8. Ünite: My Clothes (Kıyafetlerim)</h1>
+    <p class="instruction">👗 Kıyafetleri ve hava durumunu öğrenmek için üzerlerine tıkla! 👗</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is this? - It is a T-shirt. These are shoes.</span>
+        <span class="turkish">Bu nedir? - Bu bir tişörttür. Bunlar ayakkabıdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have a red dress. My skirt is pink.</span>
+        <span class="turkish">Kırmızı bir elbisem var. Eteğim pembe.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">His trousers are blue. Her socks are yellow.</span>
+        <span class="turkish">Onun pantolonu mavi. Onun çorapları sarı.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is sunny. Wear your sunglasses. Put on your coat.</span>
+        <span class="turkish">Hava güneşli. Güneş gözlüğünü tak. Montunu giy.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is rainy. Take your umbrella. Take off your hat.</span>
+        <span class="turkish">Hava yağmurlu. Şemsiyeni al. Şapkanı çıkar.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is snowy and cold. Wear your gloves. I need my boots.</span>
+        <span class="turkish">Hava karlı ve soğuk. Eldivenlerini giy. Botlarıma ihtiyacım var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">In summer, I wear shorts. In winter, I wear a sweater.</span>
+        <span class="turkish">Yazın şort giyerim. Kışın kazak giyerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">In spring and autumn, she wears a coat.</span>
+        <span class="turkish">İlkbaharda ve sonbaharda o mont giyer.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">May I borrow your jacket? - Sure, here you are.</span>
+        <span class="turkish">Ceketini ödünç alabilir miyim? - Elbette, buyur işte burada.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Thank you. - You are welcome.</span>
+        <span class="turkish">Teşekkür ederim. - Rica ederim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is my scarf? - It is in the wardrobe.</span>
+        <span class="turkish">Atkım nerede? - Gardırobun içinde.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My shoes are dirty, but your dress is clean.</span>
+        <span class="turkish">Ayakkabılarım kirli ama elbisen temiz.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Put on your pajamas. It is time for bed.</span>
+        <span class="turkish">Pijamalarını giy. Yatme vakti geldi.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Öğretici Notlar)</h3>
+        <ul>
+            <li><strong>Tekil mi Çoğul mu?:</strong> İki parçalı şeyler (shoes, trousers, glasses) her zaman <strong>çoğul (s takılı)</strong> kabul edilir. "It is" yerine <strong>"These are"</strong> kullanılır.</li>
+            <li><strong>Put on vs. Take off:</strong> Giymek/takmak için <em>Put on</em>, çıkarmak için <em>Take off</em> kullanılır.</li>
+            <li><strong>Renk Sırası:</strong> Önce renk sonra kıyafet gelir: <em>Red dress</em> (Kırmızı elbise).</li>
+            <li><strong>May I borrow...?:</strong> Çok kibar bir "Ödünç alabilir miyim?" kalıbıdır.</li>
+            <li><strong>Mevsimler:</strong> Summer (Yaz), Winter (Kış), Spring (İlkbahar), Autumn (Sonbahar).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

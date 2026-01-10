@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 9. Ünite: My Friends</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fff5e6; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.15); 
+            border: 1px solid #ffe0b2;
+        }
+        h1 {
+            color: #e65100;
+            text-align: center;
+            border-bottom: 3px dashed #2196f3;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #fb8c00;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #2196f3;
+            background-color: #f1f8ff;
+        }
+        .sentence-box:hover {
+            background-color: #e3f2fd;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d84315;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #bbdefb;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #0d47a1;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #01579b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>9. Ünite: My Friends (Arkadaşlarım)</h1>
+    <p class="instruction">👥 Arkadaşlarını tarif etmeyi öğrenmek için cümlelere tıkla! 👥</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What does he look like? - He is tall and slim.</span>
+        <span class="turkish">O nasıl görünüyor? - O uzundur ve zayıftır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She is short and fat. I am medium height.</span>
+        <span class="turkish">O kısadır ve şişmandır. Ben orta boyluyum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He has got blue eyes and blond hair.</span>
+        <span class="turkish">Onun mavi gözleri ve sarışın saçları var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She has got green eyes and long wavy hair.</span>
+        <span class="turkish">Onun yeşil gözleri ve uzun dalgalı saçları var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have got straight hair. He has got curly hair.</span>
+        <span class="turkish">Benim düz saçlarım var. Onun kıvırcık saçları var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Has he got a beard? - No, he has got a mustache.</span>
+        <span class="turkish">Onun sakalı var mı? - Hayır, onun bıyığı var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She wears glasses and she has got freckles.</span>
+        <span class="turkish">O gözlük takar ve onun çilleri var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My friend is funny, helpful and cheerful.</span>
+        <span class="turkish">Arkadaşım komiktir, yardımseverdir ve neşelidir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She is polite and hardworking. I am lazy.</span>
+        <span class="turkish">O kibardır ve çalışkandır. Ben tembelim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is your best friend? - Ali is my best friend.</span>
+        <span class="turkish">Senin en iyi arkadaşın kim? - Ali benim en iyi arkadaşımdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is young and handsome. She is old but beautiful.</span>
+        <span class="turkish">O genç ve yakışıklıdır. O yaşlı ama güzeldir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We are a good team. I like my friends.</span>
+        <span class="turkish">Biz iyi bir takımız. Arkadaşlarımı seviyorum.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Öğretici Notlar)</h3>
+        <ul>
+            <li><strong>Dış Görünüş Sorusu:</strong> Birinin fiziksel özelliklerini sormak için <em>"What does he/she look like?"</em> kullanılır.</li>
+            <li><strong>Be (Am/Is/Are) vs Have Got:</strong> Boy, kilo ve yaş için <strong>is</strong> kullanılır (He is tall). Göz rengi, saç ve sakal için <strong>has got</strong> kullanılır (He has got glasses).</li>
+            <li><strong>Saç Tarifi Sırası:</strong> Önce uzunluk, sonra şekil, en son renk: <em>Long (uzun) + curly (kıvırcık) + dark (koyu) + hair.</em></li>
+            <li><strong>Zıt Anlamlılar:</strong> Young (Genç) x Old (Yaşlı), Strong (Güçlü) x Weak (Güçsüz), Slim (Zayıf) x Overweight (Kilolu).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

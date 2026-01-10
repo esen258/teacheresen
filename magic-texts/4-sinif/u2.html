@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 2. Ünite: Nationality</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f7ff; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.15); 
+            border: 1px solid #d6eaf8;
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 3px dashed #3498db;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5dade2;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #e67e22;
+            background-color: #fef9f5;
+        }
+        .sentence-box:hover {
+            background-color: #fdf2e9;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #ebf5fb;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #aed6f1;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1b4f72;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #21618c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2. Ünite: Nationality (Ülkeler ve Milletler)</h1>
+    <p class="instruction">✨ Türkçesini görmek için ifadelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where are you from? - I am from Turkey. I am Turkish.</span>
+        <span class="turkish">Sen nerelisin? - Ben Türkiye'denim. Ben Türk'üm.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Are you from Japan? - Yes, I am. / No, I am not.</span>
+        <span class="turkish">Sen Japonya'dan mısın? - Evet, öyleyim. / Hayır, değilim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is he from? - He is from Italy. He is Italian.</span>
+        <span class="turkish">O (erkek) nereli? - O, İtalya'dan. O, İtalyan.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is she from? - She is from Germany. She is German.</span>
+        <span class="turkish">O (kadın) nereli? - O, Almanya'dan. O, Alman.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is she from Britain? - She is British.</span>
+        <span class="turkish">O, Britanya'dan (İngiltere) mı? - O, Britanyalı.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am from France. I am French.</span>
+        <span class="turkish">Ben Fransa'danım. Ben Fransız'ım.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is from Russia. He is Russian.</span>
+        <span class="turkish">O, Rusya'dan. O, Rus.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is Madrid? - It is in Spain.</span>
+        <span class="turkish">Madrid nerede? - O, İspanya'da.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is Pierre. He is from France. I live in Ankara.</span>
+        <span class="turkish">Bu Pierre. O, Fransa'dan. Ben Ankara'da yaşıyorum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Nice to meet you. - Me, too.</span>
+        <span class="turkish">Tanıştığımıza memnun oldum. - Ben de (memnun oldum).</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Country vs. Nationality:</strong> <em>"from"</em> kullanıyorsan ülke (Turkey), kullanmıyorsan millet (Turkish) söylersin.</li>
+            <li><strong>He / She:</strong> Erkekler için <strong>He</strong>, kızlar için <strong>She</strong> kullanılır.</li>
+            <li><strong>Where are you from?:</strong> Standart nereli olduğunu sorma kalıbıdır.</li>
+            <li><strong>In:</strong> Şehirlerin ve ülkelerin içinde olduğunu belirtirken kullanılır. (In Spain, In Ankara)</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

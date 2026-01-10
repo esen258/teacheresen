@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 4. Ünite: Cartoon Characters</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(229, 57, 53, 0.2); 
+            border: 2px solid #1976d2;
+        }
+        h1 {
+            color: #d32f2f;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 4px double #1976d2;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #1976d2;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #d32f2f;
+            background-color: #fff9f9;
+        }
+        .sentence-box:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.02);
+            border-left-color: #1976d2;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #ffcc80;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #e65100;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #4e342e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4. Ünite: Cartoon Characters</h1>
+    <p class="instruction">💥 Türkçesini görmek için kahramanların cümlelerine tıkla! 💥</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I can fly, but I can't swim.</span>
+        <span class="turkish">Ben uçabilirim ama yüzemem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can you jump high? - Yes, I can. / No, I can't.</span>
+        <span class="turkish">Yükseğe zıplayabilir misin? - Evet, yapabilirim. / Hayır, yapamam.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He can lift a car. She can carry a piano.</span>
+        <span class="turkish">O bir arabayı kaldırabilir. O bir piyano taşıyabilir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Superman can run fast. He can climb walls.</span>
+        <span class="turkish">Superman hızlı koşabilir. O duvarlara tırmanabilir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have got a blue bike and small eyes.</span>
+        <span class="turkish">Benim mavi bir bisikletim ve küçük gözlerim var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He has got a big nose and a red cape.</span>
+        <span class="turkish">Onun büyük bir burnu ve kırmızı bir pelerini var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She has got blond hair. Have you got a guitar?</span>
+        <span class="turkish">Onun sarışın saçları var. Senin bir gitarın var mı?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My hero is Batman. Spider-Man is strong.</span>
+        <span class="turkish">Benim kahramanım Batman. Örümcek Adam güçlüdür.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is very tall. She is beautiful.</span>
+        <span class="turkish">O çok uzundur. O güzeldir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my robot. It can dance. Look at the hero!</span>
+        <span class="turkish">Bu benim robotum. O dans edebilir. Kahramana bak!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Can / Can't:</strong> Yapabildiğimiz yetenekler için kullanılır. Fiil her zaman yalın haldedir (ek almaz).</li>
+            <li><strong>Have got / Has got:</strong> Sahiplik bildirir. <em>He/She/It</em> ile <strong>has got</strong> kullanmayı unutma!</li>
+            <li><strong>Sıfat Sıralaması:</strong> İngilizcede önce özelliği (sıfat), sonra nesneyi (isim) söyleriz: <em>Red cape</em> (Kırmızı pelerin).</li>
+            <li><strong>Hero:</strong> Kahraman demektir. Fiziksel özellikler anlatılırken <em>tall, strong, beautiful</em> gibi sıfatlar kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

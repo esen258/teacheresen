@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 3. Ünite: Free Time</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f3e5f5; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(106, 27, 154, 0.15); 
+            border: 1px solid #e1bee7;
+        }
+        h1 {
+            color: #6a1b9a;
+            text-align: center;
+            border-bottom: 3px dashed #9c27b0;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #7b1fa2;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #ff9800;
+            background-color: #fff9f0;
+        }
+        .sentence-box:hover {
+            background-color: #fff3e0;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #4a148c;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fce4ec;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #f8bbd0;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #880e4f;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #4a148c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3. Ünite: Free Time (Boş Zaman Etkinlikleri)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like reading. I don't like running.</span>
+        <span class="turkish">Ben kitap okumayı severim. Ben koşmayı sevmem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do you like singing? - Yes, I do. / No, I don't.</span>
+        <span class="turkish">Şarkı söylemeyi sever misin? - Evet, severim. / Hayır, sevmem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He likes playing chess. She likes drawing.</span>
+        <span class="turkish">O (erkek), satranç oynamayı sever. O (kadın), resim yapmayı sever.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like coloring and watching cartoons.</span>
+        <span class="turkish">Boyama yapmayı ve çizgi film izlemeyi severim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I can swim, but I can't fly.</span>
+        <span class="turkish">Ben yüzebilirim ama uçamam.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can you ride a bike? - Yes, I can.</span>
+        <span class="turkish">Bisiklet sürebilir misin? - Evet, sürebilirim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He can play the guitar. She can't drive a car.</span>
+        <span class="turkish">O gitar çalabilir. O araba süremez.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Let's play football! - Great!</span>
+        <span class="turkish">Haydi futbol oynayalım! - Harika!</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My hobby is cooking. I like puzzles.</span>
+        <span class="turkish">Benim hobim yemek yapmak. Yapbozları severim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like riding a horse and sliding.</span>
+        <span class="turkish">Ata binmeyi ve kaydıraktan kaymayı severim.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Like + -ing:</strong> Sevdiğimiz bir eylemi söylerken fiilin sonuna <strong>-ing</strong> ekleriz. (Read ➔ Reading)</li>
+            <li><strong>Can / Can't:</strong> Yeteneklerimizi anlatırken <strong>Can</strong>, yapamadıklarımız için <strong>Can't</strong> kullanırız.</li>
+            <li><strong>Do you like...?:</strong> "Sever misin?" sorusuna <em>Yes, I do</em> veya <em>No, I don't</em> ile cevap verilir.</li>
+            <li><strong>Let's:</strong> Birini bir aktiviteye davet ederken "Haydi" anlamında kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

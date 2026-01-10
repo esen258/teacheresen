@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 7. Ünite: Jobs</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f4f8; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15); 
+            border: 1px solid #d5dbdb;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px dashed #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #3498db;
+            background-color: #f8fbfe;
+        }
+        .sentence-box:hover {
+            background-color: #ebf5fb;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #eaf2f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #a9cce3;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1b4f72;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #21618c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7. Ünite: Jobs (Meslekler)</h1>
+    <p class="instruction">💼 Meslekleri ve görevlerini öğrenmek için üzerlerine tıkla! 💼</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is your job? - I am a teacher and a student.</span>
+        <span class="turkish">Senin mesleğin ne? - Ben bir öğretmenim ve bir öğrenciyim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is a doctor. She is a nurse. I am a vet.</span>
+        <span class="turkish">O bir doktordur. O bir hemşiredir. Ben bir veterinerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is a policeman. She is a policewoman.</span>
+        <span class="turkish">O bir polistir. O bir kadın polistir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Are you a pilot? - Yes, I am. / No, I am not.</span>
+        <span class="turkish">Sen bir pilot musun? - Evet, öyleyim. / Hayır, değilim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where do you work? - I work at a school.</span>
+        <span class="turkish">Sen nerede çalışıyorsun? - Ben bir okulda çalışıyorum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He works at a hospital. A farmer works on a farm.</span>
+        <span class="turkish">O bir hastanede çalışıyor. Bir çiftçi çiftlikte çalışır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A cook works in a kitchen. He works in a garden.</span>
+        <span class="turkish">Bir aşçı mutfakta çalışır. O bir bahçede çalışır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A pilot flies planes. A vet likes animals.</span>
+        <span class="turkish">Bir pilot uçak uçurur. Bir veteriner hayvanları sever.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A doctor helps people. A fireman puts out fires.</span>
+        <span class="turkish">Bir doktor insanlara yardım eder. Bir itfaiyeci yangınları söndürür.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A teacher teaches English. A florist sells flowers.</span>
+        <span class="turkish">Bir öğretmen İngilizce öğretir. Bir çiçekçi çiçek satar.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What do you want to be? - I want to be a doctor.</span>
+        <span class="turkish">Ne olmak istiyorsun? - Doktor olmak istiyorum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He wants to be a vet. I love my teacher!</span>
+        <span class="turkish">O veteriner olmak istiyor. Öğretmenimi seviyorum!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Öğretici Notlar)</h3>
+        <ul>
+            <li><strong>A / An:</strong> Sessiz harfle başlayanlarda "a" (a nurse), sesli harfle (a, e, i, o, u) başlayanlarda "an" (an artist) kullanılır.</li>
+            <li><strong>Work at / on / in:</strong> Genelde <em>at</em> (at a school), çiftlik için <em>on</em> (on a farm), iç mekanlar için <em>in</em> (in a kitchen) kullanılır.</li>
+            <li><strong>-s Takısı:</strong> He/She özneleri ile fiile "-s" gelir: <em>He works</em>, <em>She helps</em>, <em>A pilot flies</em>.</li>
+            <li><strong>Want to be:</strong> "Olmak istemek" kalıbıdır. Hayallerimizi anlatırken kullanırız.</li>
+            <li><strong>Gender (Cinsiyet):</strong> Bazı mesleklerde erkek/kadın ayrımı vardır: Actor/Actress, Policeman/Policewoman.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 5. Ünite: My Day</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fff9f0; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.15); 
+            border: 1px solid #ffcc80;
+        }
+        h1 {
+            color: #d35400;
+            text-align: center;
+            border-bottom: 3px dashed #f39c12;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #e67e22;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #f39c12;
+            background-color: #fffdfb;
+        }
+        .sentence-box:hover {
+            background-color: #fff4e5;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #4e342e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #ffb74d;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #bf360c;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #5d4037;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5. Ünite: My Day (Günlük Rutinim)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I wake up and get up. I get up early.</span>
+        <span class="turkish">Uyanırım ve kalkarım. Erken kalkarım.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I wash my hands and face. I brush my teeth.</span>
+        <span class="turkish">Ellerimi ve yüzümü yıkarım. Dişlerimi fırçalarım.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I brush/comb my hair. I get dressed.</span>
+        <span class="turkish">Saçımı fırçalarım/tararım. Giyinirim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have breakfast. I eat an egg and drink tea.</span>
+        <span class="turkish">Kahvaltı yaparım. Yumurta yerim ve çay içerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I go to school and wait for the bus.</span>
+        <span class="turkish">Okula giderim ve otobüsü beklerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I listen to my teacher. I have lunch.</span>
+        <span class="turkish">Öğretmenimi dinlerim. Öğle yemeği yerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I come home / I arrive home. I do my homework.</span>
+        <span class="turkish">Eve gelirim / Eve varırım. Ödevimi yaparım.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What time is it? - It is one / five / eight o'clock.</span>
+        <span class="turkish">Saat kaç? - Saat bir / beş / sekiz.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He gets up and goes to school.</span>
+        <span class="turkish">O (erkek) kalkar ve okula gider.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She brushes her teeth and has breakfast.</span>
+        <span class="turkish">O (kız) dişlerini fırçalar ve kahvaltı yapar.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">In the morning, in the afternoon, in the evening.</span>
+        <span class="turkish">Sabahleyin, öğleden sonra, akşamleyin.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">At noon, at night, at seven o'clock.</span>
+        <span class="turkish">Öğle vaktinde, geceleyin, saat yedide.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I watch cartoons and ride my bike.</span>
+        <span class="turkish">Çizgi film izlerim ve bisikletimi sürerim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have a shower and go to bed. I sleep.</span>
+        <span class="turkish">Duş alırım ve yatağa giderim. Uyurum.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Study Notes)</h3>
+        <ul>
+            <li><strong>At vs. In:</strong> Saatlerden önce her zaman <strong>"at"</strong> (at 5 o'clock) gelir. Gece için ise <strong>"at night"</strong> kullanılır.</li>
+            <li><strong>He/She -s Takısı:</strong> Ben (I) derken <em>go</em>, O (He/She) derken <strong>goes/gets/has</strong> olur.</li>
+            <li><strong>Have:</strong> Kahvaltı (breakfast) ve yemek (lunch/dinner) kelimeleriyle <em>eat</em> yerine genellikle <strong>have</strong> tercih edilir.</li>
+            <li><strong>Time:</strong> Saati sormak için <strong>"What time is it?"</strong> kalıbını kullanırız.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

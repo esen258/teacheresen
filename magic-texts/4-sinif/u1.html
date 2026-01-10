@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 1. Ünite: Classroom Rules</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+            border: 1px solid #d1d8e0;
+        }
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            border-bottom: 3px dashed #00b894;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #00b894;
+            background-color: #f9fdfc;
+        }
+        .sentence-box:hover {
+            background-color: #e6fffb;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #0984e3;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #f0fff0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #c1e1c1;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2d3436;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1. Ünite: Classroom Rules (Sınıf Kuralları)</h1>
+    <p class="instruction">✨ Türkçesini görmek için yönergelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Hello! - Good morning.</span>
+        <span class="turkish">Merhaba! - Günaydın.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Sit down, please. - Stand up, please.</span>
+        <span class="turkish">Oturun, lütfen. - Ayağa kalkın, lütfen.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Open your book. - Close your book.</span>
+        <span class="turkish">Kitabını aç. - Kitabını kapat.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Look at the board. - Listen to me.</span>
+        <span class="turkish">Tahtaya bak. - Beni dinle.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Quiet, please! - Come here. - Go back to your seat.</span>
+        <span class="turkish">Sessiz olun, lütfen! - Buraya gel. - Sırana geri dön.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Clean the board. - Give me the pencil.</span>
+        <span class="turkish">Tahtayı sil/temizle. - Bana kurşun kalemi ver.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Turn on the light. - Turn off the light.</span>
+        <span class="turkish">Işığı aç. - Işığı kapat.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Open the window. - Close the door. - Raise your hand.</span>
+        <span class="turkish">Pencereyi aç. - Kapıyı kapat. - Elini kaldır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Say that again. - I am sorry.</span>
+        <span class="turkish">Onu tekrar söyle. - Üzgünüm.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Thank you. - You are welcome.</span>
+        <span class="turkish">Teşekkür ederim. - Rica ederim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">May I come in? - May I go out? - Sure / Of course.</span>
+        <span class="turkish">İçeri girebilir miyim? - Dışarı çıkabilir miyim? - Elbet / Tabii ki.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Emir Cümleleri:</strong> İngilizcede birinden bir şey yapmasını isterken fiili en başa koyarız (Open, Close, Listen).</li>
+            <li><strong>Please (Lütfen):</strong> Cümlelere kibarlık katar. Sona gelirse önüne virgül alır: <em>Quiet, please!</em></li>
+            <li><strong>May I...?:</strong> İzin istemek için kullanılan en temel ve nazik kalıptır.</li>
+            <li><strong>Zıt Anlamlılar:</strong> <strong>Open</strong> (Aç) ↔ <strong>Close</strong> (Kapat), <strong>Turn on</strong> (Işığı/Cihazı aç) ↔ <strong>Turn off</strong> (Kapat).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

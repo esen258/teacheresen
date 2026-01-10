@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 6. Ünite: Fun with Science</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #e0f2f1; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 121, 107, 0.15); 
+            border: 1px solid #b2dfdb;
+        }
+        h1 {
+            color: #00796b;
+            text-align: center;
+            border-bottom: 3px dashed #7e57c2;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5e35b1;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #7e57c2;
+            background-color: #f3e5f5;
+        }
+        .sentence-box:hover {
+            background-color: #ede7f6;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #283593;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #d1c4e9;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #4527a0;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #311b92;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6. Ünite: Fun with Science (Bilimle Eğlence)</h1>
+    <p class="instruction">🧪 Deney adımlarını ve yerlerini görmek için üzerlerine tıkla! 🧪</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Let’s do an experiment. Give me the bottle and take the glass.</span>
+        <span class="turkish">Haydi bir deney yapalım. Bana şişeyi ver ve bardağı al.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Cut the paper and fold it. Color the picture and draw a flower.</span>
+        <span class="turkish">Kağıdı kes ve onu katla. Resmi boya ve bir çiçek çiz.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Mix the colors. Pour the water and shake the bottle.</span>
+        <span class="turkish">Renkleri karıştır. Suyu dök ve şişeyi salla.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Freeze the water and melt the ice.</span>
+        <span class="turkish">Suyu dondur ve buzu erit.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Plant a seed and water the plant. Leave it in the sun.</span>
+        <span class="turkish">Bir tohum dik ve bitkiyi sula. Onu güneşte bırak.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The stone sinks, but the paper floats.</span>
+        <span class="turkish">Taş batar, ama kağıt yüzer (su yüzeyinde kalır).</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the brush? - It is in the cup, behind the door.</span>
+        <span class="turkish">Fırça nerede? - Fincanın içinde, kapının arkasında.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The seeds are in the soil. Put the pencil in front of the window.</span>
+        <span class="turkish">Tohumlar toprağın içinde. Kalemi pencerenin önüne koy.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is the brush on the table? - No, it isn't. It is next to the book.</span>
+        <span class="turkish">Fırça masanın üstünde mi? - Hayır, değil. Kitabın yanında.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Check the experiment. Science is fun! You are a scientist.</span>
+        <span class="turkish">Deneyi kontrol et. Bilim eğlencelidir! Sen bir bilim insanısın.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Öğretici Notlar)</h3>
+        <ul>
+            <li><strong>Emir Cümleleri:</strong> Deney adımlarını söylerken fiili en başa koyarız (Pour, Mix, Shake).</li>
+            <li><strong>Prepositions (Yer Bildirenler):</strong> <strong>In front of</strong> (Önünde), <strong>Behind</strong> (Arkasında), <strong>Under</strong> (Altında).</li>
+            <li><strong>Sinks vs. Floats:</strong> Ağır nesneler için <strong>"sink"</strong> (batmak), hafif nesneler için <strong>"float"</strong> (yüzmek/batmamak) kullanılır.</li>
+            <li><strong>Where is/are...?:</strong> Nesnenin yerini sormak için kullanılır. Tekil ise <em>is</em>, çoğul ise <em>are</em> (Where are the seeds?).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

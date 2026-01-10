@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Sınıf 10. Ünite: Food and Drinks</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fffcf0; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.15); 
+            border: 1px solid #ffe0b2;
+        }
+        h1 {
+            color: #e67e22;
+            text-align: center;
+            border-bottom: 3px dashed #27ae60;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #27ae60;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #27ae60;
+            background-color: #f9fffb;
+        }
+        .sentence-box:hover {
+            background-color: #f0fff4;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d35400;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fdf2e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #fadbd8;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #c0392b;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #7b241c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10. Ünite: Food and Drinks</h1>
+    <p class="instruction">😋 Neler yiyip içtiğimizi görmek için cümlelere tıkla! 😋</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am hungry. I want an apple. I am full.</span>
+        <span class="turkish">Ben açım. Bir elma istiyorum. Tokum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am thirsty. Can I have some water? - Sure.</span>
+        <span class="turkish">Ben susadım. Biraz su alabilir miyim? - Elbette.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do you like pizza? - Yes, I do. / No, I don't.</span>
+        <span class="turkish">Pizza sever misin? - Evet, severim. / Hayır, sevmem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He likes bananas. She doesn't like tea.</span>
+        <span class="turkish">O muz sever. O çay sevmez.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My favorite food is chicken. My favorite drink is milk.</span>
+        <span class="turkish">En sevdiğim yemek tavuktur. En sevdiğim içecek süttür.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Would you like some cake? - Yes, please. / No, thank you.</span>
+        <span class="turkish">Biraz kek ister misin? - Evet, lütfen. / Hayır, teşekkür ederim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Drink your orange juice and eat your sandwich. Enjoy your meal!</span>
+        <span class="turkish">Portakal suyunu iç ve sandvicini ye. Afiyet olsun!</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Honey is sweet, but lemon is sour.</span>
+        <span class="turkish">Bal tatlıdır, ama limon ekşidir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Milk is healthy. Coke is unhealthy.</span>
+        <span class="turkish">Süt sağlıklıdır. Kola sağlıksızdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The soup is hot. The ice cream is cold. It is yummy!</span>
+        <span class="turkish">Çorba sıcaktır. Dondurma soğuktur. O lezzetli!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Öğretici Notlar)</h3>
+        <ul>
+            <li><strong>Would you like...?:</strong> "İster misin?" demenin en kibar yoludur. <em>Yes, please</em> veya <em>No, thank you</em> ile cevaplanır.</li>
+            <li><strong>Can I have...?:</strong> "Alabilir miyim?" anlamında izin ve rica cümlesidir.</li>
+            <li><strong>Like / Likes Farkı:</strong> I/You/We/They ile <strong>like</strong>, He/She/It ile <strong>likes</strong> kullanılır. Olumsuzlarda He/She için <strong>doesn't like</strong> gelir.</li>
+            <li><strong>Some / Any:</strong> Sayılamayan (su, süt) veya çoğul nesnelerde "biraz/hiç" anlamında kullanılır: <em>Some milk</em>, <em>Any juice</em>.</li>
+            <li><strong>Yummy / Delicious:</strong> Her ikisi de yemeğin tadının güzel olduğunu belirtmek için kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
