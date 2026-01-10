@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 9. Ünite: Weather</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #e0f7fa; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15); 
+            border: 1px solid #b2ebf2;
+        }
+        h1 {
+            color: #00838f;
+            text-align: center;
+            border-bottom: 3px dashed #4dd0e1;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #00acc1;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #ffeb3b;
+            background-color: #fffde7;
+        }
+        .sentence-box:hover {
+            background-color: #fff9c4;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #006064;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #e1f5fe;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #81d4fa;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #01579b;
+        }
+        .weather-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        .weather-table td {
+            padding: 5px;
+            border-bottom: 1px solid #b3e5fc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 9: Weather (Hava Durumu)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How is the weather? - It is sunny today.</span>
+        <span class="turkish">Hava nasıl? - Bugün hava güneşli.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The weather is rainy. Is it snowy? - Yes, it is.</span>
+        <span class="turkish">Hava yağmurlu. Hava karlı mı? - Evet, öyle.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is very hot. I feel cold.</span>
+        <span class="turkish">Hava çok sıcak. Üşüyorum / Soğuk hissediyorum.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The weather is cloudy and windy.</span>
+        <span class="turkish">Hava bulutlu ve rüzgarlı.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is stormy and foggy.</span>
+        <span class="turkish">Hava fırtınalı ve sisli.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is warm in Antalya. Is it cold in Erzurum?</span>
+        <span class="turkish">Antalya'da hava ılık. Erzurum'da hava soğuk mu?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Look! It is snowing. The weather is nice today.</span>
+        <span class="turkish">Bak! Kar yağıyor. Bugün hava güzel.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Take your umbrella. Wear your coat.</span>
+        <span class="turkish">Şemsiyeni al. Paltonu giy.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Open the window, please. I love sunny weather.</span>
+        <span class="turkish">Lütfen pencereyi aç. Güneşli havayı severim.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <p><strong>Hava Durumunu Sormak:</strong> <em>How is the weather?</em> (Hava nasıl?)</p>
+        
+        <strong>Kelime Türetme (-y eki):</strong>
+        <table class="weather-table">
+            <tr><td>Sun (Güneş)</td><td>➔</td><td><strong>Sunny</strong> (Güneşli)</td></tr>
+            <tr><td>Rain (Yağmur)</td><td>➔</td><td><strong>Rainy</strong> (Yağmurlu)</td></tr>
+            <tr><td>Snow (Kar)</td><td>➔</td><td><strong>Snowy</strong> (Karlı)</td></tr>
+            <tr><td>Wind (Rüzgar)</td><td>➔</td><td><strong>Windy</strong> (Rüzgarlı)</td></tr>
+        </table>
+
+        <p><strong>Sıcaklık:</strong> Hot (Sıcak) > Warm (Ilık) > Cool (Serin) > Cold (Soğuk)</p>
+        <p><strong>Tavsiyeler:</strong> <em>Take your umbrella</em> (Şemsiyeni al), <em>Wear your coat</em> (Paltonu giy).</p>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 3. Ünite: People I Love</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fdf0ff; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(128, 0, 128, 0.1); 
+            border: 1px solid #e1bee7;
+        }
+        h1 {
+            color: #6a1b9a;
+            text-align: center;
+            border-bottom: 3px dashed #ba68c8;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #8e24aa;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #ff9800;
+            background-color: #fff9f0;
+        }
+        .sentence-box:hover {
+            background-color: #fff3e0;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #4a148c;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #f3e5f5;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #ce93d8;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #6a1b9a;
+        }
+        .adjectives-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .adjectives-table td {
+            padding: 5px;
+            border-bottom: 1px solid #e1bee7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 3: People I Love (Sevdiğim Kişiler)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is my friend. She is beautiful.</span>
+        <span class="turkish">O benim arkadaşım. O güzeldir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is tall. She is short.</span>
+        <span class="turkish">O uzundur. O kısadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My father is strong. I am young.</span>
+        <span class="turkish">Babam güçlüdür. Ben gencim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is old. My brother is thin. He is fat.</span>
+        <span class="turkish">O yaşlıdır. Erkek kardeşim zayıftır. O şişmandır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have got short hair. She has got long hair.</span>
+        <span class="turkish">Ben kısa saça sahibim. O uzun saça sahiptir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I can run fast. Can you swim?</span>
+        <span class="turkish">Hızlı koşabilirim. Yüzebilir misin?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Yes, I can. / No, I can't.</span>
+        <span class="turkish">Evet, yapabilirim. / Hayır, yapamam.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She can dance. He can't fly.</span>
+        <span class="turkish">O dans edebilir. O uçamaz.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I love my sister. She is happy. Look at this boy!</span>
+        <span class="turkish">Kız kardeşimi seviyorum. O mutludur. Bu çocuğa bak!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <p><strong>Can / Can't:</strong> Yeteneklerimizi anlatırken "can" (yapabilirim), yapamadıklarımız için "can't" (yapamam) kullanırız.</p>
+        <p><strong>Have/Has got:</strong> Sahip olduğumuz özellikleri (saç, göz rengi) söylerken kullanırız.</p>
+        
+        <strong>Zıt Sıfatlar:</strong>
+        <table class="adjectives-table">
+            <tr><td>Tall (Uzun)</td><td>↔</td><td>Short (Kısa)</td></tr>
+            <tr><td>Old (Yaşlı)</td><td>↔</td><td>Young (Genç)</td></tr>
+            <tr><td>Fat (Şişman)</td><td>↔</td><td>Thin (Zayıf)</td></tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

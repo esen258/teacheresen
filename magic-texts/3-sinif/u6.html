@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 6. Ünite: My House</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fdf5e6; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.15); 
+            border: 1px solid #deb887;
+        }
+        h1 {
+            color: #8b4513;
+            text-align: center;
+            border-bottom: 3px dashed #cd853f;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #a0522d;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #cd853f;
+            background-color: #fffaf0;
+        }
+        .sentence-box:hover {
+            background-color: #f5deb3;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #5d4037;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #faf0e6;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #d2b48c;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #8b4513;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #3e2723;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 6: My House (Benim Evim)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my house. It is very beautiful.</span>
+        <span class="turkish">Bu benim evim. O çok güzeldir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the cat? It is in the living room.</span>
+        <span class="turkish">Kedi nerede? O oturma odasında.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My mother is in the kitchen. She is cooking.</span>
+        <span class="turkish">Annem mutfakta. O yemek pişiriyor.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The soap is in the bathroom.</span>
+        <span class="turkish">Sabun banyodadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I sleep in my bedroom. My bed is soft.</span>
+        <span class="turkish">Yatak odamda uyurum. Yatağım yumuşaktır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The ball is under the chair.</span>
+        <span class="turkish">Top sandalyenin altındadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The book is on the table.</span>
+        <span class="turkish">Kitap masanın üstündedir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The dog is behind the door.</span>
+        <span class="turkish">Köpek kapının arkasındadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The garage is next to the house.</span>
+        <span class="turkish">Garaj evin yanındadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is in the garden. He is playing.</span>
+        <span class="turkish">O bahçede. O oyun oynuyor.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Rooms (Odalar):</strong> Living room (Oturma odası), Kitchen (Mutfak), Bathroom (Banyo), Bedroom (Yatak odası), Garden (Bahçe).</li>
+            <li><strong>Where is...?:</strong> Bir nesnenin veya kişinin yerini sorarken "Nerede?" anlamında kullanılır.</li>
+            <li><strong>Prepositions (Yer Bildiren Kelimeler):</strong> 
+                <strong>In</strong> (İçinde), <strong>On</strong> (Üstünde), <strong>Under</strong> (Altında), 
+                <strong>Behind</strong> (Arkasında), <strong>Next to</strong> (Yanında).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

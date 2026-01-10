@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 2. Ünite: My Family</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f9f2; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(46, 139, 87, 0.15); 
+            border: 1px solid #c8e6c9;
+        }
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+            border-bottom: 3px dashed #81c784;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #388e3c;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #fb8c00;
+            background-color: #fffaf0;
+        }
+        .sentence-box:hover {
+            background-color: #fff3e0;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #bf360c;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .grammar-note {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid #a5d6a7;
+        }
+        .grammar-note h3 {
+            margin-top: 0;
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+        .grammar-note ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #1b5e20;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 2: My Family (Benim Ailem)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Meet my family!</span>
+        <span class="turkish">Ailemle tanış!</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my family.</span>
+        <span class="turkish">Bu benim ailem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is he? - He is my father.</span>
+        <span class="turkish">O (erkek) kim? - O benim babam.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is she? - She is my mother.</span>
+        <span class="turkish">O (kadın) kim? - O benim annem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my brother and this is my sister.</span>
+        <span class="turkish">Bu benim erkek kardeşim ve bu benim kız kardeşim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is my grandfather. She is my grandmother.</span>
+        <span class="turkish">O benim büyükbabam. O benim büyükannem.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is she your aunt? - Yes, she is.</span>
+        <span class="turkish">O senin halan/teyzen mi? - Evet, öyle.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is he your uncle? - No, he isn't.</span>
+        <span class="turkish">O senin amcan/dayın mı? - Hayır, değil.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my cousin.</span>
+        <span class="turkish">Bu benim kuzenim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She is a doctor. He is a teacher.</span>
+        <span class="turkish">O bir doktor. O bir öğretmen.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How many people are there? - There are four people.</span>
+        <span class="turkish">Kaç kişi var? - Dört kişi var.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I love my family.</span>
+        <span class="turkish">Ailemi seviyorum.</span>
+    </div>
+
+    <div class="grammar-note">
+        <h3>💡 Öğretici Notlar:</h3>
+        <ul>
+            <li><strong>He:</strong> Erkekler için "O" demektir.</li>
+            <li><strong>She:</strong> Kadınlar için "O" demektir.</li>
+            <li><strong>This is:</strong> Yakındaki birini tanıtırken "Bu..." anlamında kullanılır.</li>
+            <li><strong>My / Your:</strong> Benim / Senin anlamlarına gelir.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

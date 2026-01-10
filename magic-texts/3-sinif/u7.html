@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 7. Ünite: In My City</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #eef2f3; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15); 
+            border: 1px solid #cfd8dc;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px dashed #3498db;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #34495e;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #3498db;
+            background-color: #f8fbff;
+        }
+        .sentence-box:hover {
+            background-color: #e3f2fd;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1565c0;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #e1f5fe;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #b3e5fc;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #0277bd;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #01579b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 7: In My City (Şehrimde)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">This is my city. Excuse me, where is the school?</span>
+        <span class="turkish">Bu benim şehrim. Affedersiniz, okul nerede?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The school is here. The park is over there.</span>
+        <span class="turkish">Okul burada. Park orada / şurada.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am at the hospital. Is there a bank near here?</span>
+        <span class="turkish">Ben hastanedeyim. Buralarda yakınlarda bir banka var mı?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The library is next to the cafe.</span>
+        <span class="turkish">Kütüphane kafenin bitişiğindedir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The cinema is behind the shopping centre.</span>
+        <span class="turkish">Sinema, alışveriş merkezinin arkasındadır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The toy shop is next to the school.</span>
+        <span class="turkish">Oyuncakçı okulun bitişiğindedir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There is a big museum in the city. The mosque is beautiful.</span>
+        <span class="turkish">Şehirde büyük bir müze var. Cami çok güzel.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is Ali? He is at the zoo.</span>
+        <span class="turkish">Ali nerede? O, hayvanat bahçesinde.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Look! The bus is at the bus stop.</span>
+        <span class="turkish">Bak! Otobüs durakta.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I read books at the library. I love my city.</span>
+        <span class="turkish">Kütüphanede kitap okurum. Şehrimi seviyorum.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Where:</strong> "Nerede?" demektir. Bir yerin konumunu öğrenmek için sorulur.</li>
+            <li><strong>Places (Mekanlar):</strong> Hospital (Hastane), Library (Kütüphane), Shopping Centre (AVM), Pharmacy (Eczane).</li>
+            <li><strong>Prepositions:</strong> <strong>Next to</strong> (Bitişiğinde), <strong>Near</strong> (Yakınında), <strong>Behind</strong> (Arkasında).</li>
+            <li><strong>There is:</strong> "Var" demektir. Tekil nesneler için kullanılır. (There is a bank.)</li>
+            <li><strong>Excuse me:</strong> Kibarlık için "Affedersiniz" anlamında söze başlarken kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 10. Ünite: Nature</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f8e9; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15); 
+            border: 1px solid #c5e1a5;
+        }
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+            border-bottom: 3px dashed #81c784;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #558b2f;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #4caf50;
+            background-color: #f9fdf9;
+        }
+        .sentence-box:hover {
+            background-color: #e8f5e9;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1b5e20;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #388e3c;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #aed581;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #33691e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 10: Nature (Doğa)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Look at the ladybug! Look! A beautiful butterfly.</span>
+        <span class="turkish">Uğur böceğine bak! Bak! Güzel bir kelebek.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The elephant is very big. The snake is long.</span>
+        <span class="turkish">Fil çok büyüktür. Yılan uzundur.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The turtle is very slow. The horse is fast.</span>
+        <span class="turkish">Kaplumbağa çok yavaştır. At hızlıdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the bee? The bird is in the sky.</span>
+        <span class="turkish">Arı nerede? Kuş gökyüzündedir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The shark is in the sea. I like dolphins.</span>
+        <span class="turkish">Köpek balığı denizdedir. Yunusları severim.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is it a whale? - Yes, it is. Are there any ducks?</span>
+        <span class="turkish">O bir balina mı? - Evet, öyle. Hiç ördek var mı?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The monkey is on the tree. The rabbit likes carrots.</span>
+        <span class="turkish">Maymun ağacın üstündedir. Tavşan havucu sever.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A parrot can speak. A fish can swim.</span>
+        <span class="turkish">Bir papağan konuşabilir. Bir balık yüzebilir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The frog can jump. A lion can't fly.</span>
+        <span class="turkish">Kurbağa zıplayabilir. Bir aslan uçamaz.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I love nature.</span>
+        <span class="turkish">Doğayı seviyorum.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>Nature Vocabulary:</strong> Ladybug (Uğur böceği), Whale (Balina), Shark (Köpek balığı), Frog (Kurbağa), Bee (Arı).</li>
+            <li><strong>Can / Can't:</strong> Hayvanların yeteneklerini söylerken kullanılır. <em>A bird can fly</em> (Kuş uçabilir), <em>A lion can't fly</em> (Aslan uçamaz).</li>
+            <li><strong>Prepositions:</strong> Hayvanların nerede olduğunu belirtir: <em>In the sea</em> (Denizde), <em>On the tree</em> (Ağaçta).</li>
+            <li><strong>Is it...?:</strong> "O ... mı?" diye sormak ve hayvanı tanımak için kullanılır.</li>
+            <li><strong>Adjectives (Sıfatlar):</strong> <em>Fast</em> (Hızlı), <em>Slow</em> (Yavaş), <em>Big</em> (Büyük), <em>Long</em> (Uzun).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

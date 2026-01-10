@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Sınıf 8. Ünite: Transportation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #eceff1; 
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 650px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(52, 73, 94, 0.2); 
+            border: 1px solid #b0bec5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px dashed #34495e;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #546e7a;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 6px solid #f1c40f;
+            background-color: #fafafa;
+        }
+        .sentence-box:hover {
+            background-color: #fff9c4;
+            transform: translateX(8px);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2e7d32;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #e8eaf6;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 1px solid #c5cae9;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1a237e;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #283593;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unit 8: Transportation (Ulaşım)</h1>
+    <p class="instruction">✨ Türkçesini görmek için cümlelerin üzerine tıkla! ✨</p>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How can I go to İstanbul? - You can go by plane.</span>
+        <span class="turkish">İstanbul'a nasıl gidebiliririm? - Uçakla gidebilirsin.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How can I go to the park? - Take the bus.</span>
+        <span class="turkish">Parka nasıl gidebilirim? - Otobüse bin.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The car is on the road. The boat is on the sea.</span>
+        <span class="turkish">Araba yoldadır. Bot / Tekne denizdedir.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the train? - It is at the station.</span>
+        <span class="turkish">Tren nerede? - O, istasyonda.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The helicopter is in the sky. The plane is very fast.</span>
+        <span class="turkish">Helikopter gökyüzündedir. Uçak çok hızlıdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Look at the yellow taxi! A motorbike is fast.</span>
+        <span class="turkish">Sarı taksiye bak! Motosiklet hızlıdır.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is it a truck? - Yes, it is. The ship is big.</span>
+        <span class="turkish">Bu bir kamyon mu? - Evet, öyle. Gemi büyüktür.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like riding a bike. The bicycle is small.</span>
+        <span class="turkish">Bisiklete binmeyi severim. Bisiklet küçüktür.</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He goes to school by bus. I have got a blue car.</span>
+        <span class="turkish">O, okula otobüsle gider. Benim mavi bir arabam var.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Study Notes (Ders Notları)</h3>
+        <ul>
+            <li><strong>How can I go?:</strong> "Nasıl gidebilirim?" demektir. Gidiş yolunu sormak için kullanılır.</li>
+            <li><strong>By + Araç:</strong> Vasıtaları söylerken kullanılır. <em>By bus</em> (Otobüsle), <em>By plane</em> (Uçakla).</li>
+            <li><strong>On Foot:</strong> Yürüyerek gitmek demektir (İstisna: 'By' kullanılmaz).</li>
+            <li><strong>Mekanlar:</strong> <em>In the sky</em> (Gökyüzünde), <em>On the sea</em> (Denizde), <em>On the road</em> (Yolda).</li>
+            <li><strong>Sıfatlar:</strong> <strong>Fast</strong> (Hızlı) ↔ <strong>Slow</strong> (Yavaş).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        if (turkishText.style.display === "block") {
+            turkishText.style.display = "none";
+        } else {
+            turkishText.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
