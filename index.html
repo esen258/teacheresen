@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Teacher Esen | ENGLISH TEST PORTAL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: radial-gradient(circle at top, #1d3557 0%, #0a1128 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #f1faee;
+        }
+
+        .brand-container { text-align: center; margin-bottom: 40px; }
+        .teacher-esen-title { font-size: 2.8rem; color: #ffbe0b; margin: 0; text-transform: uppercase; letter-spacing: 3px; }
+        .portal-subtitle { font-size: 1rem; color: #a8dadc; letter-spacing: 4px; text-transform: uppercase; }
+
+        .category-section {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #ffbe0b;
+            border-bottom: 2px solid #ffbe0b;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .class-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .class-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ffbe0b;
+            transform: translateY(-5px);
+        }
+
+        .class-link h2 { font-size: 1.8rem; margin: 0; color: #f1faee; }
+        .class-link span { font-size: 0.75rem; color: #ffbe0b; font-weight: 600; letter-spacing: 1px; }
+
+        /* FOOTER VE WHATSAPP TASARIMI */
+        .footer { 
+            margin-top: auto; 
+            padding: 40px 20px; 
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(168, 218, 220, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-text {
+            display: block;
+            font-size: 1.1rem;
+            color: #a8dadc;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: #25d366; /* WhatsApp Yeşili */
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            background: #20ba5a;
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-btn i {
+            margin-right: 12px;
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: 768px) { 
+            .portal-grid { grid-template-columns: repeat(2, 1fr); }
+            .teacher-esen-title { font-size: 2rem; }
+            .contact-info-text { font-size: 1rem; }
+            .contact-btn { font-size: 1.1rem; padding: 12px 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="brand-container">
+        <h1 class="teacher-esen-title">Teacher Esen</h1>
+        <div class="portal-subtitle">ENGLISH TEST PORTAL</div>
+    </header>
+
+    <section class="category-section">
+        <h2 class="category-title">WORD TESTS</h2>
+        <div class="portal-grid">
+            <a href="./word-tests/3-sinif/index.html" class="class-link"><h2>3</h2><span>SINIF</span></a>
+            <a href="./word-tests/4-sinif/index.html" class="class-link"><h2>4</h2><span>SINIF</span></a>
+            <a href="./word-tests/5-sinif/index.html" class="class-link"><h2>5</h2><span>SINIF</span></a>
+            <a href="./word-tests/6-sinif/index.html" class="class-link"><h2>6</h2><span>SINIF</span></a>
+            <a href="./word-tests/7-sinif/index.html" class="class-link"><h2>7</h2><span>SINIF</span></a>
+            <a href="./word-tests/8-sinif/index.html" class="class-link"><h2>8</h2><span>SINIF</span></a>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <h2 class="category-title">UNIT TESTS</h2>
+        <div class="portal-grid">
+            <a href="./unit-tests/3-sinif/index.html" class="class-link"><h2>3</h2><span>SINIF</span></a>
+            <a href="./unit-tests/4-sinif/index.html" class="class-link"><h2>4</h2><span>SINIF</span></a>
+            <a href="./unit-tests/5-sinif/index.html" class="class-link"><h2>5</h2><span>SINIF</span></a>
+            <a href="./unit-tests/6-sinif/index.html" class="class-link"><h2>6</h2><span>SINIF</span></a>
+            <a href="./unit-tests/7-sinif/index.html" class="class-link"><h2>7</h2><span>SINIF</span></a>
+            <a href="./unit-tests/8-sinif/index.html" class="class-link"><h2>8</h2><span>SINIF</span></a>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <h2 class="category-title">MAGIC TEXTS</h2>
+        <div class="portal-grid">
+            <a href="./magic-texts/3-sinif/index.html" class="class-link"><h2>3</h2><span>SINIF</span></a>
+            <a href="./magic-texts/4-sinif/index.html" class="class-link"><h2>4</h2><span>SINIF</span></a>
+            <a href="./magic-texts/5-sinif/index.html" class="class-link"><h2>5</h2><span>SINIF</span></a>
+            <a href="./magic-texts/6-sinif/index.html" class="class-link"><h2>6</h2><span>SINIF</span></a>
+            <a href="./magic-texts/7-sinif/index.html" class="class-link"><h2>7</h2><span>SINIF</span></a>
+            <a href="./magic-texts/8-sinif/index.html" class="class-link"><h2>8</h2><span>SINIF</span></a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="contact-card">
+            <span class="contact-info-text">İngilizce Özel Ders Talepleri, Tavsiye ve İletişim için</span>
+            <a href="https://wa.me/905304773073" target="_blank" class="contact-btn">
+                <i class="fab fa-whatsapp"></i> 0530 477 30 73
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
