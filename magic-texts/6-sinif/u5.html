@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 5. Ünite: At The Fair</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #2c003e; 
+            color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #3d0066;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2); 
+            border: 2px solid #ff00ff;
+        }
+        h1 {
+            color: #00f2ff;
+            text-align: center;
+            border-bottom: 4px dashed #ff00ff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px #000;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #ff00ff;
+            padding: 12px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #00f2ff;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 15px 22px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #5d0096;
+            background-color: #4d0080;
+        }
+        .sentence-box:hover {
+            background-color: #6a00b3;
+            transform: scale(1.03);
+            border-color: #00f2ff;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #00f2ff;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #1a002e;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 45px;
+            border: 1px solid #ff00ff;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #ff00ff;
+            border-bottom: 2px solid #00f2ff;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #00f2ff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5. Ünite: At The Fair</h1>
+    <p class="instruction">🎡 Lunapark eğlencesine katılmak için cümlelere tıkla! 🎢</p>
+
+    <h2>Fair Rides (Lunapark Oyuncakları)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am at the fair. The fair is amazing. Look at the ghost train!</span>
+        <span class="turkish">Lunaparktayım. Lunapark harika. Korku trenine bak!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The roller coaster is fast. I love the carousel. The bumper cars are fun.</span>
+        <span class="turkish">Hızlı tren hızlıdır. Atlıkarıncayı severim. Çarpışan arabalar eğlencelidir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The Ferris wheel is big. I want to ride the big wheel.</span>
+        <span class="turkish">Dönme dolap büyüktür. Büyük tekerleğe (dönme dolaba) binmek istiyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The hall of mirrors is funny. The wave swinger is high.</span>
+        <span class="turkish">Aynalar koridoru komiktir. Sandalye salıncak yüksektir.</span>
+    </div>
+
+    <h2>Expressing Feelings & Opinions (Duygular ve Fikirler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I think it is exciting. I think it is boring or dull.</span>
+        <span class="turkish">Bence heyecan verici. Bence sıkıcı veya yavaş/donuk.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel happy here. I am scared of the ghost train.</span>
+        <span class="turkish">Burada mutlu hissediyorum. Korku treninden korkarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Bumper cars are thrilling. The roller coaster is fantastic.</span>
+        <span class="turkish">Çarpışan arabalar heyecan verici. Hızlı tren şahane.</span>
+    </div>
+
+    <h2>Agreeing & Disagreeing (Katılma ve Katılmama)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I agree with you. I disagree with you. I don't think so.</span>
+        <span class="turkish">Sana katılıyorum. Sana katılmıyorum. Öyle düşünmüyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">That's right. You are right. I think you are wrong.</span>
+        <span class="turkish">Bu doğru. Haklısın. Bence yanılıyorsun.</span>
+    </div>
+
+    <h2>Buying Tickets & Conversations (Bilet ve Konuşmalar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can I have a ticket? How much is one ticket? It is 5 TL.</span>
+        <span class="turkish">Bir bilet alabilir miyim? Bir bilet ne kadar? 5 Türk Lirası.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How many tickets do you want? I want three tickets, please.</span>
+        <span class="turkish">Kaç tane bilet istiyorsun? Üç bilet istiyorum lütfen.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What about the ghost train? - I am sorry, I can't. I am too scared.</span>
+        <span class="turkish">Peki ya korku treni? - Üzgünüm, yapamam. Çok korkuyorum.</span>
+    </div>
+
+    <h2>Actions & Describing Rides (Eylemler ve Betimleme)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The roller coaster is more exciting. Bumper cars are better than others.</span>
+        <span class="turkish">Hızlı tren daha heyecan verici. Çarpışan arabalar diğerlerinden daha iyi.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">They are eating cotton candy. I am eating a toffee apple.</span>
+        <span class="turkish">Pamuk şeker yiyorlar. Ben elma şekeri yiyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Which ride do you prefer? Do you want some popcorn?</span>
+        <span class="turkish">Hangi oyuncağı tercih edersin? Biraz mısır ister misin?</span>
+    </div>
+
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Welcome to the carnival! Have a good time. See you at the fair.</span>
+        <span class="turkish">Karnavala hoş geldiniz! İyi vakit geçirin. Lunaparkta görüşürüz.</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (At The Fair Ünitesi)</h3>
+        <ul>
+            <li><strong>Fikir Belirtme:</strong> Bir konuda fikrimizi söylerken <strong>"I think..."</strong> (Bence) kalıbını kullanırız.</li>
+            <li><strong>Katılma/Katılmama:</strong> Birine katılıyorsak <strong>"I agree"</strong>, katılmıyorsak <strong>"I disagree"</strong> deriz.</li>
+            <li><strong>Sıfatlar:</strong> 
+                <strong>Exciting:</strong> Heyecan verici, 
+                <strong>Boring:</strong> Sıkıcı, 
+                <strong>Scary:</strong> Korkutucu, 
+                <strong>Thrilling:</strong> Nefes kesici.
+            </li>
+            <li><strong>Oyuncaklar:</strong>
+                <strong>Bumper Cars:</strong> Çarpışan arabalar, 
+                <strong>Ferris Wheel:</strong> Dönme dolap, 
+                <strong>Carousel:</strong> Atlıkarınca.
+            </li>
+            <li><strong>Fiyat Sorma:</strong> Bir şeyin fiyatını <strong>"How much is it?"</strong> diyerek sorarız.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

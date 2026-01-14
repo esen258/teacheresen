@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 4. Ünite: Weather and Emotions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8; 
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(116, 185, 255, 0.3); 
+            border: 1px solid #dfe6e9;
+        }
+        h1 {
+            color: #0984e3;
+            text-align: center;
+            border-bottom: 4px solid #fdcb6e;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #74b9ff;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #fdcb6e;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #fdcb6e;
+            background-color: #fbfbfb;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.03);
+        }
+        .sentence-box:hover {
+            background-color: #edf2f7;
+            transform: translateX(10px);
+            border-left-color: #0984e3;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #0984e3;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fdfdfd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #dfe6e9;
+            border-top: 5px solid #fdcb6e;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #0984e3;
+            border-bottom: 2px solid #74b9ff;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #2d3436;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #d63031; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4. Ünite: Weather and Emotions</h1>
+    <p class="instruction">🌦️ Hava durumunu ve duyguları öğrenmek için cümlelere tıkla! 😊</p>
+
+    <h2>The Weather (Hava Durumu)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The sun is shining. It is sunny today. It is a rainy day.</span>
+        <span class="turkish">Güneş parlıyor. Bugün hava güneşli. Yağmurlu bir gün.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is snowing now. The weather is cold and very hot.</span>
+        <span class="turkish">Şu an kar yağıyor. Hava soğuk ve çok sıcak.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is cloudy. The sky is grey. It is windy today.</span>
+        <span class="turkish">Hava bulutlu. Gökyüzü gri. Bugün hava rüzgarlı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is a foggy morning. It is stormy. Look! It is hailing.</span>
+        <span class="turkish">Sisli bir sabah. Hava fırtınalı. Bak! Dolu yağıyor.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The weather is warm. It is cool in autumn. It is freezing outside.</span>
+        <span class="turkish">Hava ılık. Sonbaharda hava serindir. Dışarısı dondurucu.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The wind is blowing. I like snowy weather. I don't like rain.</span>
+        <span class="turkish">Rüzgar esiyor. Karlı havayı severim. Yağmuru sevmem.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is dry in the desert. It is humid today.</span>
+        <span class="turkish">Çölde hava kurudur. Bugün hava nemli.</span>
+    </div>
+
+    <h2>Emotions - How do you feel? (Duygular)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am happy. She is sad. He is very angry.</span>
+        <span class="turkish">Mutluyum. O üzgün. O çok kızgın.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel energetic. My sister is scared. Are you bored?</span>
+        <span class="turkish">Enerjik hissediyorum. Kız kardeşim korkmuş. Sıkıldın mı?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am surprised. He feels sleepy. She is anxious.</span>
+        <span class="turkish">Şaşırdım. O uykulu hissediyor. O endişeli.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel moody today. The baby is cheerful. Don't be upset.</span>
+        <span class="turkish">Bugün huysuz hissediyorum. Bebek neşeli. Üzülme.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am excited. They are nervous. I feel lonely.</span>
+        <span class="turkish">Heyecanlıyım. Onlar gergin/endişeli. Yalnız hissediyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We are thirsty. He is hungry. I feel tired. She is shy. We are brave.</span>
+        <span class="turkish">Susadık. O aç. Yorgun hissediyorum. O utangaç. Biz cesuruz.</span>
+    </div>
+
+    <h2>Weather and Emotions Together (Hava ve Duygular)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel happy on sunny days. She feels sad in rainy weather.</span>
+        <span class="turkish">Güneşli günlerde mutlu hissederim. O yağmurlu havada üzgün hisseder.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am scared of lightning. He feels sleepy when it is cloudy.</span>
+        <span class="turkish">Şimşekten korkarım. Hava bulutlu olduğunda o uykulu hisseder.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We are excited about the snow. Thunder makes me nervous.</span>
+        <span class="turkish">Kar için heyecanlıyız. Gök gürültüsü beni gergin yapar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I feel moody in foggy weather. Hot weather makes me tired.</span>
+        <span class="turkish">Sisli havada huysuz hissederim. Sıcak hava beni yorar.</span>
+    </div>
+
+    <h2>Temperature and Questions (Sıcaklık ve Sorular)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is the weather like? How is the weather today?</span>
+        <span class="turkish">Hava nasıl? Bugün hava nasıl?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is 25 degrees Celsius. What's the temperature? It is below zero.</span>
+        <span class="turkish">Hava 25 santigrat derece. Sıcaklık kaç? Sıfırın altında.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is it sunny in Antalya? Do you like lightning? How do you feel?</span>
+        <span class="turkish">Antalya'da hava güneşli mi? Şimşeği sever misin? Nasıl hissediyorsun?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What is your favorite weather? Are you scared of storms? Why are you sad?</span>
+        <span class="turkish">Favori hava durumun nedir? Fırtınalardan korkar mısın? Neden üzgünsün?</span>
+    </div>
+
+    <h2>Activities in Different Weather (Aktiviteler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Take your umbrella. Wear your sunglasses. Put on your coat.</span>
+        <span class="turkish">Şemsiyeni al. Güneş gözlüğünü tak. Kabanını giy.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Don't forget your gloves. Let's play in the snow. Can we go swimming?</span>
+        <span class="turkish">Eldivenlerini unutma. Hadi karda oynayalım. Yüzmeye gidebilir miyiz?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Fly a kite in windy weather. The weather is perfect for a walk.</span>
+        <span class="turkish">Rüzgarlı havada uçurtma uçur. Hava bir yürüyüş için mükemmel.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The kids are making a snowman. Drink water in hot weather.</span>
+        <span class="turkish">Çocuklar kardan adam yapıyorlar. Sıcak havada su iç.</span>
+    </div>
+
+    <h2>Descriptive & General Phrases (Betimlemeler ve Genel)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The park is beautiful in spring. Summer is my favorite season.</span>
+        <span class="turkish">Park ilkbaharda güzeldir. Yaz benim favori mevsimimdir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There is a rainbow. The sun is behind the clouds. The street is wet.</span>
+        <span class="turkish">Bir gökkuşağı var. Güneş bulutların arkasında. Sokak ıslak.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Watch out! It is slippery. The weather is changing. See you on a sunny day!</span>
+        <span class="turkish">Dikkat et! Yerler kaygan. Hava değişiyor. Güneşli bir günde görüşürüz!</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Weather and Emotions Ünitesi)</h3>
+        <ul>
+            <li><strong>Hava Durumunu Sorma:</strong> "What is the weather like?" veya "How is the weather?" kullanılır. Cevap her zaman "It is..." ile başlar.</li>
+            <li><strong>Duyguları İfade Etme:</strong> "I feel happy" veya "I am happy" denilebilir. "He/She/It" öznelerinde "feels" kullanılır.</li>
+            <li><strong>Sıcaklık:</strong> Sıcaklık belirtirken "degrees Celsius" kullanılır. Sıfırın altı için "below zero" denir.</li>
+            <li><strong>Mevsimler:</strong> Spring (İlkbahar), Summer (Yaz), Autumn/Fall (Sonbahar), Winter (Kış).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

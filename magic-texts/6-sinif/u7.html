@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 7. Ünite: Holidays</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #e0f7fa; 
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 151, 167, 0.2); 
+            border: 1px solid #b2ebf2;
+        }
+        h1 {
+            color: #00838f;
+            text-align: center;
+            border-bottom: 4px solid #ffd54f;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #0097a7;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #ffd54f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #546e7a;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #ffd54f;
+            background-color: #fdfdfd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+        .sentence-box:hover {
+            background-color: #e0f2f1;
+            transform: translateX(8px);
+            border-left-color: #00838f;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #00796b;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff9e6;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ffeeba;
+            border-top: 5px solid #ffd54f;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #00838f;
+            border-bottom: 2px solid #00838f;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #444;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #d35400; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7. Ünite: Holidays</h1>
+    <p class="instruction">🏖️ Tatil anılarını keşfetmek için cümlelere tıkla! 📸</p>
+
+    <h2>Holiday Types & Places (Tatil Türleri ve Yerler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am on holiday. It was a great holiday. We went to the seaside.</span>
+        <span class="turkish">Tatildeyim. Harika bir tatildi. Deniz kenarına gittik.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">They visited a museum. She stayed in a tent. We stayed in a hotel.</span>
+        <span class="turkish">Onlar bir müze ziyaret etti. O bir çadırda kaldı. Biz bir otelde kaldık.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He visited his grandparents. The lake was very beautiful.</span>
+        <span class="turkish">Büyükbabasını ve büyükannesini ziyaret etti. Göl çok güzeldi.</span>
+    </div>
+
+    <h2>Summer Activities (Yaz Aktiviteleri)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I swam in the sea and she made a sandcastle.</span>
+        <span class="turkish">Denizde yüzdüm ve o kumdan kale yaptı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We sunbathed on the beach. They went boat trips.</span>
+        <span class="turkish">Plajda güneşlendik. Onlar tekne turlarına çıktı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I learned swimming and she collected sea shells.</span>
+        <span class="turkish">Yüzmeyi öğrendim ve o deniz kabuğu topladı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He caught a big fish. We ate ice cream. I enjoyed the sun.</span>
+        <span class="turkish">Büyük bir balık yakaladı. Dondurma yedik. Güneşin tadını çıkardım.</span>
+    </div>
+
+    <h2>Winter & Nature Activities (Kış ve Doğa Aktiviteleri)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We went skiing. He played with snowballs and she made a snowman.</span>
+        <span class="turkish">Kayak yapmaya gittik. O kar topuyla oynadı ve o kardan adam yaptı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I learned snowboarding. We stayed in a forest hut.</span>
+        <span class="turkish">Snowboard yapmayı öğrendim. Bir orman kulübesinde kaldık.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I went trekking in the mountains. He made a campfire.</span>
+        <span class="turkish">Dağlarda doğa yürüyüşüne çıktım. O bir kamp ateşi yaktı.</span>
+    </div>
+
+    <h2>Past Experiences & Opinions (Geçmiş Deneyimler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I visited Topkapı Palace and we took many photos.</span>
+        <span class="turkish">Topkapı Sarayı'nı ziyaret ettim ve pek çok fotoğraf çektik.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He bought some souvenirs and she tried traditional food.</span>
+        <span class="turkish">Hediyelik eşyalar aldı ve o geleneksel yemekleri denedi.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The holiday was fantastic. The food was delicious.</span>
+        <span class="turkish">Tatil şahaneydi. Yemekler lezzetliydi.</span>
+    </div>
+
+    <h2>Questions & Answers (Sorular ve Cevaplar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where did you go? - I went to Muğla. Did you swim? - Yes, I did.</span>
+        <span class="turkish">Nereye gittin? - Muğla'ya gittim. Yüzdün mü? - Evet, yüzdüm.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">How was your holiday? - It was amazing. Who did you go with?</span>
+        <span class="turkish">Tatilin nasıldı? - Şahaneydi. Kiminle gittin?</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Holidays Ünitesi)</h3>
+        <ul>
+            <li><strong>Geçmiş Zaman (Simple Past):</strong> Geçmişteki eylemler için kullanılır. 
+                <ul>
+                    <li>Düzenli fiiller <strong>-ed</strong> alır: <em>visited, stayed, played.</em></li>
+                    <li>Düzensiz fiiller değişir: <strong>go &rarr; went, swim &rarr; swam, eat &rarr; ate.</strong></li>
+                </ul>
+            </li>
+            <li><strong>Soru ve Olumsuz:</strong> <strong>"DID"</strong> veya <strong>"DIDN'T"</strong> kullanıldığında fiil her zaman 1. (yalın) haline döner. <em>(I didn't go.)</em></li>
+            <li><strong>Was / Were:</strong> Eylem olmayan durum cümlelerinde kullanılır. <em>(It was sunny. We were happy.)</em></li>
+            <li><strong>Anahtar Kelimeler:</strong> 
+                <strong>Sightseeing:</strong> Gezi, 
+                <strong>Souvenir:</strong> Hediyelik eşya, 
+                <strong>Sandcastle:</strong> Kumdan kale.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

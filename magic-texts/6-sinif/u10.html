@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 10. Ünite: Democracy</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa; 
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #c0392b; /* Bayrak kırmızısı vurgu */
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px double #d4af37; /* Altın rengi detay */
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2980b9; /* Lacivert */
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #c0392b;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 4px solid #d4af37;
+            background-color: #ffffff;
+            border: 1px solid #eee;
+            border-left: 5px solid #d4af37;
+        }
+        .sentence-box:hover {
+            background-color: #f1f8ff;
+            transform: translateY(-2px);
+            border-color: #2980b9;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #c0392b;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff9f9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fadbd8;
+            border-top: 5px solid #c0392b;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #d4af37;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10. Ünite: Democracy</h1>
+    <p class="instruction">🗳️ Seçim sürecini ve demokratik hakları öğrenmek için tıklayın! ⚖️</p>
+
+    <h2>Elections & Candidates (Seçimler ve Adaylar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We have an election today. There are three candidates for presidency.</span>
+        <span class="turkish">Bugün bir seçimimiz var. Başkanlık için üç aday var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Who is your candidate for the class president? My friend, Ali, is a candidate.</span>
+        <span class="turkish">Sınıf başkanlığı için adayın kim? Arkadaşım Ali bir aday.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The candidates are giving speeches now. We should choose a fair leader.</span>
+        <span class="turkish">Adaylar şu an konuşma yapıyorlar. Adil bir lider seçmeliyiz.</span>
+    </div>
+
+    <h2>Voting Process (Oy Verme Süreci)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Everyone has one vote. Fold the paper carefully. Put your vote into the ballot box.</span>
+        <span class="turkish">Herkesin bir oy hakkı var. Kağıdı dikkatlice katla. Oyunu seçim sandığına at.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Voting is a secret process. We should respect everyone's choice.</span>
+        <span class="turkish">Oy verme gizli bir süreçtir. Herkesin seçimine saygı duymalıyız.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Wait in the line for your turn. Sign the paper after you vote.</span>
+        <span class="turkish">Sıran için kuyrukta bekle. Oy verdikten sonra kağıdı imzala.</span>
+    </div>
+
+    <h2>Democratic Rights & Rules (Haklar ve Kurallar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Democracy is important for everyone. We have equal rights.</span>
+        <span class="turkish">Demokrasi herkes için önemlidir. Eşit haklara sahibiz.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Everyone should express their opinions. Freedom of speech is essential.</span>
+        <span class="turkish">Herkes fikirlerini ifade etmeli. Konuşma özgürlüğü esastır.</span>
+    </div>
+
+    <h2>Steps of an Election (Bir Seçimin Adımları)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">First, determine the candidates. Second, start the election campaign.</span>
+        <span class="turkish">İlk olarak, adayları belirleyin. İkinci olarak, seçim kampanyasını başlatın.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Then, go to the polling booth. Finally, count the votes and announce the winner.</span>
+        <span class="turkish">Sonra, oy verme kabinine gidin. Son olarak, oyları sayın ve kazananı ilan edin.</span>
+    </div>
+
+    <h2>Election Results & Actions (Sonuçlar ve Eylemler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Ayşe is our new class president. She got twenty votes.</span>
+        <span class="turkish">Ayşe yeni sınıf başkanımız. Yirmi oy aldı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We congratulated our new president. She is a hard-working leader.</span>
+        <span class="turkish">Yeni başkanımızı tebrik ettik. O çalışkan bir liderdir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We are clapping for the new president. We love living in a democracy!</span>
+        <span class="turkish">Yeni başkan için alkışlıyoruz. Bir demokraside yaşamayı seviyoruz!</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Democracy Ünitesi)</h3>
+        <ul>
+            <li><strong>Temel Kelimeler:</strong> 
+                <strong>Election:</strong> Seçim, 
+                <strong>Vote:</strong> Oy vermek, 
+                <strong>Ballot Box:</strong> Seçim sandığı, 
+                <strong>Candidate:</strong> Aday.
+            </li>
+            <li><strong>Sıralama (Sequencing):</strong> Süreçleri anlatırken <strong>First</strong> (İlk), <strong>Second</strong> (İkinci), <strong>Then</strong> (Sonra) ve <strong>Finally</strong> (Son olarak) kullanılır.</li>
+            <li><strong>Demokratik Kavramlar:</strong> 
+                <strong>Equality:</strong> Eşitlik, 
+                <strong>Justice:</strong> Adalet, 
+                <strong>Right:</strong> Hak.
+            </li>
+            <li><strong>Should & Must:</strong> 
+                <em>Should</em> tavsiye (saygılı olmalısın), 
+                <em>Must</em> zorunluluk (kurallara uymalısın) için kullanılır.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

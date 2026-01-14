@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 3. Ünite: Downtown</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #eef2f7; 
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(52, 73, 94, 0.15); 
+            border: 1px solid #d5dbdb;
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 4px solid #34495e;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #34495e;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #3498db;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 15px 22px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .sentence-box:hover {
+            background-color: #ebf5fb;
+            transform: scale(1.02);
+            border-left-color: #2c3e50;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2980b9;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #f4f6f7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border-top: 5px solid #2c3e50;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #e67e22; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3. Ünite: Downtown</h1>
+    <p class="instruction">🏙️ Şehir hayatını keşfetmek için cümlelere tıkla! 🏘️</p>
+
+    <h2>City Life & Places (Şehir Hayatı ve Yerler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I live in a city. Downtown is very busy and crowded.</span>
+        <span class="turkish">Bir şehirde yaşıyorum. Şehir merkezi çok yoğun ve kalabalık.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">There are many skyscrapers. The bank is on the corner.</span>
+        <span class="turkish">Pek çok gökdelen var. Banka köşededir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The village is quiet and farm life is peaceful.</span>
+        <span class="turkish">Köy sessizdir ve çiftlik hayatı huzurludur.</span>
+    </div>
+
+    <h2>Comparatives (Karşılaştırmalar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The city is noisier than the village.</span>
+        <span class="turkish">Şehir köyden daha gürültülüdür.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A skyscraper is taller than a house.</span>
+        <span class="turkish">Bir gökdelen bir evden daha uzundur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Downtown is more exciting and cities are more expensive.</span>
+        <span class="turkish">Şehir merkezi daha heyecan vericidir ve şehirler daha pahalıdır.</span>
+    </div>
+
+    <h2>Present Continuous (Şimdiki Zaman)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am walking in the street. She is buying a newspaper.</span>
+        <span class="turkish">Sokakta yürüyorum. O bir gazete satın alıyor.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The children are running. Is it raining now?</span>
+        <span class="turkish">Çocuklar koşuyor. Şu an yağmur mu yağıyor?</span>
+    </div>
+
+    <h2>Asking & Giving Directions (Yönler ve Yerler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the museum? It is behind the school.</span>
+        <span class="turkish">Müze nerede? Okulun arkasındadır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Go straight ahead and turn left at the corner.</span>
+        <span class="turkish">Düz git ve köşeden sola dön.</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Downtown Ünitesi)</h3>
+        <ul>
+            <li><strong>Karşılaştırma (Comparatives):</strong> İki şeyi kıyaslarken <em>"than"</em> kullanılır.
+                <ul>
+                    <li>Kısa sıfatlarda: <strong>-er</strong> (Taller).</li>
+                    <li>Uzun sıfatlarda: <strong>more</strong> (More crowded).</li>
+                    <li>Sonu 'y' ile bitenlerde: <strong>-ier</strong> (Noisier).</li>
+                </ul>
+            </li>
+            <li><strong>Şimdiki Zaman (Present Continuous):</strong> Şu an yapılan işler için <strong>am/is/are + fiil + -ing</strong> formülü kullanılır.</li>
+            <li><strong>Yer Bildiren Kelimeler:</strong>
+                <ul>
+                    <li><strong>Next to:</strong> Yanında</li>
+                    <li><strong>Between:</strong> Arasında</li>
+                    <li><strong>Behind:</strong> Arkasında</li>
+                    <li><strong>In front of:</strong> Önünde</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

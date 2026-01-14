@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 2. Ünite: Yummy Breakfast</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fef9e7; 
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.2); 
+            border: 1px solid #f39c12;
+        }
+        h1 {
+            color: #d35400;
+            text-align: center;
+            border-bottom: 4px solid #27ae60;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #27ae60;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #d35400;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #f1c40f;
+            background-color: #fff;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        }
+        .sentence-box:hover {
+            background-color: #fdf2e9;
+            transform: translateX(10px);
+            border-left-color: #e67e22;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ddd;
+            border-top: 5px solid #27ae60;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d35400;
+            border-bottom: 2px solid #27ae60;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #34495e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #c0392b; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2. Ünite: Yummy Breakfast</h1>
+    <p class="instruction">🍳 Lezzetli bir kahvaltı için cümlelere tıkla! 🧀</p>
+
+    <h2>Breakfast Foods & Drinks (Kahvaltılıklar ve İçecekler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like cheese and I love olives. I eat eggs every morning.</span>
+        <span class="turkish">Peyniri severim ve zeytine bayılırım. Her sabah yumurta yerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Honey is sweet. Butter is yummy. I want some jam.</span>
+        <span class="turkish">Bal tatlıdır. Tereyağı lezzetlidir. Biraz reçel istiyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He eats cucumbers and tomatoes. She likes croissants.</span>
+        <span class="turkish">O salatalık ve domates yer. O kruvasan sever.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My father drinks tea. Milk is healthy. I don't like coffee.</span>
+        <span class="turkish">Babam çay içer. Süt sağlıklıdır. Kahve sevmem.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Pancakes are my favorite. I like sausages. Salami is not healthy.</span>
+        <span class="turkish">Pankekler benim favorimdir. Sosis severim. Salam sağlıklı değildir.</span>
+    </div>
+
+    <h2>Expressing Likes & Dislikes (Beğeni ve Tercihler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like junk food but I hate chips.</span>
+        <span class="turkish">Abur cubur severim ama cipslerden nefret ederim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She loves chocolate. He dislikes sausages.</span>
+        <span class="turkish">O çikolatayı çok sever. O sosisi sevmez.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is it yummy? - Yes, it is delicious. / No, it is awful.</span>
+        <span class="turkish">Lezzetli mi? - Evet, leziz. / Hayır, berbat.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I prefer tea to coffee. She prefers milk.</span>
+        <span class="turkish">Çayı kahveye tercih ederim. O sütü tercih eder.</span>
+    </div>
+
+    <h2>Using "Some" & "Any" (Biraz ve Hiç Kullanımı)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have some milk and there is some cheese.</span>
+        <span class="turkish">Biraz sütüm var ve biraz peynir var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Is there any juice? - No, there isn't any jam.</span>
+        <span class="turkish">Hiç meyve suyu var mı? - Hayır, hiç reçel yok.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do you have any honey? She has some cereal.</span>
+        <span class="turkish">Hiç balın var mı? Onun biraz gevreği var.</span>
+    </div>
+
+    <h2>Daily Habits & Polite Requests (Alışkanlıklar ve İstekler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Can I have some tea, please? - Sure, here you are.</span>
+        <span class="turkish">Biraz çay alabilir miyim lütfen? - Elbette, buyur al.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Enjoy your breakfast! - No, thanks. I'm full.</span>
+        <span class="turkish">Afiyet olsun! - Hayır, teşekkürler. Tokum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I'm hungry and thirsty. Let's have breakfast.</span>
+        <span class="turkish">Açım ve susadım. Hadi kahvaltı yapalım.</span>
+    </div>
+
+    <h2>Questions & Descriptive Sentences (Sorular ve Betimlemeler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Does she like jam? - No, she doesn't.</span>
+        <span class="turkish">O reçel sever mi? - Hayır, sevmez.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The honey is organic. These grapes are sweet.</span>
+        <span class="turkish">Bal organiktir. Bu üzümler tatlıdır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Junk food is unhealthy. Vegetables are good for you.</span>
+        <span class="turkish">Abur cubur sağlıksızdır. Sebzeler senin için iyidir.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Yummy Breakfast Ünitesi)</h3>
+        
+        
+
+        <ul>
+            <li><strong>Liking & Disliking:</strong> Sevdiğimiz şeyler için <em>like/love</em>, sevmediklerimiz için <em>dislike/hate</em> kullanırız. <strong>He/She/It</strong> ile olumsuzda <strong>doesn't like</strong> kullanıldığına dikkat!</li>
+            <li><strong>Some & Any:</strong> Olumlu cümlelerde <strong>Some</strong> (biraz/birkaç), olumsuz ve sorularda <strong>Any</strong> (hiç) kullanılır.</li>
+            <li><strong>Polite Requests:</strong> "Can I have ...?" ( ... alabilir miyim?) nazikçe bir şey istemek için en yaygın kalıptır.</li>
+            <li><strong>Healthy vs. Junk:</strong> Besleyici gıdalar için <strong>nutritious/healthy</strong>, zararlı gıdalar için <strong>junk food/unhealthy</strong> kullanılır.</li>
+            <li><strong>Prefer:</strong> Bir şeyi başka bir şeye tercih ederken <strong>prefer ... to ...</strong> kalıbı kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

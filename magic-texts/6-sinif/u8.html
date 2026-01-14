@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 8. Ünite: Bookworms</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4ece1; 
+            color: #4e342e;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(78, 52, 46, 0.15); 
+            border: 1px solid #d7ccc8;
+        }
+        h1 {
+            color: #5d4037;
+            text-align: center;
+            border-bottom: 4px solid #8d6e63;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #795548;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #a1887f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #8d6e63;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #d7ccc8;
+            background-color: #fafafa;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+        .sentence-box:hover {
+            background-color: #efebe9;
+            transform: translateX(10px);
+            border-left-color: #5d4037;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #3e2723;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #795548;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fffaf0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 45px;
+            border: 1px solid #d7ccc8;
+            border-top: 5px solid #8d6e63;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #5d4037;
+            border-bottom: 2px solid #8d6e63;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #4e342e;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #bf360c; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>8. Ünite: Bookworms</h1>
+    <p class="instruction">📖 Kitapların dünyasına yolculuk için cümlelere tıkla! 📚</p>
+
+    <h2>Books & Genres (Kitaplar ve Türler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am a bookworm. I love reading books. This is a story book.</span>
+        <span class="turkish">Ben bir kitap kurduyum. Kitap okumayı severim. Bu bir hikaye kitabı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He likes novels. She reads poetry. My favorite book is a fantasy.</span>
+        <span class="turkish">O romanları sever. O şiir okur. Favori kitabım bir fantastik kurgu.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I read a biography yesterday. Science fiction books are exciting.</span>
+        <span class="turkish">Dün bir biyografi okudum. Bilim kurgu kitapları heyecan vericidir.</span>
+    </div>
+
+    <h2>At the Library (Kütüphanede)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The library is quiet. Be quiet in the library! I am looking for a book.</span>
+        <span class="turkish">Kütüphane sessizdir. Kütüphanede sessiz ol! Bir kitap arıyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He borrows three books. She returns the book on Friday.</span>
+        <span class="turkish">O üç kitap ödünç alır. O kitabı Cuma günü iade eder.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Where is the librarian? Can I borrow this book? Don't eat in the library.</span>
+        <span class="turkish">Kütüphaneci nerede? Bu kitabı ödünç alabilir miyim? Kütüphanede yemek yeme.</span>
+    </div>
+
+    <h2>Prepositions of Place (Yer Bildiren Edatlar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The book is on the table. The cat is under the chair. The pen is in the box.</span>
+        <span class="turkish">Kitap masanın üstünde. Kedi sandalyenin altında. Kalem kutunun içinde.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The library is next to the school. The dictionary is between the books.</span>
+        <span class="turkish">Kütüphane okulun yanındadır. Sözlük kitapların arasındadır.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My bag is behind the door. The park is opposite the museum.</span>
+        <span class="turkish">Çantam kapının arkasında. Park müzenin karşısındadır.</span>
+    </div>
+
+    
+
+    <h2>Past Actions (Geçmiş Zaman)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I read a book last night. She looked for her glasses.</span>
+        <span class="turkish">Dün gece bir kitap okudum. O gözlüklerini aradı.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">They went to the library. I found an interesting story. We studied for the exam.</span>
+        <span class="turkish">Onlar kütüphaneye gittiler. İlginç bir hikaye buldum. Sınav için çalıştık.</span>
+    </div>
+
+    <h2>Questions & Life (Sorular ve Yaşam)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">What kind of books do you like? Who is your favorite author?</span>
+        <span class="turkish">Ne tür kitaplar seversin? En sevdiğin yazar kim?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I use a bookmark. Don't damage the books. Books are our best friends.</span>
+        <span class="turkish">Kitap ayracı kullanırım. Kitaplara zarar verme. Kitaplar bizim en iyi dostlarımızdır.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Bookworms Ünitesi)</h3>
+        <ul>
+            <li><strong>Önemli Fiiller:</strong> 
+                <strong>Borrow:</strong> Ödünç almak, 
+                <strong>Return:</strong> İade etmek, 
+                <strong>Look for:</strong> Aramak.
+            </li>
+            <li><strong>Yer Edatları (Prepositions):</strong>
+                <ul>
+                    <li><strong>In:</strong> İçinde, <strong>On:</strong> Üstünde</li>
+                    <li><strong>Under:</strong> Altında, <strong>Behind:</strong> Arkasında</li>
+                    <li><strong>In front of:</strong> Önünde, <strong>Between:</strong> Arasında</li>
+                </ul>
+            </li>
+            <li><strong>Kitap Türleri:</strong> 
+                <strong>Novel:</strong> Roman, 
+                <strong>Poetry:</strong> Şiir, 
+                <strong>Biography:</strong> Biyografi, 
+                <strong>Fairy Tale:</strong> Masal.
+            </li>
+            <li><strong>Kütüphane Kuralları:</strong> "Be quiet!" (Sessiz ol!) gibi emir yapıları kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

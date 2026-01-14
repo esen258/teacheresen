@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 6. Ünite: Occupations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; 
+            color: #34495e;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1); 
+            border: 1px solid #dcdde1;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 4px solid #f1c40f;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2c3e50;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #f1c40f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 4px solid #f1c40f;
+            background-color: #fdfdfd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+        .sentence-box:hover {
+            background-color: #f9f9f9;
+            transform: translateX(8px);
+            border-left-color: #2980b9;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2980b9;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fffdf5;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #f1c40f;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #f1c40f;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #444;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #c0392b; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6. Ünite: Occupations</h1>
+    <p class="instruction">👨‍💼 Meslekleri ve görevlerini öğrenmek için cümlelere tıkla! 👩‍🔧</p>
+
+    <h2>Jobs & Workplaces (Meslekler ve İş Yerleri)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I am a teacher. He is a doctor. She is a nurse.</span>
+        <span class="turkish">Ben bir öğretmenim. O bir doktor. O bir hemşire.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My father is a chef. My mother is a tailor. He is a busy farmer.</span>
+        <span class="turkish">Babam bir aşçı. Annem bir terzi. O meşgul bir çiftçi.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He is a brave fireman. She is a careful driver. My uncle is a waiter.</span>
+        <span class="turkish">O cesur bir itfaiyeci. O dikkatli bir şoför. Amcam bir garsondur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I work at a school. He works in a hospital. She works in a restaurant.</span>
+        <span class="turkish">Okulda çalışıyorum. O hastanede çalışıyor. O bir restoranda çalışıyor.</span>
+    </div>
+
+    <h2>Abilities - What can they do? (Yetenekler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A teacher can teach subjects. A doctor can examine patients.</span>
+        <span class="turkish">Bir öğretmen dersleri öğretebilir. Bir doktor hastaları muayene edebilir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A chef can cook delicious meals. A tailor can sew clothes.</span>
+        <span class="turkish">Bir aşçı lezzetli yemekler pişirebilir. Bir terzi kıyafet dikebilir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">An architect can draw plans. A pilot can fly planes.</span>
+        <span class="turkish">Bir mimar planlar çizebilir. Bir pilot uçakları uçurabilir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A lawyer can defend people. A mechanic can repair cars.</span>
+        <span class="turkish">Bir avukat insanları savunabilir. Bir tamirci arabaları tamir edebilir.</span>
+    </div>
+
+    <h2>Dates & Past Dates (Tarihler ve Doğumlar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I was born in 2012. He was born in May. When were you born?</span>
+        <span class="turkish">2012 yılında doğdum. O Mayıs'ta doğdu. Sen ne zaman doğdun?</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My birthday is on June 10th. She was born in Ankara.</span>
+        <span class="turkish">Doğum günüm 10 Haziran'da. O Ankara'da doğdu.</span>
+    </div>
+
+    <h2>Daily Duties (Günlük Görevler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A postman delivers letters. A baker makes bread.</span>
+        <span class="turkish">Bir postacı mektupları teslim eder. Bir fırıncı ekmek yapar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">A policeman catches thieves. A florist sells flowers.</span>
+        <span class="turkish">Bir polis hırsızları yakalar. Bir çiçekçi çiçek satar.</span>
+    </div>
+
+    <h2>Dreams & Future (Hayaller ve Gelecek)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I want to be an engineer. She wants to be a vet.</span>
+        <span class="turkish">Bir mühendis olmak istiyorum. O bir veteriner olmak istiyor.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I like helping people. Good luck in your career!</span>
+        <span class="turkish">İnsanlara yardım etmeyi severim. Kariyerinde bol şans!</span>
+    </div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Occupations Ünitesi)</h3>
+        <ul>
+            <li><strong>Meslek Sorma:</strong> "What do you do?", "What is your job?" veya "What is your occupation?" kalıpları kullanılır.</li>
+            <li><strong>Can / Can't:</strong> Mesleklerin yapabildiği yetenekleri anlatırken kullanılır. <em>(A tailor can sew.)</em></li>
+            <li><strong>Geniş Zaman (-s takısı):</strong> Mesleklerin genel görevlerini anlatırken fiile -s takısı gelir. <em>(A baker make<strong>s</strong> bread.)</em></li>
+            <li><strong>Tarihler:</strong> Yıllardan önce <strong>"in"</strong> (in 2012), tam tarihlerden önce <strong>"on"</strong> (on June 10th) kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

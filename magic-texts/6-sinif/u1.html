@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 1. Ünite: Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5; 
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border: 1px solid #d1d9e6;
+        }
+        h1 {
+            color: #2e59a8;
+            text-align: center;
+            border-bottom: 4px solid #ffcc00;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2e59a8;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #ffcc00;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 4px solid #ffcc00;
+            background-color: #fdfdfd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+        }
+        .sentence-box:hover {
+            background-color: #f0f7ff;
+            transform: translateX(8px);
+            border-left-color: #2e59a8;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e67e22;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff9e6;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ffeeba;
+            border-top: 5px solid #ffcc00;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2e59a8;
+            border-bottom: 2px solid #2e59a8;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #444;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #d35400; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1. Ünite: Life</h1>
+    <p class="instruction">☀️ Günlük rutinleri keşfetmek için cümlelere tıkla! 📅</p>
+
+    <h2>Morning Routine (Sabah Rutini)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I wake up early. I get up at 07:00.</span>
+        <span class="turkish">Erken uyanırım. Saat 07:00'de kalkarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I wash my face and brush my teeth.</span>
+        <span class="turkish">Yüzümü yıkarım ve dişlerimi fırçalarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have breakfast. I eat olives and cheese.</span>
+        <span class="turkish">Kahvaltı yaparım. Zeytin ve peynir yerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I drink milk and get dressed.</span>
+        <span class="turkish">Süt içerim ve kıyafetlerimi giyerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I comb my hair and leave home.</span>
+        <span class="turkish">Saçımı tararım ve evden çıkarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I wait for the bus and go to school.</span>
+        <span class="turkish">Otobüsü beklerim ve okula giderim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My school starts at 08:30. I listen to my teacher.</span>
+        <span class="turkish">Okulum 08:30'da başlar. Öğretmenimi dinlerim.</span>
+    </div>
+
+    <h2>Daily Activities (Günlük Aktiviteler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have lunch at school. I eat a sandwich.</span>
+        <span class="turkish">Okulda öğle yemeği yerim. Sandviç yerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I come back home and rest for a while.</span>
+        <span class="turkish">Eve geri dönerim ve bir süre dinlenirim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I do my homework and help my mother.</span>
+        <span class="turkish">Ödevimi yaparım ve anneme yardım ederim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I take care of the dog and feed the cat.</span>
+        <span class="turkish">Köpekle ilgilenirim ve kediyi beslerim.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I water the flowers and play in the park.</span>
+        <span class="turkish">Çiçekleri sularım ve parkta oynarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I ride a bicycle and run with my friends.</span>
+        <span class="turkish">Bisiklet sürerim ve arkadaşlarımla koşarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I watch TV, read a book, and write a diary.</span>
+        <span class="turkish">Televizyon izlerim, kitap okurum ve günlük yazarım.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I have dinner and go to bed. I sleep at 10:00 p.m.</span>
+        <span class="turkish">Akşam yemeği yerim ve yatağa giderim. Saat 22:00'de uyurum.</span>
+    </div>
+
+    <h2>Third Person - He/She/It (3. Tekil Şahıslar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He gets up late. She washes her hands.</span>
+        <span class="turkish">O geç kalkar. O ellerini yıkar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My brother plays football. My sister does homework.</span>
+        <span class="turkish">Erkek kardeşim futbol oynar. Kız kardeşim ödev yapar.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">He eats an apple. She drinks tea.</span>
+        <span class="turkish">O bir elma yer. O çay içer.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">My mother cooks well. The cat sleeps on the sofa.</span>
+        <span class="turkish">Annem iyi yemek pişirir. Kedi kanepede uyur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">She visits her grandma. He takes a nap.</span>
+        <span class="turkish">O büyükannesini ziyaret eder. O biraz kestirir (uyur).</span>
+    </div>
+
+    <h2>Telling the Time & Dates (Saatler ve Tarihler)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is nine o'clock. It is half past eight (08:30).</span>
+        <span class="turkish">Saat dokuz. Saat sekiz buçuk.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">It is quarter past ten (10:15). It is quarter to twelve (11:45).</span>
+        <span class="turkish">Saat onu çeyrek geçiyor. Saat on ikiye çeyrek var.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Today is Monday. My birthday is in June.</span>
+        <span class="turkish">Bugün Pazartesi. Doğum günüm Haziran'da.</span>
+    </div>
+
+    <h2>Negative Sentences & Questions (Olumsuzlar ve Sorular)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">I don't like junk food. He doesn't get up early.</span>
+        <span class="turkish">Abur cubur sevmem. O erken kalkmaz.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Do you like school? - Yes, I do. / No, I don't.</span>
+        <span class="turkish">Okulu seviyor musun? - Evet, seviyorum. / Hayır, sevmiyorum.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Does he play tennis? - Yes, he does. / No, he doesn't.</span>
+        <span class="turkish">O tenis oynar mı? - Evet, oynar. / Hayır, oynamaz.</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>📝 Öğretici Notlar (Life)</h3>
+        <ul>
+            <li><strong>Present Simple (Geniş Zaman):</strong> Günlük rutinleri anlatırken kullanılır. <strong>I, You, We, They</strong> grubunda fiil yalındır.</li>
+            <li><strong>-s Takısı:</strong> <strong>He, She, It</strong> öznelerinde fiilin sonuna <strong>-s, -es, -ies</strong> takısı gelir. (Örn: He play<strong>s</strong>, She go<strong>es</strong>).</li>
+            <li><strong>Saatler:</strong> Tam saatlerde <strong>o'clock</strong>, buçuklarda <strong>half past</strong>, çeyrek geçelerde <strong>quarter past</strong>, çeyrek varlarda <strong>quarter to</strong> kullanılır.</li>
+            <li><strong>Don't / Doesn't:</strong> Olumsuz yaparken <strong>I don't</strong>, <strong>He doesn't</strong> kullanılır. <em>Doesn't</em> gelince fiildeki -s takısı düşer!</li>
+            <li><strong>Günler ve Aylar:</strong> Günlerden önce <strong>on</strong> (on Monday), aylardan önce <strong>in</strong> (in June) kullanılır.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

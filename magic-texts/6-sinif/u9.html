@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Sınıf 9. Ünite: Saving The Planet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f8e9; 
+            color: #2e7d32;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15); 
+            border: 1px solid #c8e6c9;
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            border-bottom: 4px solid #81c784;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #43a047;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #ffeb3b;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #388e3c;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #81c784;
+            background-color: #f9fdf9;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+        .sentence-box:hover {
+            background-color: #e8f5e9;
+            transform: translateX(10px);
+            border-left-color: #1b5e20;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1b5e20;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #388e3c;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #f9fbe7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #dce775;
+            border-top: 5px solid #43a047;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1b5e20;
+            border-bottom: 2px solid #43a047;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+            color: #333;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #d84315; }
+        .green-bold { color: #2e7d32; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>9. Ünite: Saving The Planet</h1>
+    <p class="instruction">🌍 Gezegeni korumak ve çevreci olmak için cümlelere tıkla! 🌱</p>
+
+    <h2>Environmental Problems (Çevre Sorunları)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The world is getting warmer. Global warming is a big threat.</span>
+        <span class="turkish">Dünya ısınıyor. Küresel ısınma büyük bir tehdittir.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Air pollution is bad for our lungs. Water pollution kills sea animals.</span>
+        <span class="turkish">Hava kirliliği akciğerlerimiz için kötüdür. Su kirliliği deniz hayvanlarını öldürür.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">People throw litter on the streets. Cutting down trees causes deforestation.</span>
+        <span class="turkish">İnsanlar sokaklara çöp atıyor. Ağaçları kesmek ormansızlaşmaya neden olur.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">The ice is melting in the poles. Exhaust fumes pollute the atmosphere.</span>
+        <span class="turkish">Kutuplarda buzlar eriyor. Egzoz dumanları atmosferi kirletiyor.</span>
+    </div>
+
+    <h2>Suggestions & Prohibitions (Should / Shouldn't)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We should protect our planet. You should plant more trees.</span>
+        <span class="turkish">Gezegenimizi korumalıyız. Daha fazla ağaç dikmelisin.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We should recycle paper, glass and plastic. Turn off the lights!</span>
+        <span class="turkish">Kağıt, cam ve plastiği geri dönüştürmeliyiz. Işıkları kapat!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">You shouldn't cut down trees. We shouldn't waste electricity.</span>
+        <span class="turkish">Ağaçları kesmemelisin. Elektriği boşa harcamamalıyız.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">People shouldn't throw garbage in the sea. Don't leave the tap open!</span>
+        <span class="turkish">İnsanlar denize çöp atmamalı. Musluğu açık bırakma!</span>
+    </div>
+
+    <h2>Imperatives - Do and Don't (Emir Kipleri)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Save water! Don't waste paper! Recycle your trash!</span>
+        <span class="turkish">Suyu tasarruf et! Kağıdı israf etme! Çöpünü geri dönüştür!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Keep off the grass! Put your litter in the bin! Protect the nature!</span>
+        <span class="turkish">Çimlere basmayın! Çöpünüzü kutuya atın! Doğayı koruyun!</span>
+    </div>
+
+    
+
+[Image of the waste management hierarchy including reduce, reuse, and recycle]
+
+
+    <h2>The 3 R's & Causes/Effects (3 R Kuralı ve Sonuçlar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">We must follow the 3 R's rule: Reduce, Reuse, Recycle.</span>
+        <span class="turkish">3 R kuralına uymalıyız: Azalt, Yeniden Kullan, Geri Dönüştür.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">If we cut trees, animals lose their homes. Pollution makes people sick.</span>
+        <span class="turkish">Eğer ağaçları kesersek, hayvanlar evlerini kaybeder. Kirlilik insanları hasta eder.</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Renewable energy is clean. Solar panels are on the roof.</span>
+        <span class="turkish">Yenilenebilir enerji temizdir. Güneş panelleri çatıdadır.</span>
+    </div>
+
+    <h2>General Phrases (Genel Kalıplar)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Earth is our only home. Think green, act green!</span>
+        <span class="turkish">Dünya bizim tek evimiz. Yeşil düşün, yeşil davran!</span>
+    </div>
+    <div class="sentence-box" onclick="toggleTranslation(this)">
+        <span class="english">Let's make the world a better place. Let's save the planet together!</span>
+        <span class="turkish">Hadi dünyayı daha iyi bir yer yapalım. Hadi gezegeni birlikte kurtaralım!</span>
+    </div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Saving The Planet Ünitesi)</h3>
+        <ul>
+            <li><strong>Should / Shouldn't:</strong> Tavsiye verirken kullanılır.
+                <ul>
+                    <li><span class="green-bold">Should:</span> Yapmalısın (We should plant trees).</li>
+                    <li><span class="green-bold">Shouldn't:</span> Yapmamalısın (We shouldn't pollute the air).</li>
+                </ul>
+            </li>
+            <li><strong>Emir Cümleleri (Imperatives):</strong> Doğrudan talimat verir.
+                <ul>
+                    <li>Olumlu: <strong>Save water!</strong> (Suyu koru!)</li>
+                    <li>Olumsuz: <strong>Don't litter!</strong> (Çöp atma!)</li>
+                </ul>
+            </li>
+            <li><strong>3 R Kuralı:</strong>
+                <strong>Reduce:</strong> Azalt, 
+                <strong>Reuse:</strong> Yeniden kullan, 
+                <strong>Recycle:</strong> Geri dönüştür.
+            </li>
+            <li><strong>Önemli Kelimeler:</strong> 
+                <strong>Litter/Garbage:</strong> Çöp, 
+                <strong>Unplug:</strong> Fişten çekmek, 
+                <strong>Solar Energy:</strong> Güneş enerjisi.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
