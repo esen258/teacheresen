@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 3. Ünite: Biographies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; 
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #8e44ad; /* Biyografi teması için asil bir mor */
+        }
+        h1 {
+            color: #4a235a;
+            text-align: center;
+            border-bottom: 3px double #8e44ad;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #8e44ad;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #f39c12;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #8e44ad;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #f4ecf7;
+            transform: translateX(5px);
+            border-color: #9b59b6;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d35400;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fef9e7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #f9e79f;
+            border-top: 5px solid #f39c12;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #7d3c98;
+            border-bottom: 2px solid #f39c12;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #8e44ad; font-weight: bold; }
+        .verb-type { color: #e67e22; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3. Ünite: Biographies</h1>
+    <p class="instruction">📜 Tarihe iz bırakanların hikayesini keşfedin! Çeviriler için cümlelere tıklayın. 📜</p>
+
+    <h2>Doğum, Çocukluk ve Eğitim (Early Life & Education)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Albert Einstein was born in 1879 in Germany.</span><span class="turkish">Albert Einstein 1879'da Almanya'da doğdu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She grew up in a small village near London.</span><span class="turkish">Londra yakınlarında küçük bir köyde büyüdü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My grandfather went to primary school in 1950.</span><span class="turkish">Dedem 1950'de ilkokula gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was a very hardworking student in high school.</span><span class="turkish">Lisede çok çalışkan bir öğrenciydi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They moved to Istanbul when he was ten years old.</span><span class="turkish">O on yaşındayken İstanbul'a taşındılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She graduated from university in 2010.</span><span class="turkish">2010 yılında üniversiteden mezun oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He studied medicine at Hacettepe University.</span><span class="turkish">Hacettepe Üniversitesi'nde tıp okudu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Were you born in a big city?</span><span class="turkish">Büyük bir şehirde mi doğdun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother wasn't a lazy student.</span><span class="turkish">Annem tembel bir öğrenci değildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He showed great talent in music at an early age.</span><span class="turkish">Erken yaşta müzikte büyük bir yetenek gösterdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She started school at the age of six.</span><span class="turkish">Altı yaşında okula başladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They lived in a farmhouse during their childhood.</span><span class="turkish">Çocuklukları boyunca bir çiftlik evinde yaşadılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was interested in science when he was a kid.</span><span class="turkish">Çocukken bilimle ilgileniyordu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She moved to the USA to study art.</span><span class="turkish">Sanat okumak için ABD'ye taşındı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father finished high school with honors.</span><span class="turkish">Babam liseyi dereceyle (onur belgesiyle) bitirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where was Mustafa Kemal Atatürk born?</span><span class="turkish">Mustafa Kemal Atatürk nerede doğdu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was a curious child and asked many questions.</span><span class="turkish">Meraklı bir çocuktu ve çok soru sorardı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She received her diploma last June.</span><span class="turkish">Diplomasını geçen Haziran ayında aldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He learned how to play the piano at age five.</span><span class="turkish">Beş yaşında piyano çalmayı öğrendi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They weren't wealthy, but they were happy.</span><span class="turkish">Zengin değillerdi ama mutluydular.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He attended a famous music academy.</span><span class="turkish">Ünlü bir müzik akademisine devam etti (katıldı).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She spent her childhood in France.</span><span class="turkish">Çocukluğunu Fransa'da geçirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My teacher graduated from the education faculty.</span><span class="turkish">Öğretmenim eğitim fakültesinden mezun oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was born on the twenty-ninth of October.</span><span class="turkish">Yirmi dokuz Ekim'de doğdu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She won a scholarship for her success.</span><span class="turkish">Başarısı için bir burs kazandı.</span></div>
+
+    <h2>Kariyer ve Önemli Başarılar (Career & Achievements)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Aziz Sancar won the Nobel Prize in Chemistry.</span><span class="turkish">Aziz Sancar Kimya dalında Nobel Ödülü'nü kazandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He discovered a new planet in 1995.</span><span class="turkish">1995 yılında yeni bir gezegen keşfetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She wrote her first book when she was twenty.</span><span class="turkish">İlk kitabını yirmi yaşındayken yazdı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They invented the first telephone many years ago.</span><span class="turkish">İlk telefonu yıllar önce icat ettiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He became a professional basketball player in 2005.</span><span class="turkish">2005 yılında profesyonel bir basketbolcu oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She worked as a nurse during the war.</span><span class="turkish">Savaş sırasında hemşire olarak çalıştı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He designed many beautiful buildings in Istanbul.</span><span class="turkish">İstanbul'da birçok güzel bina tasarladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mozart composed his first symphony at age eight.</span><span class="turkish">Mozart ilk senfonisini sekiz yaşında besteledi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She traveled around the world to help people.</span><span class="turkish">İnsanlara yardım etmek için dünyayı gezdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He founded a big technology company.</span><span class="turkish">Büyük bir teknoloji şirketi kurdu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They developed a new medicine for the disease.</span><span class="turkish">Hastalık için yeni bir ilaç geliştirdiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He gained great fame after his first movie.</span><span class="turkish">İlk filminden sonra büyük şöhret kazandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She received an award for her scientific research.</span><span class="turkish">Bilimsel araştırması için bir ödül aldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He explored unknown lands in Africa.</span><span class="turkish">Afrika'da bilinmeyen toprakları keşfetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My uncle retired from his job last year.</span><span class="turkish">Amcam geçen yıl işinden emekli oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She painted many famous portraits.</span><span class="turkish">Birçok ünlü portre çizdi (boyadı).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was a successful commander in the army.</span><span class="turkish">Orduda başarılı bir komutandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They opened a new gallery in Paris.</span><span class="turkish">Paris'te yeni bir galeri açtılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He dedicated his life to protecting animals.</span><span class="turkish">Hayatını hayvanları korumaya adadı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She became the first female pilot in her country.</span><span class="turkish">Ülkesindeki ilk kadın pilot oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He improved the living conditions of poor people.</span><span class="turkish">Fakir insanların yaşam koşullarını iyileştirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She conducted many experiments in the laboratory.</span><span class="turkish">Laboratuvarda birçok deney yaptı (yürüttü).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He wrote poems about nature and love.</span><span class="turkish">Doğa ve aşk hakkında şiirler yazdı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They built a library for the children.</span><span class="turkish">Çocuklar için bir kütüphane inşa ettiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He succeeded in climbing Mount Everest.</span><span class="turkish">Everest Dağı'na tırmanmayı başardı.</span></div>
+
+    <h2>Önemli Olaylar ve Yaşam Döngüsü (Milestones)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He got married to his high school friend.</span><span class="turkish">Lise arkadaşıyla evlendi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They had three children; two sons and a daughter.</span><span class="turkish">Üç çocukları oldu; iki oğlan ve bir kız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She lost her father when she was very young.</span><span class="turkish">Çok gençken babasını kaybetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He died in 1940 due to a serious illness.</span><span class="turkish">Ciddi bir hastalık nedeniyle 1940'ta öldü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They moved to a new house after the wedding.</span><span class="turkish">Düğünden sonra yeni bir eve taşındılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He met his wife at a science conference.</span><span class="turkish">Karısıyla bir bilim konferansında tanıştı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She stayed in Italy for five years.</span><span class="turkish">Beş yıl boyunca İtalya'da kaldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He left his hometown to find a better job.</span><span class="turkish">Daha iyi bir iş bulmak için memleketinden ayrıldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They celebrated their 50th anniversary.</span><span class="turkish">50. yıl dönümlerini kutladılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She became a grandmother last week.</span><span class="turkish">Geçen hafta büyükanne oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He lost his sight after an accident.</span><span class="turkish">Bir kazadan sonra görme yetisini kaybetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She lived a long and happy life.</span><span class="turkish">Uzun ve mutlu bir hayat yaşadı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They adopted a child from the orphanage.</span><span class="turkish">Yetimhaneden bir çocuk evlat edindiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He won the election and became the president.</span><span class="turkish">Seçimi kazandı ve başkan oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She traveled to Mars in a spacecraft.</span><span class="turkish">Bir uzay aracıyla Mars'a seyahat etti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was a hero for his nation.</span><span class="turkish">Milleti için bir kahramandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They changed the history of the world.</span><span class="turkish">Dünyanın tarihini değiştirdiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She published her diary in 1947.</span><span class="turkish">Günlüğünü 1947'de yayımladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He earned a lot of money from his inventions.</span><span class="turkish">İcatlarından çok para kazandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She started a new life in a different country.</span><span class="turkish">Farklı bir ülkede yeni bir hayata başladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He was very brave during the difficult times.</span><span class="turkish">Zor zamanlarda çok cesurdu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They fought for freedom and independence.</span><span class="turkish">Özgürlük ve bağımsızlık için savaştılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She inspired many young girls to study.</span><span class="turkish">Birçok genç kıza okumak için ilham verdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He never gave up on his dreams.</span><span class="turkish">Hayallerinden asla vazgeçmedi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She was a pioneer in modern nursing.</span><span class="turkish">Modern hemşirelikte bir öncüydü.</span></div>
+
+    <h2>Past Simple (Geçmiş Zaman) Yapıları ve Sorular</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What did he do after graduation?</span><span class="turkish">Mezuniyetten sonra ne yaptı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Did she win any awards last year?</span><span class="turkish">Geçen yıl hiç ödül kazandı mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">When did he move to Ankara?</span><span class="turkish">Ankara'ya ne zaman taşındı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They didn't go to the cinema yesterday.</span><span class="turkish">Dün sinemaya gitmediler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why did he choose to become a doctor?</span><span class="turkish">Neden doktor olmayı seçti?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I saw him at the library two days ago.</span><span class="turkish">Onu iki gün önce kütüphanede gördüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She didn't like her first job.</span><span class="turkish">İlk işini sevmedi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who invented the light bulb?</span><span class="turkish">Ampulü kim icat etti?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where did they get married?</span><span class="turkish">Nerede evlendiler?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many books did she write?</span><span class="turkish">Kaç kitap yazdı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He wasn't at home last night.</span><span class="turkish">Dün gece evde değildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We visited the Anıtkabir last summer.</span><span class="turkish">Geçen yaz Anıtkabir'i ziyaret ettik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Did they discover America in 1492?</span><span class="turkish">Amerika'yı 1492'de mi keşfettiler?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She didn't have any brothers or sisters.</span><span class="turkish">Hiç erkek veya kız kardeşi yoktu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What was his favorite hobby?</span><span class="turkish">Onun en sevdiği hobisi neydi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He became a teacher ten years ago.</span><span class="turkish">On yıl önce öğretmen oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She graduated from high school in 1998.</span><span class="turkish">1998'de liseden mezun oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Did you read the biography of Steve Jobs?</span><span class="turkish">Steve Jobs'un biyografisini okudun mu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He wasn't very famous when he was alive.</span><span class="turkish">Hayattayken çok ünlü değildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They lived in Germany for a long time.</span><span class="turkish">Almanya'da uzun süre yaşadılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She bought a new car last month.</span><span class="turkish">Geçen ay yeni bir araba satın aldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He spoke three languages fluently.</span><span class="turkish">Akıcı bir şekilde üç dil konuştu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Did she work as a teacher?</span><span class="turkish">Öğretmen olarak mı çalıştı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He died at the age of eighty-eight.</span><span class="turkish">Seksen sekiz yaşında öldü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We learned a lot about history today.</span><span class="turkish">Bugün tarih hakkında çok şey öğrendik.</span></div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Biographies Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Was / Were:</strong> Geçmişteki durumlar için kullanılır. 
+                <br><em>I/He/She/It</em> için <span class="highlight">was</span>, <em>You/We/They</em> için <span class="highlight">were</span> kullanılır. 
+                <br>Örn: "He <strong>was</strong> a hero." (O bir kahramandı.)
+            </li>
+            <li><strong>2. Düzenli ve Düzensiz Fiiller:</strong> 
+                <br>• <span class="verb-type">Regular (Düzenli):</span> Sonuna <strong>-ed</strong> alır. (Visit -> Visited)
+                <br>• <span class="verb-type">Irregular (Düzensiz):</span> Şekil değiştirir. (Go -> Went, Win -> Won, Write -> Wrote)
+            </li>
+            <li><strong>3. Zaman İfadeleri:</strong> 
+                <br>• <strong>Yesterday:</strong> Dün / <strong>Last:</strong> Geçen / <strong>Ago:</strong> Önce.
+                <br>• Yıllardan önce her zaman <span class="highlight">"in"</span> gelir (In 1879).
+            </li>
+            <li><strong>4. Biyografi Kalıpları:</strong> 
+                <br>• <span class="highlight">Born:</span> Doğmak (was born).
+                <br>• <span class="highlight">Graduate from:</span> Mezun olmak.
+                <br>• <span class="highlight">Invent/Discover:</span> İcat etmek / Keşfetmek.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

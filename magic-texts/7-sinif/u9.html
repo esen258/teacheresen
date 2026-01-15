@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 9. Ünite: Environment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f8e9; /* Doğa dostu açık yeşil */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #43a047; /* Çevre yeşili vurgu */
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            border-bottom: 3px double #81c784;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #43a047;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #ffb300;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #388e3c;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #4caf50;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f8e9;
+            transform: translateY(-2px);
+            border-color: #2e7d32;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1b5e20;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #bf360c;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #f9fbe7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #dce775;
+            border-top: 5px solid #afb42b;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #827717;
+            border-bottom: 2px solid #afb42b;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #2e7d32; font-weight: bold; }
+        .danger { color: #d32f2f; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>9. Ünite: Environment</h1>
+    <p class="instruction">🌍 Dünyamızı korumak için el ele! Çeviriler için cümlelerin üzerine tıklayın. 🌱</p>
+
+    <h2>Çevre Sorunları ve Nedenleri (Environmental Problems)</h2>
+    
+
+[Image of the greenhouse effect and climate change]
+
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Air pollution is a big problem in large cities.</span><span class="turkish">Hava kirliliği büyük şehirlerde büyük bir sorundur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Global warming causes the ice to melt.</span><span class="turkish">Küresel ısınma buzların erimesine neden olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People throw rubbish into the seas and oceans.</span><span class="turkish">İnsanlar denizlere ve okyanuslara çöp atıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cutting down trees leads to deforestation.</span><span class="turkish">Ağaçları kesmek ormansızlaşmaya yol açar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Water pollution kills many fish and sea plants.</span><span class="turkish">Su kirliliği birçok balığı ve deniz bitkisini öldürür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The greenhouse effect is warming our planet.</span><span class="turkish">Sera etkisi gezegenimizi ısıtıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Noise pollution is harmful to our ears and health.</span><span class="turkish">Gürültü kirliliği kulaklarımıza ve sağlığımıza zararlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Using too many chemicals damages the soil.</span><span class="turkish">Çok fazla kimyasal kullanmak toprağa zarar verir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Exhaust fumes from cars pollute the air.</span><span class="turkish">Arabalardan çıkan egzoz dumanları havayı kirletir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Climate change affects the lives of polar bears.</span><span class="turkish">İklim değişikliği kutup ayılarının yaşamlarını etkiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Pesticides are dangerous for birds and insects.</span><span class="turkish">Tarım ilaçları kuşlar ve böcekler için tehlikelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Factories pour chemical waste into the rivers.</span><span class="turkish">Fabrikalar nehirlere kimyasal atık döküyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Overpopulation is a threat to natural resources.</span><span class="turkish">Aşırı nüfus doğal kaynaklar için bir tehdittir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Nuclear waste is very dangerous for the environment.</span><span class="turkish">Nükleer atık çevre için çok tehlikelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Acid rain damages historical buildings and forests.</span><span class="turkish">Asit yağmuru tarihi binalara ve ormanlara zarar verir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The ozone layer protects us from the sun's rays.</span><span class="turkish">Ozon tabakası bizi güneş ışınlarından korur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Energy waste is a serious issue in our homes.</span><span class="turkish">Enerji israfı evlerimizde ciddi bir meseledir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Many animals lose their habitats because of humans.</span><span class="turkish">Birçok hayvan insanlar yüzünden doğal yaşam alanlarını kaybediyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Garbage is piling up in the landfills.</span><span class="turkish">Çöpler depolama alanlarında birikiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Plastic bags stay in nature for hundreds of years.</span><span class="turkish">Plastik poşetler doğada yüzlerce yıl kalır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Smoking is bad for both people and the air.</span><span class="turkish">Sigara içmek hem insanlar hem de hava için kötüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Drought is a result of lack of rain.</span><span class="turkish">Kuraklık yağmur eksikliğinin bir sonucudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Earth is getting hotter every year.</span><span class="turkish">Dünya her yıl daha da ısınıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Using fossil fuels increases air pollution.</span><span class="turkish">Fosil yakıt kullanmak hava kirliliğini artırır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are using up our natural resources too fast.</span><span class="turkish">Doğal kaynaklarımızı çok hızlı tüketiyoruz.</span></div>
+
+    <h2>Çevreyi Koruma ve Çözümler (Protection & Solutions)</h2>
+    
+
+[Image of the waste management hierarchy: reduce, reuse, recycle]
+
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should recycle paper, glass, and plastic.</span><span class="turkish">Kağıt, cam ve plastiği geri dönüştürmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must put your rubbish into the bin.</span><span class="turkish">Çöpünü çöp kutusuna atmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use solar energy instead of coal.</span><span class="turkish">Kömür yerine güneş enerjisi kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Plant more trees to save our forests.</span><span class="turkish">Ormanlarımızı kurtarmak için daha fazla ağaç dikin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use public transportation like buses.</span><span class="turkish">Otobüs gibi toplu taşıma araçlarını kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Turn off the lights when you leave a room.</span><span class="turkish">Bir odadan çıktığında ışıkları kapat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must stop using plastic bags.</span><span class="turkish">Plastik poşet kullanmayı durdurmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Save water while brushing your teeth.</span><span class="turkish">Dişlerini fırçalarken suyu tasarruflu kullan (suyu koru).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use renewable energy sources.</span><span class="turkish">Yenilenebilir enerji kaynakları kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Unplug electrical devices when you don't use them.</span><span class="turkish">Elektrikli aletleri kullanmadığında fişten çek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Recycle batteries to prevent soil pollution.</span><span class="turkish">Toprak kirliliğini önlemek için pilleri geri dönüştürün.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should protect endangered animals.</span><span class="turkish">Nesli tükenmekte olan hayvanları korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use eco-friendly products at home.</span><span class="turkish">Evde çevre dostu ürünler kullanın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't waste paper; use both sides of it.</span><span class="turkish">Kağıdı israf etmeyin; her iki tarafını da kullanın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should organize a cleaning day at school.</span><span class="turkish">Okulda bir temizlik günü organize etmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use rechargeable batteries for your toys.</span><span class="turkish">Oyuncaklarınız için şarj edilebilir piller kullanın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must keep our environment clean and green.</span><span class="turkish">Çevremizi temiz ve yeşil tutmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Build wind turbines to produce clean electricity.</span><span class="turkish">Temiz elektrik üretmek için rüzgar türbinleri inşa edin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Walk or cycle for short distances.</span><span class="turkish">Kısa mesafeler için yürüyün veya bisiklete binin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should reduce our daily waste.</span><span class="turkish">Günlük atığımızı azaltmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Protect the wildlife and natural habitats.</span><span class="turkish">Vahşi yaşamı ve doğal yaşam alanlarını koruyun.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use cloth bags instead of plastic ones.</span><span class="turkish">Plastik olanlar yerine bez çanta kullanın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't cut down trees; plant new ones.</span><span class="turkish">Ağaçları kesmeyin; yenilerini dikin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use less water in the garden.</span><span class="turkish">Bahçede daha az su kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Educate people about the importance of nature.</span><span class="turkish">İnsanları doğanın önemi hakkında eğitin.</span></div>
+
+    <h2>Emir Cümleleri ve Uyarılar (Imperatives)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't litter the streets!</span><span class="turkish">Sokaklara çöp atmayın!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Reduce, reuse, and recycle!</span><span class="turkish">Azalt, yeniden kullan ve geri dönüştür!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Turn off the tap!</span><span class="turkish">Musluğu kapat!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't leave your television on standby!</span><span class="turkish">Televizyonunuzu bekleme modunda bırakmayın!</span></div>
+
+    <h2>Gereklilik ve Öneri (Must / Should)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must protect the ozone layer.</span><span class="turkish">Ozon tabakasını korumalıyız (zorunluluk).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should carry your own shopping bag.</span><span class="turkish">Kendi alışveriş çantanı taşımalısın (tavsiye).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Factories must use filters for their chimneys.</span><span class="turkish">Fabrikalar bacaları için filtre kullanmalı.</span></div>
+
+    <h2>Karma Sorular</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What should we do to save the Earth?</span><span class="turkish">Dünyayı kurtarmak için ne yapmalıyız?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Nature doesn't need people, but people need nature.</span><span class="turkish">Doğanın insanlara ihtiyacı yoktur ama insanların doğaya ihtiyacı vardır.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Environment Ünitesi)</h3>
+        <ul>
+            <li><strong>1. "Must" vs "Should":</strong> 
+                <br>• <span class="highlight">Should:</span> Tavsiye (Yapsan iyi olur). 
+                <br>• <span class="highlight">Must:</span> Güçlü zorunluluk/kural.
+            </li>
+            <li><strong>2. 3R Kuralı:</strong> 
+                <br>• <span class="highlight">Reduce:</span> Tüketimi azaltmak.
+                <br>• <span class="highlight">Reuse:</span> Tekrar kullanmak.
+                <br>• <span class="highlight">Recycle:</span> Geri dönüştürmek.
+            </li>
+            <li><strong>3. Kritik Kelimeler:</strong> 
+                <br>• <span class="danger">Deforestation:</span> Ormansızlaşma.
+                <br>• <span class="highlight">Renewable Energy:</span> Yenilenebilir enerji (güneş, rüzgar).
+                <br>• <span class="highlight">Eco-friendly:</span> Çevre dostu.
+            </li>
+            <li><strong>4. Emir Cümleleri:</strong> Doğrudan fiille başlar (Örn: Plant a tree! / Don't litter!).</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

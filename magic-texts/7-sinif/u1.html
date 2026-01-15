@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 1. Ünite: Appearance And Personality</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8; 
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #2980b9; 
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px double #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2c3e50;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 35px;
+            border-left: 6px solid #e67e22;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-left: 5px solid #3498db;
+        }
+        .sentence-box:hover {
+            background-color: #f1f8ff;
+            transform: translateX(5px);
+            border-color: #2980b9;
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e67e22;
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        .study-notes {
+            background-color: #fdfefe;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #d6eaf8;
+            border-top: 5px solid #2980b9;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #e67e22;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 10px;
+        }
+        strong { color: #c0392b; }
+        .note-highlight { color: #2980b9; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1. Ünite: Appearance and Personality</h1>
+    <p class="instruction">✨ Cümlelerin Türkçesini görmek için üzerlerine tıklayın! ✨</p>
+
+    <h2>Fiziksel Görünüş (Appearance) Cümleleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is very tall and slim.</span><span class="turkish">Kız kardeşim çok uzun ve incedir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He has got short curly hair.</span><span class="turkish">Onun kısa kıvırcık saçları var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My grandfather has a big white beard.</span><span class="turkish">Dedemin büyük beyaz bir sakalı var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She has beautiful green eyes.</span><span class="turkish">Onun güzel yeşil gözleri var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is medium height and well-built.</span><span class="turkish">Erkek kardeşim orta boylu ve yapılıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Does he have a mustache?</span><span class="turkish">Onun bıyığı var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother has long straight blonde hair.</span><span class="turkish">Annemin uzun düz sarı saçları var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are young and energetic.</span><span class="turkish">Onlar genç ve enerjiktirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have wavy brown hair.</span><span class="turkish">Benim dalgalı kahverengi saçlarım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousin is a bit plump.</span><span class="turkish">Kuzenim biraz toplu (balık etli).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He wears glasses.</span><span class="turkish">O gözlük takıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is a very attractive woman.</span><span class="turkish">O çok çekici bir kadın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is bald.</span><span class="turkish">Babam kel.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They have hazel eyes.</span><span class="turkish">Onların elâ gözleri var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a handsome boy.</span><span class="turkish">O yakışıklı bir çocuk.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She has freckles on her face.</span><span class="turkish">Yüzünde çilleri var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is your best friend thin or fat?</span><span class="turkish">En iyi arkadaşın zayıf mı yoksa şişman mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My aunt has dark hair.</span><span class="turkish">Halamın koyu renk saçları var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is older than my uncle.</span><span class="turkish">O, amcamdan daha yaşlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She has a small nose.</span><span class="turkish">Onun küçük bir burnu var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are both medium weight.</span><span class="turkish">İkimiz de orta kilodayız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My hair is spiky.</span><span class="turkish">Saçlarım dik dik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She looks beautiful in that dress.</span><span class="turkish">O elbisenin içinde güzel görünüyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He has a fair skin.</span><span class="turkish">Onun açık (açık renk) bir teni var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My teacher is middle-aged.</span><span class="turkish">Öğretmenim orta yaşlı.</span></div>
+
+    <h2>Kişilik Özellikleri (Personality) Cümleleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My best friend is very honest; he never tells lies.</span><span class="turkish">En iyi arkadaşım çok dürüsttür; asla yalan söylemez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is a shy girl; she doesn't like speaking in public.</span><span class="turkish">O utangaç bir kız; toplum içinde konuşmayı sevmez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is very hardworking; he always studies.</span><span class="turkish">Erkek kardeşim çok çalışkandır; her zaman ders çalışır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Our teacher is very patient with us.</span><span class="turkish">Öğretmenimiz bize karşı çok sabırlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a generous person; he likes sharing his things.</span><span class="turkish">O cömert biridir; eşyalarını paylaşmayı sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is very outgoing and has many friends.</span><span class="turkish">Kız kardeşim çok dışadönüktür ve birçok arkadaşı vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't be so stubborn! Listen to me.</span><span class="turkish">Bu kadar inatçı olma! Beni dinle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a punctual student; he is never late for class.</span><span class="turkish">O dakik bir öğrencidir; derse asla geç kalmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is very helpful; she helps everyone.</span><span class="turkish">O çok yardımseverdir; herkese yardım eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousin is a bit selfish; he only thinks of himself.</span><span class="turkish">Kuzenim biraz bencil; sadece kendisini düşünür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are you a cheerful person?</span><span class="turkish">Neşeli bir insan mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is very smart and successful.</span><span class="turkish">O çok zeki ve başarılıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is a brave man.</span><span class="turkish">Babam cesur bir adamdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is very polite; she always says "please".</span><span class="turkish">O çok kibardır; her zaman "lütfen" der.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friend is talkative; she talks all day.</span><span class="turkish">Arkadaşım konuşkandır; tüm gün konuşur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a clumsy boy; he always breaks things.</span><span class="turkish">O sakar bir çocuk; her zaman bir şeyleri kırar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is very forgetful; she never remembers my birthday.</span><span class="turkish">O çok unutkandır; doğum günümü asla hatırlamaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My uncle is very funny; he tells great jokes.</span><span class="turkish">Amcam çok komiktir; harika fıkralar anlatır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a relaxed and easy-going person.</span><span class="turkish">O rahat ve uyumlu bir insandır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is very creative and loves painting.</span><span class="turkish">O çok yaratıcıdır ve resim yapmayı sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't be rude to your friends.</span><span class="turkish">Arkadaşlarına karşı kaba olma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is very quiet and calm.</span><span class="turkish">Erkek kardeşim çok sessiz ve sakindir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a reliable friend; I can trust him.</span><span class="turkish">O güvenilir bir arkadaştır; ona güvenebilirim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is very thoughtful and kind.</span><span class="turkish">O çok düşünceli ve naziktir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My boss is very serious.</span><span class="turkish">Patronum çok ciddidir.</span></div>
+
+    <h2>Karşılaştırma (Comparatives) Cümleleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is taller than my mother.</span><span class="turkish">Babam annemden daha uzundur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am more hardworking than my brother.</span><span class="turkish">Ben erkek kardeşimden daha çalışkanım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is slimmer than her sister.</span><span class="turkish">O, kız kardeşinden daha incedir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Basketball is more exciting than football.</span><span class="turkish">Basketbol futboldan daha heyecan vericidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My hair is longer than your hair.</span><span class="turkish">Benim saçım senin saçından daha uzun.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more punctual than me.</span><span class="turkish">O benden daha dakiktir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A Ferrari is faster than a Fiat.</span><span class="turkish">Bir Ferrari bir Fiat'tan daha hızlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My English is better than my French.</span><span class="turkish">İngilizcem Fransızcamdan daha iyi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This book is more boring than the movie.</span><span class="turkish">Bu kitap filmden daha sıkıcı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is more beautiful than her cousin.</span><span class="turkish">O, kuzeninden daha güzel.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My grandfather is older than my grandmother.</span><span class="turkish">Dedem anneannemden daha yaşlı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Math is more difficult than History.</span><span class="turkish">Matematik tarihten daha zor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Today is hotter than yesterday.</span><span class="turkish">Bugün dünden daha sıcak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This bag is heavier than that one.</span><span class="turkish">Bu çanta şundan daha ağır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more outgoing than his roommate.</span><span class="turkish">O, oda arkadaşından daha dışadönük.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am more generous than you.</span><span class="turkish">Ben senden daha cömertim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My room is bigger than yours.</span><span class="turkish">Benim odam seninkinden daha büyük.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is more patient than her teacher.</span><span class="turkish">O, öğretmeninden daha sabırlı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This chair is more comfortable than the sofa.</span><span class="turkish">Bu sandalye kanepeden daha rahat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more handsome than that actor.</span><span class="turkish">O, şu aktörden daha yakışıklı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cat is fatter than your cat.</span><span class="turkish">Benim kedim senin kedinden daha şişman.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Learning English is easier than learning Chinese.</span><span class="turkish">İngilizce öğrenmek Çince öğrenmekten daha kolay.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is more stubborn than her father.</span><span class="turkish">O babasından daha inatçı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This car is more expensive than the other one.</span><span class="turkish">Bu araba diğerinden daha pahalı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more successful than his classmates.</span><span class="turkish">O sınıf arkadaşlarından daha başarılı.</span></div>
+
+    <h2>Karma Sorular ve Günlük İfadeler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What does she look like?</span><span class="turkish">Onun dış görünüşü nasıl?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is he like?</span><span class="turkish">O nasıl biridir? (Kişilik)</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is more talkative in your family?</span><span class="turkish">Ailende kim daha konuşkan?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have long or short hair?</span><span class="turkish">Uzun mu yoksa kısa mı saçın var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She likes making new friends.</span><span class="turkish">Yeni arkadaşlar edinmeyi sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He always arrives at work on time.</span><span class="turkish">İşe her zaman vaktinde varır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She has a great personality.</span><span class="turkish">Harika bir kişiliği var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What color are your eyes?</span><span class="turkish">Gözlerin ne renk?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more creative than his brother.</span><span class="turkish">O, erkek kardeşinden daha yaratıcı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is very shy around strangers.</span><span class="turkish">Kız kardeşim yabancıların yanında çok utangaçtır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is well-built because he does sports.</span><span class="turkish">O yapılıdır çünkü spor yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is shorter than her best friend.</span><span class="turkish">O, en iyi arkadaşından daha kısadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am a reliable person.</span><span class="turkish">Ben güvenilir bir insanım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more cheerful today.</span><span class="turkish">Bugün daha neşeli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is more thoughtful than anyone I know.</span><span class="turkish">Annem tanıdığım herkesten daha düşüncelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is your brother more stubborn than you?</span><span class="turkish">Erkek kardeşin senden daha mı inatçı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She has curly blonde hair and blue eyes.</span><span class="turkish">Onun kıvırcık sarı saçları ve mavi gözleri var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a very smart and hardworking student.</span><span class="turkish">O çok zeki ve çalışkan bir öğrencidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My teacher is never late; she is very punctual.</span><span class="turkish">Öğretmenim asla geç kalmaz; o çok dakiktir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She doesn't like sharing; she is selfish.</span><span class="turkish">Paylaşmayı sevmez; o bencildir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are your father's physical qualities?</span><span class="turkish">Babanın fiziksel özellikleri nelerdir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is more clumsy than his sister.</span><span class="turkish">O, kız kardeşinden daha sakardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is more beautiful than me.</span><span class="turkish">Kız kardeşim benden daha güzel.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is an honest man.</span><span class="turkish">O dürüst bir adamdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have different personalities.</span><span class="turkish">Farklı kişiliklerimiz var.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Appearance & Personality)</h3>
+        <ul>
+            <li><strong>1. Soru Kalıpları:</strong> 
+                <br><span class="note-highlight">What does he look like?</span>: Dış görünüşü sorar. (He is tall.)
+                <br><span class="note-highlight">What is he like?</span>: Karakteri sorar. (He is kind.)
+            </li>
+            <li><strong>2. Comparatives (Karşılaştırma):</strong> 
+                <br>Kısa sıfatlar + <strong>-er</strong> (Taller, Smarter)
+                <br>Uzun sıfatlar: <strong>more</strong> + sıfat (More beautiful)
+                <br>Sonu "y" ile bitenler: <strong>-ier</strong> (Happier)
+                <br>Kıyaslama yaparken mutlaka <strong>"than"</strong> kullanın!
+            </li>
+            <li><strong>3. Have got / Has got:</strong> Saç, göz gibi sahip olduğumuz özelliklerde kullanılır. 
+                (I <strong>have got</strong> blue eyes / She <strong>has got</strong> blonde hair.)
+                <br><strong>Dikkat:</strong> Boy ve kiloda "am/is/are" kullanılır.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

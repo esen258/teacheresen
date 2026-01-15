@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 6. Ünite: Celebrations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fff5f8; /* Kutlama temalı yumuşak pembe/beyaz */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #e91e63; /* Canlı pembe vurgu */
+        }
+        h1 {
+            color: #ad1457;
+            text-align: center;
+            border-bottom: 3px dashed #f06292;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #e91e63;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #ffd54f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #880e4f;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #f06292;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #fce4ec;
+            transform: scale(1.01);
+            border-color: #e91e63;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #c2185b;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff9c4;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fff176;
+            border-top: 5px solid #fbc02d;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #f57f17;
+            border-bottom: 2px solid #fbc02d;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #e91e63; font-weight: bold; }
+        .quantifier { color: #1976d2; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6. Ünite: Celebrations</h1>
+    <p class="instruction">🎉 Partiye davetlisiniz! Çevirileri görmek için cümlelerin üzerine tıklayın. 🎂</p>
+
+    <h2>Kutlama Türleri ve Davetler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are having a graduation party next Sunday.</span><span class="turkish">Gelecek Pazar bir mezuniyet partisi veriyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Would you like to come to my birthday party?</span><span class="turkish">Doğum günü partime gelmek ister misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is getting married; we need to organize a wedding.</span><span class="turkish">Kız kardeşim evleniyor; bir düğün organize etmemiz gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are celebrating their 25th wedding anniversary.</span><span class="turkish">25. evlilik yıldönümlerini kutluyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">New Year's Eve is my favorite celebration.</span><span class="turkish">Yılbaşı gecesi benim en sevdiğim kutlamadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should throw a surprise party for our teacher.</span><span class="turkish">Öğretmenimiz için sürpriz bir parti düzenlemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Fancy dress parties are always very fun.</span><span class="turkish">Kostüm partileri her zaman çok eğlencelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you want to join our welcome party for Pelin?</span><span class="turkish">Pelin için verdiğimiz hoş geldin partisine katılmak ister misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are planning a big family reunion in summer.</span><span class="turkish">Yazın büyük bir aile buluşması planlıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you send the invitation cards to our friends?</span><span class="turkish">Davetiye kartlarını arkadaşlarımıza gönderebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to write a guest list for the party.</span><span class="turkish">Parti için bir misafir listesi yazmam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The party starts at eight o'clock in the evening.</span><span class="turkish">Parti akşam saat sekizde başlıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where is the celebration going to take place?</span><span class="turkish">Kutlama nerede gerçekleşecek?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't forget to bring a gift for the host.</span><span class="turkish">Ev sahibi için bir hediye getirmeyi unutma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm so excited about the school prom!</span><span class="turkish">Okul balosu (mezuniyet balosu) için çok heyecanlıyım!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should celebrate your success with a dinner.</span><span class="turkish">Başarını bir akşam yemeği ile kutlamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are you busy on Saturday afternoon?</span><span class="turkish">Cumartesi öğleden sonra meşgul müsün?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm sorry, but I can't join the party; I have an exam.</span><span class="turkish">Üzgünüm ama partiye katılamam; sınavım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Thanks for the invitation, I'd love to come!</span><span class="turkish">Davet için teşekkürler, gelmeyi çok isterim!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's meet at the party hall.</span><span class="turkish">Parti salonunda buluşalım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are having a slumber party at my house tonight.</span><span class="turkish">Bu gece benim evimde pijama partisi yapıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Every year, we celebrate Children's Day with joy.</span><span class="turkish">Her yıl Çocuk Bayramı'nı neşeyle kutlarız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is it a costume party or a formal dinner?</span><span class="turkish">Bu bir kostüm partisi mi yoksa resmi bir yemek mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Please inform us if you can attend the event.</span><span class="turkish">Etkinliğe katılıp katılamayacağınızı lütfen bize bildirin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousins are coming for the religious holiday.</span><span class="turkish">Kuzenlerim dini bayram için geliyorlar.</span></div>
+
+    
+
+    <h2>Hazırlıklar ve İhtiyaçlar (Preparations)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">First, we must make a to-do list for the party.</span><span class="turkish">İlk olarak, parti için bir yapılacaklar listesi yapmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to buy some colorful balloons for decoration.</span><span class="turkish">Dekorasyon için birkaç renkli balon almam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is making a big delicious cake.</span><span class="turkish">Annem büyük lezzetli bir kek yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should decorate the room with ribbons and lights.</span><span class="turkish">Odayı kurdeleler ve ışıklarla süslemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you help me blow up these balloons?</span><span class="turkish">Bu balonları şişirmeme yardım edebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to go to the florist to buy some flowers.</span><span class="turkish">Biraz çiçek almak için çiçekçiye gitmem gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must order some beverages like fruit juice and soda.</span><span class="turkish">Meyve suyu ve soda gibi bazı içecekler sipariş etmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is busy preparing the barbecue in the garden.</span><span class="turkish">Babam bahçede barbekü hazırlamakla meşgul.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a lot of snacks like crisps and nuts.</span><span class="turkish">Cips ve kuruyemiş gibi çok fazla atıştırmalığa ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is going to choose the music for the party?</span><span class="turkish">Parti müziğini kim seçecek?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to buy a new dress for the wedding.</span><span class="turkish">Düğün için yeni bir elbise almam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't forget to buy candles for the birthday cake.</span><span class="turkish">Doğum günü pastası için mum almayı unutma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should prepare some sandwiches for the guests.</span><span class="turkish">Misafirler için biraz sandviç hazırlamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you wrap the presents for me?</span><span class="turkish">Hediyeleri benim için paketleyebilir (sarabilir) misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need some party hats and confetti.</span><span class="turkish">Birkaç parti şapkasına ve konfetiye ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm going to the supermarket to buy some flour and sugar.</span><span class="turkish">Biraz un ve şeker almak için süpermarkete gidiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should clean the house before the guests arrive.</span><span class="turkish">Misafirler gelmeden önce evi temizlemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is responsible for the sound system.</span><span class="turkish">Ses sisteminden erkek kardeşim sorumlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must arrange the chairs and tables.</span><span class="turkish">Sandalyeleri ve masaları ayarlamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do we have enough paper plates and cups?</span><span class="turkish">Yeterince kağıt tabağımız ve bardağımız var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to buy some cookies from the bakery.</span><span class="turkish">Fırından biraz kurabiye almam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should put a welcome sign on the door.</span><span class="turkish">Kapıya bir hoş geldin tabelası koymalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is making a playlist of our favorite songs.</span><span class="turkish">Kız kardeşim en sevdiğimiz şarkılardan bir oynatma listesi yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need some music to dance all night.</span><span class="turkish">Bütün gece dans etmek için biraz müziğe ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I should call the catering company for the food.</span><span class="turkish">Yemek için yemek şirketini (catering) aramalıyım.</span></div>
+
+    <h2>Miktar Belirleyiciler (Quantifiers)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have a few guests coming tonight.</span><span class="turkish">Bu gece gelen birkaç misafirimiz var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need a little help with the decorations.</span><span class="turkish">Dekorasyonlar için biraz yardıma ihtiyacım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there any milk in the fridge for the cake?</span><span class="turkish">Kek için buzdolabında hiç süt var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are some sandwiches on the table.</span><span class="turkish">Masanın üzerinde birkaç sandviç var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We don't have any orange juice left.</span><span class="turkish">Hiç portakal suyumuz kalmadı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to buy a few more balloons.</span><span class="turkish">Birkaç tane daha balon almam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Add a little sugar to the tea, please.</span><span class="turkish">Çaya biraz şeker ekle, lütfen.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are a lot of people at the wedding ceremony.</span><span class="turkish">Düğün töreninde çok fazla insan var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need some music for the party.</span><span class="turkish">Parti için biraz müziğe ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have any ideas for the surprise?</span><span class="turkish">Sürpriz için hiç fikrin var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a few friends who can help us.</span><span class="turkish">Bize yardım edebilecek birkaç arkadaşım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We only have a little time before the party starts.</span><span class="turkish">Parti başlamadan önce sadece biraz vaktimiz var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are there any cookies in the jar?</span><span class="turkish">Kavanozda hiç kurabiye var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a lot of confetti for the celebration.</span><span class="turkish">Kutlama için çok fazla konfetiye ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are a few cupcakes on the tray.</span><span class="turkish">Tepside birkaç tane cupcake var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Put a little salt in the soup.</span><span class="turkish">Çorbaya biraz tuz koy.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We don't need any more decorations.</span><span class="turkish">Daha fazla dekorasyona ihtiyacımız yok.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have some invitation cards in my bag.</span><span class="turkish">Çantamda birkaç davetiye kartı var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There isn't any butter for the cookies.</span><span class="turkish">Kurabiyeler için hiç tereyağı yok.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have a lot of work to do today.</span><span class="turkish">Bugün yapacak çok işimiz var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can I have some water, please?</span><span class="turkish">Biraz su alabilir miyim lütfen?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are a few gift boxes under the tree.</span><span class="turkish">Ağacın altında birkaç hediye kutusu var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He needs a little money to buy a present.</span><span class="turkish">Hediye almak için biraz paraya ihtiyacı var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do we need any help with the guest list?</span><span class="turkish">Misafir listesi için hiç yardıma ihtiyacımız var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are some party hats in the drawer.</span><span class="turkish">Çekmecede birkaç parti şapkası var.</span></div>
+
+    <h2>Gereklilik, Öneri ve Sorular</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must be on time for the party.</span><span class="turkish">Parti için zamanında gelmelisin (zorunluluk).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should buy a big cake for her birthday.</span><span class="turkish">Doğum günü için büyük bir pasta almalıyız (tavsiye).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to finish the preparations by five o'clock.</span><span class="turkish">Hazırlıkları saat beşe kadar bitirmem gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You shouldn't forget to bring your invitation card.</span><span class="turkish">Davetiye kartını getirmeyi unutmamalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do we need for a successful party?</span><span class="turkish">Başarılı bir parti için neye ihtiyacımız var?</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Celebrations Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Countable vs Uncountable (Sayılan/Sayılamayan):</strong> 
+                <br>• <span class="quantifier">A few:</span> Sayılabilen çoğul (A few balloons).
+                <br>• <span class="quantifier">A little:</span> Sayılamayan (A little sugar).
+                <br>• <span class="quantifier">Some:</span> Olumlu cümlelerde (Biraz/Birkaç).
+                <br>• <span class="quantifier">Any:</span> Soru ve olumsuzda (Hiç).
+            </li>
+            <li><strong>2. Davet Kalıpları:</strong> 
+                <br>• <strong>Would you like to...?</strong> (İster misin?)
+                <br>• <strong>Let's...</strong> (Hadi... yapalım)
+                <br>• <strong>Why don't we...?</strong> (Neden yapmıyoruz?)
+            </li>
+            <li><strong>3. Gereklilik (Must / Should / Need):</strong> 
+                <br>• <span class="highlight">Must:</span> Güçlü zorunluluk. 
+                <br>• <span class="highlight">Should:</span> Tavsiye. 
+                <br>• <span class="highlight">Need to:</span> İhtiyaç.
+            </li>
+            <li><strong>4. Önemli Fiiller:</strong> 
+                Throw a party (Parti vermek), Wrap a gift (Hediye paketlemek), Decorate (Süslemek).
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

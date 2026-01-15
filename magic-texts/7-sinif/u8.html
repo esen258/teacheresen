@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 8. Ünite: Public Buildings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f8e9; /* Şehir parkı yeşili tonu */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #2e7d32; /* Kamu binaları yeşili */
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            border-bottom: 3px double #4caf50;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #fb8c00;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #546e7a;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #4caf50;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f8e9;
+            transform: scale(1.01);
+            border-color: #2e7d32;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1b5e20;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e65100;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ffe082;
+            border-top: 5px solid #ffa000;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #e65100;
+            border-bottom: 2px solid #ffa000;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #2e7d32; font-weight: bold; }
+        .purpose { color: #d84315; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>8. Ünite: Public Buildings</h1>
+    <p class="instruction">🏢 Şehir turuna hazır mısınız? Çeviriler için binaların üzerine tıklayın! 🗺️</p>
+
+    <h2>Kamu Binaları ve Yerler (Locations)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am going to the library to borrow some books.</span><span class="turkish">Ödünç kitap almak için kütüphaneye gidiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother went to the bakery to buy fresh bread.</span><span class="turkish">Annem taze ekmek almak için fırına gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should go to the hospital to see a doctor.</span><span class="turkish">Doktoru görmek için hastaneye gitmelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We can go to the cinema to watch the latest movie.</span><span class="turkish">En son filmi izlemek için sinemaya gidebiliriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is at the chemist’s to buy some medicine.</span><span class="turkish">O, biraz ilaç almak için eczanede.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She went to the shopping mall to buy a new dress.</span><span class="turkish">Yeni bir elbise almak için alışveriş merkezine gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should go to the police station to report the accident.</span><span class="turkish">Kazayı bildirmek için polis karakoluna gitmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is at the post office to send a letter.</span><span class="turkish">Babam mektup göndermek için postanede.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They went to the museum to see the historical statues.</span><span class="turkish">Tarihi heykelleri görmek için müzeye gittiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I go to the gym to do exercise every morning.</span><span class="turkish">Her sabah egzersiz yapmak için spor salonuna giderim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You can go to the art gallery to see beautiful paintings.</span><span class="turkish">Güzel tabloları görmek için sanat galerisine gidebilirsin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are going to the amusement park to have fun.</span><span class="turkish">Eğlenmek için lunaparka gidiyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there a fire station near your house?</span><span class="turkish">Evinizin yakınında bir itfaiye istasyonu var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He went to the governor's office for some official papers.</span><span class="turkish">Bazı resmi evraklar için valiliğe gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My grandmother goes to the mosque to pray.</span><span class="turkish">Büyükannem dua etmek için camiye gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We go to the stadium to watch football matches.</span><span class="turkish">Futbol maçlarını izlemek için stadyuma gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the florist to buy some roses for my mother.</span><span class="turkish">Annem için birkaç gül almak üzere çiçekçiye gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is at the bank to withdraw some money.</span><span class="turkish">O, biraz para çekmek için bankada.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We can go to the café to drink something with friends.</span><span class="turkish">Arkadaşlarımızla bir şeyler içmek için kafeye gidebiliriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They went to the zoo to see wild animals.</span><span class="turkish">Vahşi hayvanları görmek için hayvanat bahçesine gittiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is at the music store to buy a guitar.</span><span class="turkish">Erkek kardeşim bir gitar almak için müzik mağazasında.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should go to the grocery store to buy some fruit.</span><span class="turkish">Biraz meyve almak için bakkala (market) gitmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The city hall is in the center of the city.</span><span class="turkish">Belediye binası şehrin merkezindedir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am going to the boutique to look at the new collection.</span><span class="turkish">Yeni koleksiyona bakmak için butiğe gidiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There is a big department store on this street.</span><span class="turkish">Bu caddede büyük bir mağaza (çok katlı mağaza) var.</span></div>
+
+    
+
+    <h2>Gidiş Amaçları (Purpose of Visit - "To" Yapısı)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the café to meet my friends.</span><span class="turkish">Arkadaşlarımızla buluşmak için kafeye gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes to the park to walk her dog.</span><span class="turkish">Köpeğini gezdirmek için parka gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We went to the circus to see the clowns.</span><span class="turkish">Palyaçoları görmek için sirke gittik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He called the fire station to report a fire.</span><span class="turkish">Yangını bildirmek için itfaiyeyi aradı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They go to the greengrocer's to buy fresh vegetables.</span><span class="turkish">Taze sebze almak için manava giderler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the newsagent's to buy a daily newspaper.</span><span class="turkish">Günlük gazete almak için gazete bayisine gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She went to the jewelry store to buy a necklace.</span><span class="turkish">Bir kolye almak için kuyumcuya gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We go to the restaurant to eat a delicious dinner.</span><span class="turkish">Lezzetli bir akşam yemeği yemek için restorana gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is at the barbershop to get a haircut.</span><span class="turkish">O, saç tıraşı olmak için berberde.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the game store to buy a new video game.</span><span class="turkish">Yeni bir video oyunu almak için oyun mağazasına gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes to the library to study in a quiet place.</span><span class="turkish">Sessiz bir yerde ders çalışmak için kütüphaneye gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We went to the bookshop to buy a dictionary.</span><span class="turkish">Bir sözlük almak için kitapçıya gittik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He went to the travel agency to book a flight.</span><span class="turkish">Uçuş rezervasyonu yapmak için seyahat acentesine gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They go to the beach to swim in the sea.</span><span class="turkish">Denizde yüzmek için sahile giderler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the pet shop to buy food for my cat.</span><span class="turkish">Kedim için mama almak üzere pet shop'a gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She went to the beauty saloon to get her hair done.</span><span class="turkish">Saçını yaptırmak için güzellik salonuna gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We go to the coffee shop to talk about our day.</span><span class="turkish">Gününümüz hakkında konuşmak için kahve dükkanına gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He went to the repair shop to fix his bicycle.</span><span class="turkish">Bisikletini tamir etmek için tamirhaneye gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am going to the toy shop to buy a gift for my brother.</span><span class="turkish">Kardeşime hediye almak için oyuncakçıya gidiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They went to the theater to see a play.</span><span class="turkish">Bir tiyatro oyunu izlemek için tiyatroya gittiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes to the market to do the weekly shopping.</span><span class="turkish">Haftalık alışverişi yapmak için markete gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We went to the concert hall to listen to music.</span><span class="turkish">Müzik dinlemek için konser salonuna gittik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He went to the shoe store to buy a pair of boots.</span><span class="turkish">Bir çift bot almak için ayakkabı mağazasına gitti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I went to the dry cleaner's to clean my coat.</span><span class="turkish">Montumu temizletmek için kuru temizlemeciye gittim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is at the dentist's to check her teeth.</span><span class="turkish">O, dişlerini kontrol ettirmek için dişçide.</span></div>
+
+    <h2>Yer Tarifi ve Edatlar (Prepositions of Place)</h2>
+    [Image diagram showing prepositions of place: next to, between, opposite, in front of, behind]
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The bakery is next to the pharmacy.</span><span class="turkish">Fırın eczanenin yanındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The library is between the school and the park.</span><span class="turkish">Kütüphane okul ile parkın arasındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The shopping mall is opposite the bus station.</span><span class="turkish">Alışveriş merkezi otogarın karşısındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Go straight ahead and turn left at the corner.</span><span class="turkish">Düz git ve köşeden sola dön.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hospital is behind the big museum.</span><span class="turkish">Hastane büyük müzenin arkasındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There is a small café in front of the cinema.</span><span class="turkish">Sinemanın önünde küçük bir kafe var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The post office is near the city hall.</span><span class="turkish">Postane belediye binasının yakınındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Walk past the bank and the bookstore is on your right.</span><span class="turkish">Bankayı geç, kitapçı sağında kalacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The art gallery is across the street.</span><span class="turkish">Sanat galerisi caddenin karşısındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is the police station far from here?</span><span class="turkish">Polis karakolu buradan uzak mı?</span></div>
+
+    <h2>Karma Sorular ve Günlük Cümleler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why did you go to the post office? / To send a package.</span><span class="turkish">Neden postaneye gittin? / Paket göndermek için.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where can I buy some medicine? / You should go to the pharmacy.</span><span class="turkish">Nereden ilaç alabilirim? / Eczaneye gitmelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am very hungry; let's go to the restaurant.</span><span class="turkish">Çok açım; hadi restorana gidelim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need a new book; I'm going to the bookshop.</span><span class="turkish">Yeni bir kitaba ihtiyacım var; kitapçıya gidiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We can see old planes at the aviation museum.</span><span class="turkish">Havacılık müzesinde eski uçakları görebiliriz.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Public Buildings Ünitesi)</h3>
+        <ul>
+            <li><strong>1. "To" Yapısı (Amaç Bildirme):</strong> Bir yere gidiş nedenimizi belirtirken fiilden önce <span class="purpose">to</span> ekleriz. (-mek için).
+                <br>• Örn: "I go to the market <strong>to buy</strong> milk."
+            </li>
+            <li><strong>2. Kritik Mekanlar:</strong> 
+                <br>• <span class="highlight">Pharmacy / Chemist's:</span> İlaç (medicine).
+                <br>• <span class="highlight">Bakery:</span> Ekmek (bread).
+                <br>• <span class="highlight">Municipality / City Hall:</span> Belediye (resmi işler).
+                <br>• <span class="highlight">Florist:</span> Çiçek (flowers).
+            </li>
+            <li><strong>3. Konum Edatları:</strong> 
+                <br>• <strong>Next to:</strong> Yanında / <strong>Between:</strong> Arasında.
+                <br>• <strong>Opposite:</strong> Karşısında / <strong>Behind:</strong> Arkasında.
+            </li>
+            <li><strong>4. Soru Kelimeleri:</strong> 
+                <br>• <strong>Why:</strong> Neden? (Cevap 'to' ile başlar).
+                <br>• <strong>Where:</strong> Nerede? (Cevap konum bildirir).
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

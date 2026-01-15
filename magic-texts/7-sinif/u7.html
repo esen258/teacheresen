@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 7. Ünite: Dreams</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4ff; /* Hayalperest açık mavi tonu */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #5c6bc0; /* Gece mavisi vurgu */
+        }
+        h1 {
+            color: #3949ab;
+            text-align: center;
+            border-bottom: 3px double #9fa8da;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #5c6bc0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #ffca28;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7986cb;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #5c6bc0;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #e8eaf6;
+            transform: translateY(-2px);
+            border-color: #3949ab;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d81b60;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fffde7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fff9c4;
+            border-top: 5px solid #fbc02d;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #f57f17;
+            border-bottom: 2px solid #fbc02d;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #3949ab; font-weight: bold; }
+        .future { color: #d81b60; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7. Ünite: Dreams</h1>
+    <p class="instruction">🚀 Geleceğe yolculuğa hazır mısınız? Çeviriler için cümlelerin üzerine tıklayın! 🌟</p>
+
+    <h2>Gelecek Tahminleri ve Hayaller (Predictions & Dreams)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will live in a big city in the future.</span><span class="turkish">Bence gelecekte büyük bir şehirde yaşayacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She believes she will be a famous doctor.</span><span class="turkish">Ünlü bir doktor olacağına inanıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope robots will do all the housework.</span><span class="turkish">Umarım robotlar tüm ev işlerini yapacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People will probably travel to other planets.</span><span class="turkish">İnsanlar muhtemelen diğer gezegenlere seyahat edecek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My dream is to travel around the world.</span><span class="turkish">Hayalim dünyayı gezmek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess it will be a sunny day tomorrow.</span><span class="turkish">Tahmin ederim ki yarın güneşli bir gün olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He will definitely buy a sports car one day.</span><span class="turkish">O bir gün kesinlikle bir spor araba alacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists will find a cure for all diseases.</span><span class="turkish">Bilim insanları tüm hastalıklar için bir tedavi bulacaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will pass all my exams with high grades.</span><span class="turkish">Umarım tüm sınavlarımı yüksek notlarla geçeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There won't be any traffic jams in the future.</span><span class="turkish">Gelecekte hiç trafik sıkışıklığı olmayacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe people will live longer.</span><span class="turkish">İnsanların daha uzun yaşayacağına inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will there be flying cars in twenty years?</span><span class="turkish">Yirmi yıl içinde uçan arabalar olacak mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will learn three languages.</span><span class="turkish">Bence üç dil öğreneceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She expects she will win the lottery.</span><span class="turkish">Piyangoyu kazanmayı bekliyor (umuyor).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I dream of living in a peaceful forest.</span><span class="turkish">Huzurlu bir ormanda yaşamayı hayal ediyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Computers will be much smaller and faster.</span><span class="turkish">Bilgisayarlar çok daha küçük ve hızlı olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will have a big garden with flowers.</span><span class="turkish">Umarım çiçekli büyük bir bahçem olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People won't use paper money in the future.</span><span class="turkish">İnsanlar gelecekte kağıt para kullanmayacaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think my brother will be a successful athlete.</span><span class="turkish">Bence erkek kardeşim başarılı bir atlet olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess we will have robot assistants at home.</span><span class="turkish">Tahminime göre evde robot asistanlarımız olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will you live in a different country?</span><span class="turkish">Farklı bir ülkede mi yaşayacaksın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe I will have a happy family.</span><span class="turkish">Mutlu bir ailem olacağına inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There will be more green areas in our cities.</span><span class="turkish">Şehirlerimizde daha fazla yeşil alan olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will meet my favorite singer.</span><span class="turkish">Umarım en sevdiğim şarkıcıyla tanışırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People will have holidays in space.</span><span class="turkish">İnsanlar uzayda tatil yapacaklar.</span></div>
+
+    
+
+    <h2>Kariyer ve Başarı (Career & Success)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I will probably be an engineer after university.</span><span class="turkish">Üniversiteden sonra muhtemelen bir mühendis olacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She hopes she will work for a famous company.</span><span class="turkish">Ünlü bir şirket için çalışmayı umuyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will write a best-selling book.</span><span class="turkish">Bence çok satan bir kitap yazacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousin believes he will be a great chef.</span><span class="turkish">Kuzenim harika bir şef olacağına inanıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I will definitely have a good career.</span><span class="turkish">Kesinlikle iyi bir kariyerim olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They will probably build their own business.</span><span class="turkish">Muhtemelen kendi işlerini kuracaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will help many people in my job.</span><span class="turkish">Umarım işimde birçok insana yardım edeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He expects he will earn a lot of money.</span><span class="turkish">Çok para kazanmayı bekliyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think she will be a famous actress.</span><span class="turkish">Bence o ünlü bir oyuncu olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I will study hard to achieve my dreams.</span><span class="turkish">Hayallerime ulaşmak için çok çalışacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will you be a teacher in the future?</span><span class="turkish">Gelecekte bir öğretmen olacak mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe I will get a scholarship.</span><span class="turkish">Bir burs alacağıma inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My dream is to work at NASA.</span><span class="turkish">Hayalim NASA'da çalışmak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She will probably graduate with honors.</span><span class="turkish">Muhtemelen dereceyle (onur belgesiyle) mezun olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will have a creative job.</span><span class="turkish">Umarım yaratıcı bir işim olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess I will work in the technology field.</span><span class="turkish">Tahminimce teknoloji alanında çalışacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He will definitely be a professional musician.</span><span class="turkish">O kesinlikle profesyonel bir müzisyen olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think my sister will be a vet because she loves animals.</span><span class="turkish">Bence kız kardeşim bir veteriner olacak çünkü hayvanları seviyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will you be famous one day?</span><span class="turkish">Bir gün ünlü olacak mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe I will be very successful in my life.</span><span class="turkish">Hayatımda çok başarılı olacağıma inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She hopes she will win an award for her work.</span><span class="turkish">Çalışması için bir ödül kazanmayı umuyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I will probably start my career in Istanbul.</span><span class="turkish">Kariyerime muhtemelen İstanbul'da başlayacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will have many intelligent colleagues.</span><span class="turkish">Bence birçok zeki meslektaşım olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father believes I will be a great pilot.</span><span class="turkish">Babam benim harika bir pilot olacağıma inanıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will find my dream job soon.</span><span class="turkish">Umarım hayalimdeki işi yakında bulurum.</span></div>
+
+    <h2>Sosyal Yaşam ve Dünya (Social Life & World)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will get married when I am thirty.</span><span class="turkish">Bence otuz yaşımdayken evleneceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope the world will be a more peaceful place.</span><span class="turkish">Umarım dünya daha huzurlu bir yer olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People will use clean energy in the future.</span><span class="turkish">İnsanlar gelecekte temiz enerji kullanacaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe there won't be any wars.</span><span class="turkish">Hiç savaş olmayacağına inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We will probably live in smart houses.</span><span class="turkish">Muhtemelen akıllı evlerde yaşayacağız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will have many loyal friends.</span><span class="turkish">Umarım birçok sadık arkadaşım olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People will protect the environment more.</span><span class="turkish">İnsanlar çevreyi daha fazla koruyacaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will live near the sea.</span><span class="turkish">Bence denize yakın yaşayacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will children go to school in the future?</span><span class="turkish">Gelecekte çocuklar okula gidecek mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess we will have virtual reality classrooms.</span><span class="turkish">Tahminimce sanal gerçeklik sınıflarımız olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe I will stay healthy and fit.</span><span class="turkish">Sağlıklı ve zinde kalacağıma inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People won't wear glasses; they will use special lenses.</span><span class="turkish">İnsanlar gözlük takmayacak; özel lensler kullanacaklar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope the air will be cleaner.</span><span class="turkish">Umarım hava daha temiz olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will we have food pills instead of meals?</span><span class="turkish">Öğünler yerine yemek haplarımız mı olacak?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will adopt a dog in the future.</span><span class="turkish">Bence gelecekte bir köpek sahipleneceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We will probably communicate with our thoughts.</span><span class="turkish">Muhtemelen düşüncelerimizle iletişim kuracağız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will see the North Lights.</span><span class="turkish">Umarım Kuzey Işıklarını görürüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People will build cities under the ocean.</span><span class="turkish">İnsanlar okyanusun altına şehirler inşa edecekler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will go on a world tour.</span><span class="turkish">Bence bir dünya turuna çıkacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will there be any robots in our schools?</span><span class="turkish">Okullarımızda hiç robot olacak mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I believe technology will solve the global warming.</span><span class="turkish">Teknolojinin küresel ısınmayı çözeceğine inanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will have a long and healthy life.</span><span class="turkish">Umarım uzun ve sağlıklı bir hayatım olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We will probably use solar-powered planes.</span><span class="turkish">Muhtemelen güneş enerjili uçaklar kullanacağız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will learn how to play the guitar.</span><span class="turkish">Bence gitar çalmayı öğreneceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will life be easier in the year 2050?</span><span class="turkish">2050 yılında hayat daha kolay olacak mı?</span></div>
+
+    <h2>"Will / Won't" ve Olasılık Cümleleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I won't be late for the meeting, I promise.</span><span class="turkish">Toplantıya geç kalmayacağım, söz veriyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think it will rain this afternoon.</span><span class="turkish">Bence bu öğleden sonra yağmur yağacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He probably won't come to the party.</span><span class="turkish">O muhtemelen partiye gelmeyecek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I will definitely visit you next summer.</span><span class="turkish">Seni gelecek yaz kesinlikle ziyaret edeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you think you will be rich?</span><span class="turkish">Zengin olacağını düşünüyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't think she will accept the offer.</span><span class="turkish">Onun teklifi kabul edeceğini düşünmüyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm sure you will be very happy.</span><span class="turkish">Eminim çok mutlu olacaksın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We will probably see each other soon.</span><span class="turkish">Muhtemelen yakında birbirimizi göreceğiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I won't tell your secret to anyone.</span><span class="turkish">Sırrını kimseye söylemeyeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will they move to a new house?</span><span class="turkish">Yeni bir eve taşınacaklar mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess he will pass the driving test.</span><span class="turkish">Tahminime göre direksiyon sınavını geçecek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She will probably buy a new phone.</span><span class="turkish">Muhtemelen yeni bir telefon alacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I won't have any problems.</span><span class="turkish">Umarım hiç sorun yaşamam.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will buy a gift for my mother.</span><span class="turkish">Bence annem için bir hediye alacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They won't forget us, I believe.</span><span class="turkish">Bizi unutmayacaklar, inanıyorum.</span></div>
+
+    <h2>Karma ve Günlük Kalıplar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your biggest dream?</span><span class="turkish">En büyük hayalin nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope all your dreams will come true.</span><span class="turkish">Umarım tüm hayallerin gerçek olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I expect a great future for myself.</span><span class="turkish">Kendim için harika bir gelecek bekliyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you believe in fortune telling?</span><span class="turkish">Fal bakmaya (geleceği görmeye) inanır mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think I will be more confident in the future.</span><span class="turkish">Bence gelecekte daha özgüvenli olacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She will probably get a promotion.</span><span class="turkish">Muhtemelen terfi alacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope I will be a good parent.</span><span class="turkish">Umarım iyi bir ebeveyn olurum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I guess the weather will be cold.</span><span class="turkish">Tahminimce hava soğuk olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Will you remember me in ten years?</span><span class="turkish">On yıl sonra beni hatırlayacak mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's work hard for our dreams!</span><span class="turkish">Hayallerimiz için çok çalışalım!</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Dreams Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Will / Won't (Gelecek Zaman):</strong> Geleceğe dair tahminlerde veya konuşma anında verilen kararlarda kullanılır. 
+                <br>• Olumlu: <span class="highlight">will</span> + Verb (I will go).
+                <br>• Olumsuz: <span class="highlight">won't</span> + Verb (I won't go).
+            </li>
+            <li><strong>2. Tahmin Bildiren Kalıplar:</strong> Cümle başına gelerek "olasılık" anlamı katarlar.
+                <br>• <span class="future">I think:</span> Bence / <span class="future">I hope:</span> Umarım.
+                <br>• <span class="future">I believe:</span> İnanıyorum ki / <span class="future">I guess:</span> Tahmin ederim ki.
+            </li>
+            <li><strong>3. Olasılık Zarfları:</strong> 
+                <br>• <span class="highlight">Probably:</span> Muhtemelen (Daha düşük ihtimal).
+                <br>• <span class="highlight">Definitely:</span> Kesinlikle (Çok güçlü ihtimal).
+            </li>
+            <li><strong>4. Önemli Kelimeler:</strong> 
+                <br>• <strong>Come true:</strong> Gerçekleşmek / <strong>Achieve:</strong> Başarmak-Ulaşmak.
+                <br>• <strong>In the future:</strong> Gelecekte / <strong>Career:</strong> Kariyer.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

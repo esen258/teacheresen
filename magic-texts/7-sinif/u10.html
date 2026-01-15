@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 10. Ünite: Planets</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #0b0d17; /* Uzay siyahı/laciverti */
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #161b22;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.2); 
+            border-top: 10px solid #58a6ff; /* Galaksi mavisi */
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            border-bottom: 3px double #f1c40f; /* Yıldız sarısı detay */
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #0d47a1;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #f1c40f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #8b949e;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #30363d;
+            background-color: #0d1117;
+        }
+        .sentence-box:hover {
+            background-color: #1c2128;
+            border-color: #58a6ff;
+            transform: scale(1.02);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #58a6ff;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #f1c40f;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #0d1117;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #30363d;
+            border-top: 5px solid #f1c40f;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #f1c40f;
+            border-bottom: 2px solid #58a6ff;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #58a6ff; font-weight: bold; }
+        .planet-name { color: #ffa726; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10. Ünite: Planets</h1>
+    <p class="instruction">👨‍🚀 Uzay yolculuğuna hazır mısın? Çeviriler için cümlelerin üzerine tıkla! ☄️</p>
+
+    <h2>Gezegenler ve Güneş Sistemi (The Solar System)</h2>
+    
+
+[Image of the solar system showing the Sun and the eight planets in their orbits]
+
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are eight planets in our solar system.</span><span class="turkish">Güneş sistemimizde sekiz gezegen vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Sun is a massive star at the center of the system.</span><span class="turkish">Güneş, sistemin merkezindeki devasa bir yıldızdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mercury is the closest planet to the Sun.</span><span class="turkish">Merkür, Güneş'e en yakın gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Venus is the hottest planet because of its atmosphere.</span><span class="turkish">Venüs, atmosferi nedeniyle en sıcak gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Earth is called the "Blue Planet" because of its water.</span><span class="turkish">Dünya, suyundan dolayı "Mavi Gezegen" olarak adlandırılır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mars is known as the "Red Planet" due to its surface.</span><span class="turkish">Mars, yüzeyinden dolayı "Kızıl Gezegen" olarak bilinir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Jupiter is the largest planet in the solar system.</span><span class="turkish">Jüpiter, güneş sistemindeki en büyük gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Saturn is famous for its beautiful rings.</span><span class="turkish">Satürn, güzel halkalarıyla ünlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Uranus is an ice giant and it is very cold.</span><span class="turkish">Uranüs bir buz devidir ve çok soğuktur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Neptune is the farthest planet from the Sun.</span><span class="turkish">Neptün, Güneş'e en uzak gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Moon is the Earth's only natural satellite.</span><span class="turkish">Ay, Dünya'nın tek doğal uydusudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Pluto is now called a dwarf planet.</span><span class="turkish">Plüton artık bir cüce gezegen olarak adlandırılıyor.</span></div>
+
+    <h2>Karşılaştırmalar (Comparatives & Superlatives)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Jupiter is bigger than all other planets.</span><span class="turkish">Jüpiter, diğer tüm gezegenlerden daha büyüktür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mercury is smaller than the Earth.</span><span class="turkish">Merkür, Dünya'dan daha küçüktür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Venus is hotter than Mercury.</span><span class="turkish">Venüs, Merkür'den daha sıcaktır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Neptune is the farthest planet from the Sun.</span><span class="turkish">Neptün, Güneş'e en uzak gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Earth is the most suitable planet for life.</span><span class="turkish">Dünya, yaşam için en uygun gezegendir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Sun is the hottest object in our solar system.</span><span class="turkish">Güneş, güneş sistemimizdeki en sıcak nesnedir.</span></div>
+
+    <h2>Uzay Araştırmaları (Space Exploration)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Astronauts travel into space in a space shuttle.</span><span class="turkish">Astronotlar uzaya bir uzay mekiği ile seyahat ederler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Neil Armstrong was the first person to walk on the Moon.</span><span class="turkish">Neil Armstrong, Ay'da yürüyen ilk insandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists use giant telescopes to observe the stars.</span><span class="turkish">Bilim insanları yıldızları gözlemlemek için dev teleskoplar kullanırlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We want to find out if there is life on Mars.</span><span class="turkish">Mars'ta yaşam olup olmadığını öğrenmek istiyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Evidence of water was found on Mars.</span><span class="turkish">Mars'ta su kanıtı bulundu.</span></div>
+
+    <h2>Gezegen Özellikleri ve Sayılar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Jupiter has seventy-nine known moons.</span><span class="turkish">Jüpiter'in bilinen yetmiş dokuz uydusu vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The rings of Saturn are made of ice and rock.</span><span class="turkish">Satürn'ün halkaları buz ve kayadan oluşmuştur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It takes 365 days for Earth to orbit the Sun.</span><span class="turkish">Dünya'nın Güneş etrafında dönmesi 365 gün sürer.</span></div>
+
+    <h2>Karma ve Günlük Sorular</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why is Mars called the Red Planet?</span><span class="turkish">Mars neden Kızıl Gezegen olarak adlandırılır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The universe is full of mysteries.</span><span class="turkish">Evren gizemlerle doludur.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Planets Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Karşılaştırma (Comparatives):</strong> İki gezegeni kıyaslarken kısa sıfatlara <span class="highlight">-er</span> eklenir. 
+                <br>• Örn: Mars is <span class="highlight">smaller</span> than Earth.
+            </li>
+            <li><strong>2. Üstünlük (Superlatives):</strong> Bir grubun içindeki "en" olanı söylerken kullanılır.
+                <br>• <span class="highlight">The biggest:</span> En büyük / <span class="highlight">The hottest:</span> En sıcak.
+            </li>
+            <li><strong>3. Gezegenlerin Lakapları:</strong> 
+                <br>• <span class="planet-name">Mars:</span> The Red Planet.
+                <br>• <span class="planet-name">Earth:</span> The Blue Planet.
+                <br>• <span class="planet-name">Venus:</span> The Hottest Planet.
+            </li>
+            <li><strong>4. Temel Terimler:</strong> 
+                <br>• <strong>Orbit:</strong> Yörünge / <strong>Satellite:</strong> Uydu.
+                <br>• <strong>Gravity:</strong> Yerçekimi / <strong>Surface:</strong> Yüzey.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

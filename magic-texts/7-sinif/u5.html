@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 5. Ünite: Television</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #e3f2fd; /* TV ekranı mavisi tonu */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #3f51b5; /* TV çerçevesi rengi */
+        }
+        h1 {
+            color: #1a237e;
+            text-align: center;
+            border-bottom: 3px double #3f51b5;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #3f51b5;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #ff4081;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #3f51b5;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #e8eaf6;
+            transform: translateY(-2px);
+            border-color: #3f51b5;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #c2185b;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fffde7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fff9c4;
+            border-top: 5px solid #fbc02d;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #f57f17;
+            border-bottom: 2px solid #fbc02d;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #3f51b5; font-weight: bold; }
+        .pink-h { color: #c2185b; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5. Ünite: Television</h1>
+    <p class="instruction">📺 Programları keşfetmek ve çevirileri görmek için cümlelerin üzerine tıklayın! 🍿</p>
+
+    <h2>TV Programları ve Türleri</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love watching sitcoms because they are very funny.</span><span class="turkish">Sitcom (durum komedisi) izlemeyi severim çünkü çok komikler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Documentaries are educational and informative.</span><span class="turkish">Belgeseller eğitici ve bilgilendiricidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister never misses her favorite soap opera.</span><span class="turkish">Kız kardeşim en sevdiği pembe diziyi asla kaçırmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The news starts at seven o'clock every evening.</span><span class="turkish">Haberler her akşam saat yedide başlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Quiz shows are great for testing your knowledge.</span><span class="turkish">Bilgi yarışmaları bilginizi test etmek için harikadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Children usually enjoy watching cartoons.</span><span class="turkish">Çocuklar genellikle çizgi film izlemekten keyif alırlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The weather forecast says it will be sunny tomorrow.</span><span class="turkish">Hava durumu raporu yarın havanın güneşli olacağını söylüyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Reality shows are popular but sometimes boring.</span><span class="turkish">Reality şovlar popülerdir ama bazen sıkıcıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sports programs are exciting for football fans.</span><span class="turkish">Spor programları futbol taraftarları için heyecan vericidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I watched a talk show with a famous actor last night.</span><span class="turkish">Dün gece ünlü bir aktörün katıldığı bir sohbet programı izledim.</span></div>
+
+    
+
+    <h2>Tercihler ve Görüşler (Prefer & Opinions)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer documentaries to reality shows.</span><span class="turkish">Belgeselleri reality şovlara tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She prefers watching TV at home to going to the cinema.</span><span class="turkish">Evde TV izlemeyi sinemaya gitmeye tercih eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do you think about talk shows?</span><span class="turkish">Sohbet programları hakkında ne düşünüyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">To be honest, I think commercial breaks are too long.</span><span class="turkish">Dürüst olmak gerekirse, bence reklam araları çok uzun.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother prefers sports programs because he is a fan of basketball.</span><span class="turkish">Erkek kardeşim basketbol hayranı olduğu için spor programlarını tercih eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think cartoons are fantastic and amusing.</span><span class="turkish">Bence çizgi filmler harika ve eğlenceli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She doesn't like soap operas; she thinks they are nonsense.</span><span class="turkish">Pembe dizileri sevmez; onların saçma olduğunu düşünüyor.</span></div>
+
+    <h2>TV Alışkanlıkları ve Terimler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't be a couch potato! Go out and play.</span><span class="turkish">Televizyon bağımlısı (uyuşuk) olma! Dışarı çık ve oyna.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where is the remote control? I want to change the channel.</span><span class="turkish">Uzaktan kumanda nerede? Kanalı değiştirmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should pay attention to the TV signs for age limits.</span><span class="turkish">Yaş sınırları için TV işaretlerine (akıllı işaretler) dikkat etmelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">There are too many commercials on TV nowadays.</span><span class="turkish">Bugünlerde televizyonda çok fazla reklam var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He spends four hours a day in front of the TV.</span><span class="turkish">Günde dört saatini televizyon karşısında geçiriyor.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Television Ünitesi)</h3>
+        <ul>
+            <li><strong>1. "Prefer" Kullanımı:</strong> Bir şeyi başka bir şeye tercih ederken kullanılır. 
+                <br>• Kalıp: <span class="highlight">Prefer + (isim/fiil-ing) + TO + (isim/fiil-ing)</span>
+                <br>• Örn: "I prefer <strong>pop</strong> to <strong>rock</strong>." veya "I prefer <strong>watching</strong> to <strong>reading</strong>."
+            </li>
+            <li><strong>2. Program Türleri:</strong> 
+                <br>• <span class="pink-h">Sitcom:</span> Komedi dizisi.
+                <br>• <span class="pink-h">Soap Opera:</span> Pembe dizi (entrikalı diziler).
+                <br>• <span class="pink-h">Quiz Show:</span> Bilgi yarışması.
+                <br>• <span class="pink-h">Documentary:</span> Belgesel.
+            </li>
+            <li><strong>3. Önemli Terimler:</strong> 
+                <br>• <span class="highlight">Couch Potato:</span> Sürekli TV izleyen uyuşuk kişi.
+                <br>• <span class="highlight">Remote Control:</span> Uzaktan kumanda.
+                <br>• <span class="highlight">Commercial / Ad:</span> Reklam.
+                <br>• <span class="highlight">TV Signs / Smart Symbols:</span> Akıllı işaretler (genel izleyici, şiddet vb.).
+            </li>
+            <li><strong>4. Görüş Belirtme:</strong> 
+                <br>• <span class="highlight">In my opinion / I think:</span> Bence...
+                <br>• <span class="highlight">To be honest:</span> Dürüst olmak gerekirse...
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 2. Ünite: Sports</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f8e9; /* Spor temasına uygun açık yeşil */
+            color: #212529;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #2ecc71; /* Spor sahası yeşili vurgu */
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            border-bottom: 3px double #2ecc71;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #27ae60; 
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #f1c40f;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #2ecc71;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #e8f5e9;
+            transform: translateY(-2px);
+            border-color: #2ecc71;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fffde7;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #fff9c4;
+            border-top: 5px solid #f1c40f;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #1b5e20;
+            border-bottom: 2px solid #2ecc71;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+            font-size: 1rem;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        strong { color: #c0392b; }
+        .highlight { color: #2980b9; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2. Ünite: Sports</h1>
+    <p class="instruction">🏅 Spor dünyasını keşfetmek ve çevirileri görmek için cümlelerin üzerine tıklayın! ⚽</p>
+
+    <h2>Genel Spor Bilgileri ve Ekipmanlar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like playing football with my friends.</span><span class="turkish">Arkadaşlarımla futbol oynamayı severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes jogging every morning in the park.</span><span class="turkish">O her sabah parkta koşuya çıkar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a racket to play tennis.</span><span class="turkish">Tenis oynamak için bir rakete ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Basketball is an indoor sport.</span><span class="turkish">Basketbol bir salon (kapalı alan) sporudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Swimming is a great way to keep fit.</span><span class="turkish">Yüzme, formda kalmak için harika bir yoldur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He wears a helmet for cycling safety.</span><span class="turkish">Bisiklet güvenliği için kask takar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a ball and two goals for football.</span><span class="turkish">Futbol için bir topa ve iki kaleye ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Archery requires a lot of concentration.</span><span class="turkish">Okçuluk çok fazla konsantrasyon gerektirir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They go trekking in the mountains every summer.</span><span class="turkish">Her yaz dağlarda doğa yürüyüşüne çıkarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is interested in martial arts like karate.</span><span class="turkish">Erkek kardeşim karate gibi dövüş sanatlarıyla ilgileniyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Volleyball is a popular team sport.</span><span class="turkish">Voleybol popüler bir takım sporudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should wear trainers for running.</span><span class="turkish">Koşu için spor ayakkabı giymelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Skating on ice is very difficult but fun.</span><span class="turkish">Buzda kaymak çok zordur ama eğlencelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Gymnastics helps you become more flexible.</span><span class="turkish">Jimnastik daha esnek olmana yardımcı olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A baseball player uses a bat and a glove.</span><span class="turkish">Bir beyzbol oyuncusu sopa ve eldiven kullanır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Skiing is a popular winter sport.</span><span class="turkish">Kayak popüler bir kış sporudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hiking is an outdoor activity.</span><span class="turkish">Doğa yürüyüşü bir dış mekan aktivitesidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Surfing needs big waves and a surfboard.</span><span class="turkish">Sörf yapmak büyük dalgalara ve sörf tahtasına ihtiyaç duyar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Boxing is an individual sport.</span><span class="turkish">Boks bireysel bir spordur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like indoor or outdoor sports?</span><span class="turkish">Kapalı alan sporlarını mı yoksa açık alan sporlarını mı seversin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Wrestling is a traditional sport in Turkey.</span><span class="turkish">Güreş Türkiye'de geleneksel bir spordur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a professional goalkeeper.</span><span class="turkish">O profesyonel bir kalecidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a net to play badminton.</span><span class="turkish">Badminton oynamak için bir fileye ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Horse riding is very expensive.</span><span class="turkish">At binme çok pahalıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Table tennis is faster than normal tennis.</span><span class="turkish">Masa tenisi normal tenisten daha hızlıdır.</span></div>
+
+    <h2>Sıklık Zarfları ve Rutinler (Adverbs of Frequency)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I always go to the gym on Mondays.</span><span class="turkish">Pazartesi günleri her zaman spor salonuna giderim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She never misses her volleyball practice.</span><span class="turkish">O voleybol antrenmanını asla kaçırmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How often do you go swimming?</span><span class="turkish">Ne sıklıkla yüzmeye gidersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He sometimes plays chess with his father.</span><span class="turkish">O bazen babasıyla satranç oynar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We usually have football training at weekends.</span><span class="turkish">Hafta sonları genellikle futbol antrenmanımız olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They rarely go skiing in winter.</span><span class="turkish">Kışın nadiren kayağa giderler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I do yoga twice a week.</span><span class="turkish">Haftada iki kez yoga yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She practices archery three times a month.</span><span class="turkish">Ayda üç kez okçuluk antrenmanı yapar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father goes cycling every day.</span><span class="turkish">Babam her gün bisiklete biner.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We often watch basketball matches on TV.</span><span class="turkish">Sık sık televizyonda basketbol maçları izleriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He never forgets his training equipment.</span><span class="turkish">Antrenman ekipmanlarını asla unutmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many times a week do you train?</span><span class="turkish">Haftada kaç kez antrenman yapıyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually get up early for my morning run.</span><span class="turkish">Sabah koşum için genellikle erken kalkarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She rarely eats junk food to stay healthy.</span><span class="turkish">Sağlıklı kalmak için nadiren abur cubur yer.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They always warm up before the match.</span><span class="turkish">Maçtan önce her zaman ısınırlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you often go to the stadium?</span><span class="turkish">Stadyuma sık sık gider misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He sometimes wins the gold medal.</span><span class="turkish">O bazen altın madalya kazanır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We usually lose the match if we don't train.</span><span class="turkish">Eğer antrenman yapmazsak genellikle maçı kaybederiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister goes dancing once a week.</span><span class="turkish">Kız kardeşim haftada bir kez dansa gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I never give up during a race.</span><span class="turkish">Bir yarış sırasında asla pes etmem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She often talks about her favorite athletes.</span><span class="turkish">O sık sık favori sporcuları hakkında konuşur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How often does he play handball?</span><span class="turkish">O ne sıklıkla hentbol oynar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We always respect our opponents.</span><span class="turkish">Rakiplerimize her zaman saygı duyarız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They usually finish the marathon.</span><span class="turkish">Genellikle maratonu bitirirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I rarely watch sports news.</span><span class="turkish">Nadiren spor haberlerini izlerim.</span></div>
+
+    <h2>Başarılar, Skorlar ve Kurallar</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Our team won the championship last year.</span><span class="turkish">Takımımız geçen yıl şampiyonluğu kazandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The match ended in a draw (0-0).</span><span class="turkish">Maç berabere bitti (0-0).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He scored three goals in the final match.</span><span class="turkish">Final maçında üç gol attı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is a very successful athlete.</span><span class="turkish">O çok başarılı bir sporcudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't break the rules during the game.</span><span class="turkish">Oyun sırasında kuralları çiğneme.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is your favorite sports star?</span><span class="turkish">Senin favori spor yıldızın kim?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He got a silver medal in the competition.</span><span class="turkish">Yarışmada gümüş madalya aldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The referee showed a red card to the player.</span><span class="turkish">Hakem oyuncuya kırmızı kart gösterdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We lost the game by two points.</span><span class="turkish">Maçı iki puanla kaybettik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Training hard is the key to success.</span><span class="turkish">Sıkı çalışmak başarının anahtarıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She wants to be an Olympic champion.</span><span class="turkish">Bir Olimpiyat şampiyonu olmak istiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The score was three-one (3-1).</span><span class="turkish">Skor üç-birdi (3-1).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Spectators were very excited during the race.</span><span class="turkish">Seyirciler yarış sırasında çok heyecanlıydı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He beat his opponent in the first round.</span><span class="turkish">Rakibini ilk rauntta yendi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must follow the instructions of your coach.</span><span class="turkish">Antrenörünün talimatlarına uymalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She achieved a great success in swimming.</span><span class="turkish">Yüzmede büyük bir başarı elde etti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The team celebrated their victory.</span><span class="turkish">Takım zaferlerini kutladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It was a very challenging race.</span><span class="turkish">Çok zorlu bir yarıştı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a very ambitious tennis player.</span><span class="turkish">O çok hırslı bir tenis oyuncusudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Fair play is very important in sports.</span><span class="turkish">Sporda dürüst oyun (fair play) çok önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They represent our country in the tournament.</span><span class="turkish">Turnuvada ülkemizi temsil ediyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She broke the world record yesterday.</span><span class="turkish">O dün dünya rekorunu kırdı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The stadium was full of fans.</span><span class="turkish">Stadyum taraftarlarla doluydu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He works out at the fitness center.</span><span class="turkish">Fitness merkezinde antrenman yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Winning isn't everything; participating is important.</span><span class="turkish">Kazanmak her şey değildir; katılmak önemlidir.</span></div>
+
+    <h2>Spor Dalları ve Fiil Eşleşmeleri (Play/Go/Do)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I play basketball at school.</span><span class="turkish">Okulda basketbol oynarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes climbing on Sundays.</span><span class="turkish">O pazar günleri tırmanışa gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father does karate.</span><span class="turkish">Babam karate yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They play handball in the sports hall.</span><span class="turkish">Spor salonunda hentbol oynarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We go fishing at the lake.</span><span class="turkish">Göl kenarında balık tutmaya gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He does aerobics to lose weight.</span><span class="turkish">Kilo vermek için aerobik yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I go skating with my sister.</span><span class="turkish">Kız kardeşimle paten kaymaya giderim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you play ice hockey?</span><span class="turkish">Buz hokeyi oynar mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She goes camping every summer.</span><span class="turkish">Her yaz kamp yapmaya gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousin does judo professionally.</span><span class="turkish">Kuzenim profesyonel olarak judo yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We play baseball in the park.</span><span class="turkish">Parkta beyzbol oynarız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He goes skydiving for adventure.</span><span class="turkish">Macera için gökyüzü dalışına (hava dalışı) gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I do morning exercises every day.</span><span class="turkish">Her gün sabah egzersizleri yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They go running in the forest.</span><span class="turkish">Ormanda koşuya giderler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Does she play table tennis well?</span><span class="turkish">O iyi masa tenisi oynar mı?</span></div>
+
+    <h2>Karma Sorular ve Cümleler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Which sport do you prefer?</span><span class="turkish">Hangi sporu tercih edersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer individual sports to team sports.</span><span class="turkish">Bireysel sporları takım sporlarına tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why do you like playing tennis?</span><span class="turkish">Neden tenis oynamayı seversin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Because it is exciting and fun.</span><span class="turkish">Çünkü heyecan verici ve eğlenceli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What equipment do we need for diving?</span><span class="turkish">Dalış için hangi ekipmana ihtiyacımız var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is a world-famous basketball player.</span><span class="turkish">O dünyaca ünlü bir basketbol oyuncusudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She trains four hours a day for the Olympics.</span><span class="turkish">Olimpiyatlar için günde dört saat antrenman yapıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Teamwork is very important in volleyball.</span><span class="turkish">Voleybolda takım çalışması çok önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My favorite athlete is Arda Güler.</span><span class="turkish">En sevdiğim sporcu Arda Güler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sports keep us healthy and strong.</span><span class="turkish">Spor bizi sağlıklı ve güçlü tutar.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Sports Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Play / Go / Do Ayrımı:</strong> 
+                <br>• <span class="highlight">Play:</span> Topla oynanan ve takım sporları. (Football, Tennis)
+                <br>• <span class="highlight">Go:</span> "-ing" ile biten bireysel aktiviteler. (Swimming, Jogging)
+                <br>• <span class="highlight">Do:</span> Dövüş sanatları, jimnastik, yoga gibi bireysel sporlar. (Karate, Gymnastics)
+            </li>
+            <li><strong>2. Sıklık Zarfları:</strong> 
+                <br>• <span class="highlight">How Often?</span> (Ne sıklıkla?) sorusuna cevap verirken <strong>Always, Usually, Sometimes, Rarely, Never</strong> kullanılır.
+                <br>• <strong>Once a week, Twice a month</strong> gibi ifadeler genellikle cümlenin sonunda yer alır.
+            </li>
+            <li><strong>3. Önemli Terimler:</strong> 
+                <br>• <strong>Indoor / Outdoor:</strong> Kapalı / Açık alan.
+                <br>• <strong>Spectator / Fan:</strong> Seyirci / Taraftar.
+                <br>• <strong>Draw / Beat / Lose:</strong> Beraberlik / Yenmek / Yenilmek.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

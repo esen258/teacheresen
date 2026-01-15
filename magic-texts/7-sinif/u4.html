@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Sınıf 4. Ünite: Wild Animals</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #e0f2f1; /* Doğa temalı açık turkuaz/yeşil */
+            color: #263238;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+            border-top: 10px solid #2e7d32; /* Orman yeşili vurgu */
+        }
+        h1 {
+            color: #1b5e20;
+            text-align: center;
+            border-bottom: 3px double #4caf50;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-right: 6px solid #ffa000;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #546e7a;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-left: 5px solid #4caf50;
+            background-color: #fff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f8e9;
+            transform: scale(1.01);
+            border-color: #2e7d32;
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a237e;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e65100;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff8e1;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ffe082;
+            border-top: 5px solid #ffa000;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #e65100;
+            border-bottom: 2px solid #ffa000;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #2e7d32; font-weight: bold; }
+        .danger { color: #c62828; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4. Ünite: Wild Animals</h1>
+    <p class="instruction">🐾 Vahşi doğaya hoş geldiniz! Çeviriler için cümlelerin üzerine tıklayın. 🐾</p>
+
+    <h2>Hayvan Tanımları ve Fiziksel Özellikler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Lions are known as the kings of the jungle.</span><span class="turkish">Aslanlar ormanların kralı olarak bilinirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Elephants have got very long trunks and big ears.</span><span class="turkish">Fillerin çok uzun hortumları ve büyük kulakları vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Giraffes have long necks to reach high leaves.</span><span class="turkish">Zürafaların yüksekteki yapraklara ulaşmak için uzun boyunları vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Tigers have orange fur with black stripes.</span><span class="turkish">Kaplanların siyah çizgili turuncu kürkleri vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Zebras look like horses with black and white stripes.</span><span class="turkish">Zebralar siyah beyaz çizgili atlara benzerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Monkeys are very clever and can climb trees easily.</span><span class="turkish">Maymunlar çok zekidirler ve ağaçlara kolayca tırmanabilirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bears live in forests and love eating honey.</span><span class="turkish">Ayılar ormanlarda yaşar ve bal yemeyi severler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Crocodiles are reptiles and they live in rivers.</span><span class="turkish">Timsahlar sürüngendirler ve nehirlerde yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sharks are dangerous fish with sharp teeth.</span><span class="turkish">Köpekbalıkları keskin dişleri olan tehlikeli balıklardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Snakes haven't got any legs.</span><span class="turkish">Yılanların hiç bacağı yoktur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Camels can live without water for a long time.</span><span class="turkish">Develer uzun süre su olmadan yaşayabilirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Kangaroos carry their babies in their pouches.</span><span class="turkish">Kangurular bebeklerini keselerinde taşırlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cheetahs are the fastest land animals in the world.</span><span class="turkish">Çitalar dünyadaki en hızlı kara hayvanlarıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Penguins are birds but they cannot fly.</span><span class="turkish">Penguenler kuştur ama uçamazlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Dolphins are very friendly and intelligent mammals.</span><span class="turkish">Yunuslar çok dost canlısı ve zeki memelilerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Eagles have got strong wings and sharp claws.</span><span class="turkish">Kartalların güçlü kanatları ve keskin pençeleri vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Rhinos have got a large horn on their noses.</span><span class="turkish">Gergedanların burunlarında büyük bir boynuz vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hippos spend most of their time in the water.</span><span class="turkish">Su aygırları zamanlarının çoğunu suyun içinde geçirirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Wolves usually live and hunt in groups called packs.</span><span class="turkish">Kurtlar genellikle sürü denilen gruplar halinde yaşar ve avlanırlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Owls can see very well in the dark.</span><span class="turkish">Baykuşlar karanlıkta çok iyi görebilirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Turtles have got hard shells to protect themselves.</span><span class="turkish">Kaplumbağaların kendilerini korumak için sert kabukları vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Lizards are cold-blooded animals.</span><span class="turkish">Kertenkeleler soğukkanlı hayvanlardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Parrots have got colorful feathers.</span><span class="turkish">Papağanların renkli tüyleri vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Ostriches are the largest birds in the world.</span><span class="turkish">Develeri dünyadaki en büyük kuşlardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Squirrels collect nuts for the winter.</span><span class="turkish">Sincaplar kış için fındık/ceviz toplarlar.</span></div>
+
+    <h2>Yaşam Alanları ve Beslenme (Habitats & Diet)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Polar bears live in the icy Arctic region.</span><span class="turkish">Kutup ayıları buzlu Arktik bölgesinde yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Lions are carnivores; they eat meat.</span><span class="turkish">Aslanlar etoburdur; et yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Elephants are herbivores; they eat plants and fruits.</span><span class="turkish">Filler otoburdur; bitki ve meyve yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bears are omnivores; they eat both meat and plants.</span><span class="turkish">Ayılar hepçildir; hem et hem de bitki yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Camels live in the hot deserts.</span><span class="turkish">Develer sıcak çöllerde yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Some animals live in the rainforests.</span><span class="turkish">Bazı hayvanlar yağmur ormanlarında yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Whales live in the oceans.</span><span class="turkish">Balinalar okyanuslarda yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Tigers hunt other animals for food.</span><span class="turkish">Kaplanlar yemek için diğer hayvanları avlarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Monkeys eat bananas and seeds.</span><span class="turkish">Maymunlar muz ve tohum yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Crocodiles eat fish and birds near the water.</span><span class="turkish">Timsahlar su kenarındaki balık ve kuşları yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Pandas live in the bamboo forests of China.</span><span class="turkish">Pandalar Çin'in bambu ormanlarında yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Many wild animals live in the grasslands of Africa.</span><span class="turkish">Birçok vahşi hayvan Afrika'nın çayırlarında (savana) yaşar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Frogs live in wetlands and ponds.</span><span class="turkish">Kurbağalar sulak alanlarda ve göletlerde yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bats live in dark caves during the day.</span><span class="turkish">Yarasalar gün boyunca karanlık mağaralarda yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Deers eat grass and leaves in the forest.</span><span class="turkish">Geyikler ormanda ot ve yaprak yerler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scorpions live in dry and sandy places.</span><span class="turkish">Akrepler kuru ve kumlu yerlerde yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Octopuses live under the sea.</span><span class="turkish">Ahtapotlar denizin altında yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Squirrels live in the hollows of trees.</span><span class="turkish">Sincaplar ağaç kovuklarında yaşarlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Some wild animals migrate to warmer places in winter.</span><span class="turkish">Bazı vahşi hayvanlar kışın daha sıcak yerlere göç ederler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Predators are animals that hunt other animals.</span><span class="turkish">Yırtıcılar (avcılar) diğer hayvanları avlayan hayvanlardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Prey is an animal that is hunted by a predator.</span><span class="turkish">Av, bir avcı tarafından avlanan hayvandır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Herbivores never eat meat.</span><span class="turkish">Otoburlar asla et yemezler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Carnivores are excellent hunters.</span><span class="turkish">Etoburlar mükemmel avcılardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Omnivores have a varied diet.</span><span class="turkish">Hepçillerin (hem et hem ot yiyenlerin) çeşitli bir beslenme düzeni vardır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Habitats provide food and shelter for animals.</span><span class="turkish">Doğal yaşam alanları hayvanlar için yiyecek ve barınak sağlar.</span></div>
+
+    <h2>Hayvanları Koruma ve Nesli Tükenen Türler</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Some animals are in danger of extinction.</span><span class="turkish">Bazı hayvanlar nesli tükenme tehlikesi altındadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Dinosaurs became extinct millions of years ago.</span><span class="turkish">Dinozorların nesli milyonlarca yıl önce tükendi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should protect wild animals and their habitats.</span><span class="turkish">Vahşi hayvanları ve onların yaşam alanlarını korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hunting wild animals is illegal in many countries.</span><span class="turkish">Birçok ülkede vahşi hayvanları avlamak yasa dışıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Global warming threatens the lives of polar bears.</span><span class="turkish">Küresel ısınma kutup ayılarının yaşamını tehdit ediyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Overhunting is a big problem for wildlife.</span><span class="turkish">Aşırı avlanma vahşi yaşam için büyük bir sorundur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't cut down trees in the rainforests.</span><span class="turkish">Yağmur ormanlarındaki ağaçları kesmemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Water pollution kills many sea creatures.</span><span class="turkish">Su kirliliği birçok deniz canlısını öldürüyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Giant pandas are an endangered species.</span><span class="turkish">Dev pandalar nesli tehlike altında olan bir türdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We can build nature reserves to protect animals.</span><span class="turkish">Hayvanları korumak için doğa koruma alanları inşa edebiliriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't buy products made from animal fur.</span><span class="turkish">Hayvan kürkünden yapılmış ürünleri satın almayın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Animals lose their homes because of deforestation.</span><span class="turkish">Hayvanlar ormansızlaşma (ağaçların yok edilmesi) nedeniyle evlerini kaybediyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People should be more careful about nature.</span><span class="turkish">İnsanlar doğa konusunda daha dikkatli olmalılar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Tigers are endangered because of hunters.</span><span class="turkish">Kaplanların nesli avcılar yüzünden tehlikede.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Many animals are losing their natural habitats.</span><span class="turkish">Birçok hayvan doğal yaşam alanlarını kaybediyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must stop killing animals for their tusks.</span><span class="turkish">Hayvanları fildişleri için öldürmeyi durdurmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Elephants are hunted for their ivory.</span><span class="turkish">Filler fildişleri (ivory) için avlanıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sea turtles are in danger because of plastic waste.</span><span class="turkish">Deniz kaplumbağaları plastik atıklar yüzünden tehlikede.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should donate to wildlife organizations.</span><span class="turkish">Vahşi yaşam kuruluşlarına bağış yapmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is important to keep the environment clean.</span><span class="turkish">Çevreyi temiz tutmak önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bald eagles were endangered, but now they are safe.</span><span class="turkish">Kel kartalların nesli tehlikedeydi ama şimdi güvendeler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should plant more trees for the animals.</span><span class="turkish">Hayvanlar için daha fazla ağaç dikmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's protect the world together.</span><span class="turkish">Dünyayı birlikte koruyalım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Human activities harm the wildlife.</span><span class="turkish">İnsan faaliyetleri vahşi yaşama zarar veriyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Extinction means a species disappears forever.</span><span class="turkish">Nesil tükenmesi, bir türün sonsuza dek yok olması demektir.</span></div>
+
+    <h2>Gereklilik ve Öneri Cümleleri (Should / Shouldn't)</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should protect the wild animals.</span><span class="turkish">Vahşi hayvanları korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't hunt animals for fun.</span><span class="turkish">Eğlence için hayvanları avlamamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People should stop polluting the oceans.</span><span class="turkish">İnsanlar okyanusları kirletmeyi durdurmalı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should watch documentaries to learn about animals.</span><span class="turkish">Hayvanlar hakkında bilgi edinmek için belgesel izlemelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't destroy the forests.</span><span class="turkish">Ormanları yok etmemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should keep our environment clean.</span><span class="turkish">Çevremizi temiz tutmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You shouldn't wear clothes made of animal skin.</span><span class="turkish">Hayvan derisinden yapılmış kıyafetler giymemelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should plant more trees.</span><span class="turkish">Daha fazla ağaç dikmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't throw rubbish on the ground.</span><span class="turkish">Yere çöp atmamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Governments should make strict laws against hunting.</span><span class="turkish">Hükümetler avlanmaya karşı katı yasalar çıkarmalı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use less plastic to save sea animals.</span><span class="turkish">Deniz hayvanlarını kurtarmak için daha az plastik kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should respect all living things.</span><span class="turkish">Tüm canlılara saygı duymalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't keep wild animals in cages.</span><span class="turkish">Vahşi hayvanları kafeslerde tutmamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should save water for the ecosystem.</span><span class="turkish">Ekosistem için suyu tasarruflu kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Everyone should help to save the nature.</span><span class="turkish">Herkes doğayı kurtarmaya yardım etmeli.</span></div>
+
+    <h2>Karşılaştırma ve Genel Sorular</h2>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Which animal is bigger, an elephant or a rhino?</span><span class="turkish">Hangi hayvan daha büyük, bir fil mi yoksa bir gergedan mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A cheetah is faster than a lion.</span><span class="turkish">Çita aslandan daha hızlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are dolphins more intelligent than sharks?</span><span class="turkish">Yunuslar köpekbalıklarından daha mı zekidir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where do lions live?</span><span class="turkish">Aslanlar nerede yaşar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do pandas eat?</span><span class="turkish">Pandalar ne yer?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why are some animals endangered?</span><span class="turkish">Neden bazı hayvanların nesli tehlikede?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many legs does a spider have?</span><span class="turkish">Bir örümceğin kaç bacağı vardır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the tallest animal in the world?</span><span class="turkish">Dünyadaki en uzun boylu hayvan hangisidir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Snakes are more dangerous than lizards.</span><span class="turkish">Yılanlar kertenkelelerden daha tehlikelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's save the wild animals!</span><span class="turkish">Vahşi hayvanları kurtaralım!</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Wild Animals Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Beslenme Şekilleri:</strong> 
+                <br>• <span class="highlight">Herbivores:</span> Otla beslenenler (Elephant, Zebra).
+                <br>• <span class="highlight">Carnivores:</span> Etle beslenenler (Lion, Shark).
+                <br>• <span class="highlight">Omnivores:</span> Hem et hem ot yiyenler (Bear, Pig).
+            </li>
+            <li><strong>2. Extinct vs. Endangered:</strong> 
+                <br>• <span class="danger">Extinct:</span> Nesli tamamen tükenmiş (Dinosaur).
+                <br>• <span class="danger">Endangered:</span> Nesli tükenme tehlikesinde olan (Panda, Tiger).
+            </li>
+            <li><strong>3. Should / Shouldn't:</strong> Doğa ve hayvanları korumak için önerilerde kullanılır. 
+                <br>Örn: "We <strong>should</strong> protect forests." (Ormanları korumalıyız.)
+            </li>
+            <li><strong>4. Önemli Kelimeler:</strong> 
+                <br>• <strong>Trunk:</strong> Hortum / <strong>Tusk:</strong> Fil dişi / <strong>Ivory:</strong> Fildişi (madde).
+                <br>• <strong>Deforestation:</strong> Ormanların yok edilmesi / <strong>Habitat:</strong> Doğal yaşam alanı.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
