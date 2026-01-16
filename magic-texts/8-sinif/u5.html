@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 5. Ünite: The Internet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f1f2f6; 
+            color: #2f3542;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border-top: 10px solid #1e90ff; /* İnternet/Teknoloji mavisi */
+        }
+        h1 {
+            color: #2f3542;
+            text-align: center;
+            border-bottom: 3px solid #70a1ff;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #1e90ff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #57606f;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe4ea;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f9ff;
+            border-color: #1e90ff;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2f3542;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #1e90ff;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #ced4da;
+            border-left: 8px solid #2ed573; /* Güvenlik için yeşil */
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2f3542;
+        }
+        .highlight { color: #eb4d4b; font-weight: bold; }
+        .keyword { color: #1e90ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>5. Ünite: The Internet</h1>
+    <p class="instruction">🌐 Dijital dünyaya giriş yapıyoruz! Çeviriler için cümlelerin üzerine tıkla! 💻</p>
+
+    <h2>The Internet - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to do my homework.</span><span class="turkish">Ödevimi yapmak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many hours a day do you spend online?</span><span class="turkish">Günde kaç saati çevrimiçi geçiriyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should create a strong password.</span><span class="turkish">Güçlü bir şifre oluşturmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't share your personal information with strangers.</span><span class="turkish">Kişisel bilgilerini yabancılarla paylaşma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually log in to my social media accounts.</span><span class="turkish">Genellikle sosyal medya hesaplarıma giriş yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you show me how to download this file?</span><span class="turkish">Bu dosyayı nasıl indireceğimi bana gösterebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to upload my holiday photos.</span><span class="turkish">Tatil fotoğraflarımı yüklemek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is an Internet addict.</span><span class="turkish">Erkek kardeşim bir internet bağımlısıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have a wireless connection at home?</span><span class="turkish">Evde kablosuz bağlantınız var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to practice my English.</span><span class="turkish">İngilizcemi pratik yapmak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must be careful about cyberbullying.</span><span class="turkish">Siber zorbalık konusunda dikkatli olmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Click on the link to see the details.</span><span class="turkish">Detayları görmek için bağlantıya tıkla.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I check my emails every morning.</span><span class="turkish">Her sabah e-postalarımı kontrol ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many followers do you have on Instagram?</span><span class="turkish">Instagram'da kaç takipçin var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father uses the Internet for online banking.</span><span class="turkish">Babam interneti çevrimiçi bankacılık için kullanır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer reading news online.</span><span class="turkish">Haberleri internetten okumayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually search for information on the Net.</span><span class="turkish">Genellikle internette bilgi ararım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't accept friend requests from people you don't know.</span><span class="turkish">Tanımadığın kişilerden gelen arkadaşlık isteklerini kabul etme.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a problem with my Internet connection.</span><span class="turkish">İnternet bağlantımla ilgili bir sorunum var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use a search engine to find the recipe.</span><span class="turkish">Yemek tarifini bulmak için bir arama motoru kullan.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like watching movies on the Internet.</span><span class="turkish">İnternetten film izlemeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet is a great source of information.</span><span class="turkish">İnternet harika bir bilgi kaynağıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I often play online games with my friends.</span><span class="turkish">Arkadaşlarımla sık sık çevrimiçi oyunlar oynarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should use the Internet safely.</span><span class="turkish">İnterneti güvenli bir şekilde kullanmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I registered for an online course yesterday.</span><span class="turkish">Dün çevrimiçi bir kurs için kayıt oldum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My computer has a virus; I need help.</span><span class="turkish">Bilgisayarımda virüs var; yardıma ihtiyacım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you use the Internet for shopping?</span><span class="turkish">İnterneti alışveriş için kullanır mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find the Internet very useful.</span><span class="turkish">İnterneti çok faydalı buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a lot of friends on my buddy list.</span><span class="turkish">Arkadaş listemde çok fazla arkadaşım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use my tablet to surf the Net.</span><span class="turkish">İnternette gezinmek için tabletimi kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your purpose in using the Internet?</span><span class="turkish">İnternet kullanma amacın nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use it to keep in touch with my relatives.</span><span class="turkish">Akrabalarımla iletişimde kalmak için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't believe everything you read online.</span><span class="turkish">İnternette okuduğun her şeye inanma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll send the document as an attachment.</span><span class="turkish">Belgeyi e-posta eki olarak göndereceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet connection is very slow today.</span><span class="turkish">İnternet bağlantısı bugün çok yavaş.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually chat with my friends online.</span><span class="turkish">Genellikle arkadaşlarımla çevrimiçi sohbet ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to buy a new smartphone.</span><span class="turkish">Yeni bir akıllı telefon almak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have an account on this website?</span><span class="turkish">Bu web sitesinde bir hesabın var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I forgot my password; I can't log in.</span><span class="turkish">Şifremi unuttum; giriş yapamıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should update your antivirus program.</span><span class="turkish">Antivirüs programını güncellemelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to book a flight ticket.</span><span class="turkish">Uçak bileti ayırtmak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you access the Internet?</span><span class="turkish">İnternete nasıl erişirsin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use my smartphone to connect to the Net.</span><span class="turkish">İnternete bağlanmak için akıllı telefonumu kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Social media is very popular among teenagers.</span><span class="turkish">Sosyal medya gençler arasında çok popülerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like following famous people on Twitter.</span><span class="turkish">Twitter'da ünlü kişileri takip etmeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet can be dangerous if you are not careful.</span><span class="turkish">Eğer dikkatli olmazsan internet tehlikeli olabilir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually use the Internet for entertainment.</span><span class="turkish">Genellikle interneti eğlence için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is fond of taking selfies and sharing them.</span><span class="turkish">Kız kardeşim selfie çekmeye ve onları paylaşmaya düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I spend about two hours on the Internet daily.</span><span class="turkish">Günlük internette yaklaşık iki saat harcarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to create a blog about my travels.</span><span class="turkish">Seyahatlerim hakkında bir blog oluşturmak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you know how to use a scanner?</span><span class="turkish">Tarayıcıyı nasıl kullanacağını biliyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need to print these documents.</span><span class="turkish">Bu belgeleri yazdırmam gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to learn new things.</span><span class="turkish">Yeni şeyler öğrenmek için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should log out after using the computer.</span><span class="turkish">Bilgisayarı kullandıktan sonra oturumu kapatmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't like spending too much time online.</span><span class="turkish">Çevrimiçi çok fazla zaman geçirmeyi sevmem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet helps me with my school projects.</span><span class="turkish">İnternet okul projelerimde bana yardımcı oluyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find it easy to find information online.</span><span class="turkish">İnternette bilgi bulmayı kolay buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do you usually do on the Internet?</span><span class="turkish">İnternette genellikle ne yaparsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually check the weather forecast.</span><span class="turkish">Genellikle hava durumunu kontrol ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like listening to music on the Net.</span><span class="turkish">İnternette müzik dinlemeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't be an Internet addict.</span><span class="turkish">Bir internet bağımlısı olma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother uses the Internet for cooking recipes.</span><span class="turkish">Annem interneti yemek tarifleri için kullanır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have an English exam tomorrow; I'll study online.</span><span class="turkish">Yarın İngilizce sınavım var; çevrimiçi çalışacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll send you the link via WhatsApp.</span><span class="turkish">Bağlantıyı sana WhatsApp üzerinden göndereceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You shouldn't meet people you meet online.</span><span class="turkish">İnternette tanıştığın kişilerle buluşmamalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to delete my old account.</span><span class="turkish">Eski hesabımı silmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to pay my bills.</span><span class="turkish">Faturalarımı ödemek için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like playing video games?</span><span class="turkish">Video oyunları oynamayı sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually read comments before buying something.</span><span class="turkish">Bir şey satın almadan önce genellikle yorumları okurum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a fast Internet connection.</span><span class="turkish">Hızlı bir internet bağlantım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to subscribe to this YouTube channel.</span><span class="turkish">Bu YouTube kanalına abone olmak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you stay safe online?</span><span class="turkish">İnternette nasıl güvende kalırsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use a screen name instead of my real name.</span><span class="turkish">Gerçek ismim yerine bir takma isim (ekran adı) kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll post a comment on your photo.</span><span class="turkish">Fotoğrafına bir yorum yazacağım (paylaşacağım).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet changed the world.</span><span class="turkish">İnternet dünyayı değiştirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet for video conferencing.</span><span class="turkish">İnterneti görüntülü konferans için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like sharing my opinions on forums.</span><span class="turkish">Fikirlerimi forumlarda paylaşmayı severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father doesn't like social media.</span><span class="turkish">Babam sosyal medyayı sevmez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to check my bank account.</span><span class="turkish">Banka hesabımı kontrol etmek için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have any problems with your computer?</span><span class="turkish">Bilgisayarınla ilgili herhangi bir sorunun var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll upload the video tonight.</span><span class="turkish">Videoyu bu gece yükleyeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to watch documentaries.</span><span class="turkish">Belgesel izlemek için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should be respectful to others online.</span><span class="turkish">İnternette diğerlerine karşı saygılı olmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't use the Internet at night.</span><span class="turkish">Geceleri internet kullanmam.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a laptop and a desktop computer.</span><span class="turkish">Bir dizüstü ve bir masaüstü bilgisayarım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually use the Internet for communication.</span><span class="turkish">Genellikle interneti iletişim için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to learn more about the Internet safety.</span><span class="turkish">İnternet güvenliği hakkında daha fazla şey öğrenmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll send you an invitation via email.</span><span class="turkish">Sana e-posta yoluyla bir davetiye göndereceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like following fashion blogs.</span><span class="turkish">Moda bloglarını takip etmeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet is very addictive for some people.</span><span class="turkish">İnternet bazı insanlar için çok bağımlılık yapıcıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to find a job.</span><span class="turkish">İş bulmak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll download the app to my phone.</span><span class="turkish">Uygulamayı telefonuma indireceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you use the Internet every day?</span><span class="turkish">Her gün internet kullanır mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use it to solve my math problems.</span><span class="turkish">Matematik problemlerimi çözmek için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll search for the meaning of this word.</span><span class="turkish">Bu kelimenin anlamını araştıracağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to stay updated.</span><span class="turkish">Güncel kalmak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like watching funny videos on the Net.</span><span class="turkish">İnternette komik videolar izlemeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should be careful about your privacy.</span><span class="turkish">Gizliliğin konusunda dikkatli olmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the Internet to buy books.</span><span class="turkish">Kitap satın almak için interneti kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Internet is everywhere now.</span><span class="turkish">İnternet artık her yerde.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (The Internet)</h3>
+        <ul>
+            <li><strong>1. Temel İnternet Terimleri:</strong> 
+                <br>• <span class="keyword">Log in / Log on:</span> Giriş yapmak. <span class="keyword">Log out / Log off:</span> Çıkış yapmak.
+                <br>• <span class="keyword">Upload:</span> Yüklemek. <span class="keyword">Download:</span> İndirmek.
+                <br>• <span class="keyword">Attachment:</span> E-posta eki. <span class="keyword">Register/Sign up:</span> Kayıt olmak.
+            </li>
+            <li><strong>2. İnternet Güvenliği (Safety Rules):</strong> 
+                LGS'de en çok sorulan kısımdır. "Should" ve "Don't" kalıplarına dikkat:
+                <br>• <span class="highlight">Don't share your password:</span> Şifreni paylaşma.
+                <br>• <span class="highlight">Refuse unknown requests:</span> Tanımadıklarının isteğini reddet.
+                <br>• <span class="highlight">Don't meet online friends:</span> İnternet arkadaşlarınla (gerçekte) buluşma.
+            </li>
+            <li><strong>3. Kullanım Amaçları (Purposes):</strong> 
+                <br>• <span class="keyword">Search for information:</span> Bilgi aramak.
+                <br>• <span class="keyword">Keep in touch:</span> İletişimde kalmak.
+                <br>• <span class="keyword">Pay bills:</span> Faturaları ödemek.
+            </li>
+            <li><strong>4. Önemli Ekipmanlar:</strong> 
+                <br>• <span class="keyword">Web browser:</span> Tarayıcı (Chrome vb.).
+                <br>• <span class="keyword">Search engine:</span> Arama motoru (Google vb.).
+                <br>• <span class="keyword">Wireless/Wi-Fi:</span> Kablosuz bağlantı.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 2. Ünite: Teen Life</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; 
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-top: 10px solid #6c5ce7; /* Gençlik enerjisi için mor tonu */
+        }
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            border-bottom: 3px solid #fdcb6e;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #6c5ce7;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe6e9;
+            background-color: #fdfdfd;
+        }
+        .sentence-box:hover {
+            background-color: #f1f2f6;
+            border-color: #6c5ce7;
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #6c5ce7;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #f9f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #e0e0e0;
+            border-left: 8px solid #fdcb6e;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2d3436;
+        }
+        .highlight { color: #d63031; font-weight: bold; }
+        .keyword { color: #0984e3; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>2. Ünite: Teen Life</h1>
+    <p class="instruction">🎧 Gençlerin dünyasını keşfetmeye hazır mısın? Çeviriler için cümlelerin üzerine tıkla! 🛹</p>
+
+    <h2>Teen Life - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I get up early on weekdays.</span><span class="turkish">Hafta içi erken kalkarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother likes listening to heavy metal.</span><span class="turkish">Erkek kardeşim heavy metal dinlemeyi sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How often do you go to the gym?</span><span class="turkish">Ne sıklıkla spor salonuna gidersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually go jogging in the mornings.</span><span class="turkish">Sabahları genellikle tempolu yürüyüşe çıkarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is fond of trendy clothes.</span><span class="turkish">O, modaya uygun kıyafetlere düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">To be honest, I can't stand pop music.</span><span class="turkish">Dürüst olmak gerekirse pop müziğe tahammül edemiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Teens often prefer casual clothes.</span><span class="turkish">Gençler genellikle günlük kıyafetleri tercih ederler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What kind of books do you read?</span><span class="turkish">Ne tür kitaplar okursun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm crazy about detective stories.</span><span class="turkish">Dedektif hikayelerine bayılırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have a lot of after-school activities.</span><span class="turkish">Okul sonrası pek çok aktivitemiz var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He never arrives late for classes.</span><span class="turkish">Derslere asla geç kalmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like camping with your friends?</span><span class="turkish">Arkadaşlarınla kamp yapmayı sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find skydiving very exciting.</span><span class="turkish">Hava dalışını çok heyecan verici buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father prefers reading the news online.</span><span class="turkish">Babam haberleri internetten okumayı tercih eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I rarely watch TV in the evenings.</span><span class="turkish">Akşamları nadiren TV izlerim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is interested in playing the piano.</span><span class="turkish">Piyano çalmakla ilgileniyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you go to school?</span><span class="turkish">Okula nasıl gidersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I take the bus to school every day.</span><span class="turkish">Okula her gün otobüsle giderim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We often go to the cinema at weekends.</span><span class="turkish">Hafta sonları sık sık sinemaya gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Riding a bicycle is healthy and fun.</span><span class="turkish">Bisiklete binmek sağlıklı ve eğlencelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think rock music is energetic.</span><span class="turkish">Bence rock müzik enerjik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friend is keen on archery.</span><span class="turkish">Arkadaşım okçuluğa meraklıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do you do in your free time?</span><span class="turkish">Boş zamanlarında ne yaparsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love hanging out with my friends.</span><span class="turkish">Arkadaşlarımla takılmayı seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He spends most of his time on the Internet.</span><span class="turkish">Zamanının çoğunu internette geçirir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cooking is my favorite hobby.</span><span class="turkish">Yemek pişirmek en sevdiğim hobim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't stand snob people.</span><span class="turkish">Züppe insanlara tahammül edemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother follows fashion closely.</span><span class="turkish">Annem modayı yakından takip eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We usually have breakfast at 7 a.m.</span><span class="turkish">Genellikle sabah 7'de kahvaltı yaparız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you prefer tea or coffee?</span><span class="turkish">Çay mı yoksa kahve mi tercih edersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think classical music is boring.</span><span class="turkish">Bence klasik müzik sıkıcı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She likes trying local food.</span><span class="turkish">Yerel yemekleri denemeyi sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How often does he play football?</span><span class="turkish">O ne sıklıkla futbol oynar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm not interested in fashion.</span><span class="turkish">Moda ile ilgilenmiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Playing chess improves your mind.</span><span class="turkish">Satranç oynamak zihnini geliştirir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I sometimes go to the theater.</span><span class="turkish">Bazen tiyatroya giderim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your daily routine?</span><span class="turkish">Günlük rutinin nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I brush my teeth twice a day.</span><span class="turkish">Dişlerimi günde iki kez fırçalarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is fond of selfies.</span><span class="turkish">Kız kardeşim selfie çekmeye düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We enjoy trekking in the forest.</span><span class="turkish">Ormanda doğa yürüyüşü yapmaktan zevk alırız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have any plans for tonight?</span><span class="turkish">Bu gece için herhangi bir planın var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer staying home on Sundays.</span><span class="turkish">Pazar günleri evde kalmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is good at playing basketball.</span><span class="turkish">Basketbol oynamada iyidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find opera unbearable.</span><span class="turkish">Operayı katlanılmaz buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Teens generally like rap music.</span><span class="turkish">Gençler genellikle rap müziği severler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She never misses her training.</span><span class="turkish">Antrenmanlarını asla kaçırmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What time do you go to bed?</span><span class="turkish">Saat kaçta yatarsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually do my homework after dinner.</span><span class="turkish">Ödevimi genellikle akşam yemeğinden sonra yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm keen on learning new languages.</span><span class="turkish">Yeni diller öğrenmeye meraklıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We often visit our relatives.</span><span class="turkish">Akrabalarımızı sık sık ziyaret ederiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Skating is very popular among teens.</span><span class="turkish">Paten kaymak gençler arasında çok popülerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like reading biographical books.</span><span class="turkish">Biyografi kitapları okumayı severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is crazy about video games.</span><span class="turkish">Video oyunlarına bayılır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friend is very disciplined.</span><span class="turkish">Arkadaşım çok disiplinlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually surf the Net in my room.</span><span class="turkish">Genellikle odamda internette gezinirim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How often do you brush your teeth?</span><span class="turkish">Dişlerini ne sıklıkla fırçalarsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think camping is fascinating.</span><span class="turkish">Bence kamp yapmak büyüleyici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She prefers wearing jeans and t-shirts.</span><span class="turkish">Kot pantolon ve tişört giymeyi tercih eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't stand lying.</span><span class="turkish">Yalan söylenmesine tahammül edemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We love going to rock concerts.</span><span class="turkish">Rock konserlerine gitmeyi seviyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What kind of sports do you like?</span><span class="turkish">Ne tür sporları seversin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm fond of swimming in the sea.</span><span class="turkish">Denizde yüzmeye düşkünüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father usually reads the newspaper.</span><span class="turkish">Babam genellikle gazete okur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think soap operas are ridiculous.</span><span class="turkish">Bence pembe diziler saçma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is interested in science.</span><span class="turkish">Bilimle ilgileniyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have a snack after school.</span><span class="turkish">Okuldan sonra bir şeyler atıştırırız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you follow a specific fashion?</span><span class="turkish">Belirli bir modayı takip ediyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like being alone sometimes.</span><span class="turkish">Bazen yalnız olmayı severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is keen on karate.</span><span class="turkish">Karateye meraklıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find jazz music relaxing.</span><span class="turkish">Caz müziğini rahatlatıcı buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do you usually do at weekends?</span><span class="turkish">Hafta sonları genellikle ne yaparsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I help my parents with the chores.</span><span class="turkish">Ebeveynlerime ev işlerinde yardım ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is fond of sci-fi movies.</span><span class="turkish">Erkek kardeşim bilim kurgu filmlerine düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't stand being late.</span><span class="turkish">Geç kalınmasına tahammül edemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We usually meet at the park.</span><span class="turkish">Genellikle parkta buluşuruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like traveling?</span><span class="turkish">Seyahat etmeyi sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm interested in photography.</span><span class="turkish">Fotoğrafçılıkla ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He goes to the library once a week.</span><span class="turkish">Haftada bir kez kütüphaneye gider.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think historical books are educative.</span><span class="turkish">Bence tarihi kitaplar eğitici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She is crazy about shopping.</span><span class="turkish">Alışverişe bayılır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer walking to school.</span><span class="turkish">Okula yürüyerek gitmeyi tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your favorite activity?</span><span class="turkish">En sevdiğin aktivite nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually listen to music while studying.</span><span class="turkish">Genellikle ders çalışırken müzik dinlerim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friend is fond of drawing.</span><span class="turkish">Arkadaşım resim çizmeye düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find team sports very social.</span><span class="turkish">Takım sporlarını çok sosyal buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We often go to the mall.</span><span class="turkish">Sık sık alışveriş merkezine gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you play any musical instruments?</span><span class="turkish">Herhangi bir müzik aleti çalıyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm keen on traditional arts.</span><span class="turkish">Geleneksel sanatlara meraklıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He never eats fast food.</span><span class="turkish">Asla hazır yemek (fast food) yemez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think pop music is harmonic.</span><span class="turkish">Bence pop müzik uyumlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">She usually arrives home at 4 p.m.</span><span class="turkish">Genellikle öğleden sonra 4'te eve varır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't stand loud noise.</span><span class="turkish">Yüksek gürültüye tahammül edemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We love going on vacations.</span><span class="turkish">Tatile gitmeyi seviyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have a regular life?</span><span class="turkish">Düzenli bir hayatın var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm interested in skating.</span><span class="turkish">Paten kaymakla ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is fond of dancing.</span><span class="turkish">Kız kardeşim dans etmeye düşkündür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually read a book before bed.</span><span class="turkish">Yatmadan önce genellikle kitap okurum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He finds parkour very dangerous.</span><span class="turkish">Parkuru çok tehlikeli buluyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We often have a picnic in spring.</span><span class="turkish">Baharın sık sık piknik yaparız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Teen life is usually very busy.</span><span class="turkish">Gençlik hayatı genellikle çok yoğundur.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Teen Life)</h3>
+        <ul>
+            <li><strong>1. Sevgi ve İlgi Belirten Kalıplar:</strong> 
+                <br>• <span class="keyword">Be fond of / Be keen on / Be crazy about:</span> "Bir şeyi çok sevmek, düşkün olmak" demektir. Kendilerinden sonra bir fiil gelirse o fiil mutlaka <span class="highlight">-ing</span> takısı alır.
+                <br>• <span class="keyword">Interested in:</span> Bir şeye ilgi duymak.
+            </li>
+            <li><strong>2. Nefret ve Tahammülsüzlük:</strong> 
+                <br>• <span class="keyword">Can't stand:</span> "Tahammül edememek, nefret etmek" anlamındadır. (Örn: I can't stand rap music.)
+                <br>• <span class="keyword">Unbearable / Ridiculous:</span> Bir durumu tanımlarken kullanılan "katlanılmaz" ve "saçma" gibi güçlü sıfatlardır.
+            </li>
+            <li><strong>3. Sıklık Zarfları (Adverbs of Frequency):</strong> 
+                <br>• Always (%100), Usually (%90), Often (%70), Sometimes (%50), Rarely (%10), Never (%0).
+                <br>• Bu kelimeler asıl fiilin önüne (I <span class="highlight">always</span> go), "be" (am/is/are) fiilinin arkasına (He is <span class="highlight">never</span> late) gelir.
+            </li>
+            <li><strong>4. Tercih Belirtme (Prefer):</strong> 
+                <br>• İki şey arasında tercih yaparken <span class="highlight">"prefer X to Y"</span> yapısı kullanılır. (Örn: I prefer skating <span class="highlight">to</span> swimming.)
+            </li>
+            <li><strong>5. Soru Kalıbı: How Often?</strong> 
+                <br>• "Ne sıklıkla?" sorusudur. Cevaplarda; <b>once a week</b> (haftada bir), <b>twice a day</b> (günde iki kez) veya sıklık zarfları kullanılır.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

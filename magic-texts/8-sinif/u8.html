@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 8. Ünite: Chores</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f1e3; /* Ev sıcaklığı hissi için krem/bej */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #ffb142; /* Ev işleri ünitesini simgeleyen sıcak sarı/turuncu */
+        }
+        h1 {
+            color: #cc8e35;
+            text-align: center;
+            border-bottom: 3px solid #ffb142;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #cc8e35;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #84817a;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #d1ccc0;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #f7f1e3;
+            border-color: #cc8e35;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #cc8e35;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #fdfdfd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #d1ccc0;
+            border-left: 8px solid #33d9b2; /* Başarı için yeşil vurgu */
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #218c74;
+        }
+        .highlight { color: #b33939; font-weight: bold; }
+        .keyword { color: #227093; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>8. Ünite: Chores</h1>
+    <p class="instruction">🧹 Evdeki sorumluluklarımızı öğreniyoruz! Çeviriler için cümlelerin üzerine tıkla! 🧺</p>
+
+    <h2>Chores - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must make my bed every morning.</span><span class="turkish">Her sabah yatağımı toplamalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is responsible for taking out the garbage?</span><span class="turkish">Çöpü dışarı çıkarmaktan kim sorumlu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister hates washing the dishes.</span><span class="turkish">Kız kardeşim bulaşıkları yıkamaktan nefret eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is your turn to vacuum the floor.</span><span class="turkish">Yerleri süpürme sırası sende.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to tidy up my room on weekends.</span><span class="turkish">Hafta sonları odamı toplamak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father usually mows the lawn.</span><span class="turkish">Babam genellikle çimleri biçer.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must share the chores at home.</span><span class="turkish">Evdeki işleri paylaşmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Doing the laundry is my mother's task.</span><span class="turkish">Çamaşır yıkamak annemin görevidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of feeding our dog.</span><span class="turkish">Köpeğimizi beslemekten ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't forget to water the plants.</span><span class="turkish">Bitkileri sulamayı unutma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I dislike mopping the floor.</span><span class="turkish">Yerleri silmekten hoşlanmam.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you help me set the table for dinner?</span><span class="turkish">Akşam yemeği için masayı kurmama yardım edebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is responsible for loading the dishwasher.</span><span class="turkish">Bulaşık makinesini doldurmaktan erkek kardeşim sorumlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cleaning the windows is a difficult chore.</span><span class="turkish">Pencereleri temizlemek zor bir ev işidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must hang out the washing.</span><span class="turkish">Çamaşırları asmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who usually does the grocery shopping?</span><span class="turkish">Mutfak alışverişini genellikle kim yapar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to dust the furniture today.</span><span class="turkish">Bugün mobilyaların tozunu almak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It's time to iron the clothes.</span><span class="turkish">Kıyafetleri ütüleme vakti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should help our parents with the chores.</span><span class="turkish">Ebeveynlerimize ev işlerinde yardım etmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find sweeping the floor very boring.</span><span class="turkish">Yerleri süpürmeyi çok sıkıcı buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is cooking in the kitchen right now.</span><span class="turkish">Annem şu anda mutfakta yemek pişiriyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My task is to empty the dishwasher.</span><span class="turkish">Benim görevim bulaşık makinesini boşaltmak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must keep my room neat and tidy.</span><span class="turkish">Odamı tertipli ve düzenli tutmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have to do any chores on weekdays?</span><span class="turkish">Hafta içi herhangi bir ev işi yapmak zorunda mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am responsible for cleaning the bathroom.</span><span class="turkish">Banyoyu temizlemekten ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father helps with the drying the dishes.</span><span class="turkish">Babam bulaşıkların kurulanmasına yardım eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't leave our clothes on the floor.</span><span class="turkish">Kıyafetlerimizi yerde bırakmamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Taking the dog for a walk is fun.</span><span class="turkish">Köpeği yürüyüşe çıkarmak eğlencelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to prepare the breakfast today.</span><span class="turkish">Bugün kahvaltıyı hazırlamak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister likes helping with the gardening.</span><span class="turkish">Kız kardeşim bahçe işlerine yardım etmeyi sever.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is in charge of cooking the meal?</span><span class="turkish">Yemeği pişirmekten kim sorumlu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must do the ironing this afternoon.</span><span class="turkish">Bu öğleden sonra ütü yapmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is necessary to follow the house rules.</span><span class="turkish">Ev kurallarına uymak gereklidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hate cleaning up the mess after a party.</span><span class="turkish">Bir partiden sonraki dağınıklığı temizlemekten nefret ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother never makes his bed.</span><span class="turkish">Erkek kardeşim asla yatağını toplamaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must be respectful to each other.</span><span class="turkish">Birbirimize karşı saygılı olmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am responsible for paying the bills.</span><span class="turkish">Faturaları ödemekten ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to wash the car with my father.</span><span class="turkish">Babamla birlikte arabayı yıkamak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother asks me to clear the table.</span><span class="turkish">Annem benden masayı toplamamı istiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find doing the laundry very tiring.</span><span class="turkish">Çamaşır yıkamayı çok yorucu buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you mind helping me with the housework?</span><span class="turkish">Ev işlerinde bana yardım eder misin? / Yardım etmenin bir sakıncası var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must finish my homework before I do chores.</span><span class="turkish">Ev işi yapmadan önce ödevimi bitirmeliyim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My task is to organize the bookshelves.</span><span class="turkish">Benim görevim kitaplıkları düzenlemek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is responsible for the kitchen chores?</span><span class="turkish">Mutfak işlerinden kim sorumlu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to scrub the floor today.</span><span class="turkish">Bugün yerleri fırçalamak/ovmak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should divide the chores fairly.</span><span class="turkish">Ev işlerini adil bir şekilde bölmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is good at baking cakes.</span><span class="turkish">Kız kardeşim kek pişirmede iyidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of taking care of my little brother.</span><span class="turkish">Küçük erkek kardeşime bakmaktan ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must return the books to the library.</span><span class="turkish">Kitapları kütüphaneye geri vermeliyim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't forget to switch off the lights.</span><span class="turkish">Işıkları kapatmayı unutma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to clean the fridge every month.</span><span class="turkish">Her ay buzdolabını temizlemek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is busy with the repairs at home.</span><span class="turkish">Babam evdeki tamirat işleriyle meşgul.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must work together to keep the house clean.</span><span class="turkish">Evi temiz tutmak için birlikte çalışmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find vacuuming the carpets easy.</span><span class="turkish">Halıları süpürmeyi kolay buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother hates taking the trash out.</span><span class="turkish">Erkek kardeşim çöpü dışarı çıkarmaktan nefret eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am responsible for setting the alarm clock.</span><span class="turkish">Çalar saati kurmaktan ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to prepare my school bag in the evening.</span><span class="turkish">Akşamdan okul çantamı hazırlamak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother does the shopping once a week.</span><span class="turkish">Annem haftada bir kez alışveriş yapar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who does the cooking in your family?</span><span class="turkish">Ailenizde yemeği kim pişirir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must be careful while using the iron.</span><span class="turkish">Ütü kullanırken dikkatli olmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is my duty to help my grandparents.</span><span class="turkish">Büyükbüyük ebeveynlerime yardım etmek benim görevimdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find dusting the shelves very relaxing.</span><span class="turkish">Rafların tozunu almayı çok rahatlatıcı buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister has to fold the clothes.</span><span class="turkish">Kız kardeşim kıyafetleri katlamak zorunda.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must respect the privacy of others.</span><span class="turkish">Başkalarının mahremiyetine saygı duymalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of the recycling.</span><span class="turkish">Geri dönüşümden ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to clean the pet's cage.</span><span class="turkish">Evcil hayvanın kafesini temizlemek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father usually washes the windows on Sundays.</span><span class="turkish">Babam genellikle Pazar günleri pencereleri yıkar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should encourage everyone to help.</span><span class="turkish">Herkesi yardım etmeye teşvik etmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must put away my toys.</span><span class="turkish">Oyuncaklarımı yerine kaldırmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like doing chores?</span><span class="turkish">Ev işi yapmayı sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am responsible for the outdoor chores.</span><span class="turkish">Dışarıdaki ev işlerinden ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to help with the table decorations.</span><span class="turkish">Masa süslemelerine yardım etmek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is tired of doing everything.</span><span class="turkish">Annem her şeyi yapmaktan yoruldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must obey the rules at school and home.</span><span class="turkish">Okulda ve evde kurallara uymalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find mopping the kitchen hard.</span><span class="turkish">Mutfağı silmeyi zor buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother's task is to sweep the balcony.</span><span class="turkish">Erkek kardeşimin görevi balkonu süpürmek.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of the music for the party.</span><span class="turkish">Parti müziğinden ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to water the flowers in the garden.</span><span class="turkish">Bahçedeki çiçekleri sulamak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is responsible for the laundry?</span><span class="turkish">Çamaşırlardan kim sorumlu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must finish all my chores by evening.</span><span class="turkish">Akşama kadar tüm işlerimi bitirmeliyim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is important to be helpful.</span><span class="turkish">Yardımsever olmak önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find loading the washing machine simple.</span><span class="turkish">Çamaşır makinesini doldurmayı basit buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister enjoys helping in the kitchen.</span><span class="turkish">Kız kardeşim mutfakta yardım etmekten keyif alır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must keep our environment clean.</span><span class="turkish">Çevremizi temiz tutmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am responsible for the living room.</span><span class="turkish">Oturma odasından ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to clean the mirror in the hall.</span><span class="turkish">Holdaki aynayı temizlemek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father says I must be more organized.</span><span class="turkish">Babam daha düzenli olmam gerektiğini söylüyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should share our responsibilities.</span><span class="turkish">Sorumluluklarımızı paylaşmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I must take out the garbage before 8 p.m.</span><span class="turkish">Akşam 8'den önce çöpü dışarı çıkarmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you find chores necessary?</span><span class="turkish">Ev işlerini gerekli buluyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of the breakfast preparation.</span><span class="turkish">Kahvaltı hazırlığından ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to clean my shoes every day.</span><span class="turkish">Her gün ayakkabılarımı temizlemek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is happy when I help her.</span><span class="turkish">Ben ona yardım ettiğimde annem mutlu oluyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must cooperate with our family members.</span><span class="turkish">Aile üyelerimizle iş birliği yapmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find ironing the shirts difficult.</span><span class="turkish">Gömlekleri ütülemeyi zor buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is responsible for the car wash.</span><span class="turkish">Araba yıkamadan erkek kardeşim sorumlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am in charge of the pet's food.</span><span class="turkish">Evcil hayvanın yemeğinden ben sorumluyum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to tidy the attic this weekend.</span><span class="turkish">Bu hafta sonu tavan arasını düzenlemek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who makes the dinner on Fridays?</span><span class="turkish">Cuma günleri akşam yemeğini kim yapar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Chores are part of our daily lives.</span><span class="turkish">Ev işleri günlük hayatımızın bir parçasıdır.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Chores)</h3>
+        <ul>
+            <li><strong>1. Sorumluluk Kalıpları:</strong> 
+                <br>• <span class="keyword">Responsible for / In charge of:</span> ...'dan sorumlu olmak. (Bu kalıplardan sonra fiil gelirse <span class="highlight">-ing</span> alır. Örn: responsible for wash<span class="highlight">ing</span>).
+                <br>• <span class="keyword">Whose turn is it?:</span> Kimin sırası?
+            </li>
+            <li><strong>2. Zorunluluk (Must & Have to):</strong> 
+                <br>• <span class="keyword">Must:</span> Kişisel zorunluluk veya güçlü tavsiye (I must study).
+                <br>• <span class="keyword">Have to:</span> Dış etkenli zorunluluk veya kurallar (I have to pay the bills).
+            </li>
+            <li><strong>3. Gruplandırılmış Ev İşleri:</strong> 
+                <br>• <span class="keyword">Kitchen:</span> Loading/Emptying the dishwasher, setting the table.
+                <br>• <span class="keyword">Cleaning:</span> Vacuuming, mopping, dusting.
+                <br>• <span class="keyword">Outdoor:</span> Mowing the lawn, washing the car.
+            </li>
+            <li><strong>4. Ev Kuralları:</strong> 
+                <br>• <span class="highlight">Respect:</span> Saygı duymak. <span class="highlight">Obey:</span> İtaat etmek/uymak. <span class="highlight">Fairly:</span> Adilce.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

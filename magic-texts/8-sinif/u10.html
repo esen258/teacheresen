@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 10. Ünite: Natural Forces</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #eef2f3; /* Doğal ve temiz bir görünüm için */
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #27ae60; /* Doğayı temsil eden yeşil */
+        }
+        h1 {
+            color: #218c74;
+            text-align: center;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2ecc71;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe6e9;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #f1fcf4;
+            border-color: #27ae60;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #27ae60;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #f9fdfb;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #d1e8e2;
+            border-left: 8px solid #e67e22; /* Önemli notlar için turuncu */
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d35400;
+        }
+        .highlight { color: #d63031; font-weight: bold; }
+        .keyword { color: #0984e3; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>10. Ünite: Natural Forces</h1>
+    <p class="instruction">🌪️ Doğayı korumak ve afetleri tanımak için cümlelerin üzerine tıkla! 🌍</p>
+
+    <h2>Natural Forces - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A large earthquake happened in Japan last night.</span><span class="turkish">Dün gece Japonya'da büyük bir deprem meydana geldi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should protect our environment from pollution.</span><span class="turkish">Çevremizi kirlilikten korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Global warming is a serious threat to our planet.</span><span class="turkish">Küresel ısınma gezegenimiz için ciddi bir tehdittir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The volcano erupted and smoke covered the sky.</span><span class="turkish">Yanardağ patladı ve duman gökyüzünü kapladı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Many trees were destroyed in the forest fire.</span><span class="turkish">Orman yangınında birçok ağaç yok oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Glaciers are melting because of the rising temperature.</span><span class="turkish">Yükselen sıcaklık nedeniyle buzullar eriyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must use renewable energy sources like wind and solar.</span><span class="turkish">Rüzgar ve güneş gibi yenilenebilir enerji kaynaklarını kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A flood occurs when there is too much rain.</span><span class="turkish">Çok fazla yağmur yağdığında sel meydana gelir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Thousands of people became homeless after the hurricane.</span><span class="turkish">Kasırgadan sonra binlerce kişi evsiz kaldı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should plant more trees to prevent erosion.</span><span class="turkish">Erozyonu önlemek için daha fazla ağaç dikmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Drought is a long period of dry weather without rain.</span><span class="turkish">Kuraklık, yağmursuz geçen uzun bir kuru hava dönemidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">An avalanche is a large mass of snow falling down a mountain.</span><span class="turkish">Çığ, bir dağdan aşağı düşen büyük kar kütlesidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must reduce the use of plastic.</span><span class="turkish">Plastik kullanımını azaltmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The tsunami hit the coast after the earthquake.</span><span class="turkish">Depremden sonra tsunami kıyıyı vurdu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Water shortage is a big problem in many countries.</span><span class="turkish">Su kıtlığı birçok ülkede büyük bir sorundur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should recycle paper, glass, and metal.</span><span class="turkish">Kağıt, cam ve metali geri dönüştürmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A tornado is a violent wind storm.</span><span class="turkish">Hortum, şiddetli bir rüzgar fırtınasıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Landslides usually happen in rainy and mountainous areas.</span><span class="turkish">Heyelanlar genellikle yağmurlu ve dağlık bölgelerde olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to save energy at home.</span><span class="turkish">Evde enerji tasarrufu yapmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists warn us about the climate change.</span><span class="turkish">Bilim insanları bizi iklim değişikliği konusunda uyarıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Animals are losing their habitats.</span><span class="turkish">Hayvanlar doğal yaşam alanlarını kaybediyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We shouldn't waste water while brushing our teeth.</span><span class="turkish">Dişlerimizi fırçalarken suyu boşa harcamamalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The ozone layer protects us from the sun's rays.</span><span class="turkish">Ozon tabakası bizi güneş ışınlarından korur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Overpopulation is a cause of many environmental problems.</span><span class="turkish">Aşırı nüfus, birçok çevre sorununun nedenidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use public transportation more often.</span><span class="turkish">Toplu taşımayı daha sık kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Famine means there is not enough food for people.</span><span class="turkish">Kıtlık, insanlar için yeterli yiyecek olmaması anlamına gelir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Lightning and thunder usually happen together.</span><span class="turkish">Şimşek ve gök gürültüsü genellikle birlikte olur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must take precautions against natural disasters.</span><span class="turkish">Doğal afetlere karşı önlem almalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The air pollution in big cities is increasing.</span><span class="turkish">Büyük şehirlerdeki hava kirliliği artıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't throw your rubbish on the streets.</span><span class="turkish">Çöplerinizi sokaklara atmayın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use eco-friendly products.</span><span class="turkish">Çevre dostu ürünler kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The sea level is rising every year.</span><span class="turkish">Deniz seviyesi her yıl yükseliyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A wildfire can spread very quickly in summer.</span><span class="turkish">Yazın bir orman yangını çok hızlı yayılabilir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should stop destroying rain forests.</span><span class="turkish">Yağmur ormanlarını yok etmeyi durdurmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How can we prevent soil pollution?</span><span class="turkish">Toprak kirliliğini nasıl önleyebiliriz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must use less electricity.</span><span class="turkish">Daha az elektrik kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A magnitude 7.0 earthquake is very strong.</span><span class="turkish">7.0 büyüklüğünde bir deprem çok güçlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should turn off the lights when we leave the room.</span><span class="turkish">Odadan çıkarken ışıkları kapatmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The drought caused a shortage of crops.</span><span class="turkish">Kuraklık ekin (mahsul) kıtlığına neden oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to protect endangered species.</span><span class="turkish">Nesli tükenmekte olan türleri korumamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">An earthquake drill is important for schools.</span><span class="turkish">Deprem tatbikatı okullar için önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use rechargeable batteries.</span><span class="turkish">Şarj edilebilir piller kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The heatwave lasted for two weeks.</span><span class="turkish">Sıcak hava dalgası iki hafta sürdü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must keep our oceans clean.</span><span class="turkish">Okyanuslarımızı temiz tutmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Deforestation leads to many problems.</span><span class="turkish">Ormansızlaşma birçok soruna yol açar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should support environmental organizations.</span><span class="turkish">Çevre örgütlerini desteklemeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The storm damaged many houses in the village.</span><span class="turkish">Fırtına köydeki birçok eve zarar verdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to find a solution for the waste problem.</span><span class="turkish">Atık sorunu için bir çözüm bulmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A blizzard is a very heavy snowstorm.</span><span class="turkish">Blizzard (tipi), çok şiddetli bir kar fırtınasıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use cloth bags instead of plastic ones.</span><span class="turkish">Plastik olanlar yerine bez çantalar kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The ecosystem is in danger.</span><span class="turkish">Ekosistem tehlikede.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must decrease our carbon footprint.</span><span class="turkish">Karbon ayak izimizi azaltmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Nature provides us with everything we need.</span><span class="turkish">Doğa bize ihtiyacımız olan her şeyi sağlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should learn how to survive during a disaster.</span><span class="turkish">Afet sırasında nasıl hayatta kalacağımızı öğrenmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The landslide blocked the main road.</span><span class="turkish">Heyelan ana yolu kapattı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to use water more carefully.</span><span class="turkish">Suyu daha dikkatli kullanmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A hurricane is a type of powerful tropical storm.</span><span class="turkish">Kasırga, bir tür güçlü tropikal fırtınadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should avoid using harmful chemicals.</span><span class="turkish">Zararlı kimyasallar kullanmaktan kaçınmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The earthquake lasted for thirty seconds.</span><span class="turkish">Deprem otuz saniye sürdü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must be prepared for emergency situations.</span><span class="turkish">Acil durumlara hazırlıklı olmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Melting ice caps affect the polar bears.</span><span class="turkish">Eriyen buzullar kutup ayılarını etkiliyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should teach children about nature.</span><span class="turkish">Çocuklara doğayı öğretmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The flood destroyed the bridges and roads.</span><span class="turkish">Sel köprüleri ve yolları yıktı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to reduce air and water pollution.</span><span class="turkish">Hava ve su kirliliğini azaltmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Solar energy is a clean and cheap source.</span><span class="turkish">Güneş enerjisi temiz ve ucuz bir kaynaktır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should walk or bike for short distances.</span><span class="turkish">Kısa mesafeler için yürümeli veya bisiklete binmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The drought affected the farmers badly.</span><span class="turkish">Kuraklık çiftçileri kötü etkiledi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must protect the wildlife.</span><span class="turkish">Vahşi yaşamı korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Natural disasters are unavoidable sometimes.</span><span class="turkish">Doğal afetler bazen kaçınılmazdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should participate in tree planting events.</span><span class="turkish">Ağaç dikme etkinliklerine katılmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The volcano is still active.</span><span class="turkish">Yanardağ hala aktif.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to use energy-efficient bulbs.</span><span class="turkish">Enerji tasarruflu ampuller kullanmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A tidal wave is another name for a tsunami.</span><span class="turkish">Dev dalga, tsunaminin diğer adıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should stop polluting our rivers.</span><span class="turkish">Nehirlerimizi kirletmeyi durdurmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The magnitude of the earthquake was 6.5.</span><span class="turkish">Depremin büyüklüğü 6.5 idi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must act now for a better future.</span><span class="turkish">Daha iyi bir gelecek için şimdi harekete geçmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The forest fire was caused by a cigarette.</span><span class="turkish">Orman yangını bir sigaradan kaynaklandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should recycle our electronic waste too.</span><span class="turkish">Elektronik atıklarımızı da geri dönüştürmeliyiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The temperature is increasing day by day.</span><span class="turkish">Sıcaklık günden güne artıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to save the world for our children.</span><span class="turkish">Dünyayı çocuklarımız için kurtarmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">An earthquake kit should contain water and food.</span><span class="turkish">Bir deprem çantası su ve yiyecek içermelidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should be careful about forest fires.</span><span class="turkish">Orman yangınları konusunda dikkatli olmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hurricane reached the city at midnight.</span><span class="turkish">Kasırga gece yarısı şehre ulaştı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must respect the balance of nature.</span><span class="turkish">Doğanın dengesine saygı duymalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The drought is getting worse every year.</span><span class="turkish">Kuraklık her geçen yıl daha da kötüleşiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use wind turbines for energy.</span><span class="turkish">Enerji için rüzgar türbinleri kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The landslide happened after the heavy rain.</span><span class="turkish">Heyelan şiddetli yağmurdan sonra oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to create more green areas.</span><span class="turkish">Daha fazla yeşil alan oluşturmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A tsunami can travel very fast in the ocean.</span><span class="turkish">Tsunami okyanusta çok hızlı ilerleyebilir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use biodegradable materials.</span><span class="turkish">Doğada çözünebilir malzemeler kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The earthquake caused a lot of panic.</span><span class="turkish">Deprem büyük bir paniğe neden oldu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We must protect our natural resources.</span><span class="turkish">Doğal kaynaklarımızı korumalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The air is very clean in the mountains.</span><span class="turkish">Dağlarda hava çok temiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should reduce our daily waste.</span><span class="turkish">Günlük atığımızı azaltmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The flood waters are receding now.</span><span class="turkish">Sel suları şimdi çekiliyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need to be aware of the natural forces.</span><span class="turkish">Doğa kuvvetlerinin farkında olmamız gerekiyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A drought can last for many months.</span><span class="turkish">Kuraklık aylarca sürebilir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should use our cars less often.</span><span class="turkish">Arabalarımızı daha az kullanmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The volcanic eruption was very powerful.</span><span class="turkish">Volkanik patlama çok güçlüydü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's protect our beautiful world together!</span><span class="turkish">Hadi, güzel dünyamızı birlikte koruyalım!</span></div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Natural Forces)</h3>
+        <ul>
+            <li><strong>1. Afet Terimleri:</strong> 
+                <br>• <span class="keyword">Magnitude:</span> Deprem büyüklüğü.
+                <br>• <span class="keyword">Water shortage / Drought:</span> Su kıtlığı / Kuraklık.
+                <br>• <span class="keyword">Avalanche vs Landslide:</span> Çığ (Kar) vs Heyelan (Toprak).
+            </li>
+            <li><strong>2. Çözüm Önerileri:</strong> 
+                <br>• <span class="highlight">Recycle:</span> Geri dönüştürmek.
+                <br>• <span class="highlight">Renewable Energy:</span> Yenilenebilir enerji (Güneş, Rüzgar).
+                <br>• <span class="highlight">Plant trees:</span> Ağaç dikmek.
+            </li>
+            <li><strong>3. Bağlaçlar (Neden-Sonuç):</strong> 
+                <br>• <span class="keyword">Because:</span> Çünkü (Neden bildirir).
+                <br>• <span class="keyword">So:</span> Bu yüzden (Sonuç bildirir).
+            </li>
+            <li><strong>4. Gereklilik:</strong> 
+                <br>• <span class="highlight">Should:</span> Tavsiye (We should recycle).
+                <br>• <span class="highlight">Must:</span> Güçlü zorunluluk (We must take precautions).
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

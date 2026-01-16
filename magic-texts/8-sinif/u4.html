@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 4. Ünite: On The Phone</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f4f8; 
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            border-top: 10px solid #00b894; /* İletişim teması için güven veren yeşil tonu */
+        }
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            border-bottom: 3px solid #55efc4;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #00b894;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe6e9;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #e8f8f5;
+            border-color: #00b894;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #00b894;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #f7fff9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #c6f6d5;
+            border-left: 8px solid #00b894;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2d3436;
+        }
+        .highlight { color: #d63031; font-weight: bold; }
+        .keyword { color: #0984e3; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>4. Ünite: On The Phone</h1>
+    <p class="instruction">📞 İletişim kurmaya hazır mısın? Çeviriler için cümlelerin üzerine tıkla! 📱</p>
+
+    <h2>On The Phone - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hello, this is Tom calling.</span><span class="turkish">Merhaba, ben Tom arıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">May I speak to Mr. Brown, please?</span><span class="turkish">Bay Brown ile görüşebilir miyim lütfen?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Could you put me through to the manager?</span><span class="turkish">Beni müdüre bağlayabilir misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hang on a minute, please.</span><span class="turkish">Bir dakika bekleyin lütfen.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll get him for you.</span><span class="turkish">Onu sizin için çağırıyorum / telefona veriyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don’t hang up the phone.</span><span class="turkish">Telefonu kapatmayın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm sorry, he is not available at the moment.</span><span class="turkish">Üzgünüm, o şu anda müsait değil.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Would you like to leave a message?</span><span class="turkish">Mesaj bırakmak ister misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you tell him to call me back?</span><span class="turkish">Ona beni geri aramasını söyler misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll call back later.</span><span class="turkish">Daha sonra tekrar arayacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The line is engaged/busy.</span><span class="turkish">Hat meşgul.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't hear you well, it’s a bad line.</span><span class="turkish">Sizi iyi duyamıyorum, hat kötü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Could you repeat that, please?</span><span class="turkish">Onu tekrar edebilir misiniz lütfen?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you keep in touch with your friends?</span><span class="turkish">Arkadaşlarınla nasıl iletişim kurarsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually send text messages.</span><span class="turkish">Genellikle kısa mesaj gönderirim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer talking face to face.</span><span class="turkish">Yüz yüze konuşmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you use social networks often?</span><span class="turkish">Sosyal ağları sık kullanır mısın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Technology changes our communication habits.</span><span class="turkish">Teknoloji iletişim alışkanlıklarımızı değiştiriyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">People used to send letters in the past.</span><span class="turkish">İnsanlar geçmişte mektup gönderirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Smart phones are very popular among teens.</span><span class="turkish">Akıllı telefonlar gençler arasında çok popüler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am waiting for your call.</span><span class="turkish">Aramanı bekliyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your phone number?</span><span class="turkish">Telefon numaran ne?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll connect you now.</span><span class="turkish">Sizi şimdi bağlıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Please stay on the line.</span><span class="turkish">Lütfen hatta kalın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is in a meeting right now.</span><span class="turkish">O şu anda toplantıda.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to hang up now.</span><span class="turkish">Şimdi kapatmak zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let’s meet at the cafe at five.</span><span class="turkish">Saat beşte kafede buluşalım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My phone's battery is low.</span><span class="turkish">Telefonumun şarjı düşük.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll text you the address.</span><span class="turkish">Adresi size mesajla atacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't speak too loudly on the phone.</span><span class="turkish">Telefonda çok yüksek sesle konuşma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is your father at home?</span><span class="turkish">Baban evde mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m afraid he has gone out.</span><span class="turkish">Korkarım o dışarı çıktı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can I take your name, please?</span><span class="turkish">Adınızı alabilir miyim lütfen?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is calling, please?</span><span class="turkish">Kim arıyor lütfen?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll tell him that you called.</span><span class="turkish">Aradığınızı ona söyleyeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Thanks for calling.</span><span class="turkish">Aradığınız için teşekkürler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Have a nice day!</span><span class="turkish">İyi günler!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually make phone calls to my parents.</span><span class="turkish">Genellikle ailemi telefonla ararım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sending emails is very professional.</span><span class="turkish">E-posta göndermek çok profesyonelce.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer leaving a voicemail.</span><span class="turkish">Sesli mesaj bırakmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have a smartphone?</span><span class="turkish">Akıllı telefonun var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use my phone to take photos.</span><span class="turkish">Telefonumu fotoğraf çekmek için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It’s important to be polite on the phone.</span><span class="turkish">Telefonda kibar olmak önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Communication is easier today.</span><span class="turkish">İletişim bugün daha kolay.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll pick up the phone.</span><span class="turkish">Telefonu açacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why don’t you answer the phone?</span><span class="turkish">Neden telefonu açmıyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I missed your call yesterday.</span><span class="turkish">Dün aramanı kaçırdım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you speak a bit louder?</span><span class="turkish">Biraz daha yüksek sesle konuşabilir misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m calling to book a flight ticket.</span><span class="turkish">Uçak bileti ayırtmak için arıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What's the purpose of your call?</span><span class="turkish">Aramanızın amacı nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’d like to make a complaint.</span><span class="turkish">Şikayette bulunmak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to buy a ticket for the concert.</span><span class="turkish">Konser için bilet almak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The phone is ringing.</span><span class="turkish">Telefon çalıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think the line is cut off.</span><span class="turkish">Sanırım hat kesildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We use gestures while talking face to face.</span><span class="turkish">Yüz yüze konuşurken jestler kullanırız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Old people find technology difficult.</span><span class="turkish">Yaşlı insanlar teknolojiyi zor buluyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I check my notifications every ten minutes.</span><span class="turkish">Bildirimlerimi her on dakikada bir kontrol ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Social media can be addictive.</span><span class="turkish">Sosyal medya bağımlılık yapıcı olabilir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love video chats with my cousins.</span><span class="turkish">Kuzenlerimle görüntülü sohbet etmeyi seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It’s a great way to communicate.</span><span class="turkish">Bu iletişim kurmanın harika bir yolu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll be there on time.</span><span class="turkish">Zamanında orada olacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Could you tell me your name again?</span><span class="turkish">Adınızı tekrar söyler misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m busy right now, call me later.</span><span class="turkish">Şu an meşgulüm, beni sonra ara.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m sorry to hear that.</span><span class="turkish">Bunu duyduğuma üzüldüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">That’s a good idea.</span><span class="turkish">Bu iyi bir fikir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll take a memo for him.</span><span class="turkish">Onun için bir not alacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Keep in touch with me.</span><span class="turkish">Benimle iletişimde kal.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll send you an invitation.</span><span class="turkish">Size bir davetiye göndereceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you have an internet connection?</span><span class="turkish">İnternet bağlantın var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can’t send this email.</span><span class="turkish">Bu e-postayı gönderemiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll try to call again in the evening.</span><span class="turkish">Akşam tekrar aramayı deneyeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is always on the phone.</span><span class="turkish">Erkek kardeşim her zaman telefonda.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Teens prefer using emojis.</span><span class="turkish">Gençler emoji kullanmayı tercih ediyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Writing a letter is more romantic.</span><span class="turkish">Mektup yazmak daha romantik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m calling for the English project.</span><span class="turkish">İngilizce projesi için arıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you hold on a second?</span><span class="turkish">Bir saniye bekleyebilir misiniz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll put you through to the secretary.</span><span class="turkish">Sizi sekretere bağlıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He is out of the office.</span><span class="turkish">O ofis dışında.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">See you at the party.</span><span class="turkish">Partide görüşürüz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll bring my laptop.</span><span class="turkish">Dizüstü bilgisayarımı getireceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use the internet for my homework.</span><span class="turkish">İnterneti ödevim için kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Modern communication is fast.</span><span class="turkish">Modern iletişim hızlıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually make video calls.</span><span class="turkish">Genellikle görüntülü aramalar yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My phone is broken.</span><span class="turkish">Telefonum bozuk.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I need a new charger.</span><span class="turkish">Yeni bir şarj cihazına ihtiyacım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't share your password with anyone.</span><span class="turkish">Şifreni hiç kimseyle paylaşma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It's safe to use private accounts.</span><span class="turkish">Gizli hesap kullanmak güvenlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in new gadgets.</span><span class="turkish">Yeni teknolojik aletlerle ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many hours do you spend on your phone?</span><span class="turkish">Telefonunda kaç saat harcıyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use it for about three hours.</span><span class="turkish">Yaklaşık üç saat kullanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll be waiting for your message.</span><span class="turkish">Mesajını bekliyor olacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can’t believe he didn’t call.</span><span class="turkish">Aramadığına inanamıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there any problem with the line?</span><span class="turkish">Hatta bir sorun mu var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m calling from London.</span><span class="turkish">Londra'dan arıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll inform you about the details.</span><span class="turkish">Sizi detaylar hakkında bilgilendireceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Please leave your message after the tone.</span><span class="turkish">Lütfen sinyal sesinden sonra mesajınızı bırakın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m sorry, I dialed the wrong number.</span><span class="turkish">Üzgünüm, yanlış numarayı çevirdim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It’s a bad connection.</span><span class="turkish">Bağlantı kötü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’ll talk to you later.</span><span class="turkish">Seninle sonra konuşuruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Goodbye for now.</span><span class="turkish">Şimdilik hoşça kal.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (On The Phone)</h3>
+        <ul>
+            <li><strong>1. Görüşmeye Başlama:</strong> 
+                <br>• <span class="keyword">This is [İsim] calling:</span> Ben [İsim] arıyorum.
+                <br>• <span class="keyword">May I speak to...?:</span> ... ile görüşebilir miyim?
+            </li>
+            <li><strong>2. Bekletme ve Bağlama:</strong> 
+                <br>• <span class="highlight">Hold on / Hang on:</span> Bekle.
+                <br>• <span class="highlight">Put through / Connect:</span> Bağlamak / Aktarmak.
+                <br>• <span class="highlight">Don't hang up:</span> Telefonu kapatma.
+            </li>
+            <li><strong>3. Müsait Olmama Durumu:</strong> 
+                <br>• <span class="keyword">Not available / Engaged:</span> Müsait değil / Meşgul.
+                <br>• <span class="keyword">Leave a message:</span> Mesaj bırakmak.
+            </li>
+            <li><strong>4. İletişim Yolları:</strong> 
+                <br>• <span class="keyword">Face to face:</span> Yüz yüze.
+                <br>• <span class="keyword">Text a message:</span> Mesaj yazmak.
+                <br>• <span class="keyword">Keep in touch:</span> İletişimde kalmak.
+            </li>
+            <li><strong>5. Telefon Terimleri:</strong> 
+                <br>• <span class="highlight">Pick up:</span> Telefonu açmak.
+                <br>• <span class="highlight">Hang up:</span> Telefonu kapatmak.
+                <br>• <span class="highlight">Bad line:</span> Kötü hat / Sesin kötü gelmesi.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

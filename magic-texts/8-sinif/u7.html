@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 7. Ünite: Tourism</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f9ff; /* Deniz ve tatil teması için açık mavi */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.15); 
+            border-top: 10px solid #3498db; /* Turizm mavisi */
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #3498db;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dcdde1;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f2f6;
+            border-color: #3498db;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2980b9;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #faffff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #d1f2eb;
+            border-left: 8px solid #1abc9c;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #16a085;
+        }
+        .highlight { color: #e67e22; font-weight: bold; }
+        .keyword { color: #2980b9; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>7. Ünite: Tourism</h1>
+    <p class="instruction">🌍 Yeni yerler keşfetmeye hazır mısın? Çeviriler için cümlelerin üzerine tıkla! 🏖️</p>
+
+    <h2>Tourism - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer visiting historic sites to modern cities.</span><span class="turkish">Tarihi yerleri ziyaret etmeyi modern şehirlere tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Have you ever been to Mardin?</span><span class="turkish">Hiç Mardin'de bulundun mu? / Mardin'e gittin mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Antalya is a very popular tourist destination.</span><span class="turkish">Antalya çok popüler bir turistik yerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The accommodation was very comfortable.</span><span class="turkish">Konaklama çok konforluydu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather stay in an all-inclusive hotel.</span><span class="turkish">Her şey dahil bir otelde kalmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are the tourist attractions in Istanbul?</span><span class="turkish">İstanbul'daki turistik yerler/ilgi odakları nelerdir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The weather is sunny and warm today.</span><span class="turkish">Hava bugün güneşli ve ılık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in seeing ancient ruins.</span><span class="turkish">Antik kalıntıları görmekle ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We stayed in a boutique hotel last summer.</span><span class="turkish">Geçen yaz butik bir otelde kaldık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The city has a rich cultural heritage.</span><span class="turkish">Şehrin zengin bir kültürel mirası var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must see the Maiden's Tower.</span><span class="turkish">Kız Kulesi'ni mutlaka görmelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find sightseeing tours very educative.</span><span class="turkish">Şehir gezisi turlarını çok eğitici buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is it expensive to stay in a five-star hotel?</span><span class="turkish">Beş yıldızlı bir otelde kalmak pahalı mıdır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The local food was delicious and spicy.</span><span class="turkish">Yerel yemekler lezzetli ve baharatlıydı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love taking photos of historic architecture.</span><span class="turkish">Tarihi mimarinin fotoğraflarını çekmeyi seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Ephesus is an amazing ancient city.</span><span class="turkish">Efes harika bir antik kenttir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How was your vacation in Muğla?</span><span class="turkish">Muğla'daki tatilin nasıldı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think winter tourism is exciting.</span><span class="turkish">Bence kış turizmi heyecan verici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We went on a guided tour yesterday.</span><span class="turkish">Dün rehberli tura çıktık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The scenery was truly fascinating.</span><span class="turkish">Manzara gerçekten büyüleyiciydi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cappadocia is famous for its fairy chimneys.</span><span class="turkish">Kapadokya peri bacalarıyla ünlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer bed and breakfast hotels.</span><span class="turkish">Yatak ve kahvaltı (pansiyon tarzı) otelleri tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the climate like in Black Sea region?</span><span class="turkish">Karadeniz bölgesinde iklim nasıldır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to visit the Grand Bazaar.</span><span class="turkish">Kapalıçarşı'yı ziyaret etmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The museum was crowded but interesting.</span><span class="turkish">Müze kalabalıktı ama ilginçti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is a great place for a summer holiday.</span><span class="turkish">Yaz tatili için harika bir yer.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We tried traditional dishes in Gaziantep.</span><span class="turkish">Gaziantep'te geleneksel yemekleri denedik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love exploring natural beauties.</span><span class="turkish">Doğal güzellikleri keşfetmeyi seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The flight took about two hours.</span><span class="turkish">Uçuş yaklaşık iki saat sürdü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to buy some souvenirs for my friends.</span><span class="turkish">Arkadaşlarım için biraz hediyelik eşya almak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hotel offers a great sea view.</span><span class="turkish">Otel harika bir deniz manzarası sunuyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there a swimming pool in the hotel?</span><span class="turkish">Otelde yüzme havuzu var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I found the ancient theater very impressive.</span><span class="turkish">Antik tiyatroyu çok etkileyici buldum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We should book our flight tickets early.</span><span class="turkish">Uçak biletlerimizi erken ayırtmalıyız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The city is famous for its sandy beaches.</span><span class="turkish">Şehir kumsallarıyla ünlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am fond of urban trekking.</span><span class="turkish">Şehir yürüyüşlerine düşkünüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the population of this city?</span><span class="turkish">Bu şehrin nüfusu ne kadar?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’d rather go on a cruise vacation.</span><span class="turkish">Gemi (cruise) tatiline çıkmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The mosque has a magnificent architecture.</span><span class="turkish">Caminin muhteşem bir mimarisi var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to see the Topkapı Palace.</span><span class="turkish">Topkapı Sarayı'nı görmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you prefer a seaside or a mountain holiday?</span><span class="turkish">Deniz kenarı mı yoksa dağ tatili mi tercih edersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The castle was built in the 12th century.</span><span class="turkish">Kale 12. yüzyılda inşa edilmiş.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I enjoyed the boat trip on the Bosphorus.</span><span class="turkish">İstanbul Boğazı'ndaki tekne turundan keyif aldım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The island is very peaceful and quiet.</span><span class="turkish">Ada çok huzurlu ve sessiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Tourism is very important for the economy.</span><span class="turkish">Turizm ekonomi için çok önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to visit the National Park.</span><span class="turkish">Milli parkı ziyaret etmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The entrance fee to the museum is cheap.</span><span class="turkish">Müzenin giriş ücreti ucuz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We took a lot of photos in Nemrut.</span><span class="turkish">Nemrut'ta çok fotoğraf çektik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think skiing is a great winter activity.</span><span class="turkish">Bence kayak harika bir kış aktivitesi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The transportation in the city is very easy.</span><span class="turkish">Şehirdeki ulaşım çok kolay.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have never tasted such a good kebab.</span><span class="turkish">Hiç bu kadar iyi bir kebap tatmamıştım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hotel staff was very helpful and kind.</span><span class="turkish">Otel personeli çok yardımcı ve nazikti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to go to a safari in Africa.</span><span class="turkish">Afrika'da safariye gitmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The weather is too rainy for sightseeing.</span><span class="turkish">Hava şehir gezisi için fazla yağmurlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We stayed in a tent by the lake.</span><span class="turkish">Göl kenarında çadırda kaldık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer walking to using public transport.</span><span class="turkish">Yürümeyi toplu taşıma kullanmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The ruins were discovered many years ago.</span><span class="turkish">Kalıntılar yıllar önce keşfedildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love learning about different cultures.</span><span class="turkish">Farklı kültürler hakkında bir şeyler öğrenmeyi seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The waterfall was breathtaking.</span><span class="turkish">Şelale nefes kesiciydi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is the breakfast included in the price?</span><span class="turkish">Kahvaltı fiyata dahil mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to see the Sumela Monastery.</span><span class="turkish">Sümela Manastırı'nı görmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The city center is full of tourists.</span><span class="turkish">Şehir merkezi turistlerle dolu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find historic palaces more interesting.</span><span class="turkish">Tarihi sarayları daha ilginç buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We visited an old church in the village.</span><span class="turkish">Köydeki eski bir kiliseyi ziyaret ettik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer a quiet vacation in nature.</span><span class="turkish">Doğada sessiz bir tatili tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The statues in the museum are very old.</span><span class="turkish">Müzedeki heykeller çok eski.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’d rather visit a museum than go to a mall.</span><span class="turkish">Alışveriş merkezine gitmektense müze ziyaret etmeyi tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The bridge connects two continents.</span><span class="turkish">Köprü iki kıtayı birbirine bağlıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think traveling broadens the mind.</span><span class="turkish">Bence seyahat etmek ufku açar (zihni genişletir).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We had a great time at the beach.</span><span class="turkish">Plajda harika vakit geçirdik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The resort was very luxurious.</span><span class="turkish">Tatil köyü çok lükstü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to see the Eiffel Tower one day.</span><span class="turkish">Bir gün Eyfel Kulesi'ni görmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The climate is mild and rainy in winter.</span><span class="turkish">Kışın iklim yumuşak ve yağmurludur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love the atmosphere of old cities.</span><span class="turkish">Eski şehirlerin atmosferini seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hotel has a very large garden.</span><span class="turkish">Otelin çok büyük bir bahçesi var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in archaeological sites.</span><span class="turkish">Arkeolojik alanlarla ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We spent three days in Safranbolu.</span><span class="turkish">Safranbolu'da üç gün geçirdik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to go to a souvenir shop.</span><span class="turkish">Bir hediyelik eşya dükkanına gitmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The park is famous for its colorful flowers.</span><span class="turkish">Park renkli çiçekleriyle ünlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer taking a bus to flying.</span><span class="turkish">Otobüse binmeyi uçmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The mountains are covered with snow.</span><span class="turkish">Dağlar karla kaplı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find the local music very rhythmic.</span><span class="turkish">Yerel müziği çok ritmik buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We visited the ancient city of Troy.</span><span class="turkish">Truva antik kentini ziyaret ettik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The tour guide was very knowledgeable.</span><span class="turkish">Tur rehberi çok bilgiliydi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to try scuba diving in Kaş.</span><span class="turkish">Kaş'ta tüplü dalış denemek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The city is located in the north of Turkey.</span><span class="turkish">Şehir Türkiye'nin kuzeyinde yer alıyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think summer is the best time to visit.</span><span class="turkish">Bence ziyaret etmek için en iyi zaman yaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The lake is famous for its clear water.</span><span class="turkish">Göl berrak suyuyla ünlüdür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We had dinner in a traditional restaurant.</span><span class="turkish">Geleneksel bir restoranda akşam yemeği yedik.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to see the Hagia Sophia.</span><span class="turkish">Ayasofya'yı görmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The museum is open every day except Monday.</span><span class="turkish">Müze Pazartesi hariç her gün açık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer a cheap but clean hostel.</span><span class="turkish">Ucuz ama temiz bir hosteli tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The streets are very narrow and historic.</span><span class="turkish">Sokaklar çok dar ve tarihi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to experience the local lifestyle.</span><span class="turkish">Yerel yaşam tarzını deneyimlemek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The desert was very hot and dry.</span><span class="turkish">Çöl çok sıcak ve kuruydu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love watching the sunset at the beach.</span><span class="turkish">Plajda gün batımını izlemeyi seviyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The hotel is close to the city center.</span><span class="turkish">Otel şehir merkezine yakın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We went on a hiking trip in the forest.</span><span class="turkish">Ormanda yürüyüş gezisine çıktık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to visit the Blue Mosque.</span><span class="turkish">Sultanahmet Camii'ni ziyaret etmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Traveling is my biggest passion.</span><span class="turkish">Seyahat etmek benim en büyük tutkum.</span></div>
+
+    
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Tourism)</h3>
+        <ul>
+            <li><strong>1. Konaklama Çeşitleri:</strong> 
+                <br>• <span class="keyword">All-inclusive:</span> Her şey dahil.
+                <br>• <span class="keyword">Bed and Breakfast (B&B):</span> Yatak ve kahvaltı.
+                <br>• <span class="keyword">Boutique Hotel:</span> Butik otel (küçük ve şık).
+            </li>
+            <li><strong>2. Gezilecek Yerler:</strong> 
+                <br>• <span class="highlight">Historic sites / Ancient ruins:</span> Tarihi alanlar ve antik kalıntılar.
+                <br>• <span class="highlight">Souvenir shop:</span> Hediyelik eşya dükkanı.
+                <br>• <span class="highlight">Sightseeing:</span> Şehir gezisi (turistik yerleri görme).
+            </li>
+            <li><strong>3. Önemli Sorular:</strong> 
+                <br>• <span class="keyword">Have you ever been to...?:</span> Hiç ...'da bulundun mu?
+                <br>• <span class="keyword">What is the climate like?:</span> İklim nasıldır?
+            </li>
+            <li><strong>4. Betimleme Sıfatları:</strong> 
+                <br>• <span class="highlight">Breathtaking / Fascinating:</span> Nefes kesici / Büyüleyici.
+                <br>• <span class="highlight">Delicious / Spicy:</span> Lezzetli / Baharatlı.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 6. Ünite: Adventures</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fff5e6; /* Macera ve doğa teması için turuncumsu krem */
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(211, 84, 0, 0.1); 
+            border-top: 10px solid #e67e22; /* Macera turuncusu */
+        }
+        h1 {
+            color: #d35400;
+            text-align: center;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #e67e22;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe6e9;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #fff9f0;
+            border-color: #e67e22;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #d35400;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #fdf2e9;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #fadbd8;
+            border-left: 8px solid #e67e22;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d35400;
+        }
+        .highlight { color: #c0392b; font-weight: bold; }
+        .keyword { color: #2980b9; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>6. Ünite: Adventures</h1>
+    <p class="instruction">⛰️ Adrenalin dolu bir yolculuğa hazır mısın? Çeviriler için cümlelerin üzerine tıkla! 🪂</p>
+
+    <h2>Adventures - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer skydiving to bungee jumping.</span><span class="turkish">Hava dalışını (gökyüzü dalışını) bungee jumping yapmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Which sport is more challenging for you?</span><span class="turkish">Hangi spor senin için daha zorlayıcı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think rafting is more exciting than canoeing.</span><span class="turkish">Bence rafting kano yapmaktan daha heyecan verici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Paragliding is my favorite extreme sport.</span><span class="turkish">Yamaç paraşütü benim favori ekstrem sporumdur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a helmet and a life jacket for rafting.</span><span class="turkish">Rafting için bir kask ve can yeleğine ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is mountain biking dangerous?</span><span class="turkish">Dağ bisikleti sürmek tehlikeli midir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather go trekking than climbing.</span><span class="turkish">Tırmanış yapmaktansa doğa yürüyüşüne gitmeyi tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Have you ever tried scuba diving?</span><span class="turkish">Hiç tüplü dalış denedin mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It was a fascinating experience for me.</span><span class="turkish">Benim için büyüleyici bir deneyimdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find caving very mysterious and dark.</span><span class="turkish">Mağara keşfini çok gizemli ve karanlık buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Motor racing is more heart-stopping than cycling.</span><span class="turkish">Motor yarışı, bisiklet sürmekten daha heyecan verici (kalp durduran cinsten).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why do people like extreme sports?</span><span class="turkish">İnsanlar neden ekstrem sporları sever?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They love testing their limits.</span><span class="turkish">Limitlerini test etmeyi severler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">An adventurer should be brave.</span><span class="turkish">Bir maceracı cesur olmalıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What equipment do we need for ice climbing?</span><span class="turkish">Buz tırmanışı için hangi ekipmana ihtiyacımız var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think bungee jumping is terrifying.</span><span class="turkish">Bence bungee jumping korkutucu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would like to try hot air ballooning in Cappadocia.</span><span class="turkish">Kapadokya'da sıcak hava balonuna binmeyi denemek isterim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Hang gliding is more difficult than it looks.</span><span class="turkish">Yelken kanat (hang gliding) göründüğünden daha zordur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a paddle to go canoeing.</span><span class="turkish">Kano yapmak için küreğe ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">High-lining is one of the most dangerous sports.</span><span class="turkish">İp üzerinde yürüme (high-lining) en tehlikeli sporlardan biridir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer indoor sports to outdoor sports.</span><span class="turkish">Kapalı alan sporlarını açık hava sporlarına tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Which one do you prefer: parkour or skateboarding?</span><span class="turkish">Hangisini tercih edersin: parkur mu yoksa kaykay mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think surfing is more amusing than swimming.</span><span class="turkish">Bence sörf yapmak yüzmekten daha eğlenceli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Skydiving is an adrenaline-filled sport.</span><span class="turkish">Gök dalışı adrenalin dolu bir spordur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am not a courageous person.</span><span class="turkish">Cesur bir insan değilim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should wear a flight suit for paragliding.</span><span class="turkish">Yamaç paraşütü için uçuş giysisi giymelisin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Exploring a cave is quite adventurous.</span><span class="turkish">Bir mağarayı keşfetmek oldukça maceralıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is an adrenaline junkie.</span><span class="turkish">Erkek kardeşim bir adrenalin tutkunudur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find motor-cross very risky.</span><span class="turkish">Motor-krosu çok riskli buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">To me, rock climbing is very demanding.</span><span class="turkish">Bana göre kaya tırmanışı çok çaba gerektirici/zorlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'd rather stay at home than go camping.</span><span class="turkish">Kamp yapmaya gitmektense evde kalmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the most popular sport in Turkey?</span><span class="turkish">Türkiye'deki en popüler spor nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer wingsuit flying because it is exciting.</span><span class="turkish">Kanatlı tulum uçuşunu tercih ederim çünkü heyecan verici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The weather is perfect for windsurfing today.</span><span class="turkish">Bugün hava rüzgar sörfü için mükemmel.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a thermal suit for scuba diving.</span><span class="turkish">Tüplü dalış için termal kıyafete ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bungee jumping is more popular among teens.</span><span class="turkish">Bungee jumping gençler arasında daha popülerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to see the underwater world.</span><span class="turkish">Sualtı dünyasını görmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Caving is less popular than trekking.</span><span class="turkish">Mağara keşfi doğa yürüyüşünden daha az popülerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am fond of adventure.</span><span class="turkish">Maceraya düşkünüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My dream is to climb Mount Everest.</span><span class="turkish">Hayalim Everest Dağı'na tırmanmak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you think rafting is easy?</span><span class="turkish">Raftingin kolay olduğunu mu düşünüyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find ice climbing more difficult than rock climbing.</span><span class="turkish">Buz tırmanışını kaya tırmanışından daha zor buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It is a great opportunity to see nature.</span><span class="turkish">Doğayı görmek için harika bir fırsat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather go on a jeep safari.</span><span class="turkish">Cip safarisine çıkmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">High-lining is more challenging than trekking.</span><span class="turkish">İp üstünde yürüme, doğa yürüyüşünden daha zorlayıcıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You must wear a helmet for safety.</span><span class="turkish">Güvenlik için kask takmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think paragliding is safer than skydiving.</span><span class="turkish">Bence yamaç paraşütü gök dalışından daha güvenli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are the characteristics of an adventurer?</span><span class="turkish">Bir maceracının özellikleri nelerdir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm crazy about extreme sports.</span><span class="turkish">Ekstrem sporlara bayılırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer being in nature to being in the city.</span><span class="turkish">Doğada olmayı şehirde olmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scuba diving is more relaxing than rafting.</span><span class="turkish">Tüplü dalış rafting yapmaktan daha rahatlatıcıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find base jumping too risky.</span><span class="turkish">Serbest düşüşü (base jumping) çok riskli buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need special equipment for this sport.</span><span class="turkish">Bu spor için özel ekipmana ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is bungee jumping more exciting than parkour?</span><span class="turkish">Bungee jumping parkurdan daha mı heyecan verici?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would like to go on a boat trip.</span><span class="turkish">Tekne turuna çıkmak isterim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Skateboarding is popular in big cities.</span><span class="turkish">Kaykay büyük şehirlerde popülerdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find trekking less exciting than rafting.</span><span class="turkish">Doğa yürüyüşünü raftingden daha az heyecan verici buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">An adventurer must be physically fit.</span><span class="turkish">Bir maceracı fiziksel olarak zinde olmalıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather watch a movie about adventures.</span><span class="turkish">Maceralar hakkında bir film izlemeyi tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Which sport do you find most challenging?</span><span class="turkish">Hangi sporu en zorlayıcı buluyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think canoeing is very boring.</span><span class="turkish">Bence kano yapmak çok sıkıcı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a dry suit for cold water.</span><span class="turkish">Soğuk su için kuru elbise (dalış kıyafeti) gerekir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer riding a horse to riding a bike.</span><span class="turkish">Ata binmeyi bisiklet sürmeye tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think scuba diving is more fascinating.</span><span class="turkish">Bence tüplü dalış daha büyüleyici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your favorite extreme sport?</span><span class="turkish">En sevdiğin ekstrem spor nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to try mountain biking next summer.</span><span class="turkish">Gelecek yaz dağ bisikleti denemek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Paragliding is an unforgettable experience.</span><span class="turkish">Yamaç paraşütü unutulmaz bir deneyimdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in exploring ancient cities.</span><span class="turkish">Antik şehirleri keşfetmekle ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find caving more mysterious than trekking.</span><span class="turkish">Mağara keşfini doğa yürüyüşünden daha gizemli buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like taking risks?</span><span class="turkish">Risk almayı sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather go to the mountains.</span><span class="turkish">Dağlara gitmeyi tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Rafting requires teamwork.</span><span class="turkish">Rafting takım çalışması gerektirir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think motor racing is very noisy.</span><span class="turkish">Bence motor yarışları çok gürültülü.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should be careful while climbing.</span><span class="turkish">Tırmanırken dikkatli olmalısın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find hang gliding more amusing than paragliding.</span><span class="turkish">Yelken kanatla uçmayı yamaç paraşütünden daha eğlenceli buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do you need for a camping trip?</span><span class="turkish">Kamp gezisi için neye ihtiyacın var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer winter sports like skiing.</span><span class="turkish">Kayak gibi kış sporlarını tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think snowboarding is more difficult than skiing.</span><span class="turkish">Bence snowboard yapmak kayak yapmaktan daha zor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Exploring the forest is very peaceful.</span><span class="turkish">Ormanı keşfetmek çok huzurlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would like to try bungee jumping one day.</span><span class="turkish">Bir gün bungee jumping denemek isterim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find extreme sports very attractive.</span><span class="turkish">Ekstrem sporları çok çekici buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a life jacket for safety on water.</span><span class="turkish">Su üzerinde güvenlik için can yeleğine ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer taking a taxi to walking.</span><span class="turkish">Taksiye binmeyi yürümeye tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think base jumping is the most dangerous.</span><span class="turkish">Bence serbest düşüş (base jumping) en tehlikelisi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What makes this sport so special?</span><span class="turkish">Bu sporu bu kadar özel yapan ne?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm keen on adrenaline.</span><span class="turkish">Adrenaline düşkünüm.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather go scuba diving in the Red Sea.</span><span class="turkish">Kızıldeniz'de tüplü dalış yapmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find paragliding more heart-stopping.</span><span class="turkish">Yamaç paraşütünü daha heyecan verici buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You should have a professional trainer.</span><span class="turkish">Profesyonel bir eğitmenin olmalı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think trekking is the easiest sport.</span><span class="turkish">Bence doğa yürüyüşü en kolay spor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer outdoor activities in summer.</span><span class="turkish">Yazın açık hava aktivitelerini tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find hot air ballooning very romantic.</span><span class="turkish">Sıcak hava balonu gezisini çok romantik buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is it expensive to try skydiving?</span><span class="turkish">Gök dalışını denemek pahalı mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I would rather stay in a tent than a hotel.</span><span class="turkish">Otelde kalmaktansa çadırda kalmayı tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think adventure is important in life.</span><span class="turkish">Bence hayatın içinde macera önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You need a strong rope for climbing.</span><span class="turkish">Tırmanış için güçlü bir ipe ihtiyacın var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find rafting more amusing than canoeing.</span><span class="turkish">Raftingi kano yapmaktan daha eğlenceli buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the goal of an adventurer?</span><span class="turkish">Bir maceracının hedefi nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer being active to being lazy.</span><span class="turkish">Aktif olmayı tembel olmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Life is a big adventure!</span><span class="turkish">Hayat büyük bir maceradır!</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Adventures)</h3>
+        <ul>
+            <li><strong>1. Karşılaştırma (Comparatives):</strong> 
+                <br>• Kısa sıfatlar: <span class="highlight">-er</span> (Safe -> Safer).
+                <br>• Uzun sıfatlar: <span class="highlight">More</span> (More exciting).
+                <br>• <span class="keyword">Adrenaline-filled / Heart-stopping:</span> Çok heyecan verici.
+            </li>
+            <li><strong>2. Tercih Belirtme:</strong> 
+                <br>• <span class="keyword">Prefer:</span> I prefer [X] <span class="highlight">to</span> [Y]. (X'i Y'ye tercih ederim.)
+                <br>• <span class="keyword">Would rather:</span> I would rather [Fiil] <span class="highlight">than</span> [Fiil]. (Yapmayı tercih ederim.)
+            </li>
+            <li><strong>3. Kişilik Özellikleri:</strong> 
+                <br>• <span class="keyword">Adrenaline junkie:</span> Adrenalin tutkunu.
+                <br>• <span class="keyword">Brave / Courageous:</span> Cesur.
+            </li>
+            <li><strong>4. Ekipmanlar (Equipment):</strong> 
+                <br>• <span class="keyword">Helmet:</span> Kask. <span class="keyword">Life jacket:</span> Can yeleği.
+                <br>• <span class="keyword">Paddle:</span> Kürek. <span class="keyword">Rope:</span> İp.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

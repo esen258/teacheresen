@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 9. Ünite: Science</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7f6; /* Modern laboratuvar havası için açık gri/mavi */
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1); 
+            border-top: 10px solid #2980b9; /* Bilimsel mavi */
+        }
+        h1 {
+            color: #2980b9;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #2c3e50;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dcdde1;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #f1f9ff;
+            border-color: #2980b9;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #2980b9;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #e8f4fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #b3d7f2;
+            border-left: 8px solid #2980b9;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .highlight { color: #e74c3c; font-weight: bold; }
+        .keyword { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>9. Ünite: Science</h1>
+    <p class="instruction">🧪 Bilim dünyasını keşfetmeye hazır mısın? Çeviriler için cümlelerin üzerine tıkla! 🔬</p>
+
+    <h2>Science - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are working on a new vaccine.</span><span class="turkish">Bilim insanları yeni bir aşı üzerinde çalışıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Graham Bell invented the telephone in 1876.</span><span class="turkish">Graham Bell telefonu 1876 yılında icat etti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are you doing in the science lab?</span><span class="turkish">Fen laboratuvarında ne yapıyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am doing an experiment about electricity.</span><span class="turkish">Elektrik hakkında bir deney yapıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Isaac Newton discovered gravity.</span><span class="turkish">Isaac Newton yerçekimini keşfetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Technology is changing our lives very fast.</span><span class="turkish">Teknoloji hayatlarımızı çok hızlı değiştiriyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Aziz Sancar won the Nobel Prize in Chemistry.</span><span class="turkish">Aziz Sancar Kimya alanında Nobel Ödülü kazandı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are observing the results of the experiment.</span><span class="turkish">Deneyin sonuçlarını gözlemliyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who discovered the DNA structure?</span><span class="turkish">DNA yapısını kim keşfetti?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in space exploration.</span><span class="turkish">Uzay keşfi ile ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists conduct research in laboratories.</span><span class="turkish">Bilim insanları laboratuvarlarda araştırma yürütürler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are exploring the surface of Mars.</span><span class="turkish">Mars'ın yüzeyini keşfediyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Vaccination is important for public health.</span><span class="turkish">Aşılanma halk sağlığı için önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Archimedes discovered the water displacement principle.</span><span class="turkish">Arşimet suyun kaldırma (yer değiştirme) prensibini keşfetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to be a biologist in the future.</span><span class="turkish">Gelecekte bir biyolog olmak istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are looking for a cure for cancer.</span><span class="turkish">Kanser için bir tedavi (çare) arıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The invention of the wheel changed history.</span><span class="turkish">Tekerleğin icadı tarihi değiştirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">High-tech devices make our lives easier.</span><span class="turkish">Yüksek teknolojili cihazlar hayatlarımızı kolaylaştırır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are testing the new robot.</span><span class="turkish">Bilim insanları yeni robotu test ediyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Chemistry is a very fascinating field.</span><span class="turkish">Kimya çok büyüleyici bir alandır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the most important invention in history?</span><span class="turkish">Tarihteki en önemli icat nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Galileo studied the stars and planets.</span><span class="turkish">Galileo yıldızları ve gezegenleri inceledi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am reading a book about evolution.</span><span class="turkish">Evrim hakkında bir kitap okuyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are discussing the global warming.</span><span class="turkish">Küresel ısınmayı tartışıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Marie Curie discovered radium and polonium.</span><span class="turkish">Marie Curie radyum ve polonyumu keşfetti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Science helps us understand the world.</span><span class="turkish">Bilim dünyayı anlamamıza yardım eder.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We use microscopes to see tiny cells.</span><span class="turkish">Küçük hücreleri görmek için mikroskop kullanırız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am searching for information about black holes.</span><span class="turkish">Kara delikler hakkında bilgi araştırıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The telescope was a great invention for astronomy.</span><span class="turkish">Teleskop astronomi için harika bir icattı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Tesla worked on alternating current.</span><span class="turkish">Tesla alternatif akım üzerinde çalıştı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are living in the age of technology.</span><span class="turkish">Teknoloji çağında yaşıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The Wright brothers invented the first airplane.</span><span class="turkish">Wright kardeşler ilk uçağı icat ettiler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am watching a documentary about robotics.</span><span class="turkish">Robotik hakkında bir belgesel izliyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are developing new energy sources.</span><span class="turkish">Bilim insanları yeni enerji kaynakları geliştiriyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Einstein's theory changed modern physics.</span><span class="turkish">Einstein'ın teorisi modern fiziği değiştirdi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are taking notes during the lab work.</span><span class="turkish">Laboratuvar çalışması sırasında not alıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Artificial intelligence is a popular topic today.</span><span class="turkish">Yapay zeka bugünlerde popüler bir konu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to learn more about genetics.</span><span class="turkish">Genetik hakkında daha fazla şey öğrenmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The discovery of penicillin saved many lives.</span><span class="turkish">Penisilinin keşfi birçok hayat kurtardı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are analyzing the data on the computer.</span><span class="turkish">Bilgisayardaki verileri analiz ediyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you know who invented the light bulb?</span><span class="turkish">Ampulü kimin icat ettiğini biliyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Space travel will be more common in the future.</span><span class="turkish">Uzay seyahati gelecekte daha yaygın olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am doing a project about renewable energy.</span><span class="turkish">Yenilenebilir enerji hakkında bir proje yapıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Exploring new planets is very exciting.</span><span class="turkish">Yeni gezegenleri keşfetmek çok heyecan verici.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are putting the chemicals in a test tube.</span><span class="turkish">Bilim insanları kimyasalları bir deney tüpüne koyuyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Science and technology are closely related.</span><span class="turkish">Bilim ve teknoloji yakından ilişkilidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am following the latest scientific news.</span><span class="turkish">Son bilimsel haberleri takip ediyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The steam engine started the industrial revolution.</span><span class="turkish">Buharlı makine sanayi devrimini başlattı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are mixing two liquids for the reaction.</span><span class="turkish">Reaksiyon için iki sıvıyı karıştırıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the purpose of this scientific study?</span><span class="turkish">Bu bilimsel çalışmanın amacı nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Human DNA is very complex.</span><span class="turkish">İnsan DNA'sı çok karmaşıktır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am curious about the history of medicine.</span><span class="turkish">Tıp tarihi hakkında meraklıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are launching a new satellite into space.</span><span class="turkish">Uzaya yeni bir uydu fırlatıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientific achievements improve our life quality.</span><span class="turkish">Bilimsel başarılar yaşam kalitemizi artırır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are trying to find the reason for the leak.</span><span class="turkish">Sızıntının nedenini bulmaya çalışıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can robots replace human beings one day?</span><span class="turkish">Robotlar bir gün insanların yerini alabilir mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am using a compass for my experiment.</span><span class="turkish">Deneyim için bir pusula kullanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are working on the solar system.</span><span class="turkish">Bilim insanları güneş sistemi üzerinde çalışıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The printing press was invented by Gutenberg.</span><span class="turkish">Matbaa Gutenberg tarafından icat edildi.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I find anatomy very interesting.</span><span class="turkish">Anatomiyi çok ilginç buluyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are heating the solution in the lab.</span><span class="turkish">Laboratuvarda çözeltiyi ısıtıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Digital technology is everywhere now.</span><span class="turkish">Dijital teknoloji artık her yerde.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is your favorite scientist?</span><span class="turkish">Favori bilim insanınız kim?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am thinking about a new scientific idea.</span><span class="turkish">Yeni bir bilimsel fikir hakkında düşünüyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The internet is the greatest invention of our time.</span><span class="turkish">İnternet zamanımızın en büyük icadıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are protecting our skin from radiation.</span><span class="turkish">Cildimizi radyasyondan koruyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Exploring the deep ocean is difficult.</span><span class="turkish">Derin okyanusu keşfetmek zordur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am interested in archaeology.</span><span class="turkish">Arkeoloji ile ilgileniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Science fairs are great for students.</span><span class="turkish">Bilim fuarları öğrenciler için harikadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are warning us about the climate change.</span><span class="turkish">Bilim insanları bizi iklim değişikliği konusunda uyarıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am making a model of a solar car.</span><span class="turkish">Güneş enerjili bir araba modeli yapıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The invention of the compass helped sailors.</span><span class="turkish">Pusulanın icadı denizcilere yardım etti.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are observing the behavior of the animals.</span><span class="turkish">Hayvanların davranışlarını gözlemliyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How does a remote control work?</span><span class="turkish">Uzaktan kumanda nasıl çalışır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am reading about the Big Bang theory.</span><span class="turkish">Büyük Patlama (Big Bang) teorisi hakkında okuyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Modern medicine is very advanced today.</span><span class="turkish">Modern tıp bugün çok ilerlemiş durumda.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are studying the fossils of dinosaurs.</span><span class="turkish">Dinozorların fosillerini inceliyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What kind of scientific research are you doing?</span><span class="turkish">Ne tür bir bilimsel araştırma yapıyorsunuz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am fascinated by the universe.</span><span class="turkish">Evrenden büyüleniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Nanotechnology is the future of science.</span><span class="turkish">Nanoteknoloji bilimin geleceğidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are looking for water on the Moon.</span><span class="turkish">Bilim insanları Ay'da su arıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are measuring the temperature of the water.</span><span class="turkish">Suyun sıcaklığını ölçüyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to visit a science museum.</span><span class="turkish">Bir bilim müzesini ziyaret etmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The discovery of fire was a turning point.</span><span class="turkish">Ateşin keşfi bir dönüm noktasıydı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are talking about the effects of pollution.</span><span class="turkish">Kirliliğin etkileri hakkında konuşuyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am using a 3D printer for my project.</span><span class="turkish">Projem için bir 3D yazıcı kullanıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are trying to protect the environment.</span><span class="turkish">Bilim insanları çevreyi korumaya çalışıyorlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Biology is the study of living things.</span><span class="turkish">Biyoloji canlıların incelenmesidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am examining the sample under the microscope.</span><span class="turkish">Örneği mikroskop altında inceliyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Renewable energy is better for the Earth.</span><span class="turkish">Yenilenebilir enerji Dünya için daha iyidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are exploring the secrets of nature.</span><span class="turkish">Doğanın sırlarını keşfediyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there life on other planets?</span><span class="turkish">Diğer gezegenlerde hayat var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am learning about the periodic table.</span><span class="turkish">Periyodik tablo hakkında öğreniyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The compass shows the north.</span><span class="turkish">Pusula kuzeyi gösterir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Scientists are making a breakthrough in medicine.</span><span class="turkish">Bilim insanları tıpta büyük bir çığır açıyor (buluş yapıyor).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am writing a report on my findings.</span><span class="turkish">Bulgularım üzerine bir rapor yazıyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are conducting a survey about technology.</span><span class="turkish">Teknoloji hakkında bir anket yürütüyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Science provides answers to our questions.</span><span class="turkish">Bilim sorularımıza cevaplar sağlar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I want to discover something new.</span><span class="turkish">Yeni bir şey keşfetmek istiyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Science is the key to progress.</span><span class="turkish">Bilim ilerlemenin anahtarıdır.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Science)</h3>
+        <ul>
+            <li><strong>1. İcat (Invention) vs Keşif (Discovery):</strong> 
+                <br>• <span class="keyword">Invent:</span> Daha önce olmayan bir şeyi üretmek (Light bulb, Telephone).
+                <br>• <span class="keyword">Discover:</span> Zaten var olan ama bilinmeyen bir şeyi bulmak (Gravity, DNA).
+            </li>
+            <li><strong>2. Bilimsel Süreçler:</strong> 
+                <br>• <span class="highlight">Conduct an experiment:</span> Deney yapmak.
+                <br>• <span class="highlight">Analyze data:</span> Verileri analiz etmek.
+                <br>• <span class="highlight">Observe:</span> Gözlemlemek.
+            </li>
+            <li><strong>3. Bilim Alanları:</strong> 
+                <br>• <span class="keyword">Biology / Chemisty / Physics:</span> Biyoloji / Kimya / Fizik.
+                <br>• <span class="keyword">Genetics / Astronomy:</span> Genetik / Astronomi.
+            </li>
+            <li><strong>4. Önemli Fiiller:</strong> 
+                <br>• <span class="highlight">Explore:</span> Keşfetmek/Araştırmak. <span class="highlight">Heal/Cure:</span> İyileştirmek/Tedavi etmek. <span class="highlight">Develop:</span> Geliştirmek.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 1. Ünite: Friendship</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f2f5; 
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+            border-top: 10px solid #e74c3c; /* Arkadaşlık teması için sıcak bir kırmızı/turuncu */
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px double #e74c3c;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #e74c3c;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            border-left: 6px solid #2c3e50;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 10px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #ecf0f1;
+            background-color: #fdfdfd;
+        }
+        .sentence-box:hover {
+            background-color: #f9f9f9;
+            border-color: #e74c3c;
+            transform: scale(1.01);
+        }
+        .english {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e74c3c;
+            font-style: italic;
+            margin-top: 6px;
+            font-size: 1rem;
+        }
+        .study-notes {
+            background-color: #fff9f0;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 45px;
+            border: 1px solid #ffeaa7;
+            border-top: 5px solid #fdcb6e;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d35400;
+            border-bottom: 2px solid #e74c3c;
+            display: inline-block;
+        }
+        .study-notes ul {
+            padding-left: 20px;
+        }
+        .study-notes li {
+            margin-bottom: 12px;
+        }
+        .highlight { color: #e74c3c; font-weight: bold; }
+        .keyword { color: #2980b9; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>1. Ünite: Friendship</h1>
+    <p class="instruction">🤝 Arkadaşlık bağlarını güçlendirmeye hazır mısın? Çeviriler için cümlelerin üzerine tıkla! ✨</p>
+
+    <h2>Friendship - Translation Practice</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">True friends always back us up.</span><span class="turkish">Gerçek arkadaşlar bizi her zaman destekler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A good friend never tells lies.</span><span class="turkish">İyi bir arkadaş asla yalan söylemez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are you doing anything tonight?</span><span class="turkish">Bu gece bir şey yapıyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have no plans for the weekend.</span><span class="turkish">Hafta sonu için hiç planım yok.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Would you like to come over for a drink?</span><span class="turkish">Bir şeyler içmek için uğramak ister misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My best friend is a reliable person.</span><span class="turkish">En iyi arkadaşım güvenilir biridir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have many things in common.</span><span class="turkish">Pek çok ortak noktamız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can always count on my sister.</span><span class="turkish">Kız kardeşime her zaman güvenebilirim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why don’t we go to the cinema?</span><span class="turkish">Neden sinemaya gitmiyoruz?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m sorry, but I can’t join you.</span><span class="turkish">Üzgünüm ama size katılamam.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">That sounds awesome!</span><span class="turkish">Kulağa harika geliyor!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Friends should be honest with each other.</span><span class="turkish">Arkadaşlar birbirlerine karşı dürüst olmalıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We get on well with my classmates.</span><span class="turkish">Sınıf arkadaşlarımla iyi geçiniyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Trust is very important in a friendship.</span><span class="turkish">Arkadaşlıkta güven çok önemlidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I’m busy, but I can’t refuse this invitation.</span><span class="turkish">Meşgulüm ama bu daveti reddedemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My cousin is a laid-back person.</span><span class="turkish">Kuzenim rahat (gamsız) biridir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't worry, I'll be there.</span><span class="turkish">Endişelenme, orada olacağım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is organizing the class reunion?</span><span class="turkish">Sınıf buluşmasını kim organize ediyor?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are having a slumber party on Friday.</span><span class="turkish">Cuma günü pijama partisi veriyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hope you can come.</span><span class="turkish">Umarım gelebilirsin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Friendship is about sharing and caring.</span><span class="turkish">Arkadaşlık paylaşmak ve önemsemekle ilgilidir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't like arrogant people.</span><span class="turkish">Kibirli insanları sevmem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My best friend is always there for me.</span><span class="turkish">En iyi arkadaşım her zaman yanımdadır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We share our secrets with each other.</span><span class="turkish">Sırlarımızı birbirimizle paylaşırız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How about going to the rock concert?</span><span class="turkish">Rock konserine gitmeye ne dersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm full, but I can eat some dessert.</span><span class="turkish">Tokum ama biraz tatlı yiyebilirim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Thanks for inviting me.</span><span class="turkish">Beni davet ettiğin için teşekkürler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the deadline for the party?</span><span class="turkish">Parti (kayıt) için son tarih nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You are my buddy.</span><span class="turkish">Sen benim kankamsın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We like spending time together.</span><span class="turkish">Birlikte vakit geçirmeyi seviyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I keep my friends' secrets.</span><span class="turkish">Arkadaşlarımın sırlarını tutarım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother is a supportive person.</span><span class="turkish">Annem destekleyici biridir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Shall we play computer games?</span><span class="turkish">Bilgisayar oyunları oynayalım mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm going to visit my grandparents.</span><span class="turkish">Büyükannemi ve büyükbabamı ziyaret edeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What's your excuse for not coming?</span><span class="turkish">Gelmemek için mazeretin ne?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have a great relationship with my brother.</span><span class="turkish">Erkek kardeşimle harika bir ilişkim var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">A true friend never argues with you.</span><span class="turkish">Gerçek bir arkadaş seninle asla tartışmaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We sometimes have different interests.</span><span class="turkish">Bazen farklı ilgi alanlarımız oluyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">To me, a friend should be helpful.</span><span class="turkish">Bence bir arkadaş yardımsever olmalı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are the characteristics of a good friend?</span><span class="turkish">İyi bir arkadaşın özellikleri nelerdir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm looking forward to seeing you.</span><span class="turkish">Seni görmeyi dört gözle bekliyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It’s a great opportunity for us.</span><span class="turkish">Bu bizim için harika bir fırsat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My brother is very stubborn.</span><span class="turkish">Erkek kardeşim çok inatçıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let’s meet in front of the mall.</span><span class="turkish">Alışveriş merkezinin önünde buluşalım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Who is your best friend?</span><span class="turkish">En iyi arkadaşın kim?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why do you like him?</span><span class="turkish">Onu neden seviyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Because he is very generous.</span><span class="turkish">Çünkü o çok cömerttir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think she is a bit mean.</span><span class="turkish">Bence o biraz cimri/kaba.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can’t make it to the party.</span><span class="turkish">Partiye gelemeyeceğim / yetişemeyeceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">See you soon!</span><span class="turkish">Yakında görüşürüz!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">True friends are like brothers and sisters.</span><span class="turkish">Gerçek arkadaşlar kardeş gibidirler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We always encourage each other.</span><span class="turkish">Birbirimizi her zaman cesaretlendiririz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My father is a very determined man.</span><span class="turkish">Babam çok azimli/kararlı bir adamdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't like self-centered people.</span><span class="turkish">Bencil insanları sevmem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We usually go to the gym together.</span><span class="turkish">Genellikle spor salonuna birlikte gideriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Are you busy on Saturday afternoon?</span><span class="turkish">Cumartesi öğleden sonra meşgul müsün?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We are going to have a picnic.</span><span class="turkish">Piknik yapacağız.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'd love to, but I must study.</span><span class="turkish">Çok isterim ama ders çalışmalıyım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm going to stay home and relax.</span><span class="turkish">Evde kalıp dinleneceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is your sister coming too?</span><span class="turkish">Kız kardeşin de geliyor mu?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What time does the event start?</span><span class="turkish">Etkinlik saat kaçta başlıyor?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Where is the party going to be?</span><span class="turkish">Parti nerede olacak?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'll bring some cookies and juice.</span><span class="turkish">Biraz kurabiye ve meyve suyu getireceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you tell me more about the event?</span><span class="turkish">Bana etkinlik hakkında daha fazla bilgi verebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It's going to be a great fun.</span><span class="turkish">Çok eğlenceli olacak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I never lie to my friends.</span><span class="turkish">Arkadaşlarıma asla yalan söylemem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We always tell the truth.</span><span class="turkish">Biz her zaman doğruyu söyleriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friends are very loyal.</span><span class="turkish">Arkadaşlarım çok sadıktır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I feel happy when I am with my friends.</span><span class="turkish">Arkadaşlarımın yanındayken mutlu hissediyorum.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Would you like some tea?</span><span class="turkish">Biraz çay ister misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">No, thanks. I'm not thirsty.</span><span class="turkish">Hayır teşekkürler. Susamadım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like cycling in the park.</span><span class="turkish">Parkta bisiklete binmeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We have the same hobbies.</span><span class="turkish">Aynı hobilere sahibiz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I think he is a bit jealous.</span><span class="turkish">Bence o biraz kıskanç.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">He never minds others.</span><span class="turkish">Başkalarını asla umursamaz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">They are very tactful and kind.</span><span class="turkish">Onlar çok düşünceli ve nazikler.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like hanging out with my buddies.</span><span class="turkish">Arkadaşlarımla (kankalarımla) takılmayı severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What kind of movies do you like?</span><span class="turkish">Ne tür filmlerden hoşlanırsın?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer sci-fi movies.</span><span class="turkish">Bilim kurgu filmlerini tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let's watch a comedy tonight.</span><span class="turkish">Bu gece bir komedi izleyelim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I have to finish my project.</span><span class="turkish">Projemi bitirmek zorundayım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you help me with the chores?</span><span class="turkish">Ev işlerinde bana yardım edebilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm going to go shopping with my mom.</span><span class="turkish">Annemle alışverişe gideceğim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We can go there by bus.</span><span class="turkish">Oraya otobüsle gidebiliriz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My friend is a bit adventurous.</span><span class="turkish">Arkadaşım biraz maceracıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I enjoy trekking in the mountains.</span><span class="turkish">Dağlarda doğa yürüyüşü yapmaktan keyif alırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We love going to exhibitions.</span><span class="turkish">Sergilere gitmeyi seviyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Why are you inviting me?</span><span class="turkish">Beni neden davet ediyorsun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Because you are my best friend.</span><span class="turkish">Çünkü sen benim en iyi arkadaşımsın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I can't miss this chance.</span><span class="turkish">Bu şansı kaçıramam.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">You are very helpful.</span><span class="turkish">Çok yardımseversin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I always back you up.</span><span class="turkish">Seni her zaman desteklerim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We share the same interests.</span><span class="turkish">Aynı ilgi alanlarını paylaşıyoruz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My sister is very caring.</span><span class="turkish">Kız kardeşim çok şefkatlidir/ilgili biridir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like going to book fairs.</span><span class="turkish">Kitap fuarlarına gitmeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't be so grumpy!</span><span class="turkish">Bu kadar huysuz olma!</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm sorry, I have another plan.</span><span class="turkish">Üzgünüm, başka bir planım var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Maybe another time.</span><span class="turkish">Belki başka bir sefere.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">That sounds like a good idea.</span><span class="turkish">Kulağa iyi bir fikir gibi geliyor.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Best friends are forever.</span><span class="turkish">En iyi arkadaşlar sonsuzdur.</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (Friendship Ünitesi)</h3>
+        <ul>
+            <li><strong>1. Önemli Fiil Öbekleri (Phrasal Verbs):</strong> 
+                <br>• <span class="keyword">Back up:</span> Desteklemek (Support ile eş anlamlı).
+                <br>• <span class="keyword">Count on / Rely on:</span> Güvenmek (Trust ile eş anlamlı).
+                <br>• <span class="keyword">Get on well with:</span> Biriyle iyi geçinmek.
+                <br>• <span class="keyword">Come over:</span> Uğramak, yanına gelmek.
+            </li>
+            <li><strong>2. Teklif ve Davet Kalıpları:</strong> 
+                <br>• <span class="highlight">Would you like to...?</span> (... ister misin?) -> Ardından yalın fiil gelir.
+                <br>• <span class="highlight">How about / What about...?</span> (... ne dersin?) -> Ardından gelen fiil <span class="keyword">-ing</span> takısı alır.
+                <br>• <span class="highlight">Why don't we...?</span> (Neden ... yapmıyoruz?) -> Öneri sunar.
+                <br>• <span class="highlight">Shall we...?</span> (... yapalım mı?)
+            </li>
+            <li><strong>3. Kabul ve Reddetme (Accepting & Refusing):</strong> 
+                <br>• <b>Kabul:</b> "That sounds awesome!", "Sure!", "I'd love to."
+                <br>• <b>Reddetme:</b> "I'm sorry, but I can't.", "I'd love to, but I'm busy."
+                <br>• <b>Mazeret (Excuse):</b> Reddetme cümlesinden sonra söylenen "I must study" gibi açıklamalardır.
+            </li>
+            <li><strong>4. Kişisel Özellikler (Personal Qualities):</strong> 
+                <br>• <b>Olumlu:</b> <span class="keyword">Honest</span> (Dürüst), <span class="keyword">Reliable</span> (Güvenilir), <span class="keyword">Generous</span> (Cömert), <span class="keyword">Tactful</span> (Nazik/Düşünceli).
+                <br>• <b>Olumsuz:</b> <span class="keyword">Arrogant</span> (Kibirli), <span class="keyword">Self-centered</span> (Bencil), <span class="keyword">Stubborn</span> (İnatçı), <span class="keyword">Mean</span> (Cimri/Kaba).
+            </li>
+            <li><strong>5. Gelecek Zaman (Be Going To):</strong> 
+                <br>• Ünitede planlanmış etkinliklerden bahsederken <span class="highlight">am/is/are going to</span> kalıbı sıkça kullanılır. (Örn: We are going to have a party.)
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

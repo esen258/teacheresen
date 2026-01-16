@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Sınıf 3. Ünite: In The Kitchen</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #fffaf0; /* Mutfak sıcaklığı için krem tonu */
+            color: #2d3436;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            border-top: 10px solid #fab1a0; /* Somon/Mutfak teması rengi */
+        }
+        h1 {
+            color: #d63031;
+            text-align: center;
+            border-bottom: 3px dashed #fab1a0;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #ffffff;
+            background-color: #ff7675;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+        .instruction {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .sentence-box {
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #dfe6e9;
+            background-color: #ffffff;
+        }
+        .sentence-box:hover {
+            background-color: #fff5f5;
+            border-color: #ff7675;
+            transform: translateX(5px);
+        }
+        .english {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #2d3436;
+            display: block;
+        }
+        .turkish {
+            display: none;
+            color: #e17055;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .study-notes {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            border: 1px solid #fab1a0;
+            border-left: 8px solid #d63031;
+        }
+        .study-notes h3 {
+            margin-top: 0;
+            color: #d63031;
+        }
+        .highlight { color: #d63031; font-weight: bold; }
+        .keyword { color: #0984e3; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>3. Ünite: In The Kitchen</h1>
+    <p class="instruction">👨‍🍳 Bugün menüde İngilizce var! Çeviriler için cümlelerin üzerine tıkla! 🍕</p>
+
+    <h2>In The Kitchen - Translation Practice (100 Cümle)</h2>
+    
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">First, wash the vegetables.</span><span class="turkish">İlk olarak sebzeleri yıka.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Peel the potatoes and slice them.</span><span class="turkish">Patatesleri soy ve onları dilimle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Chop the onions into small pieces.</span><span class="turkish">Soğanları küçük parçalar halinde doğra.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Dice the tomatoes for the salad.</span><span class="turkish">Domatesleri salata için küp küp doğra.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Grate some cheese over the pasta.</span><span class="turkish">Makarnanın üzerine biraz peynir rendele.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Slice the bread thinly.</span><span class="turkish">Ekmeği ince ince dilimle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Melt the butter in a pan.</span><span class="turkish">Tereyağını tavada erit.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Fry the fish in hot oil.</span><span class="turkish">Balığı kızgın yağda kızart.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Boil the eggs for ten minutes.</span><span class="turkish">Yumurtaları on dakika haşla.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bake the cake in the oven.</span><span class="turkish">Keki fırında pişir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Roast the chicken with vegetables.</span><span class="turkish">Tavuğu sebzelerle birlikte fırında kızart.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Grill the meatballs for dinner.</span><span class="turkish">Akşam yemeği için köfteleri ızgarada pişir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Steam the broccoli; it is healthier.</span><span class="turkish">Brokoliyi buharda pişir; daha sağlıklıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Stir the soup constantly.</span><span class="turkish">Çorbayı sürekli karıştır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Whisk the eggs and sugar in a bowl.</span><span class="turkish">Bir kasede yumurta ve şekeri çırp.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Pour some olive oil into the pan.</span><span class="turkish">Tavaya biraz zeytinyağı dök.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Spread some honey on the bread.</span><span class="turkish">Ekmeğin üzerine biraz bal sür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sprinkle some salt over the meal.</span><span class="turkish">Yemeğin üzerine biraz tuz serp.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Squeeze a lemon for the juice.</span><span class="turkish">Suyu için bir limon sık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mash the boiled potatoes.</span><span class="turkish">Haşlanmış patatesleri ez.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mix all the ingredients in a large bowl.</span><span class="turkish">Tüm malzemeleri büyük bir kasede karıştır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Knead the dough for five minutes.</span><span class="turkish">Hamuru beş dakika boyunca yoğur.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Crack two eggs into the bowl.</span><span class="turkish">Kasenin içine iki yumurta kır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Drain the water of the pasta.</span><span class="turkish">Makarnanın suyunu süz.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Heat the oven to 180°C.</span><span class="turkish">Fırını 180 dereceye ısıt.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What are the ingredients of the cake?</span><span class="turkish">Kekin malzemeleri nelerdir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you cook chicken?</span><span class="turkish">Tavuğu nasıl pişirirsin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer baking to frying.</span><span class="turkish">Fırında pişirmeyi kızartmaya tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is it easy to make an omelet?</span><span class="turkish">Omlet yapmak kolay mıdır?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the process of making soup?</span><span class="turkish">Çorba yapma süreci (aşamaları) nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Serve it hot with a glass of tea.</span><span class="turkish">Bir bardak çay ile sıcak servis yapın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use a tablespoon of sugar.</span><span class="turkish">Bir yemek kaşığı şeker kullanın.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Add a teaspoon of black pepper.</span><span class="turkish">Bir çay kaşığı karabiber ekleyin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">We need a cup of flour.</span><span class="turkish">Bir bardak una ihtiyacımız var.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Place the dough on the baking tray.</span><span class="turkish">Hamuru pişirme tepsisine yerleştirin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Put the mixture into the fridge.</span><span class="turkish">Karışımı buzdolabına koyun.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't forget to peel the apples.</span><span class="turkish">Elmaları soymayı unutma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Slice the lemons into circles.</span><span class="turkish">Limonları halka halka dilimle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Rinse the rice before cooking.</span><span class="turkish">Pişirmeden önce pirinci yıka/durula.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Chop the garlic finely.</span><span class="turkish">Sarımsağı ince ince doğra.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cut the cake into small squares.</span><span class="turkish">Keki küçük kareler halinde kes.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use a sharp knife to slice the meat.</span><span class="turkish">Eti dilimlemek için keskin bir bıçak kullan.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Fry the potatoes until they turn golden brown.</span><span class="turkish">Patatesleri altın sarısı olana kadar kızart.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">The soup is too salty.</span><span class="turkish">Çorba çok tuzlu.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you like spicy food?</span><span class="turkish">Baharatlı/Acı yemek sever misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I love sour flavors like lemon.</span><span class="turkish">Limon gibi ekşi tatları severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Sweet desserts are my favorite.</span><span class="turkish">Tatlı tatlılar favorimdir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This dish is very greasy.</span><span class="turkish">Bu yemek çok yağlı.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is there any milk in the fridge?</span><span class="turkish">Buzdolabında hiç süt var mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How much butter do we need?</span><span class="turkish">Ne kadar tereyağına ihtiyacımız var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How many eggs should I use?</span><span class="turkish">Kaç tane yumurta kullanmalıyım?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">First, put some oil in the pan.</span><span class="turkish">İlk olarak, tavaya biraz yağ koy.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Second, add the onions.</span><span class="turkish">İkinci olarak, soğanları ekle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Then, stir them for two minutes.</span><span class="turkish">Sonra, onları iki dakika karıştır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">After that, add the meat.</span><span class="turkish">Ondan sonra, eti ekle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Next, pour a glass of water.</span><span class="turkish">Sıradaki adım olarak, bir bardak su dök.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Finally, cook it on low heat.</span><span class="turkish">Son olarak, kısık ateşte pişir.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I don't like bitter chocolate.</span><span class="turkish">Acımtırak (bitter) çikolatayı sevmem.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This cake tastes delicious.</span><span class="turkish">bu kekin tadı lezzetli.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is the pizza ready yet?</span><span class="turkish">Pizza henüz hazır mı?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't overcook the vegetables.</span><span class="turkish">Sebzeleri gereğinden fazla pişirme.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use a colander to drain the pasta.</span><span class="turkish">Makarnayı süzmek için süzgeç kullan.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Grate the carrots for the salad.</span><span class="turkish">Salata için havuçları rendele.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Melt the chocolate in a bowl.</span><span class="turkish">Çikolatayı bir kasede erit.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Mix the flour and baking powder.</span><span class="turkish">Unu ve kabartma tozunu karıştır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I prefer steamed vegetables.</span><span class="turkish">Buharda pişmiş sebzeleri tercih ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Can you pass me the salt?</span><span class="turkish">Tuzu bana uzatabilir misin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What do we need for the sauce?</span><span class="turkish">Sos için neye ihtiyacımız var?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Brush the top of the bread with oil.</span><span class="turkish">Ekmeğin üzerine yağ sür (fırça ile).</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Cover the pan with a lid.</span><span class="turkish">Tavanın üzerini bir kapakla kapat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Let it cool for ten minutes.</span><span class="turkish">On dakika soğumaya bırak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Turn off the stove.</span><span class="turkish">Ocağı kapat.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Put the cookies into the oven.</span><span class="turkish">Kurabiyeleri fırına ver.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I'm crazy about milky desserts.</span><span class="turkish">Sütlü tatlılara bayılırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Do you use a microwave at home?</span><span class="turkish">Evde mikrodalga kullanıyor musun?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is the traditional dish of your city?</span><span class="turkish">Şehrinin geleneksel yemeği nedir?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How do you usually serve this meal?</span><span class="turkish">Bu yemeği genellikle nasıl servis edersin?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I usually grill the steak.</span><span class="turkish">Bonfileyi genellikle ızgarada yaparım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Squeeze the oranges for breakfast.</span><span class="turkish">Kahvaltı için portakalları sık.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Beat the cream until it is thick.</span><span class="turkish">Kremayı koyulaşana kadar çırp.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Use a fork to mash the bananas.</span><span class="turkish">Muzları ezmek için çatal kullan.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Put a lid on the pot.</span><span class="turkish">Tencereye kapak tak.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I like eating crunchy biscuits.</span><span class="turkish">Çıtır bisküviler yemeyi severim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">This soup is very healthy.</span><span class="turkish">Bu çorba çok sağlıklıdır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">My mother makes the best lentil soup.</span><span class="turkish">Annem en iyi mercimek çorbasını yapar.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Add a pinch of salt.</span><span class="turkish">Bir tutam tuz ekle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Spread some butter on the toast.</span><span class="turkish">Tostun üzerine biraz tereyağı sür.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I am not good at cooking.</span><span class="turkish">Yemek yapmada iyi değilim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">What is your favorite kitchen tool?</span><span class="turkish">En sevdiğin mutfak aleti hangisi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I use a peeler for the cucumbers.</span><span class="turkish">Salatalıklar için soyacak kullanırım.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Whisk the mixture until it is smooth.</span><span class="turkish">Karışımı pürüzsüz olana kadar çırp.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Don't boil the milk too long.</span><span class="turkish">Sütü çok uzun süre kaynatma.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">I hate washing the dishes.</span><span class="turkish">Bulaşık yıkamaktan nefret ederim.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Is it a traditional recipe?</span><span class="turkish">Geleneksel bir tarif mi?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">How long does it take to bake?</span><span class="turkish">Pişmesi ne kadar sürer?</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">It takes about thirty minutes.</span><span class="turkish">Yaklaşık otuz dakika sürer.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Garnish the plate with parsley.</span><span class="turkish">Tabağı maydanozla süsle.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Serve the cake with ice cream.</span><span class="turkish">Keki dondurma ile servis edin.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Everyone loves my pizza.</span><span class="turkish">Herkes benim pizzama bayılır.</span></div>
+    <div class="sentence-box" onclick="toggleTranslation(this)"><span class="english">Bon appetit!</span><span class="turkish">Afiyet olsun!</span></div>
+
+    <div class="study-notes">
+        <h3>💡 Öğretici Notlar (In The Kitchen)</h3>
+        <ul>
+            <li><strong>1. Yemek Pişirme Yöntemleri (Cooking Methods):</strong> 
+                <br>• <span class="keyword">Boil:</span> Suda haşlamak.
+                <br>• <span class="keyword">Fry:</span> Yağda kızartmak.
+                <br>• <span class="keyword">Bake:</span> Fırında (hamur işi) pişirmek.
+                <br>• <span class="keyword">Roast:</span> Fırında (et/sebze) kızartmak.
+                <br>• <span class="keyword">Grill:</span> Izgara yapmak.
+                <br>• <span class="keyword">Steam:</span> Buharda pişirmek.
+            </li>
+            <li><strong>2. Hazırlık Aşamaları (Preparation Verbs):</strong> 
+                <br>• <span class="keyword">Chop:</span> Doğramak. <span class="keyword">Dice:</span> Küp küp doğramak.
+                <br>• <span class="keyword">Slice:</span> Dilimlemek. <span class="keyword">Peel:</span> Kabuğunu soymak.
+                <br>• <span class="keyword">Grate:</span> Rendelemek. <span class="keyword">Knead:</span> Hamur yoğurmak.
+            </li>
+            <li><strong>3. Sıralama İfadeleri (Sequencing Words):</strong> 
+                LGS'de tarif soruları için bu sıra çok önemlidir:
+                <br><span class="highlight">First</span> (1.) -> <span class="highlight">Second</span> (2.) -> <span class="highlight">Then / Next / After that</span> (Sonra) -> <span class="highlight">Finally</span> (Son).
+            </li>
+            <li><strong>4. Tatlar (Tastes):</strong> 
+                <br>• <span class="keyword">Sweet:</span> Tatlı | <span class="keyword">Sour:</span> Ekşi | <span class="keyword">Spicy:</span> Baharatlı.
+                <br>• <span class="keyword">Salty:</span> Tuzlu | <span class="keyword">Bitter:</span> Acı (Kahve/Kakao gibi).
+                <br>• <span class="keyword">Greasy:</span> Yağlı.
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleTranslation(element) {
+        const turkishText = element.querySelector('.turkish');
+        turkishText.style.display = (turkishText.style.display === "block") ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
