@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Sınıf 5. Ünite İngilizce Kelime Testi</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+        
+        .signature-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
+            font-size: 3.5rem; 
+            color: #ffbe0b; 
+            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
+            letter-spacing: 3px; 
+            animation: bounce 2s infinite; 
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #f1faee, #a8dadc); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+            display: inline-block;
+        }
+
+        .phone-number {
+            display: block;
+            font-size: 1.5rem;
+            color: #1d3557;
+            background-color: #ffffff;
+            padding: 8px 25px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 3px solid #ffbe0b;
+            text-decoration: none;
+        }
+
+        .phone-icon {
+            color: #007bff; 
+            margin-right: 8px;
+            font-style: normal;
+        }
+
+        #quiz-container {
+            width: 95%;
+            max-width: 650px;
+            background-color: #ffffff;
+            padding: 20px 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
+            border-radius: 25px; 
+            border: 6px solid #ffbe0b; 
+            animation: fadeIn 1s ease-out; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem; 
+            border-bottom: 4px dotted #a8dadc; 
+            padding-bottom: 15px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-bottom: 2px dashed #f1f1f1; 
+            animation: slideInUp 0.5s ease-out forwards; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .question-text {
+            font-size: 1.3rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #f1faee; 
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 2px solid #a8dadc; 
+            border-radius: 18px; 
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease; 
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: #f0f9fa; 
+            transform: scale(1.02);
+        }
+
+        .option-button.correct {
+            background-color: #d4edda; 
+            border-color: #28a745;    
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da; 
+            border-color: #dc3545;    
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 18px;
+            background-color: #e63946; 
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        #results {
+            margin-top: 30px;
+            padding: 25px;
+            border: 4px solid #ffbe0b; 
+            border-radius: 20px;
+            text-align: center;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="signature-container">
+        <div class="top-signature">Esen Teacher</div>
+        <a href="tel:05304773073" class="phone-number"><i class="phone-icon">📞</i>0530 477 30 73</a>
+    </div>
+
+    <div id="quiz-container">
+        <h1>5. Sınıf 5. Ünite Kelime Testi<br><small style="font-size: 1.1rem; color: #457b9d;">Life in the Neighbourhood & City</small></h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const wordList = [
+            { en: "Ancient", tr: "Antik" },
+            { en: "Armchair", tr: "Tekli koltuk" },
+            { en: "Around", tr: "Etrafında, çevresinde" },
+            { en: "Art gallery", tr: "Sanat galerisi" },
+            { en: "Attend", tr: "Katılmak" },
+            { en: "Attend a street fair", tr: "Sokak panayırına katılmak" },
+            { en: "Attractions", tr: "İlgi çekici yerler (turistik)" },
+            { en: "Bad", tr: "Kötü" },
+            { en: "Balcony", tr: "Balkon" },
+            { en: "Ball", tr: "Top" },
+            { en: "Bathroom", tr: "Banyo" },
+            { en: "Bathtub", tr: "Küvet" },
+            { en: "Beautiful", tr: "Güzel" },
+            { en: "Bed", tr: "Yatak" },
+            { en: "Bedroom", tr: "Yatak odası" },
+            { en: "Behind", tr: "Arkasında" },
+            { en: "Best", tr: "En iyi" },
+            { en: "Between", tr: "Arasında" },
+            { en: "Bookcase", tr: "Kitaplık" },
+            { en: "Bottom", tr: "En alt, dip" },
+            { en: "Brand-new", tr: "Yepyeni" },
+            { en: "Building", tr: "Bina" },
+            { en: "Caravan", tr: "Karavan" },
+            { en: "Carpet", tr: "Halı" },
+            { en: "Castle", tr: "Kale" },
+            { en: "Cave", tr: "Mağara" },
+            { en: "City", tr: "Şehir" },
+            { en: "City centre", tr: "Şehir merkezi" },
+            { en: "Cinema", tr: "Sinema" },
+            { en: "Close", tr: "Yakın" },
+            { en: "Coast", tr: "Sahil, kıyı" },
+            { en: "Comfortable", tr: "Rahat" },
+            { en: "Conference hall", tr: "Konferans salonu" },
+            { en: "Corner", tr: "Köşe" },
+            { en: "Crowded", tr: "Kalabalık" },
+            { en: "Cupboard", tr: "Dolap" },
+            { en: "Dining room", tr: "Yemek odası" },
+            { en: "Dining table", tr: "Yemek masası" },
+            { en: "Dishwasher", tr: "Bulaşık makinesi" },
+            { en: "Double-decker bus", tr: "Çift katlı otobüs" },
+            { en: "Exercise", tr: "Egzersiz yapmak" },
+            { en: "Exercise in a gym", tr: "Spor salonunda egzersiz yapmak" },
+            { en: "Expensive", tr: "Pahalı" },
+            { en: "Experience", tr: "Deneyimlemek" },
+            { en: "Fair", tr: "Panayır" },
+            { en: "Famous", tr: "Ünlü" },
+            { en: "Far", tr: "Uzak" },
+            { en: "Flat", tr: "Daire" },
+            { en: "Floor", tr: "Yer, kat" },
+            { en: "Fork", tr: "Çatal" },
+            { en: "Fridge", tr: "Buzdolabı" },
+            { en: "Furniture", tr: "Mobilya" },
+            { en: "Garage", tr: "Garaj" },
+            { en: "Garden", tr: "Bahçe" },
+            { en: "Glass", tr: "Cam" },
+            { en: "Ground", tr: "Zemin" },
+            { en: "Guide", tr: "Rehberlik etmek" },
+            { en: "Gym", tr: "Spor salonu" },
+            { en: "Hall", tr: "Salon" },
+            { en: "Hallway", tr: "Koridor" },
+            { en: "Handmade", tr: "El yapımı" },
+            { en: "Historical site", tr: "Tarihi yer" },
+            { en: "Hire", tr: "Kiralamak" },
+            { en: "Hospital", tr: "Hastane" },
+            { en: "In", tr: "İçinde" },
+            { en: "In front of", tr: "Önünde" },
+            { en: "Inside", tr: "İçeride" },
+            { en: "Interesting", tr: "İlginç" },
+            { en: "Joke", tr: "Şaka yapmak" },
+            { en: "Jump", tr: "Zıplamak" },
+            { en: "Kitchen", tr: "Mutfak" },
+            { en: "Kitchen utensils", tr: "Mutfak eşyaları" },
+            { en: "Knife", tr: "Bıçak" },
+            { en: "Lamp", tr: "Lamba" },
+            { en: "Laptop", tr: "Dizüstü bilgisayar" },
+            { en: "Library", tr: "Kütüphane" },
+            { en: "Lift", tr: "Asansör" },
+            { en: "Light", tr: "Hafif; açık (renk)" },
+            { en: "Living room", tr: "Oturma odası" },
+            { en: "Local", tr: "Yerel" },
+            { en: "Location", tr: "Yer, konum" },
+            { en: "Metal", tr: "Metal" },
+            { en: "Middle", tr: "Orta" },
+            { en: "Mirror", tr: "Ayna" },
+            { en: "Modern", tr: "Çağdaş, modern" },
+            { en: "Museum", tr: "Müze" },
+            { en: "Near", tr: "Yakınında" },
+            { en: "Neighbourhood", tr: "Mahalle" },
+            { en: "Next to", tr: "Bitişiğinde" },
+            { en: "Old", tr: "Eski" },
+            { en: "On", tr: "Üstünde" },
+            { en: "Opposite", tr: "Karşı, zıt" },
+            { en: "Outside", tr: "Dışarıda" },
+            { en: "Oven", tr: "Fırın" },
+            { en: "Painting", tr: "Tablo" },
+            { en: "Peaceful", tr: "Huzurlu" },
+            { en: "Pharmacy", tr: "Eczane" },
+            { en: "Plant", tr: "Bitki" },
+            { en: "Plastic", tr: "Plastik" },
+            { en: "Plate", tr: "Tabak" },
+            { en: "Police station", tr: "Polis merkezi" },
+            { en: "Quiet", tr: "Sessiz" },
+            { en: "Recreation", tr: "Eğlence, boş zaman etkinliği" },
+            { en: "Rent", tr: "Kiralamak" },
+            { en: "Repair", tr: "Tamir etmek" },
+            { en: "Restaurant", tr: "Restoran" },
+            { en: "Rock", tr: "Kaya" },
+            { en: "Roof", tr: "Çatı" },
+            { en: "See the paintings", tr: "Tabloları izlemek, görmek" },
+            { en: "Shelf", tr: "Raf" },
+            { en: "Shop", tr: "Alışveriş yapmak; mağaza" },
+            { en: "Shopping mall", tr: "Alışveriş merkezi" },
+            { en: "Shower", tr: "Duş" },
+            { en: "Shoe store", tr: "Ayakkabı mağazası" },
+            { en: "Site", tr: "Alan" },
+            { en: "Sitting room", tr: "Oturma odası" },
+            { en: "Skyscraper", tr: "Gökdelen" },
+            { en: "Soap", tr: "Sabun" },
+            { en: "Social", tr: "Sosyal" },
+            { en: "Sofa", tr: "Kanepe" },
+            { en: "Special", tr: "Özel" },
+            { en: "Spoon", tr: "Kaşık" },
+            { en: "Sports centre", tr: "Spor merkezi" },
+            { en: "Square", tr: "Meydan" },
+            { en: "Steel", tr: "Çelik" },
+            { en: "Stone", tr: "Taş" },
+            { en: "Store", tr: "Mağaza" },
+            { en: "Street", tr: "Cadde, sokak" },
+            { en: "Street fair", tr: "Panayır" },
+            { en: "Table", tr: "Masa" },
+            { en: "Take a tour", tr: "Tur yapmak" },
+            { en: "Television", tr: "Televizyon" },
+            { en: "Terrace", tr: "Teras" },
+            { en: "Toilet", tr: "Tuvalet" },
+            { en: "Top", tr: "Üst" },
+            { en: "Tourist", tr: "Turist" },
+            { en: "Tower", tr: "Kule" },
+            { en: "Town", tr: "Kasaba" },
+            { en: "Toy", tr: "Oyuncak" },
+            { en: "Traditional", tr: "Geleneksel" },
+            { en: "Under", tr: "Altında" },
+            { en: "Visit a historical site", tr: "Tarihi bir yeri ziyaret etmek" },
+            { en: "Walk", tr: "Yürümek" },
+            { en: "Walk along the coast", tr: "Sahil boyunca yürümek" },
+            { en: "Wardrobe", tr: "Gardırop" },
+            { en: "Wide", tr: "Geniş" },
+            { en: "Wood / Wooden", tr: "Tahta, ahşap" },
+            { en: "Where is the nearest library?", tr: "En yakın kütüphane nerede?" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {};
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let html = '';
+            shuffledWords.forEach((word, index) => {
+                const qId = `q${index}`;
+                let distractors = uniqueTr.filter(t => t !== word.tr);
+                shuffleArray(distractors);
+                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                
+                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
+                            <p class="question-text">${index + 1}. ${word.en}</p>`;
+                options.forEach(opt => {
+                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                });
+                html += `</div>`;
+            });
+            quizArea.innerHTML = html;
+        }
+
+        function check(qId, selected) {
+            if (answeredQuestions[qId]) return;
+            const qEl = document.getElementById(qId);
+            const btns = qEl.querySelectorAll('.option-button');
+            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
+            const correct = wordList.find(w => w.en === qTxt).tr;
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.ans === correct) b.classList.add('correct');
+                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            });
+            if (selected === correct) score++;
+            answeredQuestions[qId] = true;
+        }
+
+        function showResults() {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>TEBRİKLER!</h2><p>Puanınız: ${score} / ${wordList.length}</p><p>Başarı Oranı: %${Math.round((score/wordList.length)*100)}</p>`;
+            results.style.display = 'block';
+            results.scrollIntoView({behavior: "smooth"});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateQuiz);
+    </script>
+</body>
+</html>
