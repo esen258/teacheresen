@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme 2 Classroom Life Kelime Testi</title>
+    <style>
+        /* GENEL VE MOBİL STİL AYARLARI */
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
+            margin: 0;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+        
+        .signature-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
+            font-size: 3.5rem; 
+            color: #ffbe0b; 
+            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
+            letter-spacing: 3px; 
+            animation: bounce 2s infinite; 
+            padding: 10px 20px; 
+            background: linear-gradient(45deg, #f1faee, #a8dadc); 
+            border-radius: 15px; 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
+            display: inline-block;
+        }
+
+        .phone-number {
+            display: block;
+            font-size: 1.5rem;
+            color: #1d3557;
+            background-color: #ffffff;
+            padding: 8px 25px;
+            border-radius: 50px;
+            margin-top: 10px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 3px solid #ffbe0b;
+            text-decoration: none;
+        }
+
+        .phone-icon {
+            color: #007bff; 
+            margin-right: 8px;
+            font-style: normal;
+        }
+
+        #quiz-container {
+            width: 95%;
+            max-width: 650px;
+            background-color: #ffffff;
+            padding: 20px 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
+            border-radius: 25px; 
+            border: 6px solid #ffbe0b; 
+            animation: fadeIn 1s ease-out; 
+            position: relative; 
+        }
+
+        h1 {
+            color: #e63946; 
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem; 
+            border-bottom: 4px dotted #a8dadc; 
+            padding-bottom: 15px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-bottom: 2px dashed #f1f1f1; 
+            animation: slideInUp 0.5s ease-out forwards; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .question-text {
+            font-size: 1.3rem; 
+            color: #1d3557; 
+            font-weight: bold;
+            margin-bottom: 15px;
+            background-color: #f1faee; 
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 6px solid #457b9d; 
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border: 2px solid #a8dadc; 
+            border-radius: 18px; 
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease; 
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .option-button:hover:not(:disabled) {
+            background-color: #f0f9fa; 
+            transform: scale(1.02);
+        }
+
+        .option-button.correct {
+            background-color: #d4edda; 
+            border-color: #28a745;    
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-button.incorrect {
+            background-color: #f8d7da; 
+            border-color: #dc3545;    
+            color: #721c24;
+            font-weight: bold;
+        }
+
+        .result-button {
+            width: 100%;
+            padding: 18px;
+            background-color: #e63946; 
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        #results {
+            margin-top: 30px;
+            padding: 25px;
+            border: 4px solid #ffbe0b; 
+            border-radius: 20px;
+            text-align: center;
+            background-color: #fffacd; 
+            display: none;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="signature-container">
+        <div class="top-signature">Esen Teacher</div>
+        <a href="tel:05304773073" class="phone-number"><i class="phone-icon">📞</i>0530 477 30 73</a>
+    </div>
+
+    <div id="quiz-container">
+        <h1>Theme 2 Classroom Life<br><small style="font-size: 1.1rem; color: #457b9d;">Kelime Testi</small></h1>
+        <div id="questions-area"></div>
+        <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const wordList = [
+            { "en": "assistant (n)", "tr": "Asistan, yardımcı" },
+            { "en": "assistant to the headmaster (n)", "tr": "Okul müdürü yardımcısı" },
+            { "en": "borrow (v)", "tr": "Ödünç almak" },
+            { "en": "break time (n)", "tr": "Teneffüs, ara" },
+            { "en": "screen (n)", "tr": "Ekran" },
+            { "en": "seat (n)", "tr": "Koltuk, sıra, oturulacak yer" },
+            { "en": "share (v)", "tr": "Paylaşmak" },
+            { "en": "smart board (n)", "tr": "Akıllı tahta" },
+            { "en": "stand in line (v)", "tr": "Sıraya girmek" },
+            { "en": "study alone/individually (v)", "tr": "Bireysel / tek başına çalışmak" },
+            { "en": "study for exams (v)", "tr": "Sınavlara çalışmak" },
+            { "en": "subject (n)", "tr": "Ders, konu" },
+            { "en": "take notes (v)", "tr": "Not almak" },
+            { "en": "Tales and Legends (n/v)", "tr": "Masallar ve Efsaneler" },
+            { "en": "tidy (v)", "tr": "Toplamak, düzenlemek" },
+            { "en": "turn on/off (v)", "tr": "(Cihaz/makine) Açmak / kapatmak" },
+            { "en": "Visual Arts (n)", "tr": "Görsel Sanatlar" },
+            { "en": "write down (v)", "tr": "Yazmak, not etmek" },
+            { "en": "check (v)", "tr": "Kontrol etmek" },
+            { "en": "complete (v)", "tr": "Tamamlamak" },
+            { "en": "copy (v)", "tr": "Kopyalamak, aynısını yazmak/yapmak" },
+            { "en": "counsellor (n)", "tr": "Rehber öğretmen, danışman" },
+            { "en": "dictionary (n)", "tr": "Sözlük" },
+            { "en": "discuss (v)", "tr": "Tartışmak, fikir alışverişinde bulunmak" },
+            { "en": "do practice (v)", "tr": "Pratik / alıştırma yapmak" },
+            { "en": "finish your task (v)", "tr": "Görevini / ödevini bitirmek" },
+            { "en": "follow the rules", "tr": "Kurallara uymak" },
+            { "en": "give examples (v)", "tr": "Örnek vermek" },
+            { "en": "helper (n)", "tr": "Yardımcı" },
+            { "en": "Information Technology (IT) (n)", "tr": "Bilişim Teknolojileri" },
+            { "en": "match (v)", "tr": "Eşleştirmek" },
+            { "en": "monitor (n)", "tr": "Sınıf başkanı / nöbetçisi (öğretmene yardım eden öğrenci)" },
+            { "en": "on time (adv)", "tr": "Zamanında, tam vaktinde" },
+            { "en": "organise (v)", "tr": "Düzenlemek, organize etmek" },
+            { "en": "pair (n)", "tr": "Çift, ikili" },
+            { "en": "present (v)", "tr": "Sunmak, sunum yapmak" },
+            { "en": "presentation (n)", "tr": "Sunum" },
+            { "en": "raise your hand (v)", "tr": "El kaldırmak" },
+            { "en": "Religion and Morals (n)", "tr": "Din Kültürü ve Ahlak Bilgisi" },
+            { "en": "remind (v)", "tr": "Hatırlatmak" },
+            { "en": "repeat (v)", "tr": "Tekrar etmek" },
+            { "en": "responsibility (n)", "tr": "Sorumluluk" },
+            { "en": "responsible for (adj)", "tr": "-den sorumlu olmak" },
+            { "en": "return (v)", "tr": "Geri vermek, iade etmek" },
+            { "en": "review (v)", "tr": "Gözden geçirmek, tekrar incelemek" },
+            { "en": "Robotic Coding (n)", "tr": "Robotik Kodlama" },
+            { "en": "rubbish (n)", "tr": "Çöp" }
+        ];
+
+        let score = 0;
+        const answeredQuestions = {};
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function generateQuiz() {
+            const quizArea = document.getElementById('questions-area');
+            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const shuffledWords = shuffleArray([...wordList]);
+            
+            let html = '';
+            shuffledWords.forEach((word, index) => {
+                const qId = `q${index}`;
+                let distractors = uniqueTr.filter(t => t !== word.tr);
+                shuffleArray(distractors);
+                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                
+                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
+                            <p class="question-text">${index + 1}. ${word.en}</p>`;
+                options.forEach(opt => {
+                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                });
+                html += `</div>`;
+            });
+            quizArea.innerHTML = html;
+        }
+
+        function check(qId, selected) {
+            if (answeredQuestions[qId]) return;
+            const qEl = document.getElementById(qId);
+            const btns = qEl.querySelectorAll('.option-button');
+            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
+            const correct = wordList.find(w => w.en === qTxt).tr;
+
+            btns.forEach(b => {
+                b.disabled = true;
+                if (b.dataset.ans === correct) b.classList.add('correct');
+                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            });
+            if (selected === correct) score++;
+            answeredQuestions[qId] = true;
+        }
+
+        function showResults() {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>TEBRİKLER!</h2><p>Puanınız: ${score} / ${wordList.length}</p><p>Başarı Oranı: %${Math.round((score/wordList.length)*100)}</p>`;
+            results.style.display = 'block';
+            results.scrollIntoView({behavior: "smooth"});
+        }
+
+        document.addEventListener('DOMContentLoaded', generateQuiz);
+    </script>
+</body>
+</html>
