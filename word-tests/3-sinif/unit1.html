@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3. Sınıf 1. Ünite İngilizce Kelime Testi</title>
+    <title>İngilizce Kelime Testi</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
@@ -167,7 +167,7 @@
     </div>
 
     <div id="quiz-container">
-        <h1>3. Sınıf 1. Ünite Kelimeler<br><small style="font-size: 1.1rem; color: #457b9d;">Greetings & Numbers (Selamlaşma ve Sayılar)</small></h1>
+        <h1>İngilizce Kelime Testi</h1>
         <div id="questions-area"></div>
         <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
         <div id="results"></div>
@@ -175,48 +175,71 @@
 
     <script>
         const wordList = [
-            { en: "Hello", tr: "merhaba" },
-            { en: "Good morning", tr: "günaydın" },
-            { en: "Good afternoon", tr: "tünaydın" },
-            { en: "Good evening", tr: "iyi akşamlar" },
-            { en: "Good night", tr: "iyi geceler" },
-            { en: "Goodbye", tr: "güle güle" },
-            { en: "Have a good weekend", tr: "iyi hafta sonları" },
-            { en: "Have a nice day", tr: "iyi günler" },
-            { en: "Hi", tr: "merhaba" },
-            { en: "How are you?", tr: "nasılsın?" },
-            { en: "I am fine", tr: "ben iyiyim" },
-            { en: "Welcome", tr: "hoşgeldiniz" },
-            { en: "What is your name?", tr: "adın ne?" },
-            { en: "My name is ………", tr: "Benim adım………." },
-            { en: "Nice to meet you", tr: "Tanıştığıma memnun oldum" },
-            { en: "See you", tr: "görüşmek üzere" },
-            { en: "Spell", tr: "hecelemek" },
-            { en: "Student", tr: "öğrenci" },
-            { en: "Take care", tr: "kendine iyi bak" },
-            { en: "How old are you?", tr: "kaç yaşındasın?" },
-            { en: "I am nine years old", tr: "ben 9 yaşındayım" },
-            { en: "Numbers", tr: "sayılar" },
-            { en: "1 / one", tr: "bir" },
-            { en: "2 / two", tr: "iki" },
-            { en: "3 / three", tr: "üç" },
-            { en: "4 / four", tr: "dört" },
-            { en: "5 / five", tr: "beş" },
-            { en: "6 / six", tr: "altı" },
-            { en: "7 / seven", tr: "yedi" },
-            { en: "8 / eight", tr: "sekiz" },
-            { en: "9 / nine", tr: "dokuz" },
-            { en: "10 / ten", tr: "on" },
-            { en: "11 / eleven", tr: "on bir" },
-            { en: "12 / twelve", tr: "on iki" },
-            { en: "13 / thirteen", tr: "on üç" },
-            { en: "14 / fourteen", tr: "on dört" },
-            { en: "15 / fifteen", tr: "on beş" },
-            { en: "16 / sixteen", tr: "on altı" },
-            { en: "17 / seventeen", tr: "on yedi" },
-            { en: "18 / eighteen", tr: "on sekiz" },
-            { en: "19 / nineteen", tr: "on dokuz" },
-            { en: "20 / twenty", tr: "yirmi" }
+            { en: "afternoon", tr: "öğleden sonra" },
+            { en: "April", tr: "nisan" },
+            { en: "art room", tr: "resim odası" },
+            { en: "ask", tr: "sormak" },
+            { en: "August", tr: "ağustos" },
+            { en: "balloon", tr: "balon" },
+            { en: "birthday", tr: "doğum günü" },
+            { en: "bring", tr: "getirmek" },
+            { en: "cake", tr: "pasta" },
+            { en: "candle", tr: "mum" },
+            { en: "careful", tr: "dikkatli" },
+            { en: "caretaker", tr: "temizlik görevlisi" },
+            { en: "classmate", tr: "sınıf arkadaşı" },
+            { en: "Cool!", tr: "Harika!" },
+            { en: "corridor", tr: "koridor" },
+            { en: "December", tr: "aralık" },
+            { en: "decorate", tr: "süslemek" },
+            { en: "draw", tr: "çizmek" },
+            { en: "evening", tr: "akşam" },
+            { en: "February", tr: "şubat" },
+            { en: "find", tr: "bulmak" },
+            { en: "gift", tr: "hediye" },
+            { en: "gym", tr: "spor salonu" },
+            { en: "Happy Birthday!", tr: "İyi ki doğdun!" },
+            { en: "Have a nice/good day!", tr: "İyi günler!" },
+            { en: "Have a nice weekend!", tr: "İyi hafta sonları!" },
+            { en: "headteacher", tr: "müdür" },
+            { en: "help", tr: "yardım etmek" },
+            { en: "how", tr: "nasıl" },
+            { en: "idea", tr: "fikir" },
+            { en: "It's good to see you.", tr: "Seni görmek güzel." },
+            { en: "January", tr: "ocak" },
+            { en: "July", tr: "temmuz" },
+            { en: "June", tr: "haziran" },
+            { en: "librarian", tr: "kütüphaneci" },
+            { en: "March", tr: "mart" },
+            { en: "May", tr: "mayıs" },
+            { en: "maybe", tr: "belki" },
+            { en: "meeting room", tr: "toplantı odası" },
+            { en: "music room", tr: "müzik odası" },
+            { en: "need", tr: "ihtiyacı olmak" },
+            { en: "night", tr: "gece" },
+            { en: "November", tr: "kasım" },
+            { en: "October", tr: "ekim" },
+            { en: "office", tr: "ofis" },
+            { en: "paint", tr: "boyamak" },
+            { en: "party", tr: "parti" },
+            { en: "play the guitar", tr: "gitar çalmak" },
+            { en: "prepare", tr: "hazırlamak" },
+            { en: "quiet", tr: "sessiz" },
+            { en: "run", tr: "koşmak" },
+            { en: "school nurse", tr: "okul hemşiresi" },
+            { en: "See you later!", tr: "Sonra görüşürüz!" },
+            { en: "September", tr: "eylül" },
+            { en: "song", tr: "şarkı" },
+            { en: "sports field", tr: "spor sahası" },
+            { en: "surprise", tr: "sürpriz" },
+            { en: "Take care!", tr: "Kendine iyi bak!" },
+            { en: "want", tr: "istemek" },
+            { en: "what", tr: "ne" },
+            { en: "when", tr: "ne zaman" },
+            { en: "where", tr: "nerede" },
+            { en: "who", tr: "kim" },
+            { en: "whose", tr: "kimin" },
+            { en: "write", tr: "yazmak" }
         ];
 
         let score = 0;
