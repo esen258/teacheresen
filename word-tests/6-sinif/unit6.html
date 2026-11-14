@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6. Sınıf 6. Ünite İngilizce Kelime Testi</title>
+    <title>Theme 6</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
-            font-family: 'Segoe UI', 'Arial', sans-serif; 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
             background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%); 
             margin: 0;
             padding: 15px 0;
@@ -15,76 +15,90 @@
             flex-direction: column; 
             align-items: center;
             overflow-x: hidden; 
-            min-height: 100vh;
         }
         
-        .signature-container {
+        /* İmza Stili */
+        .signature {
             text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .top-signature {
-            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; 
-            font-size: 3.5rem; 
-            color: #ffbe0b; 
-            text-shadow: -3px -3px 0 #e63946, 3px -3px 0 #e63946, -3px 3px 0 #e63946, 3px 3px 0 #e63946, 5px 5px 0 #1d3557; 
-            letter-spacing: 3px; 
-            animation: bounce 2s infinite; 
-            padding: 10px 20px; 
-            background: linear-gradient(45deg, #f1faee, #a8dadc); 
-            border-radius: 15px; 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3); 
-            display: inline-block;
-        }
-
-        .phone-number {
-            display: block;
-            font-size: 1.5rem;
-            color: #1d3557;
-            background-color: #ffffff;
-            padding: 8px 25px;
-            border-radius: 50px;
-            margin-top: 10px;
+            margin: 15px 0;
+            padding: 5px 0;
+            font-size: 1.2rem; 
+            color: #f1faee; 
+            font-style: italic;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 3px solid #ffbe0b;
-            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 600px;
         }
 
-        .phone-icon {
-            color: #007bff; 
-            margin-right: 8px;
-            font-style: normal;
+        /* YENİ: En üstteki Esen Teacher imzası için daha vurgulu stil */
+        .top-signature {
+            font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; /* Daha kalın ve dikkat çekici font */
+            font-size: 3.5rem; /* Çok daha büyük */
+            color: #ffbe0b; /* Parlak sarı */
+            text-shadow: 
+                -3px -3px 0 #e63946,  /* Kırmızı dış gölge */
+                 3px -3px 0 #e63946,
+                -3px  3px 0 #e63946,
+                 3px  3px 0 #e63946,
+                 5px  5px 0 #1d3557; /* Koyu mavi 3D efekti */
+            margin-bottom: 30px; /* Test başlığıyla arasında boşluk */
+            letter-spacing: 3px; /* Harf aralığı */
+            animation: bounce 2s infinite; /* Zıplama animasyonu */
+            padding: 10px 20px; /* Etrafında boşluk */
+            background: linear-gradient(45deg, #f1faee, #a8dadc); /* Hafif arka plan gradyanı */
+            border-radius: 15px; /* Yuvarlak köşeler */
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* Belirgin gölge */
         }
+
+        /* Alttaki Esen Teacher için standart imza stilini koruyalım */
+        .bottom-signature {
+            font-size: 1.2rem;
+            color: #f1faee;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+
 
         #quiz-container {
-            width: 95%;
-            max-width: 650px;
+            width: 100%;
+            max-width: 600px;
             background-color: #ffffff;
             padding: 20px 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); 
-            border-radius: 25px; 
-            border: 6px solid #ffbe0b; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+            border-radius: 20px; 
+            border: 5px solid #ffbe0b; 
             animation: fadeIn 1s ease-out; 
             position: relative; 
+            overflow: hidden; 
         }
 
         h1 {
             color: #e63946; 
             text-align: center;
             margin-bottom: 25px;
-            font-size: 1.8rem; 
-            border-bottom: 4px dotted #a8dadc; 
-            padding-bottom: 15px;
+            font-size: 2rem; 
+            border-bottom: 3px dashed #a8dadc; 
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .question {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-bottom: 2px dashed #f1f1f1; 
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ced4da; 
             animation: slideInUp 0.5s ease-out forwards; 
             opacity: 0; 
             transform: translateY(20px); 
+        }
+        .question:nth-child(1) { animation-delay: 0.1s; }
+        .question:nth-child(2) { animation-delay: 0.2s; }
+        .question:nth-child(3) { animation-delay: 0.3s; }
+
+        .question:last-of-type {
+            border-bottom: none;
         }
 
         .question-text {
@@ -93,35 +107,45 @@
             font-weight: bold;
             margin-bottom: 15px;
             background-color: #f1faee; 
-            padding: 12px;
-            border-radius: 10px;
-            border-left: 6px solid #457b9d; 
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #457b9d; 
         }
 
         .option-button {
             display: block;
             width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
             border: 2px solid #a8dadc; 
-            border-radius: 18px; 
-            background-color: #ffffff;
-            cursor: pointer;
-            transition: all 0.2s ease; 
-            font-size: 1.1rem;
+            border-radius: 15px; 
+            background-color: #f9f9f9;
+            color: #333;
             text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
         .option-button:hover:not(:disabled) {
-            background-color: #f0f9fa; 
-            transform: scale(1.02);
+            background-color: #e0f2f7; 
+            border-color: #1d3557; 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .option-button:active:not(:disabled) {
+            transform: translateY(0); 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
+        /* GERİ BİLDİRİM STİLLERİ */
         .option-button.correct {
             background-color: #d4edda; 
             border-color: #28a745;    
             color: #155724;
             font-weight: bold;
+            animation: pulseGreen 0.5s ease-out; 
         }
 
         .option-button.incorrect {
@@ -129,114 +153,305 @@
             border-color: #dc3545;    
             color: #721c24;
             font-weight: bold;
+            animation: shakeRed 0.5s ease-out; 
         }
 
         .result-button {
             width: 100%;
-            padding: 18px;
-            background-color: #e63946; 
+            padding: 15px;
+            background-color: #457b9d; 
             color: white;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-top: 25px;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .result-button:hover:not(:disabled) {
+            background-color: #1d3557; 
+            transform: scale(1.02); 
+        }
+        .result-button:active:not(:disabled) {
+            transform: scale(1);
         }
 
         #results {
-            margin-top: 30px;
-            padding: 25px;
-            border: 4px solid #ffbe0b; 
-            border-radius: 20px;
+            margin-top: 25px;
+            padding: 20px;
+            border: 3px solid #e63946; 
+            border-radius: 15px;
             text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #1d3557;
             background-color: #fffacd; 
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
             display: none;
+            animation: zoomIn 0.5s ease-out; 
         }
 
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* ANİMASYONLAR */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shakeRed {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* YENİ: Bounce animasyonu */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px); /* Daha fazla zıplama */
+            }
+            60% {
+                transform: translateY(-8px); /* Hafifçe zıplama */
+            }
+        }
+
+        /* SÜSLEMELER - Konfeti Efekti */
+        .confetti-left, .confetti-right {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            opacity: 0.7;
+            animation: floatConfetti 8s infinite ease-in-out;
+            pointer-events: none; 
+        }
+
+        .confetti-left {
+            top: 10%; left: -30px; border-width: 0 20px 20px 20px;
+            border-color: transparent transparent #ff99c8 transparent; 
+            animation-delay: 0s;
+        }
+        .confetti-left:nth-child(2) {
+            top: 40%; left: -40px; border-width: 15px;
+            border-color: #83c5be; 
+            animation-delay: 2s;
+        }
+        .confetti-left:nth-child(3) {
+            top: 70%; left: -50px; border-width: 0 25px 25px 25px;
+            border-color: transparent transparent #fef3bd transparent; 
+            animation-delay: 4s;
+        }
+
+        .confetti-right {
+            top: 20%; right: -30px; border-width: 18px;
+            border-color: #ff99c8; 
+            animation-delay: 1s;
+        }
+        .confetti-right:nth-child(2) {
+            top: 55%; right: -40px; border-width: 0 22px 22px 22px;
+            border-color: transparent transparent #83c5be transparent; 
+            animation-delay: 3s;
+        }
+        .confetti-right:nth-child(3) {
+            top: 85%; right: -50px; border-width: 16px;
+            border-color: #fef3bd; 
+            animation-delay: 5s;
+        }
+
+        @keyframes floatConfetti {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.7; }
+            25% { transform: translate(10px, -20px) rotate(10deg); opacity: 0.8; }
+            50% { transform: translate(0, -40px) rotate(0deg); opacity: 0.7; }
+            75% { transform: translate(-10px, -20px) rotate(-10deg); opacity: 0.8; }
+            100% { transform: translate(0, 0) rotate(0deg); opacity: 0.7; }
+        }
+
+        /* Daha fazla dinamiklik için küçük noktalar */
+        .dot {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: dotFloat 15s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .dot:nth-child(1) { top: 5%; left: 10%; width: 10px; height: 10px; animation-delay: 1s; }
+        .dot:nth-child(2) { top: 20%; left: 80%; width: 12px; height: 12px; animation-delay: 3s; }
+        .dot:nth-child(3) { top: 40%; left: 25%; width: 8px; height: 8px; animation-delay: 5s; }
+        .dot:nth-child(4) { top: 60%; left: 70%; width: 15px; height: 15px; animation-delay: 7s; }
+        .dot:nth-child(5) { top: 80%; left: 15%; width: 9px; height: 9px; animation-delay: 9s; }
+
+
+        @keyframes dotFloat {
+            0% { transform: translateY(0); opacity: 0.4; }
+            50% { transform: translateY(-20px); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 0.4; }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="signature-container">
-        <div class="top-signature">Esen Teacher</div>
-        <a href="tel:05304773073" class="phone-number"><i class="phone-icon">📞</i>0530 477 30 73</a>
-    </div>
+    <div class="signature top-signature">Esen Teacher</div>
 
     <div id="quiz-container">
-        <h1>6. Sınıf 6. Ünite Kelimeler<br><small style="font-size: 1.1rem; color: #457b9d;">Occupations (Meslekler)</small></h1>
-        <div id="questions-area"></div>
+        
+        <div class="confetti-left"></div>
+        <div class="confetti-left"></div>
+        <div class="confetti-left"></div>
+        <div class="confetti-right"></div>
+        <div class="confetti-right"></div>
+        <div class="confetti-right"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+
+        <h1>Theme 6</h1>
+        <div id="questions-area">
+            </div>
+        
         <button class="result-button" onclick="showResults()">Testi Bitir ve Sonucu Gör</button>
         <div id="results"></div>
     </div>
 
+    <div class="signature bottom-signature">Esen Teacher</div>
+
     <script>
         const wordList = [
-            { en: "Actor", tr: "Aktör, oyuncu" },
-            { en: "Architect", tr: "Mimar" },
-            { en: "Baker", tr: "Fırıncı" },
-            { en: "Barber", tr: "Berber" },
-            { en: "Businessman", tr: "İş adamı" },
-            { en: "Butcher", tr: "Kasap" },
-            { en: "Cleaner", tr: "Temizlikçi" },
-            { en: "Cook", tr: "Aşçı" },
-            { en: "Dentist", tr: "Dişçi" },
-            { en: "Doctor", tr: "Doktor" },
-            { en: "Driver", tr: "Şöför" },
-            { en: "Engineer", tr: "Mühendis" },
-            { en: "Farmer", tr: "Çiftçi" },
-            { en: "Fireman", tr: "İtfaiyeci" },
-            { en: "Gardener", tr: "Bahçıvan" },
-            { en: "Hairdresser", tr: "Kuaför" },
-            { en: "Housewife", tr: "Ev hanımı" },
-            { en: "Lawyer", tr: "Avukat" },
-            { en: "Manager", tr: "Müdür" },
-            { en: "Mechanic", tr: "Tamirci" },
-            { en: "Nurse", tr: "Hemşire" },
-            { en: "Pilot", tr: "Pilot" },
-            { en: "Policeman", tr: "Polis memuru" },
-            { en: "Scientist", tr: "Bilim adamı, bilgin" },
-            { en: "Salesperson", tr: "Tezgahtar" },
-            { en: "Singer", tr: "Şarkıcı" },
-            { en: "Tailor", tr: "Terzi" },
-            { en: "Waiter", tr: "Garson (bay)" },
-            { en: "Waitress", tr: "Garson (bayan)" },
-            { en: "Worker", tr: "İşçi" },
-            { en: "ago", tr: "önce" },
-            { en: "ask question", tr: "soru sormak" },
-            { en: "become", tr: "olmak" },
-            { en: "bring food", tr: "yiyecek getirmek" },
-            { en: "build road, bridge and building", tr: "yol, köprü, bina yapmak" },
-            { en: "build", tr: "inşa etmek" },
-            { en: "clean", tr: "temizlemek" },
-            { en: "cook meal", tr: "yemek pişirmek" },
-            { en: "cut fabric", tr: "kumaş kesmek" },
-            { en: "cut hair", tr: "saç kesmek" },
-            { en: "defend people at court", tr: "mahkemede insanları savunmak" },
-            { en: "design", tr: "tasarlamak" },
-            { en: "draw plans of buildings", tr: "bina planı çizmek" },
-            { en: "examine patient", tr: "hasta tedavi etmek" },
-            { en: "grow vegetables and fruit", tr: "sebze meyve yetiştirmek" },
-            { en: "look after ill people", tr: "hasta kişilere bakmak" },
-            { en: "make and sell bread", tr: "ekmek yapıp satmak" },
-            { en: "mend/repair", tr: "tamir etmek" },
-            { en: "pull out teeth", tr: "diş çekmek" },
-            { en: "repair cars", tr: "araba tamir etmek" },
-            { en: "serve food", tr: "yiyecek servis etmek" },
-            { en: "sew fabric", tr: "kumaş dikmek" },
-            { en: "take order", tr: "sipariş almak" },
-            { en: "teach", tr: "öğretmek" },
-            { en: "was born", tr: "doğmak" },
-            { en: "yesterday", tr: "dün" },
-            { en: "last", tr: "geçen" },
-            { en: "occupation", tr: "iş, meslek" }
+            // KULLANICI TARAFINDAN VERİLEN KELİMELER
+            { en: "anywhere (adv)", tr: "herhangi bir yer" },
+            { en: "appetiser (n)", tr: "aperatif" },
+            { en: "Austria (n)", tr: "Avusturya" },
+            { en: "Austrian (n)", tr: "Avusturyalı" },
+            { en: "Belgian (n)", tr: "Belçikalı" },
+            { en: "Belgium (n)", tr: "Belçika" },
+            { en: "bitter (adj)", tr: "acı (tat)" },
+            { en: "capital (n)", tr: "başkent" },
+            { en: "competition (n)", tr: "yarışma" },
+            { en: "country (n)", tr: "ülke" },
+            { en: "crispy (adj)", tr: "çıtır" },
+            { en: "crunchy (adj)", tr: "kıtır" },
+            { en: "cuisine (n)", tr: "mutfak kültürü" },
+            { en: "Danish (n)", tr: "Danimarkalı, Danimarkaca" },
+            { en: "Denmark (n)", tr: "Danimarka" },
+            { en: "dessert (n)", tr: "tatlı" },
+            { en: "dish (n)", tr: "yemek" },
+            { en: "dry (v)", tr: "kurutmak" },
+            { en: "dumpling (n)", tr: "mantı / hamur topu" },
+            { en: "Dutch (n)", tr: "Hollandalı, Hollandaca" },
+            { en: "England (n)", tr: "İngiltere" },
+            { en: "English (n)", tr: "İngiliz, İngilizce" },
+            { en: "everywhere (adv)", tr: "her yerde" },
+            { en: "experience (n)", tr: "deneyim" },
+            { en: "experience (v)", tr: "deneyimlemek" },
+            { en: "flag (n)", tr: "bayrak" },
+            { en: "flavourful (adj)", tr: "lezzetli" },
+            { en: "food stall (n)", tr: "yiyecek standı" },
+            { en: "foreign (adj)", tr: "yabancı" },
+            { en: "France (n)", tr: "Fransa" },
+            { en: "French (n)", tr: "Fransız, Fransızca" },
+            { en: "German (n)", tr: "Alman, Almanca" },
+            { en: "Germany (n)", tr: "Almanya" },
+            { en: "gorgeous (adj)", tr: "muhteşem" },
+            { en: "government (n)", tr: "hükümet" },
+            { en: "Greece (n)", tr: "Yunanistan" },
+            { en: "Greek (n)", tr: "Yunan, Yunanca" },
+            { en: "heat (v)", tr: "ısıtmak" },
+            { en: "heritage (n)", tr: "miras" },
+            { en: "high-quality (adj)", tr: "yüksek kaliteli" },
+            { en: "historic (adj)", tr: "tarihi öneme sahip" },
+            { en: "homemade (adj)", tr: "ev yapımı" },
+            { en: "incredible (adj)", tr: "inanılmaz" },
+            { en: "India (n)", tr: "Hindistan" },
+            { en: "Indian / Hindi (n)", tr: "Hintli, Hintçe" },
+            { en: "ingredient (n)", tr: "malzeme" },
+            { en: "Italian (n)", tr: "İtalyan" },
+            { en: "Italy (n)", tr: "İtalya" },
+            { en: "main course (n)", tr: "ana yemek" },
+            { en: "nation (n)", tr: "ulus / millet" },
+            { en: "national (adj)", tr: "ulusal" },
+            { en: "nowhere (adv)", tr: "hiçbir yer" },
+            { en: "official (adj)", tr: "resmi" },
+            { en: "Poland (n)", tr: "Polonya" },
+            { en: "Polish (n)", tr: "Polonyalı, Lehçe" },
+            { en: "pop-up market (n)", tr: "geçici pazar" },
+            { en: "somewhere (adv)", tr: "bir yer" },
+            { en: "sour (adj)", tr: "ekşi" },
+            { en: "Spain (n)", tr: "İspanya" },
+            { en: "Spanish (n)", tr: "İspanyol, İspanyolca" },
+            { en: "spicy (adj)", tr: "baharatlı" },
+            { en: "street food (n)", tr: "sokak yemeği" },
+            { en: "Sweden (n)", tr: "İsveç" },
+            { en: "Swedish (n)", tr: "İsveçli, İsveççe" },
+            { en: "The Netherlands (n)", tr: "Hollanda" },
+            { en: "tradition (n)", tr: "gelenek" },
+            { en: "traditional (adj)", tr: "geleneksel" },
+            { en: "Turkish (n)", tr: "Türk, Türkçe" },
+            { en: "Turkish Cypriot (n)", tr: "Kıbrıs Türkü" },
+            { en: "Turkish Republic of Northern Cyprus (n)", tr: "Kuzey Kıbrıs Türk Cumhuriyeti" },
+            { en: "worth (adj)", tr: "değer" },
+            { en: "capital city (n)", tr: "başkent" },
+            { en: "language (n)", tr: "dil, lisan" },
+            { en: "nationality (n)", tr: "milliyet" },
+            { en: "population (n)", tr: "nüfus" },
+            { en: "culture (n)", tr: "kültür" },
+            { en: "custom (n)", tr: "gelenek, adet" },
+            { en: "taste (n/v)", tr: "tat / tatmak" },
+            { en: "delicious (adj)", tr: "lezzetli, nefis" },
+            { en: "salty (adj)", tr: "tuzlu" },
+            { en: "sweet (adj)", tr: "tatlı" },
+            { en: "boil (v)", tr: "haşlamak" },
+            { en: "fry (v)", tr: "kızartmak" },
+            { en: "bake (v)", tr: "fırında pişirmek" },
+            { en: "grill (v)", tr: "ızgarada pişirmek" },
+            { en: "recipe (n)", tr: "yemek tarifi" },
+
+            // MAARİF MODEL 6. SINIF 6. TEMA (LIFE IN THE WORLD & CULTURE) EK KELİMELER
+            { en: "continent (n)", tr: "kıta" },
+            { en: "world (n)", tr: "dünya" },
+            { en: "global (adj)", tr: "küresel" },
+            { en: "language spoken (n)", tr: "konuşulan dil" },
+            { en: "flag and emblem (n)", tr: "bayrak ve amblem" },
+            { en: "geographical position (n)", tr: "coğrafi konum" },
+            { en: "tourist attraction (n)", tr: "turistik cazibe merkezi" },
+            { en: "landmark (n)", tr: "simge yapı, tarihi eser" },
+            { en: "customs and traditions (n)", tr: "örf ve adetler, gelenekler" },
+            { en: "local people (n)", tr: "yerli halk" },
+            { en: "foreigner (n)", tr: "yabancı turist" },
+            { en: "sightseeing (n)", tr: "şehir turu, gezi" },
+            { en: "souvenir (n)", tr: "hediyelik eşya" },
+            { en: "postcard (n)", tr: "kartpostal" },
+            { en: "map (n)", tr: "harita" },
+            { en: "passport (n)", tr: "pasaport" },
+            { en: "visa (n)", tr: "vize" },
+            { en: "journey (n)", tr: "yolculuk" },
+            { en: "explore (v)", tr: "keşfetmek" },
+            { en: "discover (v)", tr: "keşfetmek" }
         ];
 
         let score = 0;
-        const answeredQuestions = {};
+        const answeredQuestions = {}; 
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -248,50 +463,114 @@
 
         function generateQuiz() {
             const quizArea = document.getElementById('questions-area');
-            const uniqueTr = [...new Set(wordList.map(item => item.tr))];
+            const uniqueTurkishMeanings = [...new Set(wordList.map(item => item.tr))];
+
             const shuffledWords = shuffleArray([...wordList]);
             
-            let html = '';
+            let htmlContent = '';
             shuffledWords.forEach((word, index) => {
-                const qId = `q${index}`;
-                let distractors = uniqueTr.filter(t => t !== word.tr);
+                const questionId = `q${index + 1}`;
+                const correctMeaning = word.tr;
+
+                let distractors = uniqueTurkishMeanings.filter(m => m !== correctMeaning);
                 shuffleArray(distractors);
-                let options = shuffleArray([word.tr, ...distractors.slice(0, 3)]);
+                distractors = distractors.slice(0, Math.min(3, distractors.length)); 
                 
-                html += `<div class="question" id="${qId}" style="animation-delay: ${index * 0.05}s;">
-                            <p class="question-text">${index + 1}. ${word.en}</p>`;
-                options.forEach(opt => {
-                    html += `<button class="option-button" data-ans="${opt}" onclick="check('${qId}', '${opt.replace(/'/g, "\\'")}')">${opt}</button>`;
+                let options = shuffleArray([correctMeaning, ...distractors]);
+                
+                htmlContent += `
+                    <div class="question" id="${questionId}" style="animation-delay: ${Math.min(index * 0.05, 1)}s;">
+                        <p class="question-text">${index + 1}. ${word.en}</p>
+                `;
+
+                options.forEach(option => {
+                    const escapedOption = option.replace(/'/g, "\\'");
+                    htmlContent += `
+                        <button class="option-button" 
+                                data-answer="${option}" 
+                                onclick="checkAnswer('${questionId}', '${escapedOption}')">
+                            ${option}
+                        </button>
+                    `;
                 });
-                html += `</div>`;
+
+                htmlContent += `</div>`;
             });
-            quizArea.innerHTML = html;
+
+            quizArea.innerHTML = htmlContent;
         }
 
-        function check(qId, selected) {
-            if (answeredQuestions[qId]) return;
-            const qEl = document.getElementById(qId);
-            const btns = qEl.querySelectorAll('.option-button');
-            const qTxt = qEl.querySelector('.question-text').textContent.split('. ')[1];
-            const correct = wordList.find(w => w.en === qTxt).tr;
+        function checkAnswer(questionId, selectedAnswer) {
+            if (answeredQuestions[questionId]) return;
+            
+            const questionElement = document.getElementById(questionId);
+            const buttons = questionElement.querySelectorAll('.option-button');
+            
+            const questionText = questionElement.querySelector('.question-text').textContent.replace(/^\d+\.\s+/, '').trim();
+            const correctWordObject = wordList.find(w => w.en === questionText);
+            const correctAnswer = correctWordObject ? correctWordObject.tr : null;
 
-            btns.forEach(b => {
-                b.disabled = true;
-                if (b.dataset.ans === correct) b.classList.add('correct');
-                if (b.dataset.ans === selected && selected !== correct) b.classList.add('incorrect');
+            if (!correctAnswer) return;
+
+            const isCorrect = selectedAnswer === correctAnswer;
+
+            buttons.forEach(button => {
+                const buttonAnswer = button.getAttribute('data-answer');
+                
+                button.disabled = true;
+
+                if (buttonAnswer === selectedAnswer) {
+                    if (isCorrect) {
+                        button.classList.add('correct');
+                        score++;
+                    } else {
+                        button.classList.add('incorrect');
+                    }
+                }
+                
+                if (buttonAnswer === correctAnswer) {
+                    if (!button.classList.contains('incorrect')) {
+                        button.classList.add('correct');
+                    }
+                }
             });
-            if (selected === correct) score++;
-            answeredQuestions[qId] = true;
+
+            answeredQuestions[questionId] = true;
         }
 
         function showResults() {
-            const results = document.getElementById('results');
-            results.innerHTML = `<h2>TEBRİKLER!</h2><p>Puanınız: ${score} / ${wordList.length}</p><p>Başarı Oranı: %${Math.round((score/wordList.length)*100)}</p>`;
-            results.style.display = 'block';
-            results.scrollIntoView({behavior: "smooth"});
+            const totalQuestions = wordList.length;
+            const resultsDiv = document.getElementById('results');
+            const answeredCount = Object.keys(answeredQuestions).length;
+
+            if (answeredCount < totalQuestions) {
+                const confirmFinish = confirm(`Tüm soruları (${totalQuestions} sorudan ${answeredCount} tanesini) cevaplamadınız. Yine de bitirmek istiyor musunuz?`);
+                if (!confirmFinish) {
+                    return; 
+                }
+            }
+
+            let message = `<h2>TEST SONUCU</h2>`;
+            message += `<p>Toplam Soru: ${totalQuestions}</p>`;
+            message += `<p>Doğru Cevap: ${score}</p>`;
+            
+            const percentage = (score / totalQuestions) * 100;
+
+            if (percentage >= 90) {
+                message += `<p style="color: green; font-weight: bold;">Mükemmel! Kelimelerin neredeyse tamamına hakimsin!</p>`;
+            } else if (percentage >= 70) {
+                message += `<p style="color: #007bff; font-weight: bold;">Çok iyi bir sonuç! Sadece birkaç noktayı tekrar gözden geçir.</p>`;
+            } else {
+                message += `<p style="color: orange; font-weight: bold;">İyi bir başlangıç! Kelime listesini tekrar okuyup pekiştirmeye devam etmelisin.</p>`;
+            }
+
+            resultsDiv.innerHTML = message;
+            resultsDiv.style.display = 'block';
+
+            document.querySelector('.result-button').disabled = true;
         }
 
-        document.addEventListener('DOMContentLoaded', generateQuiz);
+        window.onload = generateQuiz;
     </script>
 </body>
 </html>
