@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6. Sınıf 3. Ünite İngilizce Kelime Testi (Eğlenceli)</title>
+    <title>Theme 3</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
@@ -327,7 +327,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
 
-        <h1>6. Sınıf 3. Ünite İngilizce Kelime Testi</h1>
+        <h1>Theme 3</h1>
         <div id="questions-area">
             </div>
         
@@ -339,152 +339,101 @@
 
     <script>
         const wordList = [
-            // -1- FİİLLER (ACTIONS)
-            { en: "clean", tr: "temizlemek" },
-            { en: "climb mountain", tr: "dağa tırmanmak" },
-            { en: "compare", tr: "kıyaslamak" },
-            { en: "cook", tr: "yemek pişirmek" },
-            { en: "cycle", tr: "bisiklet sürmek" },
-            { en: "draw picture", tr: "resim çizmek" },
-            { en: "drive", tr: "sürmek" },
-            { en: "feed the animals", tr: "hayvanları beslemek" },
-            { en: "find everything", tr: "her şeyi bulmak" },
-            { en: "get", tr: "almak" },
-            { en: "give", tr: "vermek" },
-            { en: "grow vegetable and fruit", tr: "sebze meyve yetiştirmek" },
-            { en: "have a barbeque", tr: "mangal yapmak" },
-            { en: "help", tr: "yardım etmek" },
-            { en: "join", tr: "katılmak" },
-            { en: "knit", tr: "örgü örmek" },
-            { en: "learn", tr: "öğrenmek" },
-            { en: "leave", tr: "ayrılmak, çıkmak" },
-            { en: "live", tr: "yaşamak" },
-            { en: "make cake", tr: "kek yapmak" },
-            { en: "need", tr: "ihtiyaç duymak" },
-            { en: "play soccer", tr: "futbol oynamak" },
-            { en: "prefer", tr: "tercih etmek" },
-            { en: "prepare", tr: "hazırlamak" },
-            { en: "put", tr: "koymak" },
-            { en: "read newspaper", tr: "gazete okumak" },
-            { en: "rest", tr: "dinlenmek" },
-            { en: "ride horse", tr: "ata binmek" },
-            { en: "set the table", tr: "masayı hazırlamak, sofra kurmak" },
-            { en: "spend", tr: "harcamak, geçirmek" },
-            { en: "take", tr: "almak" },
-            { en: "talk", tr: "konuşmak" },
-            { en: "visit", tr: "ziyaret etmek" },
-            { en: "want", tr: "istemek" },
-            { en: "wash the dishes", tr: "bulaşıkları yıkamak" },
-            { en: "water flowers", tr: "çiçek sulamak" },
-            { en: "wear", tr: "giymek" },
-            { en: "work", tr: "çalışmak" },
-            { en: "would like", tr: "istemek" },
-            
-            // -2- SIFATLAR (ADJECTIVES)
-            { en: "beautiful", tr: "güzel" },
-            { en: "better", tr: "daha iyi" },
-            { en: "big", tr: "büyük" },
-            { en: "boring", tr: "sıkıcı" },
-            { en: "busy", tr: "meşgul, yoğun" },
-            { en: "cheap", tr: "ucuz" },
-            { en: "cheerful", tr: "neşeli" },
-            { en: "clean", tr: "temiz" },
-            { en: "cold", tr: "soğuk" },
-            { en: "crowded", tr: "kalabalık" },
-            { en: "dangerous", tr: "tehlikeli" },
-            { en: "easy", tr: "kolay" },
-            { en: "enjoyable", tr: "eğlenceli" },
-            { en: "exciting", tr: "heyecan verici" },
-            { en: "expensive", tr: "pahalı" },
-            { en: "fast", tr: "hızlı" },
-            { en: "fat", tr: "şişman" },
-            { en: "funny", tr: "eğlenceli" },
-            { en: "good", tr: "iyi" },
-            { en: "handsome", tr: "yakışıklı" },
-            { en: "happy", tr: "mutlu" },
-            { en: "hard", tr: "zor" },
-            { en: "hardworking", tr: "çalışkan" },
-            { en: "healthy", tr: "sağlıklı" },
-            { en: "heavy", tr: "ağır" },
-            { en: "high", tr: "yüksek" },
-            { en: "hot", tr: "sıcak" },
-            { en: "ill", tr: "hasta" },
-            { en: "important", tr: "önemli" },
-            { en: "interesting", tr: "ilgi çekici" },
-            { en: "large", tr: "geniş" },
-            { en: "late", tr: "geç" },
-            { en: "lazy", tr: "tembel" },
-            { en: "light", tr: "hafif" },
-            { en: "long", tr: "uzun" },
-            { en: "lovely", tr: "hoş, güzel" },
-            { en: "low", tr: "düşük, alçak" },
-            { en: "middle aged", tr: "orta yaşlı" },
-            { en: "noisy", tr: "gürültülü" },
-            { en: "nutritious", tr: "besleyici" },
-            { en: "old", tr: "yaşlı, eski" },
-            { en: "peaceful", tr: "huzurlu, sakin" },
-            { en: "pretty", tr: "tatlı" },
-            { en: "quiet", tr: "sessiz" },
-            { en: "ready", tr: "hazır" },
-            { en: "relaxing", tr: "rahatlatıcı" },
-            { en: "safe", tr: "güvenli" },
-            { en: "same", tr: "aynı" },
-            { en: "short", tr: "kısa" },
-            { en: "slim", tr: "ince" },
-            { en: "slow", tr: "yavaş" },
-            { en: "small", tr: "küçük" },
-            { en: "strong", tr: "güçlü" },
-            { en: "tall", tr: "uzun" },
-            { en: "thin", tr: "zayıf" },
-            { en: "tidy", tr: "düzenli" },
-            { en: "very", tr: "çok" },
-            { en: "warm", tr: "ılık" },
-            { en: "young", tr: "genç" },
-            
-            // -3- İSİMLER & YERLER (NOUNS & PLACES)
-            { en: "building", tr: "bina" },
-            { en: "city life", tr: "şehir hayatı" },
-            { en: "city", tr: "şehir" },
-            { en: "country life", tr: "kırsal yaşam" },
-            { en: "country", tr: "kırsal bölge" },
-            { en: "downtown", tr: "şehir merkezi, çarşı" },
-            { en: "everybody", tr: "herkes" },
-            { en: "farm house", tr: "çiftlik evi" },
-            { en: "garden", tr: "bahçe" },
-            { en: "high building", tr: "yüksek bina" },
-            { en: "important exam", tr: "önemli yazılı" },
-            { en: "kiosk", tr: "büfe, kulübe" },
-            { en: "library", tr: "kütüphane" },
-            { en: "neighbourhood", tr: "civar, çevre" },
-            { en: "shop", tr: "dükkan" },
-            { en: "shopping center", tr: "AVM" },
-            { en: "skyscraper", tr: "gökdelen" },
-            { en: "street", tr: "cadde, sokak" },
-            { en: "summer", tr: "yaz" },
-            { en: "thing", tr: "şey" },
-            { en: "ticket", tr: "bilet" },
-            { en: "town", tr: "kasaba, şehir" },
-            { en: "traffic jam", tr: "trafik yoğunluğu" },
-            { en: "winter", tr: "kış" },
-            
-            // -4- ZARFLAR & İFADELER (ADVERBS & PHRASES)
-            { en: "are there", tr: "var mı" },
-            { en: "at the moment", tr: "şu anda" },
-            { en: "everything", tr: "her şey" },
-            { en: "is there", tr: "var mı" },
-            { en: "nothing", tr: "hiçbir şey" },
-            { en: "now", tr: "şimdi" },
-            { en: "right now", tr: "tam şu anda" },
-            { en: "so", tr: "bu yüzden" },
-            { en: "there are", tr: "var" },
-            { en: "there is", tr: "var" },
-            { en: "today", tr: "bugün" },
-            { en: "when", tr: "nezaman" },
-            { en: "where", tr: "nerede, nereye" },
-            { en: "which", tr: "hangi, hangisi" },
-            { en: "who", tr: "kim" },
-            { en: "why", tr: "neden" },
-            { en: "you are right", tr: "haklısın" }
+            // KULLANICI TARAFINDAN VERİLEN KELİMELER
+            { en: "ankle (n)", tr: "ayak bileği" },
+            { en: "attractive (adj)", tr: "çekici" },
+            { en: "back (n)", tr: "sırt" },
+            { en: "bracelet (n)", tr: "bileklik" },
+            { en: "brilliant (adj)", tr: "harika, mükemmel, zeki" },
+            { en: "caring (adj)", tr: "şefkatli, ilgili" },
+            { en: "chain (n)", tr: "zincir" },
+            { en: "clever (adj)", tr: "zeki" },
+            { en: "crazy (adj)", tr: "çılgın" },
+            { en: "focused (adj)", tr: "odaklanmış, dikkatini vermiş" },
+            { en: "happily (adv)", tr: "mutlu bir şekilde, sevinçle" },
+            { en: "heart (n)", tr: "kalp" },
+            { en: "helpful (adj)", tr: "yardımsever" },
+            { en: "image (n)", tr: "görüntü, imaj, resim" },
+            { en: "independent (adj)", tr: "bağımsız" },
+            { en: "jewellery (n)", tr: "mücevher, takı" },
+            { en: "kit (n)", tr: "takım, set, malzemeler" },
+            { en: "knee (n)", tr: "diz" },
+            { en: "lazy (adj)", tr: "tembel" },
+            { en: "leg (n)", tr: "bacak" },
+            { en: "look (n)", tr: "bakış, görünüş" },
+            { en: "look (v)", tr: "bakmak" },
+            { en: "lovely (adj)", tr: "hoş, güzel, sevimli" },
+            { en: "necklace (n)", tr: "kolye" },
+            { en: "organised (adj)", tr: "düzenli" },
+            { en: "patient (adj)", tr: "sabırlı" },
+            { en: "physical (adj)", tr: "fiziksel, bedensel" },
+            { en: "pocket (n)", tr: "cep" },
+            { en: "polite (adj)", tr: "kibar" },
+            { en: "purse (n)", tr: "para çantası, cüzdan (kadın)" },
+            { en: "rude (adj)", tr: "kaba" },
+            { en: "sadly (adv)", tr: "ne yazık ki, üzgün bir şekilde" },
+            { en: "seem (v)", tr: "görünmek, ...mış gibi gelmek" },
+            { en: "serious (adj)", tr: "ciddi" },
+            { en: "simple (adj)", tr: "basit, sade" },
+            { en: "simply (adv)", tr: "basitçe" },
+            { en: "skin (n)", tr: "cilt, deri" },
+            { en: "social (adj)", tr: "sosyal" },
+            { en: "stomach (n)", tr: "mide; karın" },
+            { en: "swimsuit (n)", tr: "mayo" },
+            { en: "tidy (adj)", tr: "düzenli, temiz" },
+            { en: "tights (n)", tr: "tayt, külotlu çorap" },
+            { en: "trainers (n)", tr: "spor ayakkabısı" },
+            { en: "wallet (n)", tr: "cüzdan (erkek)" },
+            { en: "weak (adj)", tr: "zayıf, güçsüz" },
+            { en: "appearance (n)", tr: "dış görünüş, fiziksel görünüm" },
+            { en: "personality (n)", tr: "kişilik, karakter" },
+            { en: "generous (adj)", tr: "cömert" },
+            { en: "punctual (adj)", tr: "dakik" },
+            { en: "outgoing (adj)", tr: "dışa dönük, sosyal" },
+            { en: "slim (adj)", tr: "ince, zayıf" },
+            { en: "plump (adj)", tr: "balık etli, topluca" },
+            { en: "curly (adj)", tr: "kıvırcık (saç)" },
+            { en: "straight (adj)", tr: "düz (saç)" },
+            { en: "wavy (adj)", tr: "dalgalı (saç)" },
+            { en: "height (n)", tr: "boy" },
+            { en: "weight (n)", tr: "kilo" },
+            { en: "honest (adj)", tr: "dürüst" },
+            { en: "stubborn (adj)", tr: "inatçı" },
+            { en: "shy (adj)", tr: "utangaç" },
+
+            // MAARİF MODEL 6. SINIF 3. TEMA (PERSONAL LIFE) EK KELİMELER
+            { en: "blond / blonde (adj)", tr: "sarışın" },
+            { en: "bald (adj)", tr: "kel" },
+            { en: "beard (n)", tr: "sakal" },
+            { en: "moustache (n)", tr: "bıyık" },
+            { en: "freckles (n)", tr: "çiller" },
+            { en: "hazel (adj)", tr: "ela (göz)" },
+            { en: "medium-height (adj)", tr: "orta boylu" },
+            { en: "medium-weight (adj)", tr: "orta kilolu" },
+            { en: "well-built (adj)", tr: "yapılı, kaslı" },
+            { en: "overweight (adj)", tr: "kilolu, şişman" },
+            { en: "handsome (adj)", tr: "yakışıklı" },
+            { en: "cute (adj)", tr: "sevimli, şirin" },
+            { en: "cheerful (adj)", tr: "neşeli" },
+            { en: "selfish (adj)", tr: "bencil" },
+            { en: "easy-going (adj)", tr: "uyumlu, rahat" },
+            { en: "hardworking (adj)", tr: "çalışkan" },
+            { en: "thoughtful (adj)", tr: "düşünceli" },
+            { en: "talkative (adj)", tr: "konuşkan" },
+            { en: "quiet (adj)", tr: "sessiz, sakin" },
+            { en: "funny (adj)", tr: "komik, eğlenceli" },
+            { en: "brave (adj)", tr: "cesur" },
+            { en: "smart (adj)", tr: "akıllı, şık" },
+            { en: "earring (n)", tr: "küpe" },
+            { en: "ring (n)", tr: "yüzük" },
+            { en: "scarf (n)", tr: "atkı, eşarp" },
+            { en: "belt (n)", tr: "kemer" },
+            { en: "glasses (n)", tr: "gözlük" },
+            { en: "shoulder (n)", tr: "omuz" },
+            { en: "wrist (n)", tr: "el bileği" },
+            { en: "neck (n)", tr: "boyun" },
+            { en: "get on well with (v)", tr: "iyi anlaşmak" },
+            { en: "tell the truth (v)", tr: "doğruyu söylemek" }
         ];
 
         let score = 0;
@@ -500,7 +449,6 @@
 
         function generateQuiz() {
             const quizArea = document.getElementById('questions-area');
-            // Türkçe anlamları alıyoruz, ancak sadece farklı olanları tutmalıyız
             const uniqueTurkishMeanings = [...new Set(wordList.map(item => item.tr))];
 
             const shuffledWords = shuffleArray([...wordList]);
@@ -510,23 +458,19 @@
                 const questionId = `q${index + 1}`;
                 const correctMeaning = word.tr;
 
-                // Doğru cevabı hariç tutarak 3 yanlış cevap (distractor) seçiyoruz
                 let distractors = uniqueTurkishMeanings.filter(m => m !== correctMeaning);
                 shuffleArray(distractors);
-                // Eğer kelime sayısı 4'ten azsa (çok az kelime varsa), 3'ten az distractor alabiliriz.
                 distractors = distractors.slice(0, Math.min(3, distractors.length)); 
                 
-                // Seçenekleri karıştırıp doğru cevabı da ekliyoruz
                 let options = shuffleArray([correctMeaning, ...distractors]);
                 
                 htmlContent += `
-                    <div class="question" id="${questionId}" style="animation-delay: ${index * 0.1}s;">
+                    <div class="question" id="${questionId}" style="animation-delay: ${Math.min(index * 0.05, 1)}s;">
                         <p class="question-text">${index + 1}. ${word.en}</p>
                 `;
 
                 options.forEach(option => {
-                    // Tırnak işaretlerini JavaScript içinde düzgünce escape ediyoruz
-                    const escapedOption = option.replace(/'/g, "\\'");
+                    const escapedOption = option.replace(/'/g, "\'");
                     htmlContent += `
                         <button class="option-button" 
                                 data-answer="${option}" 
@@ -548,21 +492,18 @@
             const questionElement = document.getElementById(questionId);
             const buttons = questionElement.querySelectorAll('.option-button');
             
-            // Soru metnini al
             const questionText = questionElement.querySelector('.question-text').textContent.replace(/^\d+\.\s+/, '').trim();
-            // Kelime listesinde doğru cevabı bul
             const correctWordObject = wordList.find(w => w.en === questionText);
             const correctAnswer = correctWordObject ? correctWordObject.tr : null;
 
             if (!correctAnswer) return;
 
-            // Seçili cevabın doğru olup olmadığını kontrol et
             const isCorrect = selectedAnswer === correctAnswer;
 
             buttons.forEach(button => {
                 const buttonAnswer = button.getAttribute('data-answer');
                 
-                button.disabled = true; // Cevaplandıktan sonra tüm butonları devre dışı bırak
+                button.disabled = true;
 
                 if (buttonAnswer === selectedAnswer) {
                     if (isCorrect) {
@@ -573,7 +514,6 @@
                     }
                 }
                 
-                // Yanlış cevaplansa bile doğru cevabı göster
                 if (buttonAnswer === correctAnswer) {
                     if (!button.classList.contains('incorrect')) {
                         button.classList.add('correct');
