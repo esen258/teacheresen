@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6. Sınıf 4. Ünite Kelime Testi</title>
+    <title>Theme 4</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
@@ -327,7 +327,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
 
-        <h1>6. Sınıf 4. Ünite Kelime Testi</h1>
+        <h1>Theme 4</h1>
         <div id="questions-area">
             </div>
         
@@ -338,138 +338,120 @@
     <div class="signature bottom-signature">Esen Teacher</div>
 
     <script>
-        // YENİ KELİME LİSTESİ (6. Sınıf 4. Ünite)
         const wordList = [
-            // WEATHER
-            { en: "Chilly", tr: "Soğuk" },
-            { en: "Cold", tr: "Soğuk" },
-            { en: "Cool", tr: "Serin" },
-            { en: "Dry", tr: "Kuru" },
-            { en: "Fabulous", tr: "Çok güzel, süper" },
-            { en: "Foggy", tr: "Sisli" },
-            { en: "Freezing", tr: "Dondurucu" },
-            { en: "Hailing", tr: "Dolu" },
-            { en: "Hot", tr: "Sıcak" },
-            { en: "Lightning", tr: "Şimşek, yıldırım" },
-            { en: "Lovely", tr: "Güzel, sevimli" },
-            { en: "Pleasant", tr: "Hoş" },
-            { en: "Rainbow", tr: "Gökkuşağı" },
-            { en: "Rainy", tr: "Yağmurlu" },
-            { en: "Snowy", tr: "Karlı" },
-            { en: "Spring showers", tr: "Bahar yağışları" },
-            { en: "Storm", tr: "Fırtına" },
-            { en: "Stormy", tr: "Fırtınalı" },
-            { en: "Sunny", tr: "Güneşli" },
-            { en: "Warm", tr: "Ilık" },
-            { en: "Weather forecast", tr: "Hava tahmini" },
-            { en: "Wet", tr: "Islak, yağmurlu, yağışlı" },
-            { en: "Windy", tr: "Rüzgarlı" },
-            // EMOTIONS / FEELINGS
-            { en: "Angry", tr: "Kızgın" },
-            { en: "Anxious", tr: "Endişeli" },
-            { en: "Bored", tr: "Sıkılmış" },
-            { en: "Excited", tr: "Heyecanlı" },
-            { en: "Fine", tr: "İyi" },
-            { en: "Good", tr: "İyi" },
-            { en: "Great", tr: "Harika" },
-            { en: "Happy", tr: "Mutlu" },
-            { en: "Moody", tr: "Üzgün, karamsar" },
-            { en: "Nervous", tr: "Gergin" },
-            { en: "Nice", tr: "İyi, güzel" },
-            { en: "Sad", tr: "Üzgün" },
-            { en: "Scared", tr: "Korkmuş" },
-            { en: "Sleepy", tr: "Uykulu, durgun" },
-            { en: "Surprised", tr: "Şaşırmış" },
-            { en: "Unhappy", tr: "Mutsuz" },
-            { en: "Well", tr: "İyi" },
-            // CLOTHES
-            { en: "Boot", tr: "Bot" },
-            { en: "Coat", tr: "Mont" },
-            { en: "Flip flops", tr: "Parmak arası terlik, sandalet" },
-            { en: "Gloves", tr: "Eldiven" },
-            { en: "Hat", tr: "Şapka" },
-            { en: "Jacket", tr: "Ceket" },
-            { en: "Jumper", tr: "Kazak" },
-            { en: "Raincoat", tr: "Yağmurluk" },
-            { en: "Scarf", tr: "Atkı" },
-            { en: "Shirt", tr: "Gömlek" },
-            { en: "Shorts", tr: "Şort" },
-            { en: "Sunglasses", tr: "Güneş gözlüğü" },
-            { en: "Sweater", tr: "Süveter, kazak" },
-            { en: "Tee shirt (T-shirt)", tr: "Tişört" },
-            { en: "Umbrella", tr: "Şemsiye" },
-            // GENERAL
-            { en: "Average temperature", tr: "Ortalama sıcaklık" },
-            { en: "Beach", tr: "Sahil" },
-            { en: "Desert", tr: "Çöl" },
-            { en: "Garden", tr: "Bahçe" },
-            { en: "Grandparents", tr: "Büyükanne ve büyükbaba" },
-            { en: "Outside", tr: "Dışarısı" },
-            { en: "Parents", tr: "Anne ve baba" },
-            { en: "Place", tr: "Yer" },
-            { en: "Sky", tr: "Gökyüzü" },
-            { en: "Snowman", tr: "Kardanadam" },
-            { en: "Temperature", tr: "Sıcaklık" },
-            { en: "Today", tr: "Bugün" },
-            { en: "Tomorrow", tr: "Yarın" },
-            // ADVERBS & CONNECTORS
-            { en: "Early", tr: "Erken" },
-            { en: "First", tr: "Birinci" },
-            { en: "Greetings", tr: "Selamlar" },
-            { en: "Late", tr: "Geç" },
-            { en: "Let’s", tr: "Haydi ... yapalım" },
-            { en: "Really", tr: "Gerçekten" },
-            { en: "Second", tr: "İkinci" },
-            { en: "Third", tr: "Üçüncü" },
-            { en: "Very", tr: "Çok" },
-            { en: "With", tr: "İle" },
-            { en: "You are right", tr: "Haklısın" },
-            // VERBS
-            { en: "Feel", tr: "Hissetmek" },
-            { en: "Go sightseeing", tr: "Geziye çıkmak" },
-            { en: "Look at", tr: "Bakmak" },
-            { en: "Look for", tr: "Aramak" },
-            { en: "Look", tr: "Görünmek" },
-            { en: "Make snowman", tr: "Kardanadam yapmak" },
-            { en: "Make", tr: "Yapmak" },
-            { en: "Need", tr: "İhtiyaç duymak" },
-            { en: "Put on", tr: "Giyinmek" },
-            { en: "Rain heavily", tr: "(Yoğun) yağmur yağmak" },
-            { en: "Rain", tr: "Yağmur yağmak" },
-            { en: "Repeat", tr: "Tekrar etmek" },
-            { en: "Ski", tr: "Kayak yapmak" },
-            { en: "Snow", tr: "Kar yağmak" },
-            { en: "Spend time", tr: "Zaman harcamak" },
-            { en: "Stay", tr: "Kalmak" },
-            { en: "Swing", tr: "Sallanmak" },
-            { en: "Take", tr: "Almak" },
-            { en: "Understand", tr: "Anlamak" },
-            { en: "Want to", tr: "İstemek" },
-            { en: "Wear", tr: "Giymek" },
-            // QUESTION WORDS
-            { en: "How do you feel?", tr: "Nasıl hissediyorsun?" },
-            { en: "How is the weather?", tr: "Hava nasıl?" },
-            { en: "How many", tr: "Kaç tane" },
-            { en: "How", tr: "Nasıl" },
-            { en: "What is the weather like?", tr: "Hava nasıl?" },
-            { en: "When", tr: "Ne zaman" },
-            { en: "Where", tr: "Nerede" },
-            { en: "Which", tr: "Hangi" },
-            { en: "Who", tr: "Kim" },
-            { en: "Why", tr: "Neden" },
-            // SEASONS
-            { en: "Spring", tr: "İlkbahar" },
-            { en: "Summer", tr: "Yaz" },
-            { en: "Winter", tr: "Kış" },
-            { en: "Fall (Autumn)", tr: "Sonbahar" },
-            // DAYS
-            { en: "Monday", tr: "Pazartesi" },
-            { en: "Tuesday", tr: "Salı" },
-            { en: "Wednesday", tr: "Çarşamba" },
-            { en: "Thursday", tr: "Perşembe" },
-            { en: "Friday", tr: "Cuma" },
-            { en: "Saturday", tr: "Cumartesi" },
-            { en: "Sunday", tr: "Pazar" }
+            // KULLANICI TARAFINDAN VERİLEN KELİMELER
+            { en: "address (n)", tr: "adres" },
+            { en: "ambitious (adj)", tr: "hırslı" },
+            { en: "apartment (n)", tr: "apartman dairesi" },
+            { en: "assistant (n)", tr: "asistan" },
+            { en: "author (n)", tr: "yazar" },
+            { en: "bin (n)", tr: "çöp kutusu" },
+            { en: "blanket (n)", tr: "battaniye" },
+            { en: "bookshelf (n)", tr: "kitaplık" },
+            { en: "boss (n)", tr: "patron" },
+            { en: "box (n)", tr: "kutu" },
+            { en: "businessman (n)", tr: "iş adamı" },
+            { en: "carpet (n)", tr: "halı" },
+            { en: "chopping board (n)", tr: "kesme tahtası" },
+            { en: "clock (n)", tr: "saat" },
+            { en: "company (n)", tr: "şirket" },
+            { en: "construction (n)", tr: "inşaat" },
+            { en: "cook (n)", tr: "aşçı" },
+            { en: "cooker (n)", tr: "ocak" },
+            { en: "curtain (n)", tr: "perde" },
+            { en: "dentist (n)", tr: "diş doktoru" },
+            { en: "designer (n)", tr: "tasarımcı" },
+            { en: "detective (n)", tr: "dedektif" },
+            { en: "director (n)", tr: "müdür" },
+            { en: "double (adv)", tr: "iki katı kadar" },
+            { en: "downstairs (adj)", tr: "alt katta" },
+            { en: "drawer (n)", tr: "çekmece" },
+            { en: "earn (v)", tr: "(para) kazanmak" },
+            { en: "employ (v)", tr: "işe almak" },
+            { en: "employee (n)", tr: "çalışan (işçi)" },
+            { en: "employer (n)", tr: "işveren" },
+            { en: "engineer (n)", tr: "mühendis" },
+            { en: "entrance (n)", tr: "giriş" },
+            { en: "factory (n)", tr: "fabrika" },
+            { en: "farm (v)", tr: "çiftçilik yapmak" },
+            { en: "flat (adj)", tr: "düz" },
+            { en: "floor (n)", tr: "zemin/kat" },
+            { en: "furniture (n)", tr: "mobilya" },
+            { en: "heating (n)", tr: "ısıtma" },
+            { en: "journalist (n)", tr: "gazeteci" },
+            { en: "key (n)", tr: "anahtar" },
+            { en: "lawyer (n)", tr: "avukat" },
+            { en: "light (n)", tr: "ışık" },
+            { en: "manager (n)", tr: "yönetici" },
+            { en: "mirror (n)", tr: "ayna" },
+            { en: "officer (n)", tr: "memur" },
+            { en: "painter (n)", tr: "boyacı" },
+            { en: "pillow (n)", tr: "yastık" },
+            { en: "pilot (n)", tr: "pilot" },
+            { en: "professor (n)", tr: "profesör" },
+            { en: "refrigerator (n)", tr: "buzdolabı" },
+            { en: "report (v)", tr: "rapor etmek / bildirmek" },
+            { en: "reporter (n)", tr: "muhabir" },
+            { en: "rest (remaining part) (n)", tr: "geri kalan" },
+            { en: "restaurant (n)", tr: "restoran" },
+            { en: "roof (n)", tr: "çatı" },
+            { en: "rubbish (n)", tr: "çöp" },
+            { en: "shelf (n)", tr: "raf" },
+            { en: "sink (n)", tr: "lavabo" },
+            { en: "soldier (n)", tr: "asker" },
+            { en: "strict (adj)", tr: "katı/disiplinli" },
+            { en: "towel (n)", tr: "havlu" },
+            { en: "upstairs (adj)", tr: "üst katta" },
+            { en: "youth room set (n)", tr: "genç odası takımı" },
+            { en: "firefighter (n)", tr: "itfaiyeci" },
+            { en: "vet / veterinarian (n)", tr: "veteriner" },
+            { en: "nurse (n)", tr: "hemşire" },
+            { en: "mechanic (n)", tr: "tamirci, mekaniker" },
+            { en: "pharmacist (n)", tr: "eczacı" },
+            { en: "neighborhood (n)", tr: "mahalle, semt" },
+            { en: "suburb (n)", tr: "banliyö, şehir dışı" },
+            { en: "wardrobe (n)", tr: "gardırop, elbise dolabı" },
+            { en: "armchair (n)", tr: "koltuk" },
+            { en: "balcony (n)", tr: "balkon" },
+            { en: "garage (n)", tr: "garaj" },
+            { en: "garden (n)", tr: "bahçe" },
+            { en: "occupation / profession (n)", tr: "meslek" },
+
+            // MAARİF MODEL 6. SINIF FAMILY LIFE ÜNİTESİ EK KELİMELER
+            { en: "relatives (n)", tr: "akrabalar" },
+            { en: "cousin (n)", tr: "kuzen" },
+            { en: "aunt (n)", tr: "hala, teyze" },
+            { en: "uncle (n)", tr: "amca, dayı" },
+            { en: "nephew (n)", tr: "erkek yeğen" },
+            { en: "niece (n)", tr: "kız yeğen" },
+            { en: "grandparents (n)", tr: "büyükanne ve büyükbaba" },
+            { en: "husband (n)", tr: "koca, eş (erkek)" },
+            { en: "wife (n)", tr: "karı, eş (kadın)" },
+            { en: "twin (n)", tr: "ikiz" },
+            { en: "only child (n)", tr: "tek çocuk" },
+            { en: "living room (n)", tr: "oturma odası" },
+            { en: "kitchen (n)", tr: "mutfak" },
+            { en: "bedroom (n)", tr: "yatak odası" },
+            { en: "bathroom (n)", tr: "banyo" },
+            { en: "attic (n)", tr: "çatı katı" },
+            { en: "basement (n)", tr: "bodrum katı" },
+            { en: "detached house (n)", tr: "müstakil ev" },
+            { en: "cottage (n)", tr: "kulübe, kır evi" },
+            { en: "sofa / couch (n)", tr: "kanepe, koltuk" },
+            { en: "dishwasher (n)", tr: "bulaşık makinesi" },
+            { en: "washing machine (n)", tr: "çamaşır makinesi" },
+            { en: "wardrobe / closet (n)", tr: "elbise dolabı" },
+            { en: "architect (n)", tr: "mimar" },
+            { en: "tailor (n)", tr: "terzi" },
+            { en: "waiter / waitress (n)", tr: "garson" },
+            { en: "hairdresser (n)", tr: "kuaför" },
+            { en: "retired (adj)", tr: "emekli" },
+            { en: "workplace (n)", tr: "iş yeri" },
+            { en: "make the bed (v)", tr: "yatağı toplamak" },
+            { en: "tidy up (v)", tr: "toparlamak, düzenlemek" },
+            { en: "take out the rubbish (v)", tr: "çöpü dışarı çıkarmak" },
+            { en: "do the chores (v)", tr: "ev işlerini yapmak" },
+            { en: "look after (v)", tr: "bakmak, ilgilenmek" }
         ];
 
         let score = 0;
@@ -487,7 +469,6 @@
             const quizArea = document.getElementById('questions-area');
             const uniqueTurkishMeanings = [...new Set(wordList.map(item => item.tr))];
 
-            // Kelimeleri karıştır
             const shuffledWords = shuffleArray([...wordList]);
             
             let htmlContent = '';
@@ -495,16 +476,14 @@
                 const questionId = `q${index + 1}`;
                 const correctMeaning = word.tr;
 
-                // Yanlış şıkları oluştur
                 let distractors = uniqueTurkishMeanings.filter(m => m !== correctMeaning);
                 shuffleArray(distractors);
                 distractors = distractors.slice(0, Math.min(3, distractors.length)); 
                 
-                // Şıkları karıştır (Doğru + Yanlışlar)
                 let options = shuffleArray([correctMeaning, ...distractors]);
                 
                 htmlContent += `
-                    <div class="question" id="${questionId}" style="animation-delay: ${index * 0.1}s;">
+                    <div class="question" id="${questionId}" style="animation-delay: ${Math.min(index * 0.05, 1)}s;">
                         <p class="question-text">${index + 1}. ${word.en}</p>
                 `;
 
@@ -531,7 +510,6 @@
             const questionElement = document.getElementById(questionId);
             const buttons = questionElement.querySelectorAll('.option-button');
             
-            // Soru metnini alırken baştaki sayı ve noktayı temizle
             const questionText = questionElement.querySelector('.question-text').textContent.replace(/^\d+\.\s+/, '').trim();
             const correctWordObject = wordList.find(w => w.en === questionText);
             const correctAnswer = correctWordObject ? correctWordObject.tr : null;
@@ -596,8 +574,8 @@
             document.querySelector('.result-button').disabled = true;
         }
 
-        document.title = "6. Sınıf 4. Ünite Kelime Testi"; 
         window.onload = generateQuiz;
     </script>
 </body>
 </html>
+```[cite: 3]
