@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3. Sınıf 5. Ünite İngilizce Kelime Testi (Eğlenceli)</title>
+    <title>Theme 5</title>
     <style>
         /* GENEL VE MOBİL STİL AYARLARI */
         body {
@@ -32,6 +32,11 @@
         }
 
         /* YENİ: En üstteki Esen Teacher imzası için daha vurgulu stil */
+        .top-signature-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         .top-signature {
             font-family: 'Impact', 'Franklin Gothic Bold', sans-serif; /* Daha kalın ve dikkat çekici font */
             font-size: 3.5rem; /* Çok daha büyük */
@@ -42,13 +47,27 @@
                 -3px  3px 0 #e63946,
                  3px  3px 0 #e63946,
                  5px  5px 0 #1d3557; /* Koyu mavi 3D efekti */
-            margin-bottom: 30px; /* Test başlığıyla arasında boşluk */
             letter-spacing: 3px; /* Harf aralığı */
             animation: bounce 2s infinite; /* Zıplama animasyonu */
             padding: 10px 20px; /* Etrafında boşluk */
             background: linear-gradient(45deg, #f1faee, #a8dadc); /* Hafif arka plan gradyanı */
             border-radius: 15px; /* Yuvarlak köşeler */
             box-shadow: 0 8px 15px rgba(0,0,0,0.3); /* Belirgin gölge */
+            display: inline-block;
+        }
+
+        /* Telefon Numarası Stili */
+        .top-phone {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: bold;
+            margin-top: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            background-color: rgba(29, 53, 87, 0.6);
+            padding: 5px 15px;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         /* Alttaki Esen Teacher için standart imza stilini koruyalım */
@@ -311,7 +330,10 @@
 </head>
 <body>
 
-    <div class="signature top-signature">Esen Teacher</div>
+    <div class="top-signature-container">
+        <div class="signature top-signature">Esen Teacher</div>
+        <div><span class="top-phone">📞 0530 477 30 73</span></div>
+    </div>
 
     <div id="quiz-container">
         
@@ -327,7 +349,7 @@
         <div class="dot"></div>
         <div class="dot"></div>
 
-        <h1>3. Sınıf 5. Ünite İngilizce Kelime Testi</h1>
+        <h1>Theme 5</h1>
         <div id="questions-area">
             </div>
         
@@ -338,27 +360,72 @@
     <div class="signature bottom-signature">Esen Teacher</div>
 
     <script>
-        // KELİME LİSTESİ GÜNCELLENDİ
         const wordList = [
-            { en: "Toy", tr: "Oyuncak" },
-            { en: "Game", tr: "Oyun" },
-            { en: "Ball", tr: "Top" },
-            { en: "Balloon", tr: "Balon" },
-            { en: "Doll", tr: "Oyuncak bebek" },
-            { en: "Kite", tr: "Uçurtma" },
-            { en: "Teddy bear", tr: "Oyuncak ayı" },
-            { en: "Marble", tr: "Misket" },
-            { en: "Playing cards", tr: "Oyun kartları" },
-            { en: "Building blocks", tr: "Yapı blokları (lego vb oyuncaklar)" },
-            { en: "Toy car", tr: "Oyuncak araba" },
-            { en: "Silly putty", tr: "Oyun hamuru" },
-            { en: "Puzzle", tr: "Yapboz" },
-            { en: "Board game", tr: "Tahta / kutu oyunları" },
-            { en: "Toy shop", tr: "Oyuncak mağazası" },
-            { en: "Toy soldier", tr: "Oyuncak asker" },
-            { en: "Doll house", tr: "Oyuncak bebek evi" },
-            { en: "Playtime", tr: "Oyun zamanı" },
-            { en: "Toy box", tr: "Oyuncak kutusu" }
+            // KULLANICI TARAFINDAN VERİLEN KELİMELER (THEME 5)
+            { en: "at present", tr: "şu anda" },
+            { en: "bake", tr: "fırında pişirmek" },
+            { en: "barn", tr: "ahır" },
+            { en: "chicken(hen)", tr: "tavuk" },
+            { en: "collect", tr: "toplamak" },
+            { en: "cottage", tr: "kulübe" },
+            { en: "cow", tr: "inek" },
+            { en: "cute", tr: "sevimli" },
+            { en: "donkey", tr: "eşek" },
+            { en: "duck", tr: "ördek" },
+            { en: "every day", tr: "her gün" },
+            { en: "fantastic", tr: "harika" },
+            { en: "farm", tr: "çiftlik" },
+            { en: "farmhouse", tr: "çiftlik evi" },
+            { en: "feed", tr: "beslemek" },
+            { en: "field", tr: "tarla" },
+            { en: "garden(n)", tr: "bahçe" },
+            { en: "garden(v)", tr: "bahçe işleriyle uğraşmak" },
+            { en: "goat", tr: "keçi" },
+            { en: "grass", tr: "ot" },
+            { en: "grow", tr: "yetiştirmek" },
+            { en: "Help me!", tr: "Bana yardım et!" },
+            { en: "horse", tr: "at" },
+            { en: "How beautiful!", tr: "Ne güzel!" },
+            { en: "milk(v)", tr: "süt sağmak" },
+            { en: "now", tr: "şimdi" },
+            { en: "No idea!", tr: "Fikrim yok!" },
+            { en: "No way!", tr: "Hadi canım!" },
+            { en: "plant(n)", tr: "bitki" },
+            { en: "plant(v)", tr: "dikmek" },
+            { en: "rabbit", tr: "tavşan" },
+            { en: "sheep", tr: "koyun" },
+            { en: "today", tr: "bugün" },
+            { en: "tractor", tr: "traktör" },
+            { en: "village", tr: "köy" },
+            { en: "water(v)", tr: "sulamak" },
+            { en: "What a surprise!", tr: "Bu ne sürpriz!" },
+            { en: "Why not?", tr: "Neden olmasın?" },
+            { en: "house", tr: "ev" },
+            { en: "home", tr: "yuva, ev" },
+            { en: "neighborhood", tr: "mahalle" },
+            { en: "street", tr: "sokak" },
+            { en: "city", tr: "şehir" },
+            { en: "town", tr: "kasaba" },
+            { en: "park", tr: "park" },
+            { en: "tree", tr: "ağaç" },
+            { en: "flower", tr: "çiçek" },
+
+            // İLKOKUL 3. SINIF 5. TEMA (HOMES & HOUSES & THE NEIGHBOURHOOD) EK KELİMELERİ
+            { en: "bedroom", tr: "yatak odası" },
+            { en: "bathroom", tr: "banyo" },
+            { en: "kitchen", tr: "mutfak" },
+            { en: "living room", tr: "oturma odası" },
+            { en: "garage", tr: "garaj" },
+            { en: "balcony", tr: "balkon" },
+            { en: "roof", tr: "çatı" },
+            { en: "window", tr: "pencere" },
+            { en: "door", tr: "kapı" },
+            { en: "live", tr: "yaşamak" },
+            { en: "near", tr: "yakınında" },
+            { en: "big", tr: "büyük" },
+            { en: "small", tr: "küçük" },
+            { en: "Where is...?", tr: "... nerede?" },
+            { en: "Welcome!", tr: "Hoş geldiniz!" }
         ];
 
         let score = 0;
@@ -374,7 +441,7 @@
 
         function generateQuiz() {
             const quizArea = document.getElementById('questions-area');
-            const turkishMeanings = wordList.map(item => item.tr);
+            const uniqueTurkishMeanings = [...new Set(wordList.map(item => item.tr))];
 
             const shuffledWords = shuffleArray([...wordList]);
             
@@ -383,21 +450,19 @@
                 const questionId = `q${index + 1}`;
                 const correctMeaning = word.tr;
 
-                let distractors = turkishMeanings.filter(m => m !== correctMeaning);
+                let distractors = uniqueTurkishMeanings.filter(m => m !== correctMeaning);
                 shuffleArray(distractors);
-                distractors = distractors.slice(0, 3);
+                distractors = distractors.slice(0, Math.min(3, distractors.length)); 
                 
                 let options = shuffleArray([correctMeaning, ...distractors]);
                 
                 htmlContent += `
-                    <div class="question" id="${questionId}" style="animation-delay: ${index * 0.1}s;">
+                    <div class="question" id="${questionId}" style="animation-delay: ${Math.min(index * 0.05, 1)}s;">
                         <p class="question-text">${index + 1}. ${word.en}</p>
                 `;
 
                 options.forEach(option => {
-                    // Tırnak işaretlerini kaçırmak için basit bir fonksiyon
                     const escapedOption = option.replace(/'/g, "\\'");
-                    
                     htmlContent += `
                         <button class="option-button" 
                                 data-answer="${option}" 
@@ -419,20 +484,12 @@
             const questionElement = document.getElementById(questionId);
             const buttons = questionElement.querySelectorAll('.option-button');
             
-            // Tırnak işaretli kelimeleri doğru eşleştirmek için kelime listesi içinde arama
             const questionText = questionElement.querySelector('.question-text').textContent.replace(/^\d+\.\s+/, '').trim();
             const correctWordObject = wordList.find(w => w.en === questionText);
             const correctAnswer = correctWordObject ? correctWordObject.tr : null;
 
             if (!correctAnswer) return;
 
-            // Türkçe kelimeler tırnak içerebileceği için 'data-answer'dan gelen ham cevabı kullanıyoruz.
-            // selectedAnswer'ın kaçırılmış tırnak işaretlerini geri düzeltiyoruz (genellikle HTML'de gerekmez ama JS'de karşılaştırma için emin olmak lazım)
-            // Ancak, `checkAnswer` fonksiyonu çağrılırken tırnaklar zaten kaçırılmış ('\'' şeklinde) olduğu için, 
-            // karşılaştırma yapmadan önce selectedAnswer'ı olduğu gibi kullanmalıyız. 
-            // Bu örnekte, kelime listemizdeki "Yapı blokları (lego vb oyuncaklar)" gibi parantezli ifadeler tırnak içermiyor, 
-            // bu yüzden doğrudan karşılaştırma güvenlidir.
-            
             const isCorrect = selectedAnswer === correctAnswer;
 
             buttons.forEach(button => {
@@ -448,8 +505,8 @@
                         button.classList.add('incorrect');
                     }
                 }
+                
                 if (buttonAnswer === correctAnswer) {
-                    // Yanlış cevaplansa bile doğru cevabı göster
                     if (!button.classList.contains('incorrect')) {
                         button.classList.add('correct');
                     }
@@ -491,8 +548,6 @@
             document.querySelector('.result-button').disabled = true;
         }
 
-        // Sayfa başlığını güncelledik
-        document.title = "3. Sınıf 5. Ünite İngilizce Kelime Testi (Eğlenceli)"; 
         window.onload = generateQuiz;
     </script>
 </body>
